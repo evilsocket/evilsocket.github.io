@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>How to Build Your Own Rogue GSM BTS for Fun and Profit | Simone Margaritelli</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The last week I’ve been visiting my friend and colleque Ziggy in Tel Aviv which gave me something I’ve been waiting for almost a year, a brand new BladeRF x40, a low-cost USB 3.0 Software Defined Radi">
+<meta name="keywords" content="hacking,gsm,bts,yatebts,rogue bts,evilbts,yate,bladerf,bladerf x40,rf,gsm hijacking,gsm intercept,gsm sniffing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Build Your Own Rogue GSM BTS for Fun and Profit">
+<meta property="og:url" content="https://www.evilsocket.net/2016/03/31/how-to-build-your-own-rogue-gsm-bts-for-fun-and-profit/index.html">
+<meta property="og:site_name" content="Simone Margaritelli">
+<meta property="og:description" content="The last week I’ve been visiting my friend and colleque Ziggy in Tel Aviv which gave me something I’ve been waiting for almost a year, a brand new BladeRF x40, a low-cost USB 3.0 Software Defined Radi">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/03/bts.jpeg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/03/nibui-1.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/03/nibui-2.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/03/gsm-1.jpeg">
+<meta property="og:updated_time" content="2016-04-11T23:22:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Build Your Own Rogue GSM BTS for Fun and Profit">
+<meta name="twitter:description" content="The last week I’ve been visiting my friend and colleque Ziggy in Tel Aviv which gave me something I’ve been waiting for almost a year, a brand new BladeRF x40, a low-cost USB 3.0 Software Defined Radi">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2016/03/bts.jpeg">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Simone Margaritelli" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Simone Margaritelli</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">INTP :: Hacker :: I break stuff to make the world a safer place.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-how-to-build-your-own-rogue-gsm-bts-for-fun-and-profit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      How to Build Your Own Rogue GSM BTS for Fun and Profit
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-03-31T17:31:40.000Z" itemprop="datePublished">2016-03-31</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>The last week I’ve been visiting my friend and colleque <a href="https://twitter.com/z4ziggy" target="_blank" rel="external">Ziggy</a> in Tel Aviv which gave me something I’ve been waiting for almost a year, a brand new <a href="https://www.nuand.com/blog/product/bladerf-x40/" target="_blank" rel="external">BladeRF x40</a>, a low-cost USB 3.0 Software Defined Radio working in full-duplex, meaning that it can transmit and receive at the same time ( while for instance the HackRF is only half-duplex ).</p>
+<p>In this blog post I’m going to explain how to create a portable GSM BTS which can be used either to create a private ( and vendor free! ) GSM network or for <strong>GSM active tapping/interception/hijacking</strong> … yes, with some (relatively) cheap electronic equipment you can basically build something very similar to what the governments are using from years to perform GSM interception.</p>
+<p><strong>I’m not writing this post to help script kiddies breaking the law, my point is that GSM is broken by design and it’s about time vendors do something about it considering how much we’re paying for their services.</strong></p>
+<p><img src="/images/2016/03/bts.jpeg" alt="my bts"></p>
+<a id="more"></a>
+<h3 id="Hardware-Requirements"><a href="#Hardware-Requirements" class="headerlink" title="Hardware Requirements"></a>Hardware Requirements</h3><p>In order to build your BTS you’ll need the following hardware:</p>
+<ul>
+<li>A <a href="https://www.nuand.com/blog/product/bladerf-x40/" target="_blank" rel="external">bladeRF x40</a></li>
+<li>Two <a href="https://www.sparkfun.com/products/675" target="_blank" rel="external">Quad-band Cellular Duck Antennas SMA</a>.</li>
+<li>A Raspberry Pi 3 ( model 2 and below are too slow ).</li>
+<li>An USB battery pack ( I’m using a 26800mAh Anker Astro E7 ).</li>
+<li>A microsd for the RPI &gt;= 8GB.</li>
+<li>Some patience and time … :)</li>
+</ul>
+<h3 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h3><p>Let’s start by installing the <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="external">latest Raspbian</a> image to the micrsd card ( use the “lite” one, no need for UI ;) ), boot the RPI, configure either the WiFi or ethernet and so forth, at the end of this process you should be able to SSH into the RPI.</p>
+<p>Next, install a few dependecies we’re gonna need soon:</p>
+<pre><code>sudo apt-get install git apache2 php5 bladerf libbladerf-dev libbladerf0 automake
+</code></pre><p>At this point, you should already be able to interact with the BladeRF, plug it into one of the USB ports of the RPI, <strong>dmesg</strong> should be telling you something like:</p>
+<pre><code>[ 2332.071675] usb 1-1.3: New USB device found, idVendor=1d50, idProduct=6066
+[ 2332.071694] usb 1-1.3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[ 2332.071707] usb 1-1.3: Product: bladeRF
+[ 2332.071720] usb 1-1.3: Manufacturer: Nuand
+[ 2332.071732] usb 1-1.3: SerialNumber: b4ef330e19b718f752759b4c14020742
+</code></pre><p>Start the <strong>bladeRF-cli</strong> utility and issue the <strong>version</strong> command:</p>
+<pre><code>pi@raspberrypi:~ $ sudo bladeRF-cli -i
+bladeRF&gt; version
+
+  bladeRF-cli version:        0.11.1-git
+  libbladeRF version:         0.16.2-git
+
+  Firmware version:           1.6.1-git-053fb13-buildomatic
+  FPGA version:               0.1.2
+
+bladeRF&gt;
+</code></pre><p><strong>IMPORTANT</strong> Make sure you have these exact versions of the firmware and the FPGA, other versions might not work in our setup.  <center><strong><a href="/images/bladerf_firmware_and_fpga.tar.gz">Download the correct firmware and FPGA image.</a></strong></center></p>
+<p>Now we’re going to install Yate and YateBTS, two open source softwares that will make us able to create the BTS itself.</p>
+<p>Since I spent <strong>a lot</strong> of time trying to figure out which specific version of each was compatible with the bladeRF, I’ve created a github repository with correct versions of both, so in your RPI home folder just do:</p>
+<pre><code>git clone https://github.com/evilsocket/evilbts.git
+cd evilbts
+</code></pre><p>Let’s start building both of them:</p>
+<pre><code>cd yate
+./autogen.sh
+./configure --prefix=/usr/local
+make -j4
+sudo make install
+sudo ldconfig
+cd ..
+
+cd yatebts
+./autogen.sh
+./configure --prefix=/usr/local
+make -j4
+sudo make install
+sudo ldconfig
+</code></pre><p>This will take a few minutes, but eventually you’ll have everything installed in your system.</p>
+<p>Next, we’ll symlink the NIB web ui into our apache www folder:</p>
+<pre><code>cd /var/www/html/
+sudo ln -s /usr/local/share/yate/nib_web nib
+</code></pre><p>And grant write permission to the configuration files:</p>
+<pre><code>sudo chmod -R a+w /usr/local/etc/yate
+</code></pre><p>You can now access your BTS web ui from your browser:</p>
+<pre><code>http://ip-of-your-rpi/nib
+</code></pre><p>Time for some configuration now!</p>
+<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p>Open the <strong>/usr/local/etc/yate/ybts.conf</strong> file either with nano or vi and update the following values:</p>
+<pre><code>Radio.Band=900
+Radio.C0=1000
+Identity.MCC=YOUR_COUNTRY_MCC
+Identity.MNC=YOUR_OPERATOR_MNC
+Identity.ShortName=MyEvilBTS
+Radio.PowerManager.MaxAttenDB=35
+Radio.PowerManager.MinAttenDB=35
+</code></pre><p>You can find valid MCC and MNC values <a href="http://www.mcc-mnc.com/" target="_blank" rel="external">here</a>.</p>
+<p>Now, edit the <strong>/usr/local/etc/yate/subscribers.conf</strong>:</p>
+<pre><code>country_code=YOUR_CONTRY_CODE
+regexp=.*
+</code></pre><p><strong>WARNING</strong> Using the <strong>.*</strong> regular expression will make <strong>EVERY</strong> GSM phone in your area connect to your BTS.</p>
+<p>In your NIB web ui you’ll see something like this:</p>
+<p><img src="/images/2016/03/nibui-1.png" alt="NIB"></p>
+<h3 id="Enable-GSM-Tapping"><a href="#Enable-GSM-Tapping" class="headerlink" title="Enable GSM-Tapping"></a>Enable GSM-Tapping</h3><p>In the “Tapping” panel, you can enable it for both GSM and GPRS, this will basically “bounce” every GSM packet to the loopback interface, since we haven’t configure <strong>any encryption</strong>, you’ll be able to see all the GSM traffic by simply tcpdump-ing your loopback interface :D</p>
+<p><img src="/images/2016/03/nibui-2.png" alt="tapping"></p>
+<h3 id="Start-It"><a href="#Start-It" class="headerlink" title="Start It!"></a>Start It!</h3><p>Finally, you can start your new BTS by executing the command ( with the BladeRF plugged in! ) :</p>
+<pre><code>sudo yate -s
+</code></pre><p>If everything was configured correctly, you’ll see a bunch of messages and the line:</p>
+<pre><code>Starting MBTS...
+Yate engine is initialized and starting up on raspberrypi
+RTNETLINK answers: File exists
+MBTS ready
+</code></pre><p>At this point, the middle LED for your bladeRF should start blinking.</p>
+<h3 id="Test-It"><a href="#Test-It" class="headerlink" title="Test It!"></a>Test It!</h3><p>Now, phones will start to automatically connect, this will happen because of the GSM implementation itself:</p>
+<ul>
+<li>You can set whatever MCC, MNC and LAC you like, effectly <strong>spoofing any legit GSM BTS</strong>.</li>
+<li>Each phone will search for BTS of its operator and select the one with the strongest signal … guess which one will be the strongest? Yep … ours :D</li>
+</ul>
+<p>Here’s a picture taken from my Samsung Galaxy S6 ( using the <a href="https://play.google.com/store/apps/details?id=com.wilysis.cellinfolite" target="_blank" rel="external">Network Cell Info Lite</a> app ) which automatically connected to my BTS after 3 minutes:</p>
+<p><img src="/images/2016/03/gsm-1.jpeg" alt="MyEvilBTS"></p>
+<p>From now on, you can configure the BTS to do whatever you want … either act as a “proxy” to a legit SMC ( with a GSM/3g USB dongle ) and <strong>sniff the unencrypted GSM traffic</strong> of each phone, or to create a private GSM network where users can communicate for free using SIP, refer to the <a href="http://wiki.yatebts.com/index.php/Main_Page" target="_blank" rel="external">YateBTS Wiki</a> for specific configurations.</p>
+<p>Oh and of course, if you plug the USB battery, the whole system becomes completely portable :)</p>
+<h3 id="References-and-Further-Readings"><a href="#References-and-Further-Readings" class="headerlink" title="References and Further Readings"></a>References and Further Readings</h3><ul>
+<li><a href="https://github.com/Nuand/bladeRF/wiki/Setting-up-Yate-and-YateBTS-with-the-bladeRF" target="_blank" rel="external">https://github.com/Nuand/bladeRF/wiki/Setting-up-Yate-and-YateBTS-with-the-bladeRF</a></li>
+<li><a href="https://z4ziggy.wordpress.com/2015/05/17/sniffing-gsm-traffic-with-hackrf/" target="_blank" rel="external">https://z4ziggy.wordpress.com/2015/05/17/sniffing-gsm-traffic-with-hackrf/</a></li>
+<li><a href="https://z4ziggy.wordpress.com/2015/05/10/ziggys-embedded-bts/" target="_blank" rel="external">https://z4ziggy.wordpress.com/2015/05/10/ziggys-embedded-bts/</a></li>
+<li><a href="http://wiki.yatebts.com/index.php/Main_Page" target="_blank" rel="external">http://wiki.yatebts.com/index.php/Main_Page</a></li>
+</ul>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/03/31/how-to-build-your-own-rogue-gsm-bts-for-fun-and-profit/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bladerf/">bladerf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bladerf-x40/">bladerf x40</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bts/">bts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/evilbts/">evilbts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm/">gsm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm-hijacking/">gsm hijacking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm-intercept/">gsm intercept</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm-sniffing/">gsm sniffing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hacking/">hacking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rf/">rf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rogue-bts/">rogue bts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yate/">yate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yatebts/">yatebts</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/30/osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OSX Mass Pwning Using BetterCap and the Sparkle Updater Vulnerability.</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2016/03/31/how-to-build-your-own-rogue-gsm-bts-for-fun-and-profit/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

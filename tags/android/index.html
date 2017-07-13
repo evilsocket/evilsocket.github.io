@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: android | Simone Margaritelli</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="INTP :: Hacker :: I break stuff to make the world a safer place.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Simone Margaritelli">
+<meta property="og:url" content="https://www.evilsocket.net/tags/android/index.html">
+<meta property="og:site_name" content="Simone Margaritelli">
+<meta property="og:description" content="INTP :: Hacker :: I break stuff to make the world a safer place.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simone Margaritelli">
+<meta name="twitter:description" content="INTP :: Hacker :: I break stuff to make the world a safer place.">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Simone Margaritelli" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Simone Margaritelli</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">INTP :: Hacker :: I break stuff to make the world a safer place.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Android-Applications-Reversing-101" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/Android-Applications-Reversing-101/">Android Applications Reversing 101</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-04-27T17:09:48.000Z" itemprop="datePublished">2017-04-27</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, <a href="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">smart fitness devices</a> and <a href="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/">smart coffee machines</a> … but is this stuff just smart or is it <strong>secure</strong> as well? :)</p>
+<p>Reversing an Android application can be a (relatively) easy and fun way to answer this question, that’s why I decided to write this blog post where I’ll try to explain the basics and give you some of my “tricks” to reverse this stuff faster and more effectively.</p>
+<p>I’m not going to go very deep into technical details, you can learn yourself how Android works, how the Dalvik VM works and so forth, this is gonna be a <strong>very basic practical guide</strong> instead of a post full of theoretical stuff but no really useful contents.</p>
+<p>Let’s start! :)</p>
+<p><img src="/images/2017/04/head.jpeg" alt="start"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/27/Android-Applications-Reversing-101/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dex2Jar/">Dex2Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frida/">Frida</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hopper/">Hopper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDA/">IDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JADX/">JADX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JD-GUI/">JD-GUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XPosed/">XPosed</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XPosed-Framework/">XPosed Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apk/">apk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apktool/">apktool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dalvik/">dalvik</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dex/">dex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/re/">re</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reversing/">reversing</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/">How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-04-18T03:31:02.000Z" itemprop="datePublished">2016-04-18</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>During this Saturday afternoon I was chatting with a friend of mine ( <a href="https://twitter.com/fvrmatteo" target="_blank" rel="external">Matteo</a> ) and he asked for some help to fix a Python script he was working on.</p>
+<p>He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.</p>
+<p>This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&gt; jd-gui -&gt; <strong>done</strong> ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.</p>
+<p>I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apk/">apk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dalvik/">dalvik</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulation/">emulation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/">emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/encryption/">encryption</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/">mobile</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obfuscation/">obfuscation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reversing/">reversing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/smali/">smali</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/">Autopwn Every Android &lt; 4.2 Device on Your Network Using BetterCap and the addJavascriptInterface Vulnerability.</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-01-18T19:27:40.000Z" itemprop="datePublished">2016-01-18</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently I’ve been playing with Android’s WebView based vulnerabilities, focusing on how to exploit them using a MITM attack.<br>One of the most interesting ones is the <strong>addJavascriptInterface</strong> vulnerability ( <a href="http://www.cvedetails.com/cve/2012-6636" target="_blank" rel="external">CVE-2012-6636</a> ) which affects every device running a version older than Android 4.2.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/addJavascriptInterface/">addJavascriptInterface</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hack/">hack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hacking/">hacking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/proxy/">proxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transparent-proxy/">transparent proxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vulnerability/">vulnerability</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-how-to-root-the-lg-watch-urbane-b285" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/15/how-to-root-the-lg-watch-urbane-b285/">How to Root the LG Watch Urbane ( B285 )</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-06-15T18:32:27.000Z" itemprop="datePublished">2015-06-15</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A few days ago I’ve bought a <strong>LG Watch Urbane</strong> from the Google Store since it seemed to me the very first “elegant” wear device.<br>I really like old fashioned wrist watches so I waited for something similar to be on the market before getting a Wear device.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/06/15/how-to-root-the-lg-watch-urbane-b285/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/06/15/how-to-root-the-lg-watch-urbane-b285/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LG-G-Watch-R/">LG G Watch R</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LG-Watch-Urbane/">LG Watch Urbane</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SuperSU/">SuperSU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TWRP/">TWRP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XDA/">XDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-wear/">android wear</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/root/">root</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/su/">su</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wear/">wear</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-android-native-api-hooking-with-library-injecto" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/04/android-native-api-hooking-with-library-injecto/">Android Native API Hooking With Library Injection and ELF Introspection.</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-05-04T17:15:24.000Z" itemprop="datePublished">2015-05-04</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This post can be considered both the part 2 of the previous “<a href="http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically inject a shared library into a running process on Android/ARM</a>“ and a proof of concept of the same, namely what can be done with library injection on Android.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/05/04/android-native-api-hooking-with-library-injecto/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/05/04/android-native-api-hooking-with-library-injecto/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api-hooking/">api hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/">arm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dalvik/">dalvik</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elf/">elf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elf-relocation/">elf relocation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooking/">hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/injection/">injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library/">library</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/open/">open</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/plt/">plt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/relocation/">relocation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/relocation-table/">relocation table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/strtab/">strtab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/symtab/">symtab</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-dynamically-inject-a-shared-library-into-a-running-process-on-androidarm" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically Inject a Shared Library Into a Running Process on Android/ARM</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-05-01T18:56:31.000Z" itemprop="datePublished">2015-05-01</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If you’re familiar with Windows runtime code injection you probably know the great API <strong>CreateRemoteThread</strong> which lets us force an arbitrary running process to call <strong>LoadLibrary</strong> and load a DLL into its address space, this technique called <strong>DLL Injection</strong> is often used to perform user space API hooking, you can find a good post about it on <a href="http://www.tuxmealux.net/2015/03/10/code-injection/" target="_blank" rel="external">Gianluca Braga’s blog</a>.</p>
+<p>Unfortunately there’s no CreateRemoteThread equivalent on Linux system, therefore we can only rely on <strong>ptrace</strong> and our brain :D<br>In this post I’ll explain how to perform DLL Injection on Linux systems and more specifically on <strong>Android/ARM</strong>.</p>
+<p><strong>Part 2 of this post on <a href="http://www.evilsocket.net/2015/05/04/android-native-api-hooking-with-library-injecto/">“Android Native API Hooking with Library Injection and ELF Introspection.”</a></strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api-hooking/">api hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/">arm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elf/">elf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooking/">hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/injection/">injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library/">library</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library-injection/">library injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ptrace/">ptrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/registers/">registers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/remote-injection/">remote injection</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-dsploit-merges-with-zimperium-zanti2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/03/dsploit-merges-with-zimperium-zanti2/">dSploit Merges With ZImperium zANTI2</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2014-11-03T16:27:01.000Z" itemprop="datePublished">2014-11-03</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://www.zimperium.com/images/zanti/hero.jpg" alt=""></p>
+<p>Some of you, the ones who know me personally, already know that starting from the last July I’ve become part of the <a href="https://www.zimperium.com/" target="_blank" rel="external">ZImperium</a> family as a software developer and security researcher.<br>I’ve been “unofficially” already working/hacking with Elia, one of the two founders for 4 years, during this summer I met Zuk in Amesterdam and later on all of them in Tel Aviv.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/11/03/dsploit-merges-with-zimperium-zanti2/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2014/11/03/dsploit-merges-with-zimperium-zanti2/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/projects/">projects</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-about-redistributing-open-source-apps-dsploit" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/25/about-redistributing-open-source-apps-dsploit/">About (Re)distributing Open Source Apps ( dSploit )</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2014-03-24T23:07:53.000Z" itemprop="datePublished">2014-03-25</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s a while I see compiled dSploit versions pop up on Google Play Store, most of the times the actual changes are <a href="https://play.google.com/store/apps/details?id=com.number5.netcut" target="_blank" rel="external">just a matter of icons</a>, other times are merely <a href="https://play.google.com/store/apps/details?id=com.anstudios.dsploit" target="_blank" rel="external">compiled versions</a> of one of the nightly releases.</p>
+<p>Altough I can not ( and really don’t want to ) avoid this, I’d like to write a few lines about this kind of conduct and the ethics behind open source software.</p>
+<p>As most of my personal projects, dSploit was released from the beginning under the <a href="http://www.gnu.org/licenses/quick-guide-gplv3.html" target="_blank" rel="external">GPL 3</a> license, this means that you can modify it at your own will, distribute it for free or even as a paid software and share it with your friends.<br>You are <strong>only</strong> asked to make your changes available under the same license and make references to the original authors of the software itself. That’s it, this is <strong>so</strong> simple.</p>
+<p>Beyond the fact I find deeply unfair not putting even the smallest link to the original repository or some credits on the description of those compiled distributions, there are a few things anyone who wants to make such thing should be aware of before blindly cloning the repository and compiling the source code.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/03/25/about-redistributing-open-source-apps-dsploit/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2014/03/25/about-redistributing-open-source-apps-dsploit/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dsploit/">dsploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gpl/">gpl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gplv3/">gplv3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/license/">license</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/play-store/">play store</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/projects/">projects</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/store/">store</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

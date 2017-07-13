@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/evilsocket
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.evilsocket.net
+  * I am evilsocket (https://keybase.io/evilsocket) on keybase.
+  * I have a public key with fingerprint 7F1A D5FA 2A51 87DF DD53  DDA9 1564 D7F3 0393 A456
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01014c4810fbaafee4ddc77336344f5a52d71647c505015ab9e360bd6341842785260a",
+            "fingerprint": "7f1ad5fa2a5187dfdd53dda91564d7f30393a456",
+            "host": "keybase.io",
+            "key_id": "1564d7f30393a456",
+            "kid": "01014c4810fbaafee4ddc77336344f5a52d71647c505015ab9e360bd6341842785260a",
+            "uid": "03c59391b8ba8af17743bdc3d2413700",
+            "username": "evilsocket"
+        },
+        "service": {
+            "hostname": "www.evilsocket.net",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1456689577,
+    "expire_in": 157680000,
+    "prev": "dc37f5b4c1964f355b1e8be01b288a0c25034fe392dd4d6e89a226aafe12775d",
+    "seqno": 37,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.51
+Comment: https://keybase.io/crypto
+
+yMNGAnicrZJ9UBRlHMcPDnQgRNKSP0iDTQxnbmjfntvd8yUm8rAUEEOoiTx393n2
+3OG4PfcWiBEOsckwBmxQEYRhrCiGbEQbkRyVlwx7k0RUaNSIEcQEaXhLICTaI5v+
+6c+ef555fr/P9/t7mefrRUZDoM/TsHvceLAmxeeH1mOZhpRrSXW7MUGBOZhlN5aO
+5i/kgMit2dJliFkwnMAJWqRZApcEnpcQoiEUGYaizBRNS4AHJGQIM82IAAc4AXiB
+Q5QZF6CeJliaZFhAmnEeM2GS7LQj1aXKTk23ZSSCh0DiSR4QLAMlCAEFIc8RwExD
+RqJwiqN4Gph14U7F7VXozQm8G0XLih7TH7b59v6D/5/7zvzbjhIBR3GEwAo8y0sE
+w9CUAEUKkjRBMTjuBd1IdfIZSKdRluxwK2I60rA8E6bHs2QReVfrneUxk52dHf0v
+F+3UWRPmUhVNERWHnt+paS63xavXclzzAiTYHlvZBNkJ9X3qiiykumXFiVkInRQ1
+2etN6IswsxxgGBOG3nbJKrLJXgIwZhbXj7cOytIt9QEYCQi0SHBmWqIAEAjECggn
+BJJleVwkAU7REqI4EkIamhHL8SRp9q6TIBkGQMw73C6nglkovZTG23VPt2x38lqm
+irC8r1rT/Aw+gYYF/r7ej2YIDAj55/v9cmXxXPrJrG1B7x+Nui3I702UjXc6PqwN
+3b/nxgtdhRn+HROtibFnOuu4gmUr1zSvZHMmZtmus5eNBdO5k8Vvas9nboqHr13o
+1T6jp+zRDS2nSg99Up7TfM736EDuOrWoLHSkqmnrQkfFVKN75pHH/8Ub1LmiDJy/
+SXy3pQq259QkhewLtl8MjhpSpruGFzQKD+n7450Lw4I60kZD46yFufTYdUxaeiuo
+LaZJ/DzNfmRDxNifnurmX8OTr1wd2WyaVB1rB+cKapX+pRHjpuPtavjYvYrK8p6I
+NqO0dS5+8K2Tyhe93Wr5zJ7Gj7sn8yNL3/WtH1nTXbJiVUpg9avi3ePCcOXN9Xj+
+aKVP4YrZ5OnDTSW3lwVX7Rjyi7n77UBaR+NwdaXrcvdHe5OfMHpAU+8bD6+HrNJi
+TuQfno3dm3pne/3yFs8uIeXJ9X3HtAbrg8jVnjKqI2H7vf6EkUTbqTbiTEVtf1XC
+lm9mp5acfjns/HMjY1Ge8KfuJAdtHOj9KXV/e/ZkUiT5W+HrBwEoDitwROwzfH9C
+PPR7jXj1fNxwXHDtgWRuqL8h6UBMYnFLz1knLPIhrWsZa2ld14W+Pwjpx/FnGmvD
+ra6ATysDYkHA4luGaz1L2i3BiV/6XfTLG33nkrWsarWQb1jXsyO1fsP9+EWbfj7d
+Odj6yuwlo/rS8plH2z54VnnQV/IXjMjOLg==
+=2p2Q
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/evilsocket
+
+==================================================================
+
