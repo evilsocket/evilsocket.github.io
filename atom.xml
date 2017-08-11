@@ -333,11 +333,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -1289,11 +1289,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
     

@@ -4,33 +4,12 @@
   <url>
     <loc>https://www.evilsocket.net/books.html</loc>
     
-    <lastmod>2017-08-11T15:59:00.750Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    <lastmod>2017-08-11T16:07:42.920Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -44,7 +23,14 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</loc>
+    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -52,6 +38,20 @@
   
   <url>
     <loc>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
