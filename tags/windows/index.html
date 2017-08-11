@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Windows | Simone Margaritelli</title>
+  <title>Tag: windows | Simone Margaritelli</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="INTP :: Hacker :: I break stuff to make the world a safer place.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Simone Margaritelli">
-<meta property="og:url" content="https://www.evilsocket.net/tags/Windows/index.html">
+<meta property="og:url" content="https://www.evilsocket.net/tags/windows/index.html">
 <meta property="og:site_name" content="Simone Margaritelli">
 <meta property="og:description" content="INTP :: Hacker :: I break stuff to make the world a safer place.">
 <meta name="twitter:card" content="summary">
@@ -71,6 +71,8 @@ ga('send', 'pageview');
         
           <a class="main-nav-link" href="/">Home</a>
         
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
           <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
         
       </nav>
@@ -93,7 +95,7 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
-    <article id="post-termination-and-injection-self-defense-on-windows" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-on-windows-syscall-mechanism-and-syscall-numbers-extraction-methods" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -101,7 +103,7 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/02/05/termination-and-injection-self-defense-on-windows/">Termination and Injection Self Defense on Windows &gt;= Vista SP1</a>
+      <a class="article-title" href="/2014/02/11/on-windows-syscall-mechanism-and-syscall-numbers-extraction-methods/">On Windows Syscall Mechanism and Syscall Numbers Extraction Methods</a>
     </h1>
   
 
@@ -109,15 +111,15 @@ ga('send', 'pageview');
     
     <br/>
     <div class="article-meta">
-      Posted on <time datetime="2014-02-05T21:08:04.000Z" itemprop="datePublished">2014-02-05</time>
+      Posted on <time datetime="2014-02-11T14:28:00.000Z" itemprop="datePublished">2014-02-11</time>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>On a <a href="/2014/02/01/keservicedescriptortable-patching-aka-how-to-hook-win32-api-patching-the-kernel/">previous post</a> I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.<br>Today I’m gonna talk about <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557759(v=vs.85" target="_blank" rel="external">OBR and callbacks</a>.aspx), mainly to show how to achieve the same result on 64bit systems starting from Vista SP1 and later.</p>
+        <p>Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a <strong>system call</strong> i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.</p>
         
           <p class="article-more-link">
-            <a href="/2014/02/05/termination-and-injection-self-defense-on-windows/">Read More</a>
+            <a href="/2014/02/11/on-windows-syscall-mechanism-and-syscall-numbers-extraction-methods/">Read More</a>
           </p>
         
       
@@ -125,10 +127,10 @@ ga('send', 'pageview');
     </div>
     <footer class="article-footer">
       
-        <a href="https://www.evilsocket.net/2014/02/05/termination-and-injection-self-defense-on-windows/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="https://www.evilsocket.net/2014/02/11/on-windows-syscall-mechanism-and-syscall-numbers-extraction-methods/#disqus_thread" class="article-comment-link">Comments</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ObRegisterCallbacks/">ObRegisterCallbacks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api-hooking/">api hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/driver/">driver</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-injection/">memory injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obcallbacks/">obcallbacks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/process-protection/">process protection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/security/">security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/self-protection/">self protection</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/int-2e/">int 2e</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/intel/">intel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/interrupt/">interrupt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ntdll/">ntdll</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/peb/">peb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reversing/">reversing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/syscall/">syscall</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sysenter/">sysenter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tib/">tib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows-internals/">windows internals</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wow64/">wow64</a></li></ul>
 
     </footer>
   </div>
@@ -160,6 +162,8 @@ ga('send', 'pageview');
     <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
   
     <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
   

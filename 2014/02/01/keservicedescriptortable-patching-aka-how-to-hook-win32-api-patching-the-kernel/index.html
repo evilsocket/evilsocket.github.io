@@ -6,7 +6,7 @@
   <title>How to Hook Win32 API With Kernel Patching | Simone Margaritelli</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="This post is about SSDT patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.SSDT hooking is as far as I know the lowest">
-<meta name="keywords" content="hooking,hack,ssdt,kernel,win32,obcallbacks,ntoskrnl,cr0">
+<meta name="keywords" content="hack,hooking,ssdt,kernel,win32,obcallbacks,ntoskrnl,cr0">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Hook Win32 API With Kernel Patching">
 <meta property="og:url" content="https://www.evilsocket.net/2014/02/01/keservicedescriptortable-patching-aka-how-to-hook-win32-api-patching-the-kernel/index.html">
@@ -75,6 +75,8 @@ ga('send', 'pageview');
         
           <a class="main-nav-link" href="/">Home</a>
         
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
           <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
         
       </nav>
@@ -123,7 +125,7 @@ ga('send', 'pageview');
 <p>If you open the file <strong>ntoskrnl.exe</strong> ( located in the System32/SysWOW64 folder ) with your preferred disassembler, you will noticed a <strong>KeServiceDescriptorTable</strong> symbol being exported:</p>
 <p><img src="/images/2014/Feb/KeServiceDescriptorTable_export.png" alt="KeServiceDescriptorTable"></p>
 <p>It’s a pointer to a kernel structure defined as</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SystemServiceDescriptorTable</span></span></div><div class="line">&#123;</div><div class="line">  PULONG ServiceTableBase;</div><div class="line">  PULONG ServiceCounterTableBase;</div><div class="line">  ULONG NumberOfServices;</div><div class="line">  PUCHAR ParamTableBase;</div><div class="line">&#125;SSDT,*PSSDT;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SystemServiceDescriptorTable</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">  PULONG ServiceTableBase;</div><div class="line">  PULONG ServiceCounterTableBase;</div><div class="line">  ULONG NumberOfServices;</div><div class="line">  PUCHAR ParamTableBase;</div><div class="line">&#125;SSDT,*PSSDT;</div></pre></td></tr></table></figure>
 <p>It works as a big lookup table of Windows Native System Services, a list of kernel API such as NtTerminateProcess, NtLoadDriver, etc.</p>
 <p>As you might correctly guess, if it’s exported it can be read and afterwards modified by a kernel driver with some hacks to temporary disable writing protection.</p>
 <p>Starting from the address <strong>ServiceTableBase</strong>, each routine can be translated to its service index by the following formula:</p>
@@ -225,6 +227,8 @@ ga('send', 'pageview');
     <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
   
     <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
   
