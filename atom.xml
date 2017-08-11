@@ -115,9 +115,9 @@ Connection: close
     </summary>
     
     
-      <category term="exploit" scheme="https://www.evilsocket.net/tags/exploit/"/>
-    
       <category term="vulnerability" scheme="https://www.evilsocket.net/tags/vulnerability/"/>
+    
+      <category term="exploit" scheme="https://www.evilsocket.net/tags/exploit/"/>
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
@@ -495,11 +495,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -732,9 +732,9 @@ esac
     </summary>
     
     
-      <category term="exploit" scheme="https://www.evilsocket.net/tags/exploit/"/>
-    
       <category term="vulnerability" scheme="https://www.evilsocket.net/tags/vulnerability/"/>
+    
+      <category term="exploit" scheme="https://www.evilsocket.net/tags/exploit/"/>
     
       <category term="gsm" scheme="https://www.evilsocket.net/tags/gsm/"/>
     
