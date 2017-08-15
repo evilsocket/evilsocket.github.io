@@ -95,6 +95,52 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-bettercap-and-the-first-real-icmp-redirect-attack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/bettercap-and-the-first-real-icmp-redirect-attack/">BetterCap and the First REAL DoubleDirect ICMP Redirect Attack</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-01-10T12:56:22.000Z" itemprop="datePublished">2016-01-10</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The next release of <a href="http://www.bettercap.org/" target="_blank" rel="external">bettercap</a> will include a <a href="https://github.com/evilsocket/bettercap/blob/8d1467987935762a890871c7e792c32b7390df53/lib/bettercap/spoofers/icmp.rb" target="_blank" rel="external">new spoofer module</a> as an alternative to the default ARP spoofer.<br>The new module performs a <strong>fully automated</strong> and full duplex <strong>ICMP Redirect</strong> MITM attack, what my collegues at Zimperium discovered and <a href="https://blog.zimperium.com/doubledirect-zimperium-discovers-full-duplex-icmp-redirect-attacks-in-the-wild/" target="_blank" rel="external">called a</a> <strong>DoubleDirect</strong> attack.</p>
+<p><strong>BetterCap will be the very first MITM framework to have this feature 100% working without any additional spoofers.</strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/10/bettercap-and-the-first-real-icmp-redirect-attack/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/01/10/bettercap-and-the-first-real-icmp-redirect-attack/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/double-direct/">double direct</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/doubledirect/">doubledirect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/icmp/">icmp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/icmp-redirect/">icmp redirect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/icmp-spoofing/">icmp spoofing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/routing/">routing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/routing-table/">routing table</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spoofer/">spoofer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spoofing/">spoofing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zimperium/">zimperium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-past-present-and-future-of-bettercap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -510,53 +556,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/">arm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/assembly/">assembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disassembler/">disassembler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hack/">hack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hopper/">hopper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ida/">ida</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/inline/">inline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/inline-assembly/">inline assembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/naked-functions/">naked functions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/objdump/">objdump</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-dynamically-inject-a-shared-library-into-a-running-process-on-androidarm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically Inject a Shared Library Into a Running Process on Android/ARM</a>
-    </h1>
-  
-
-      </header>
-    
-    <br/>
-    <div class="article-meta">
-      Posted on <time datetime="2015-05-01T18:56:31.000Z" itemprop="datePublished">2015-05-01</time>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you’re familiar with Windows runtime code injection you probably know the great API <strong>CreateRemoteThread</strong> which lets us force an arbitrary running process to call <strong>LoadLibrary</strong> and load a DLL into its address space, this technique called <strong>DLL Injection</strong> is often used to perform user space API hooking, you can find a good post about it on <a href="http://www.tuxmealux.net/2015/03/10/code-injection/" target="_blank" rel="external">Gianluca Braga’s blog</a>.</p>
-<p>Unfortunately there’s no CreateRemoteThread equivalent on Linux system, therefore we can only rely on <strong>ptrace</strong> and our brain :D<br>In this post I’ll explain how to perform DLL Injection on Linux systems and more specifically on <strong>Android/ARM</strong>.</p>
-<p><strong>Part 2 of this post on <a href="http://www.evilsocket.net/2015/05/04/android-native-api-hooking-with-library-injecto/">“Android Native API Hooking with Library Injection and ELF Introspection.”</a></strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Read More</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a href="https://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api-hooking/">api hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/">arm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elf/">elf</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooking/">hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/injection/">injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library/">library</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library-injection/">library injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ptrace/">ptrace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/registers/">registers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/remote-injection/">remote injection</a></li></ul>
 
     </footer>
   </div>

