@@ -6,7 +6,7 @@
   <title>Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely | evilsocket / Simone</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Crafty vaporizer owner and as I discovered">
-<meta name="keywords" content="hacking,linux,bluetooth low energy,bluetooth,ble,btle,low energy,terminal,crafty vaporizer,crafty,vaporizer">
+<meta name="keywords" content="hacking,linux,ble,btle,bluetooth,bluetooth low energy,low energy,terminal,crafty vaporizer,crafty,vaporizer">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely">
 <meta property="og:url" content="https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/index.html">
@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2017/08/pew.jpg">
 <meta property="og:image" content="https://www.evilsocket.net/images/2017/08/ble_3.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2017/08/ble_diag.png">
-<meta property="og:updated_time" content="2017-08-25T01:49:23.930Z">
+<meta property="og:updated_time" content="2017-08-25T20:04:23.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely">
 <meta name="twitter:description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Crafty vaporizer owner and as I discovered">
@@ -133,7 +133,7 @@ ga('send', 'pageview');
 <p>Here it is, we can read and write stuff with <strong>no authentication whatsoever</strong> … so, let’s get evil, shall we? :) </p>
 <p>How about writing to:</p>
 <pre><code>public static final UUID characteristicTargetTemperatureUUID = UUID.fromString(&quot;00000021-4C45-4B43-4942-265A524F5453&quot;);
-</code></pre><p>The target temperature ( 190 C in my case ) is multiplied by 10 (don’t ask) and stored as two bytes, <strong>so let’s try to overwrite it with the maximum!</strong> <em>-put evil laugh here-</em></p>
+</code></pre><p>The target temperature ( 190 C in my case ) is multiplied by 10 (<del>don’t ask</del> as someone <a href="https://www.reddit.com/r/netsec/comments/6vvroj/hacking_a_herb_vaporizer_to_set_its_temperature/dm4e4gj/" target="_blank" rel="external">vigorously pointed out</a>, that’s <em>“pretty common when you don’t have/want floating-point arithmetic, or you want to represent exact values for a certain precision”</em> … it doesn’t really matter for the scope of this blog post, but now we’re all happy) and stored as two bytes, <strong>so let’s try to overwrite it with the maximum!</strong> <em>-put evil laugh here-</em></p>
 <p><img src="/images/2017/08/ble_temp.png" alt="ble_temp"></p>
 <p>Which should be a limit of 6553.5 Celsius degrees.</p>
 <p><img src="/images/2017/08/pew.jpg" alt="pew pew"></p>

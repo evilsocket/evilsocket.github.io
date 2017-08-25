@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2017-08-25T01:49:23.930Z</updated>
+  <updated>2017-08-25T20:04:23.221Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/"/>
     <id>https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/</id>
     <published>2017-08-25T01:10:53.000Z</published>
-    <updated>2017-08-25T01:49:23.930Z</updated>
+    <updated>2017-08-25T20:04:23.221Z</updated>
     
     <content type="html"><![CDATA[<p>Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a <a href="/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">new</a> short adventure in the <strong>Bluetooth Low Energy</strong> world. I’m a happy <a href="https://www.storz-bickel.com/eu/en/crafty.html" target="_blank" rel="external">Crafty</a> vaporizer owner and as I discovered by chance, I can access it using my laptop.</p>
 <p><img src="/images/2017/08/ble_1.png" alt="ble_1"></p>
@@ -30,7 +30,7 @@
 <p>Here it is, we can read and write stuff with <strong>no authentication whatsoever</strong> … so, let’s get evil, shall we? :) </p>
 <p>How about writing to:</p>
 <pre><code>public static final UUID characteristicTargetTemperatureUUID = UUID.fromString(&quot;00000021-4C45-4B43-4942-265A524F5453&quot;);
-</code></pre><p>The target temperature ( 190 C in my case ) is multiplied by 10 (don’t ask) and stored as two bytes, <strong>so let’s try to overwrite it with the maximum!</strong> <em>-put evil laugh here-</em></p>
+</code></pre><p>The target temperature ( 190 C in my case ) is multiplied by 10 (<del>don’t ask</del> as someone <a href="https://www.reddit.com/r/netsec/comments/6vvroj/hacking_a_herb_vaporizer_to_set_its_temperature/dm4e4gj/" target="_blank" rel="external">vigorously pointed out</a>, that’s <em>“pretty common when you don’t have/want floating-point arithmetic, or you want to represent exact values for a certain precision”</em> … it doesn’t really matter for the scope of this blog post, but now we’re all happy) and stored as two bytes, <strong>so let’s try to overwrite it with the maximum!</strong> <em>-put evil laugh here-</em></p>
 <p><img src="/images/2017/08/ble_temp.png" alt="ble_temp"></p>
 <p>Which should be a limit of 6553.5 Celsius degrees.</p>
 <p><img src="/images/2017/08/pew.jpg" alt="pew pew"></p>
@@ -60,13 +60,13 @@
     
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
-      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
-    
-      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
-    
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
       <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    
+      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
+    
+      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
       <category term="low energy" scheme="https://www.evilsocket.net/tags/low-energy/"/>
     
@@ -246,13 +246,13 @@ Connection: close
     
       <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
     
-      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
-    
       <category term="tls" scheme="https://www.evilsocket.net/tags/tls/"/>
     
       <category term="sni" scheme="https://www.evilsocket.net/tags/sni/"/>
     
       <category term="server name indication" scheme="https://www.evilsocket.net/tags/server-name-indication/"/>
+    
+      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
     
       <category term="privacy" scheme="https://www.evilsocket.net/tags/privacy/"/>
     
@@ -524,11 +524,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -929,13 +929,13 @@ esac
     
       <category term="gsm" scheme="https://www.evilsocket.net/tags/gsm/"/>
     
-      <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
-    
       <category term="bts" scheme="https://www.evilsocket.net/tags/bts/"/>
     
-      <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
-    
       <category term="yatebts" scheme="https://www.evilsocket.net/tags/yatebts/"/>
+    
+      <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
+    
+      <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
     
       <category term="osmobb" scheme="https://www.evilsocket.net/tags/osmobb/"/>
     
@@ -1480,11 +1480,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
     
