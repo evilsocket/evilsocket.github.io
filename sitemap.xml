@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/</loc>
+    
+    <lastmod>2017-08-25T01:49:23.930Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/</loc>
     
     <lastmod>2017-08-15T16:33:55.740Z</lastmod>
@@ -16,14 +23,14 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
+    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
+    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -44,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
@@ -58,7 +58,14 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
+    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     

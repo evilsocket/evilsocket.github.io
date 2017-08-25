@@ -95,6 +95,53 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-using-inline-assembly-and-naked-functions-to-fool-disassemblers" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/02/using-inline-assembly-and-naked-functions-to-fool-disassemblers/">Using ARM Inline Assembly and Naked Functions to Fool Disassemblers</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-05-02T14:37:19.000Z" itemprop="datePublished">2015-05-02</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>On this post I want to share a simple trick I learned a while ago, it’s nothing special but if you think about it, it’s quite nice :)</p>
+<p>Sometimes we want to obfuscate/hide strings in our program to make reversing more difficult and the more common approach is to encrypt them somehow and put them inside binary buffers instead of plain ASCII strings.<br>One downside of this naive approach is of course, once decompiled, the access to these binary buffers will easily be noticed by a seasoned reverser, he would assume some sort of obfuscation/encryption/whatever and start reversing the algorithm to unobfuscate the strings in a matter of minutes.</p>
+<p>One thing you can do to make his/her life harder ( but not impossible ) is embedding your encrypted data as code … how?</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/05/02/using-inline-assembly-and-naked-functions-to-fool-disassemblers/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/05/02/using-inline-assembly-and-naked-functions-to-fool-disassemblers/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arm/">arm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/assembly/">assembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disassembler/">disassembler</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hack/">hack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hopper/">hopper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ida/">ida</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/inline/">inline</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/inline-assembly/">inline assembly</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/naked-functions/">naked functions</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/objdump/">objdump</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/trick/">trick</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-dynamically-inject-a-shared-library-into-a-running-process-on-androidarm" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -525,55 +572,10 @@ testing regimes down the road.
 
 
   
-    <article id="post-back-from-the-grave-vmware-host-clipboard-grabber" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/09/22/back-from-the-grave-vmware-host-clipboard-grabber/">Back From the Grave: VMWare Host Clipboard Grabber</a>
-    </h1>
-  
-
-      </header>
-    
-    <br/>
-    <div class="article-meta">
-      Posted on <time datetime="2014-09-21T23:19:34.000Z" itemprop="datePublished">2014-09-22</time>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Another post from the past ( 2007, wow time passes so fast :S ), a proof of concept I made to demonstrate how to grab clipboard data of a host machine from within a VMWare guest machine exploiting a backdoored hardware port the vmware team used to … well, I have no clue :D</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/09/22/back-from-the-grave-vmware-host-clipboard-grabber/">Read More</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a href="https://www.evilsocket.net/2014/09/22/back-from-the-grave-vmware-host-clipboard-grabber/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2007/">2007</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/clipboard/">clipboard</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/clipboard-grabber/">clipboard grabber</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exploit/">exploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/past/">past</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/poc/">poc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vmware/">vmware</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
