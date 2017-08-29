@@ -312,11 +312,11 @@ Connection: close
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
+    
       <category term="terramaster" scheme="https://www.evilsocket.net/tags/terramaster/"/>
     
       <category term="nas" scheme="https://www.evilsocket.net/tags/nas/"/>
-    
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
@@ -686,11 +686,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -935,13 +935,13 @@ esac
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
-    
       <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
     
       <category term="osmobb" scheme="https://www.evilsocket.net/tags/osmobb/"/>
     
       <category term="osmobts" scheme="https://www.evilsocket.net/tags/osmobts/"/>
+    
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
