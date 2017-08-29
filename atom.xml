@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>evilsocket / Simone</title>
-  <subtitle>INTP :: Hacker :: I hack stuff.</subtitle>
+  <subtitle>INTP :: I hack stuff.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
@@ -312,11 +312,11 @@ Connection: close
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
-    
       <category term="terramaster" scheme="https://www.evilsocket.net/tags/terramaster/"/>
     
       <category term="nas" scheme="https://www.evilsocket.net/tags/nas/"/>
+    
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
@@ -935,13 +935,13 @@ esac
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
+    
       <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
     
       <category term="osmobb" scheme="https://www.evilsocket.net/tags/osmobb/"/>
     
       <category term="osmobts" scheme="https://www.evilsocket.net/tags/osmobts/"/>
-    
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
