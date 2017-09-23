@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>This Is Not a Post About BLE, Introducing BLEAH | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source o">
+<meta name="keywords" content="ble,btle,bluetooth,bluetooth low energy,bleah">
+<meta property="og:type" content="article">
+<meta property="og:title" content="This Is Not a Post About BLE, Introducing BLEAH">
+<meta property="og:url" content="https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source o">
+<meta property="og:image" content="https://www.evilsocket.net/images/2017/09/dr_evil.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2017/09/chaos.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2017/09/ss1.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2017/09/ss2.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2017/09/ss3.png">
+<meta property="og:updated_time" content="2017-09-23T16:46:51.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="This Is Not a Post About BLE, Introducing BLEAH">
+<meta name="twitter:description" content="This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source o">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2017/09/dr_evil.jpg">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">INTP :: I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-This-is-not-a-post-about-BLE-introducing-BLEAH" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      This Is Not a Post About BLE, Introducing BLEAH
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-09-23T15:06:56.000Z" itemprop="datePublished">2017-09-23</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source one of the last tools I’ve made and kept private so far. I moved the features I thought to be dangerous ( aka: auto fuzzing all the BLE things and bring chaos ) in a private fork which will stay private, still it’s not that complicated to chain the tool with other tools ( cough … radamsa … cough ) and have <strong>lots of fun</strong>.</p>
+<p><img src="/images/2017/09/dr_evil.jpg" alt="dr.evil"></p>
+<p>Oh and yeah, this is also because <a href="https://twitter.com/Viss" target="_blank" rel="external">someone</a> asked me some intro on BLE, so yeah, his fault.</p>
+<a id="more"></a>
+<p>For something more detailed (and serious) information, there’s <a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy" target="_blank" rel="external">a lot of stuff</a> online already, you know how to Google.</p>
+<h3 id="Bluetooth-Low-Energy-the-honest-version"><a href="#Bluetooth-Low-Energy-the-honest-version" class="headerlink" title="Bluetooth Low Energy - the honest version."></a>Bluetooth Low Energy - the honest version.</h3><p>BLE is a cheap and very insecure version of Bluetooth, in which you have no channel hopping (all hail easy sniffing and MITM!) and no builtin protocol security (fuzzing like there’s no tomorrow dudez!), it is mostly used for two reasons:</p>
+<ul>
+<li>Decent batteries are expensive.</li>
+<li>Decent batteries are big.</li>
+</ul>
+<p>If you wanna build and sell some IoT-smart-whatever shit, and you wanna do it quickly because your competitor is about to go on the market with the same shit, you take Bluetooth, you strip it from all the very-few-close-to-decent things it has and voilà, you have its retarded little brother which won’t bother the battery too much but will be functional enough to burp random data at you from time to time … easy win, litte R&amp;D efforts, very small production costs.</p>
+<p>&lt;/rant&gt;</p>
+<p>Being the retarded little brother of BT, it doesn’t really take too long to explain how to hack it:</p>
+<p>Imagine you have a BT device, which 99% of the times it’s discoverable, bound to the same frequency and channel, always, that literally burps at you its information ( what it’s called <strong>advertisement data</strong>, <a href="/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">sometimes they also broadcast security tokens</a>, etc … to anyone … ), you connect (because 99.999999% of the times it allows anyone to connect) to it, and the device tells you <strong>everything</strong> you need to know in order to control it, read data from it and write data to it … how kind, isn’t it? :D</p>
+<p>You are provided with read and write primitives / channels ( called <code>characteristics</code> ), each one with a specific identifier, some of them <a href="https://www.bluetooth.com/specifications/gatt/services" target="_blank" rel="external">are standard</a> and some of them are usually vendor specific, therefore you won’t be able to easily map something like <code>d0611e78-bbb4-4591-a5f8-487910ae4366</code> to something like <code>Apple Continuity Service</code> (more on how to solve this problem later).</p>
+<p>Rather than this, all the implementation details ( aka: the communication protocol ) are up to the vendor to implement … you see now?</p>
+<p><img src="/images/2017/09/chaos.jpg" alt="pure chaos"></p>
+<h3 id="Methodologies-and-required-hardware"><a href="#Methodologies-and-required-hardware" class="headerlink" title="Methodologies and required hardware (?)"></a>Methodologies and required hardware (?)</h3><p>As I was saying yesterday night to Viss, you can approach BLE hacking in two ways.</p>
+<p>You can go passive, therefore you’ll need a <a href="https://github.com/greatscottgadgets/ubertooth" target="_blank" rel="external">Ubertooth One</a> to sniff raw BLE packets out of the air and Wireshark to visualize them, in which case you’ll end up performing signal analysis / RE on the raw bitstream you’ve managed to capture, simply try some replay attack or blackbox fuzzing ( aka: throw mutated stuff back at the mother fucker ). As for this first methodology, <a href="http://blog.attify.com/2017/01/17/exploiting-iot-enabled-ble-smart-bulb-security/" target="_blank" rel="external">there’re already</a> plenty of good examples online, it’s just like sniffing TCP, but with BLE.</p>
+<p>Or you can go active (the way I like it :D), and that doesn’t require any specific hardware other than a bluetooth dongle which supports BLE, most likely your Linux laptop already does, and exploit those little bastards for what they are, just <strong>retarded bluetooth devices</strong>. Find the mobile app (they always have one, they’re <strong>smart</strong> toys after all), reverse it to find the right characteristics to use for your goal and then just blow the thing up. My point is that you’ll end up reversing “something” anyway, so let it be cheap and effective, right?</p>
+<p>Let’s start by verifying if your hardware supports BLE by performing a scan ( I’m assuming you are using GNU/Linux, bluez and all the default BT stack utilities are installed, etc ):</p>
+<pre><code>sudo hcitool lescan
+</code></pre><p>If it worked, you’ll see an output like:</p>
+<pre><code>LE Scan ...
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF STORZ&amp;BICKEL
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
+</code></pre><p>That means you’re ready to go. Go find the Android application of the device and reverse it, <a href="/2017/04/27/Android-Applications-Reversing-101/">here’s my 1 on 1 on Android reversing</a> and <a href="/tags/bluetooth/">here</a> you will find a few examples of how to use this approach.</p>
+<p>I could now explain you how to read advertisement data using <code>hcitool</code>, how to connect to it using <code>gatttool</code> and how to enumerate services, characteristics and handles, how to mask flags and translate their bits to permissions, etc … but I made it a little bit easier for you (and for me), so let’s skip this boring stuff ok? :P</p>
+<h3 id="Introducing-BLEAH"><a href="#Introducing-BLEAH" class="headerlink" title="Introducing BLEAH"></a>Introducing BLEAH</h3><p><a href="https://github.com/evilsocket/bleah" target="_blank" rel="external">BLEAH</a> is a <strong>dead easy tool to use</strong>, because retarded devices should be <strong>dead easy to hack</strong>, based on <a href="https://github.com/IanHarvey" target="_blank" rel="external">Iah Harvey</a>‘s <code>bluepy</code> python package.</p>
+<p>But let me give you some examples and swag.</p>
+<p>Scanning for BTLE devices continuously:</p>
+<pre><code>sudo bleah -t0
+</code></pre><p><img src="/images/2017/09/ss1.png" alt="scan"></p>
+<p>Connect to a specific device and enumerate all the things:</p>
+<pre><code>sudo bleah -b &quot;aa:bb:cc:dd:ee:ff&quot; -e
+</code></pre><p><img src="/images/2017/09/ss2.png" alt="enum"></p>
+<p>Write the bytes <code>hello world</code> to a specific characteristic of the device:</p>
+<pre><code>sudo bleah -b &quot;aa:bb:cc:dd:ee:ff&quot; -u &quot;c7d25540-31dd-11e2-81c1-0800200c9a66&quot; -d &quot;hello world&quot;
+</code></pre><p><img src="/images/2017/09/ss3.png" alt="write"></p>
+<p>Hint: there’s a <code>--data-file</code> argument which is perfect in combination with things like <code>radamsa</code> … just saying.</p>
+<p>As usual the public fork of this tool is on <a href="https://github.com/evilsocket/bleah" target="_blank" rel="external">github</a>, now you know and have everything you need to bring chaos in the BLE world, enjoy :D</p>
+<div style="position:relative;height:0;padding-bottom:75.0%"><iframe src="https://www.youtube.com/embed/qbmWs6Jf5dc?ecver=2" width="480" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ble/">ble</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bleah/">bleah</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth-low-energy/">bluetooth low energy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btle/">btle</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2017-08-25T20:04:23.221Z</updated>
+  <updated>2017-09-23T16:46:51.641Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -14,6 +14,86 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>This Is Not a Post About BLE, Introducing BLEAH</title>
+    <link href="https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/"/>
+    <id>https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/</id>
+    <published>2017-09-23T15:06:56.000Z</published>
+    <updated>2017-09-23T16:46:51.641Z</updated>
+    
+    <content type="html"><![CDATA[<p>This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source one of the last tools I’ve made and kept private so far. I moved the features I thought to be dangerous ( aka: auto fuzzing all the BLE things and bring chaos ) in a private fork which will stay private, still it’s not that complicated to chain the tool with other tools ( cough … radamsa … cough ) and have <strong>lots of fun</strong>.</p>
+<p><img src="/images/2017/09/dr_evil.jpg" alt="dr.evil"></p>
+<p>Oh and yeah, this is also because <a href="https://twitter.com/Viss" target="_blank" rel="external">someone</a> asked me some intro on BLE, so yeah, his fault.</p>
+<a id="more"></a>
+<p>For something more detailed (and serious) information, there’s <a href="https://en.wikipedia.org/wiki/Bluetooth_Low_Energy" target="_blank" rel="external">a lot of stuff</a> online already, you know how to Google.</p>
+<h3 id="Bluetooth-Low-Energy-the-honest-version"><a href="#Bluetooth-Low-Energy-the-honest-version" class="headerlink" title="Bluetooth Low Energy - the honest version."></a>Bluetooth Low Energy - the honest version.</h3><p>BLE is a cheap and very insecure version of Bluetooth, in which you have no channel hopping (all hail easy sniffing and MITM!) and no builtin protocol security (fuzzing like there’s no tomorrow dudez!), it is mostly used for two reasons:</p>
+<ul>
+<li>Decent batteries are expensive.</li>
+<li>Decent batteries are big.</li>
+</ul>
+<p>If you wanna build and sell some IoT-smart-whatever shit, and you wanna do it quickly because your competitor is about to go on the market with the same shit, you take Bluetooth, you strip it from all the very-few-close-to-decent things it has and voilà, you have its retarded little brother which won’t bother the battery too much but will be functional enough to burp random data at you from time to time … easy win, litte R&amp;D efforts, very small production costs.</p>
+<p>&lt;/rant&gt;</p>
+<p>Being the retarded little brother of BT, it doesn’t really take too long to explain how to hack it:</p>
+<p>Imagine you have a BT device, which 99% of the times it’s discoverable, bound to the same frequency and channel, always, that literally burps at you its information ( what it’s called <strong>advertisement data</strong>, <a href="/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">sometimes they also broadcast security tokens</a>, etc … to anyone … ), you connect (because 99.999999% of the times it allows anyone to connect) to it, and the device tells you <strong>everything</strong> you need to know in order to control it, read data from it and write data to it … how kind, isn’t it? :D</p>
+<p>You are provided with read and write primitives / channels ( called <code>characteristics</code> ), each one with a specific identifier, some of them <a href="https://www.bluetooth.com/specifications/gatt/services" target="_blank" rel="external">are standard</a> and some of them are usually vendor specific, therefore you won’t be able to easily map something like <code>d0611e78-bbb4-4591-a5f8-487910ae4366</code> to something like <code>Apple Continuity Service</code> (more on how to solve this problem later).</p>
+<p>Rather than this, all the implementation details ( aka: the communication protocol ) are up to the vendor to implement … you see now?</p>
+<p><img src="/images/2017/09/chaos.jpg" alt="pure chaos"></p>
+<h3 id="Methodologies-and-required-hardware"><a href="#Methodologies-and-required-hardware" class="headerlink" title="Methodologies and required hardware (?)"></a>Methodologies and required hardware (?)</h3><p>As I was saying yesterday night to Viss, you can approach BLE hacking in two ways.</p>
+<p>You can go passive, therefore you’ll need a <a href="https://github.com/greatscottgadgets/ubertooth" target="_blank" rel="external">Ubertooth One</a> to sniff raw BLE packets out of the air and Wireshark to visualize them, in which case you’ll end up performing signal analysis / RE on the raw bitstream you’ve managed to capture, simply try some replay attack or blackbox fuzzing ( aka: throw mutated stuff back at the mother fucker ). As for this first methodology, <a href="http://blog.attify.com/2017/01/17/exploiting-iot-enabled-ble-smart-bulb-security/" target="_blank" rel="external">there’re already</a> plenty of good examples online, it’s just like sniffing TCP, but with BLE.</p>
+<p>Or you can go active (the way I like it :D), and that doesn’t require any specific hardware other than a bluetooth dongle which supports BLE, most likely your Linux laptop already does, and exploit those little bastards for what they are, just <strong>retarded bluetooth devices</strong>. Find the mobile app (they always have one, they’re <strong>smart</strong> toys after all), reverse it to find the right characteristics to use for your goal and then just blow the thing up. My point is that you’ll end up reversing “something” anyway, so let it be cheap and effective, right?</p>
+<p>Let’s start by verifying if your hardware supports BLE by performing a scan ( I’m assuming you are using GNU/Linux, bluez and all the default BT stack utilities are installed, etc ):</p>
+<pre><code>sudo hcitool lescan
+</code></pre><p>If it worked, you’ll see an output like:</p>
+<pre><code>LE Scan ...
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF STORZ&amp;BICKEL
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF (unknown)
+AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
+</code></pre><p>That means you’re ready to go. Go find the Android application of the device and reverse it, <a href="/2017/04/27/Android-Applications-Reversing-101/">here’s my 1 on 1 on Android reversing</a> and <a href="/tags/bluetooth/">here</a> you will find a few examples of how to use this approach.</p>
+<p>I could now explain you how to read advertisement data using <code>hcitool</code>, how to connect to it using <code>gatttool</code> and how to enumerate services, characteristics and handles, how to mask flags and translate their bits to permissions, etc … but I made it a little bit easier for you (and for me), so let’s skip this boring stuff ok? :P</p>
+<h3 id="Introducing-BLEAH"><a href="#Introducing-BLEAH" class="headerlink" title="Introducing BLEAH"></a>Introducing BLEAH</h3><p><a href="https://github.com/evilsocket/bleah" target="_blank" rel="external">BLEAH</a> is a <strong>dead easy tool to use</strong>, because retarded devices should be <strong>dead easy to hack</strong>, based on <a href="https://github.com/IanHarvey" target="_blank" rel="external">Iah Harvey</a>‘s <code>bluepy</code> python package.</p>
+<p>But let me give you some examples and swag.</p>
+<p>Scanning for BTLE devices continuously:</p>
+<pre><code>sudo bleah -t0
+</code></pre><p><img src="/images/2017/09/ss1.png" alt="scan"></p>
+<p>Connect to a specific device and enumerate all the things:</p>
+<pre><code>sudo bleah -b &quot;aa:bb:cc:dd:ee:ff&quot; -e
+</code></pre><p><img src="/images/2017/09/ss2.png" alt="enum"></p>
+<p>Write the bytes <code>hello world</code> to a specific characteristic of the device:</p>
+<pre><code>sudo bleah -b &quot;aa:bb:cc:dd:ee:ff&quot; -u &quot;c7d25540-31dd-11e2-81c1-0800200c9a66&quot; -d &quot;hello world&quot;
+</code></pre><p><img src="/images/2017/09/ss3.png" alt="write"></p>
+<p>Hint: there’s a <code>--data-file</code> argument which is perfect in combination with things like <code>radamsa</code> … just saying.</p>
+<p>As usual the public fork of this tool is on <a href="https://github.com/evilsocket/bleah" target="_blank" rel="external">github</a>, now you know and have everything you need to bring chaos in the BLE world, enjoy :D</p>
+<div style="position:relative;height:0;padding-bottom:75.0%"><iframe src="https://www.youtube.com/embed/qbmWs6Jf5dc?ecver=2" width="480" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source one of the last tools I’ve made and kept private so far. I moved the features I thought to be dangerous ( aka: auto fuzzing all the BLE things and bring chaos ) in a private fork which will stay private, still it’s not that complicated to chain the tool with other tools ( cough … radamsa … cough ) and have &lt;strong&gt;lots of fun&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2017/09/dr_evil.jpg&quot; alt=&quot;dr.evil&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Oh and yeah, this is also because &lt;a href=&quot;https://twitter.com/Viss&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;someone&lt;/a&gt; asked me some intro on BLE, so yeah, his fault.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
+    
+      <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    
+      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
+    
+      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    
+      <category term="bleah" scheme="https://www.evilsocket.net/tags/bleah/"/>
+    
+  </entry>
   
   <entry>
     <title>Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely</title>
@@ -176,9 +256,9 @@ sudo git reset --hard origin/master
     
       <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
     
-      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
-    
       <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
+    
+      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
       <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
@@ -1696,80 +1776,6 @@ MBTS ready
       <category term="proxy module" scheme="https://www.evilsocket.net/tags/proxy-module/"/>
     
       <category term="update" scheme="https://www.evilsocket.net/tags/update/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Why You Shouldn&#39;t Trust CloudFlare&#39;s &#39;Flexible SSL&#39; and How to Bypass It With BetterCap</title>
-    <link href="https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/"/>
-    <id>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</id>
-    <published>2016-01-28T19:32:13.000Z</published>
-    <updated>2017-08-11T14:28:47.043Z</updated>
-    
-    <content type="html"><![CDATA[<p>Let me clear one thing about this post … this is <strong>not</strong> a CloudFlare vulnerability report and, even in that case, there’s really nothing they could do in order to fix it     <del>unless they’d block direct traffic to HTTP websites</del>.<br>This is only a blog post about why you shouldn’t blindly trust free services that offer you some sort of SSL protection if your server itself is not SSL protected by default.</p>
-<a id="more"></a>
-<p><strong>UPDATE</strong>: <em>n0on3</em> <a href="https://twitter.com/n0on3/status/692763330210091009" target="_blank" rel="external">noted on twitter</a> that <em>even a properly configured server / blocking plain HTTP won’t work if the mitm catches the first request</em>.</p>
-<p>During this week, I’ve been playing with CloudFlare free plan in order to turn my websites into HTTPS protected websites, while configuring my account and playing a little bit with <a href="https://www.bettercap.org/" target="_blank" rel="external">bettercap</a> I figured out something really weird and I tweeted <a href="https://twitter.com/bettercap/status/691991056469118976" target="_blank" rel="external">this</a> ( from the @bettercap account ):</p>
-<p><img src="/images/2016/01/Schermata-2016-01-28-alle-18-08-27.png" alt="my tweet"></p>
-<p>Someone from their team asked me to report this issue on HackerONE and eventually they decided to not accept it … well, not a big deal, I didn’t want to get money out of it in the first place and I didn’t consider this to be a “real” vulnerability from their side, but just something they should take into account while writing their documentation and informing users, this is how it ended ( and that’s why I’m disclosing this ) :</p>
-<p><img src="/images/2016/01/pasha.png" alt="HackerOne response"></p>
-<h3 id="The-Attack"><a href="#The-Attack" class="headerlink" title="The Attack"></a>The Attack</h3><p>My configuration is the following:</p>
-<ul>
-<li>One website hosted on my dedicated server running <strong>only</strong> via HTTP ( no HTTPS available ).</li>
-<li>CloudFlare SSL configured to <strong>Flexible</strong> ( since I have no certificate whatsoever ).</li>
-</ul>
-<p><img src="/images/2016/01/flexiblessl.png" alt="Flexible SSL"></p>
-<center><small>As you can see, with Flexible SSL, your server doesn’t handle HTTPS traffic by itself.</small></center>
-
-<ul>
-<li><strong>HSTS</strong> on with everything enabled ( <strong>browser preload</strong> as well ).</li>
-</ul>
-<p><img src="/images/2016/01/hsts.png" alt="HSTS"></p>
-<ul>
-<li>A page rule configured ( as they wrote on the documentation ) to “<strong>Always uses https</strong>“.</li>
-</ul>
-<p><img src="/images/2016/01/pagerule.png" alt="Page Rule"></p>
-<p>What I was expecting was that every request made against the HTTP website would be redirected to the CloudFlare HTTPS endpoint, effectively forcing every user to only browse through HTTPS … well, it turned out that <strong>this configuration is quite easy to bypass</strong> using BetterCap or any other offensive tool that performs <strong>sslstripping</strong> and “Redirect to HTTPS” patching …</p>
-<p>But how? And why?</p>
-<p>This attack will work <strong>if and only if</strong> the victim/target is browsing the HTTP(S) CloudFlare protected website for the very first time, since from the second time on, its browser would cache the HSTS preload rule and would perform a HTTP -&gt; HTTPS redirect without waiting for an actual 307 redirect from the CloudFlare’s proxy.</p>
-<p>You just need to launch bettercap with the following command line arguments:</p>
-<pre><code>sudo bettercap -T IP-OF-THE-TARGET --proxy
-</code></pre><p>From that moment on, bettercap will start sslstripping and patching every redirect to HTTPS:</p>
-<p><img src="/images/2016/01/bettercap_cloudflare.png" alt="bettercap and cloudflare"></p>
-<p>As you can see from the screenshot, once bettercap intercepted the redirect to the HTTPS website, it just killed it and left the victim browsing the page through HTTP ( while proxying the data through HTTPS to the real endpoint ).<br>This allows the tool to see the traffic from both sides in cleartext, manipulate it, and so forth.</p>
-<p>This happens because the my original webserver had only the HTTP port exposed and no HTTPS capabilities at all, <del>as I already mentioned the only way for CloudFlare to fix this would be to block all the traffic going through the original HTTP server and only permit it if it’s through SSL.</del></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Let me clear one thing about this post … this is &lt;strong&gt;not&lt;/strong&gt; a CloudFlare vulnerability report and, even in that case, there’s really nothing they could do in order to fix it     &lt;del&gt;unless they’d block direct traffic to HTTP websites&lt;/del&gt;.&lt;br&gt;This is only a blog post about why you shouldn’t blindly trust free services that offer you some sort of SSL protection if your server itself is not SSL protected by default.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
-    
-      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
-    
-      <category term="security" scheme="https://www.evilsocket.net/tags/security/"/>
-    
-      <category term="ssl" scheme="https://www.evilsocket.net/tags/ssl/"/>
-    
-      <category term="https" scheme="https://www.evilsocket.net/tags/https/"/>
-    
-      <category term="http" scheme="https://www.evilsocket.net/tags/http/"/>
-    
-      <category term="ssl stripping" scheme="https://www.evilsocket.net/tags/ssl-stripping/"/>
-    
-      <category term="sslstrip" scheme="https://www.evilsocket.net/tags/sslstrip/"/>
-    
-      <category term="sslstripping" scheme="https://www.evilsocket.net/tags/sslstripping/"/>
-    
-      <category term="cloudflare" scheme="https://www.evilsocket.net/tags/cloudflare/"/>
-    
-      <category term="flexible ssl" scheme="https://www.evilsocket.net/tags/flexible-ssl/"/>
-    
-      <category term="hsts" scheme="https://www.evilsocket.net/tags/hsts/"/>
     
   </entry>
   

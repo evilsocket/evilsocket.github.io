@@ -95,6 +95,52 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-dsploit-merges-with-zimperium-zanti2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/03/dsploit-merges-with-zimperium-zanti2/">dSploit Merges With ZImperium zANTI2</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2014-11-03T16:27:01.000Z" itemprop="datePublished">2014-11-03</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://www.zimperium.com/images/zanti/hero.jpg" alt=""></p>
+<p>Some of you, the ones who know me personally, already know that starting from the last July I’ve become part of the <a href="https://www.zimperium.com/" target="_blank" rel="external">ZImperium</a> family as a software developer and security researcher.<br>I’ve been “unofficially” already working/hacking with Elia, one of the two founders for 4 years, during this summer I met Zuk in Amesterdam and later on all of them in Tel Aviv.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/11/03/dsploit-merges-with-zimperium-zanti2/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2014/11/03/dsploit-merges-with-zimperium-zanti2/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/projects/">projects</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-back-from-the-grave-vmware-host-clipboard-grabber" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -494,51 +540,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ObRegisterCallbacks/">ObRegisterCallbacks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api-hooking/">api hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/driver/">driver</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kernel/">kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memory-injection/">memory injection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/obcallbacks/">obcallbacks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/process-protection/">process protection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/security/">security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/self-protection/">self protection</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-process-introspection-for-fun-and-profit" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/02/02/process-introspection-for-fun-and-profit/">Process Introspection for Fun and Profit</a>
-    </h1>
-  
-
-      </header>
-    
-    <br/>
-    <div class="article-meta">
-      Posted on <time datetime="2014-02-02T02:17:24.000Z" itemprop="datePublished">2014-02-02</time>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>While studying Windows internals for my job, I had to  deepen my knowledge of executable loading process, including their memory layout, address relocations and so on.<br>I came accross the <strong>PEB</strong> ( process environment block ), a data structure ( mostly undocumented ) that NT systems use internally to handle many aspects of a process, including a list of loaded libraries, environment variables, command line arguments, heap informations, TLS slots and so on.<br>The interesting fact about the PEB is that can be inspected to obtain those informations without the use of any standard API, thus resulting in an interesting technique to detect bad written virtual machines, emulators and any sort of sandboxing that could be used by a malware analyst or an anti virus product.<br>Moreover you could check the PEB to detect if a DLL has been injected into your process to perform api hooking.<br>API hooking softwares usually hooks API such as <strong>EnumProcessModules</strong> and patch them to hide the presence of the injected module. Inspecting the PEB you will be able to perform the same task only analyzing your address space, thus avoiding API patching.</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/02/02/process-introspection-for-fun-and-profit/">Read More</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a href="https://www.evilsocket.net/2014/02/02/process-introspection-for-fun-and-profit/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api-hooking/">api hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emulator/">emulator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/evasion/">evasion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hooking/">hooking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ldr/">ldr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/loader/">loader</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/malware/">malware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pe/">pe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/process-environment-block/">process environment block</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tib/">tib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vm/">vm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/win32/">win32</a></li></ul>
 
     </footer>
   </div>
