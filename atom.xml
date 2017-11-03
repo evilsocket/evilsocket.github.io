@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>evilsocket / Simone</title>
-  <subtitle>INTP :: I hack stuff.</subtitle>
+  <subtitle>I hack stuff.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
@@ -136,9 +136,9 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     </summary>
     
     
-      <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
+    
+      <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
     
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
@@ -254,9 +254,9 @@ sudo git reset --hard origin/master
     </summary>
     
     
-      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
-    
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
+    
+      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
     
       <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
     
@@ -768,9 +768,9 @@ Options:
     
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
-      <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
+      <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
