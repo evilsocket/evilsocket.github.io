@@ -136,9 +136,9 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     </summary>
     
     
-      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
-    
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
@@ -254,9 +254,9 @@ sudo git reset --hard origin/master
     </summary>
     
     
-      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
-    
       <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
+    
+      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
       <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
     
@@ -604,11 +604,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -766,9 +766,9 @@ Options:
     </summary>
     
     
-      <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
+      <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
     
@@ -1560,11 +1560,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
     
