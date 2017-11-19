@@ -30,42 +30,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/06/19/presenting-openbank-a-safe-and-easy-to-use-btc-tracker/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -79,16 +44,44 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</loc>
+    <loc>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</loc>
     
-    <lastmod>2017-08-11T14:28:47.039Z</lastmod>
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/</loc>
+    <loc>https://www.evilsocket.net/2016/06/19/presenting-openbank-a-safe-and-easy-to-use-btc-tracker/</loc>
     
-    <lastmod>2017-08-11T14:28:47.035Z</lastmod>
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.039Z</lastmod>
     
   </url>
   
@@ -100,9 +93,9 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
+    <loc>https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/</loc>
     
-    <lastmod>2017-08-11T14:28:47.031Z</lastmod>
+    <lastmod>2017-08-11T14:28:47.035Z</lastmod>
     
   </url>
   
@@ -114,14 +107,21 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/</loc>
+    <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.031Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/</loc>
     
     <lastmod>2017-08-11T14:28:47.027Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/</loc>
+    <loc>https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/</loc>
     
     <lastmod>2017-08-11T14:28:47.027Z</lastmod>
     
