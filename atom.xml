@@ -83,13 +83,13 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     </summary>
     
     
-      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
-    
-      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
-    
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
       <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    
+      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
+    
+      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
       <category term="bleah" scheme="https://www.evilsocket.net/tags/bleah/"/>
     
@@ -140,13 +140,13 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
-      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
-    
-      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
-    
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
       <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    
+      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
+    
+      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
       <category term="low energy" scheme="https://www.evilsocket.net/tags/low-energy/"/>
     
@@ -256,9 +256,9 @@ sudo git reset --hard origin/master
     
       <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
     
-      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
-    
       <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
+    
+      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
       <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
@@ -604,11 +604,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -766,11 +766,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -1560,13 +1560,13 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
-      <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
       <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
+      <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
     
       <category term="mobile" scheme="https://www.evilsocket.net/tags/mobile/"/>
     
