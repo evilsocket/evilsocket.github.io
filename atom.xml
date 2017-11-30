@@ -256,9 +256,9 @@ sudo git reset --hard origin/master
     
       <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
     
-      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
-    
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
+    
+      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
     
       <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
@@ -1562,11 +1562,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
-      <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
     
       <category term="mobile" scheme="https://www.evilsocket.net/tags/mobile/"/>
     

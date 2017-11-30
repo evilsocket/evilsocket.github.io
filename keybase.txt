@@ -11,59 +11,57 @@ I hereby claim:
 To do so, I am signing this object:
 
 {
-    "body": {
-        "key": {
-            "eldest_kid": "01014c4810fbaafee4ddc77336344f5a52d71647c505015ab9e360bd6341842785260a",
-            "fingerprint": "7f1ad5fa2a5187dfdd53dda91564d7f30393a456",
-            "host": "keybase.io",
-            "key_id": "1564d7f30393a456",
-            "kid": "01014c4810fbaafee4ddc77336344f5a52d71647c505015ab9e360bd6341842785260a",
-            "uid": "03c59391b8ba8af17743bdc3d2413700",
-            "username": "evilsocket"
-        },
-        "service": {
-            "hostname": "www.evilsocket.net",
-            "protocol": "https:"
-        },
-        "type": "web_service_binding",
-        "version": 1
+  "body": {
+    "key": {
+      "eldest_kid": "01014c4810fbaafee4ddc77336344f5a52d71647c505015ab9e360bd6341842785260a",
+      "fingerprint": "7f1ad5fa2a5187dfdd53dda91564d7f30393a456",
+      "host": "keybase.io",
+      "key_id": "1564d7f30393a456",
+      "kid": "01014c4810fbaafee4ddc77336344f5a52d71647c505015ab9e360bd6341842785260a",
+      "uid": "03c59391b8ba8af17743bdc3d2413700",
+      "username": "evilsocket"
     },
-    "ctime": 1456689577,
-    "expire_in": 157680000,
-    "prev": "dc37f5b4c1964f355b1e8be01b288a0c25034fe392dd4d6e89a226aafe12775d",
-    "seqno": 37,
-    "tag": "signature"
+    "service": {
+      "hostname": "www.evilsocket.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1512040899,
+  "expire_in": 157680000,
+  "prev": "fe048481485c55a1df174213561cf992ca473b7e4a39079991b6ba1ae89fffc2",
+  "seqno": 80,
+  "tag": "signature"
 }
 
 which yields the signature:
 
 -----BEGIN PGP MESSAGE-----
-Version: Keybase OpenPGP v2.0.51
-Comment: https://keybase.io/crypto
 
-yMNGAnicrZJ9UBRlHMcPDnQgRNKSP0iDTQxnbmjfntvd8yUm8rAUEEOoiTx393n2
-3OG4PfcWiBEOsckwBmxQEYRhrCiGbEQbkRyVlwx7k0RUaNSIEcQEaXhLICTaI5v+
-6c+ef555fr/P9/t7mefrRUZDoM/TsHvceLAmxeeH1mOZhpRrSXW7MUGBOZhlN5aO
-5i/kgMit2dJliFkwnMAJWqRZApcEnpcQoiEUGYaizBRNS4AHJGQIM82IAAc4AXiB
-Q5QZF6CeJliaZFhAmnEeM2GS7LQj1aXKTk23ZSSCh0DiSR4QLAMlCAEFIc8RwExD
-RqJwiqN4Gph14U7F7VXozQm8G0XLih7TH7b59v6D/5/7zvzbjhIBR3GEwAo8y0sE
-w9CUAEUKkjRBMTjuBd1IdfIZSKdRluxwK2I60rA8E6bHs2QReVfrneUxk52dHf0v
-F+3UWRPmUhVNERWHnt+paS63xavXclzzAiTYHlvZBNkJ9X3qiiykumXFiVkInRQ1
-2etN6IswsxxgGBOG3nbJKrLJXgIwZhbXj7cOytIt9QEYCQi0SHBmWqIAEAjECggn
-BJJleVwkAU7REqI4EkIamhHL8SRp9q6TIBkGQMw73C6nglkovZTG23VPt2x38lqm
-irC8r1rT/Aw+gYYF/r7ej2YIDAj55/v9cmXxXPrJrG1B7x+Nui3I702UjXc6PqwN
-3b/nxgtdhRn+HROtibFnOuu4gmUr1zSvZHMmZtmus5eNBdO5k8Vvas9nboqHr13o
-1T6jp+zRDS2nSg99Up7TfM736EDuOrWoLHSkqmnrQkfFVKN75pHH/8Ub1LmiDJy/
-SXy3pQq259QkhewLtl8MjhpSpruGFzQKD+n7450Lw4I60kZD46yFufTYdUxaeiuo
-LaZJ/DzNfmRDxNifnurmX8OTr1wd2WyaVB1rB+cKapX+pRHjpuPtavjYvYrK8p6I
-NqO0dS5+8K2Tyhe93Wr5zJ7Gj7sn8yNL3/WtH1nTXbJiVUpg9avi3ePCcOXN9Xj+
-aKVP4YrZ5OnDTSW3lwVX7Rjyi7n77UBaR+NwdaXrcvdHe5OfMHpAU+8bD6+HrNJi
-TuQfno3dm3pne/3yFs8uIeXJ9X3HtAbrg8jVnjKqI2H7vf6EkUTbqTbiTEVtf1XC
-lm9mp5acfjns/HMjY1Ge8KfuJAdtHOj9KXV/e/ZkUiT5W+HrBwEoDitwROwzfH9C
-PPR7jXj1fNxwXHDtgWRuqL8h6UBMYnFLz1knLPIhrWsZa2ld14W+Pwjpx/FnGmvD
-ra6ATysDYkHA4luGaz1L2i3BiV/6XfTLG33nkrWsarWQb1jXsyO1fsP9+EWbfj7d
-Odj6yuwlo/rS8plH2z54VnnQV/IXjMjOLg==
-=2p2Q
+owGtUm1QVFUY3mXJAZMgyDETcLia9GOX7ufee7dya4DRRoTUaQOm2M6999zlAu5d
+915AQInKbGCGASJIJVNmMBqYFGFIcFqnleEjQqNwFKY0RBxC6Iu1+Kbukk1/+tn5
+c+a87/M853mfeStDDLog/Xrhhs9Q3WDTfzXJ6dI3T/YVIZwsFCCWIiQbrl4wR4CK
+as+WBMSCoBiKkTzJYKjIASBCSAoCT9MEYSZIUqQAhQs0ZiZpnkIpFKMAx0LCjHKC
+1sYYEqcZCjejADEiouR0QLfLLTlVTZYWMSBQIsABhTG0IAoCRQgCYDHKTAq0SKAE
+SwCSMmvETFnxMzRzHFBgnCRrNe1hX7X3H/j/2Xfu33IET7EEi3EMBxggYjRNEpzA
+EwJOYgSNon6gAt1OsB9qaJgn5Sgynw1V5LAR0ep5Eg/90fpneYDJz8+P+xcX59Sw
+RsTlllWZl3O0fqaquhSLn68WuFYJkLM/kLJzklPQ8tQYedCtSLITsWAaklclvzZG
+YThKogzLGhF40CW5oV3yIyjazKDa8f8D8xALQESIkowWEslQPEUBTNAmI3GMoMwY
+L7IszgOSJjgakoBgUZpltQDMHMAAZFhRFHkc8U93wCkjFkZTVYFD86lIDidQc90Q
+Oby2NCAyUKcP0q15KMC/arq1wWH/7N87H4eumKLC03pcH02lREV3JyZW3y2v27Yt
+IrU5r3W+te3bjBKlcOWTJXsv+Wrs3uBDL3vpe281L803jkzYkiO/rB694hzcew1d
+Lu6tfyP9SM/GlZI7IX8YtiDxQd2zBcfo18tHBi8OusXYAZtJDn8XOs6+VxEjbTxq
+7uR3zC5ljC8enV+xnlgX27K7Rz7r/aHLG57TcbtSeGFiemuL59GaqurXNk37dieM
+JF1UnklxsFe33+LTXPGXvZFJB+tjCntNQaGtnaeT5yJXDHsWyyPa5j3Ntqz2+Esz
+T1YcaTjerP99+Gb4QGlVu852LHHYU3il/eTAEwEyRz9lsAydm9viazuzUHRfn54i
++ban1WygH1kYumOaffP6By/u/Nnd1N8OYUfSvYR1W2PqG87dbWk6cB7/ZVPj95/V
+3Uyvn7y8S8E9U4VF45XDnr7RzbVNh67vX8yqeFgtTvX2jW4InWqUpn3RpbZdOuvX
+GVH3i5ZLrPmjb7cGnhlr2ZmblWG43fDdBTo4wdqjt42UcWOl1tNTM7WnpqeE1kV1
+/LESo/7xuc+fptAvnlM9NT/S2ae6bgWZLkTPNBuHQub6a4t1Hpm6FDgQa9sXsc+7
+7OzeU9YfZii7esNn6sA/nPsz4pqNPF9Qvj61buzXqq5PayJfcoprop89GfbbK6bn
+l775KUbtXHCUWjOV95OnJ/4C
+=UCXK
 -----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
@@ -72,4 +70,3 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/evilsocket
 
 ==================================================================
-
