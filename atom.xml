@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2017-12-07T18:31:34.025Z</updated>
+  <updated>2017-12-07T19:41:14.084Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"/>
     <id>https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/</id>
     <published>2017-12-07T16:42:48.000Z</published>
-    <updated>2017-12-07T18:31:34.025Z</updated>
+    <updated>2017-12-07T19:41:14.084Z</updated>
     
     <content type="html"><![CDATA[<p>For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:</p>
 <ol>
@@ -89,7 +89,7 @@ vim config.json
 mv arcd_arm arcd
 ./arcd -config config.json -app arc
 </code></pre><p>Open the browser and go to <code>http://raspberrypi.local:8080/</code>, you should now be able to login and use ARC whenever you plug your RPi Zero to the USB port :)</p>
-<p>( Make sure to start <code>arcd</code> at boot by editing your <code>.bashrc</code> or whatever )</p>
+<p>( Make sure to start <code>arcd</code> at boot by editing <code>/etc/rc.local</code> or whatever )</p>
 <h3 id="Security-considerations"><a href="#Security-considerations" class="headerlink" title="Security considerations"></a>Security considerations</h3><ul>
 <li><p>It should be obvious, but physically isolated data on dedicated hardware is safer.</p>
 </li>
@@ -395,9 +395,9 @@ sudo git reset --hard origin/master
     
       <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
     
-      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
-    
       <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
+    
+      <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
       <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
@@ -905,11 +905,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     

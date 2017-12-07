@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.imgur.com/KCn4RGw.png">
 <meta property="og:image" content="https://i.imgur.com/nxqmRqY.png">
 <meta property="og:image" content="https://i.imgur.com/h5cpCeN.png">
-<meta property="og:updated_time" content="2017-12-07T18:31:34.025Z">
+<meta property="og:updated_time" content="2017-12-07T19:41:14.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC">
 <meta name="twitter:description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
@@ -193,7 +193,7 @@ vim config.json
 mv arcd_arm arcd
 ./arcd -config config.json -app arc
 </code></pre><p>Open the browser and go to <code>http://raspberrypi.local:8080/</code>, you should now be able to login and use ARC whenever you plug your RPi Zero to the USB port :)</p>
-<p>( Make sure to start <code>arcd</code> at boot by editing your <code>.bashrc</code> or whatever )</p>
+<p>( Make sure to start <code>arcd</code> at boot by editing <code>/etc/rc.local</code> or whatever )</p>
 <h3 id="Security-considerations"><a href="#Security-considerations" class="headerlink" title="Security considerations"></a>Security considerations</h3><ul>
 <li><p>It should be obvious, but physically isolated data on dedicated hardware is safer.</p>
 </li>
