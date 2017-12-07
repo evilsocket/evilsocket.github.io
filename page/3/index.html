@@ -95,6 +95,53 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/30/osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability/">OSX Mass Pwning Using BetterCap and the Sparkle Updater Vulnerability.</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-01-30T16:57:13.000Z" itemprop="datePublished">2016-01-30</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.bettercap.org/" target="_blank"><br><img src="/images/2016/01/bettercap.png" alt="bettercap" title="" style="width: 100%"><br></a></p>
+<p>Yesterday <a href="https://twitter.com/radekk" target="_blank" rel="external">Radek</a> from VulnSec posted an interesting article named “<strong><a href="https://vulnsec.com/2016/osx-apps-vulnerabilities/" target="_blank" rel="external">There’s a lot of vulnerable OS X applications out there.</a></strong>“, he discovered that the <strong>Sparkle</strong> update system ( used by some very popular OSX apps such as <strong>VLC</strong>, <strong>Adium</strong>, <strong>iTerm</strong> and so forth ) uses HTTP instead of HTTPS to fetch updates informations for such applications, making <strong>all of them</strong> vulnerable to <strong>man in the middle</strong> attacks and, as he shown, <strong>remote command execution</strong> attacks.</p>
+<p>I’m not going to explain the details of his attack, his post is quite self explainatory, but I’ll show you how easy it is to mass pwn OSX machines on your network using the new <a href="https://github.com/evilsocket/bettercap-proxy-modules/blob/master/osxsparkle.rb" target="_blank" rel="external">OSX Sparkle</a> bettercap proxy module.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/30/osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/01/30/osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/man-in-the-middle/">man in the middle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mitm/">mitm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/proxy-module/">proxy module</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rce/">rce</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sparkle/">sparkle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/update/">update</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -501,59 +548,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LG-G-Watch-R/">LG G Watch R</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LG-Watch-Urbane/">LG Watch Urbane</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SuperSU/">SuperSU</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TWRP/">TWRP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XDA/">XDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android-wear/">android wear</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/root/">root</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/su/">su</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wear/">wear</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-introducing-fido-a-minimalistic-cc-project-generator-supporting-templates" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/18/introducing-fido-a-minimalistic-cc-project-generator-supporting-templates/">Introducing FIDO, a Minimalistic, IDE-Agnostic C/C++ Project Generator.</a>
-    </h1>
-  
-
-      </header>
-    
-    <br/>
-    <div class="article-meta">
-      Posted on <time datetime="2015-05-18T15:26:13.000Z" itemprop="datePublished">2015-05-18</time>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I don’t know you, but I always find myself performing the same kind of stuff over and over again dozens of times per month, such as:</p>
-<ul>
-<li>Create project folder.</li>
-<li>Create <strong>src</strong> and <strong>include</strong> folders.</li>
-<li>Fill them with a basic <strong>main.c(pp)</strong></li>
-<li>Create the <strong>Makefile</strong>, fill tue rules.</li>
-</ul>
-<p>What about remembering all the times how to set the <strong>SYSROOT</strong> variable when I’m using the Android NDK?<br>Or maybe create the <strong>CMakeLists.txt</strong> and try to remember each directive, which I don’t, so I find myself googling for the same kind of stuff over and over … and btw it’s funny since I happen to use CMake for years now.</p>
-<p>So I decided that I had enough of this, when I want to test just a simple line of C/C++ code it takes me more time to create all the project folder tree than to write the code itself … and <strong>FIDO</strong> was born.</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/05/18/introducing-fido-a-minimalistic-cc-project-generator-supporting-templates/">Read More</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a href="https://www.evilsocket.net/2015/05/18/introducing-fido-a-minimalistic-cc-project-generator-supporting-templates/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fido/">fido</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/generator/">generator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/">project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project-generator/">project generator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/template/">template</a></li></ul>
 
     </footer>
   </div>

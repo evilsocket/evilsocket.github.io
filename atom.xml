@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2017-09-24T10:03:03.816Z</updated>
+  <updated>2017-12-07T18:13:43.732Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -14,6 +14,143 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC</title>
+    <link href="https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"/>
+    <id>https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/</id>
+    <published>2017-12-07T16:42:48.000Z</published>
+    <updated>2017-12-07T18:13:43.732Z</updated>
+    
+    <content type="html"><![CDATA[<p>For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:</p>
+<ol>
+<li>I need to store safely (encrypted) my passwords, sensitive files, notes, etc.</li>
+<li>I need to access them from anywhere, with every possible device ( desktop, mobile, terminal ).</li>
+<li>I need those objects to be syncronized accros all my devices.</li>
+<li>I don’t want to use “the cloud”.</li>
+<li>I don’t want to pay for a server.</li>
+<li>I don’t want to enable port forwarding and host it myself with DynDNS or alikes.</li>
+</ol>
+<p>So I wrote <strong>ARC</strong>.</p>
+<p><img src="https://i.imgur.com/NvLlafA.png" alt="arcd"></p>
+<a id="more"></a>
+<p>Of course there are <strong>plenty</strong> of solutions already that mostly involve the use of <code>pass</code>, <code>ssh</code>, <code>git</code> and various synchronizations hacks, but:</p>
+<ol>
+<li>Either you’ll host that stuff on github ( “the cloud” ), or you’ll need a server.</li>
+<li>You will need a terminal to access that data or complex procedures … good luck when you’re in a hurry and only have your phone.</li>
+<li>The type of data you can store and access and the interactions you have with it are very limited.</li>
+</ol>
+<p>The approach I decided to try is different.</p>
+<p><img src="https://i.imgur.com/EkxdwVH.jpg" alt="rpiz"></p>
+<p>Arc is a manager for your secrets made of <code>arcd</code>, a RESTful API server written in Go which exposes read and write primitives for <strong>encrypted records</strong> on a sqlite database file.</p>
+<p><img src="https://i.imgur.com/swC00gX.png" alt="arcd"></p>
+<p>And <code>arc</code>, the client application implemented in html5 and javascript, which runs in every html5 enabled browser and  it is served by <code>arcd</code> itself.</p>
+<p><img src="https://pbs.twimg.com/media/DQN8W1KWsAEP6bd.jpg:large" alt="multikey"></p>
+<p>Records are generated, encrypted and decrypted <strong>client side only</strong> (Arc relies on CryptoJS for its AES encryption and the PRNG) by <code>arc</code>, which offers an intuitive management system equipped with UI widgets including:</p>
+<ul>
+<li>Simple text inputs.</li>
+<li>Simple text areas.</li>
+<li>Custom file attachments (<strong>files are encrypted client side</strong> before being uploaded as binary records).</li>
+<li>A markdown editor area with preview and full screen mode.</li>
+<li>A password field with <strong>password strength estimation</strong> and a <strong>random password generator</strong>. </li>
+</ul>
+<p>Elements can be created (with optional expiration dates), arranged and edited using <code>arc</code> and are stored on <code>arcd</code> safely.</p>
+<ul style="margin:0; padding:0; list-style-type:none;"><br><li style="float: left; margin-right:15px; width:45%;"><br>    <img src="https://i.imgur.com/KCn4RGw.png"><br>    <small>A client side encrypted record set to expire and self delete with a markdown area and a password widget.</small><br></li><br><li style="float: left; margin-right:15px; width:45%;"><br>    <img src="https://i.imgur.com/nxqmRqY.png"><br>    <small>Markdown and various attached files.</small><br></li><br></ul>
+
+<div style="clear:both;"></div>
+
+<p>The idea is to use <em>the Arc</em>&trade; as a single manager for your passwords, encrypted notes, files and <code>-all the secret things here-</code> while hosting <code>arcd</code> yourself on some spare hardware like a Raspberry Pi and accessing <code>arc</code> from every device with a modern browser, so let’s see how to configure it on a Raspberry Pi Zero in order to have a secure and portable setup for your secrets! :D</p>
+<h3 id="Hardware-Setup"><a href="#Hardware-Setup" class="headerlink" title="Hardware Setup"></a>Hardware Setup</h3><pre><code>The following instructions are Raspberry Pi Zero specific, but the same procedure should work on any similar hardware ( like another RPi or the USB Armory for instance ), the RPiZ is just what I found to be more convenient and cheap.
+</code></pre><p>First of all, format a micro sd card and install Raspbian on it as usual (download iso, verify, dd, mount), next we need to apply a few tweaks in order to enable ethernet connectivity over its USB port.</p>
+<p>With the RPi <code>boot</code> partition mounted, edit the <code>/path/to/pi/boot/config.txt</code> and append:</p>
+<pre><code>dtoverlay=dwc2
+</code></pre><p>Then edit <code>/path/to/pi/boot/cmdline.txt</code> and insert between the <code>rootwait</code> and the <code>quiet</code> parameters:</p>
+<pre><code>modules-load=dwc2,g_ether
+</code></pre><p>Eventually your <code>cmdline.txt</code> file will look like this:</p>
+<pre><code>dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=abcdefab-01 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait modules-load=dwc2,g_ether 
+</code></pre><p>At last, we need to make Raspbian enable SSH on boot so we’ll be able to connect to it if needed, in order to do this just create an <code>/path/to/pi/boot/ssh</code> empty file.</p>
+<p>Unmount the micro sd, insert it into the RPiZ and plug it to the computer <strong>using the USB data port</strong> (not the charge one, we don’t need it ;)).</p>
+<p>If everything went fine, your computer should now detect a new network interface, in order to connect to it just assign it any static IP address ( on <code>Ubuntu</code> and similar, set the connection type to <code>Link-Local Only</code>), restart the interface and the RPiZ should be reachable:</p>
+<pre><code>ping raspberrypi.local
+</code></pre><p>Let’s finish the setup of the board, connect to it via SSH:</p>
+<pre><code>ssh pi@raspberrypi.local
+</code></pre><p>Expand the filesystem as usual, <strong>change the default SSH password</strong>, enable <strong>private key only SSH authentication</strong>, copy your certificate, etc … as for the hardware part, we’re ready :)</p>
+<h3 id="Software-Setup"><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h3><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage" target="_blank" rel="external">follow the instructions on the repository</a> to compile the server.</p>
+<p>Once you compiled it, edit the configuration file:</p>
+<pre><code>cd /path/to/arc/repo/arcd
+cp sample_config.json config.json
+vim config.json
+</code></pre><p>And change the <code>address</code> field so we’ll be able to connect to the Arc web interface:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"address"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"port"</span>: <span class="number">8080</span>,</div><div class="line">    <span class="attr">"username"</span>: <span class="string">"PUT_YOUR_USERNAME_HERE"</span>,</div><div class="line">    <span class="attr">"password"</span>: <span class="string">"PUT_YOUR_PASSWORD_HERE"</span>,</div><div class="line">    <span class="attr">"database"</span>: <span class="string">"~/arc.db"</span>,</div><div class="line">    <span class="attr">"token_duration"</span>: <span class="number">60</span>,</div><div class="line">    <span class="attr">"scheduler"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"period"</span>: <span class="number">10</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"tls"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">"pem"</span>: <span class="string">"/some/file.pem"</span>,</div><div class="line">        <span class="attr">"key"</span>: <span class="string">"/some/file.key"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Now just copy the <code>arc</code> folder, the new <code>config.json</code> file and the ARM compiled <code>arcd</code> server to the RPiZ:</p>
+<pre><code>scp -r arc arcd_arm config.json pi@raspberrypi.local:/home/pi/
+</code></pre><p>SSH to the board and make sure that everything works:</p>
+<pre><code>ssh pi@raspberrypi.local
+mv arcd_arm arcd
+./arcd -config config.json -app arc
+</code></pre><p>Open the browser and go to <code>http://raspberrypi.local:8080/</code>, you should now be able to login and use ARC whenever you plug your RPi Zero to the USB port :)</p>
+<p>( Make sure to start <code>arcd</code> at boot by editing your <code>.bashrc</code> or whatever )</p>
+<h3 id="Security-considerations"><a href="#Security-considerations" class="headerlink" title="Security considerations"></a>Security considerations</h3><ul>
+<li><p>It should be obvious, but physically isolated data on dedicated hardware is safer.</p>
+</li>
+<li><p>All the data is encrypted client side, which means everything that is stored physically on the RPiZ is encrypted with <code>AES</code>, make sure to use a strong encryption key, the stronger the key, the safer the data will be in case you lose the hardware.</p>
+</li>
+<li><p>You should generate your own self signed certificate and use it in the <code>tls</code> configuration of Arc in order to use https instead of http.</p>
+</li>
+<li><p><strong>DO NOT</strong> enable any type of connection sharing from your computer to the RPiZ, we <strong>do not want</strong> anything from the outside world to reach our secure storage, ideally you should disable the wireless interface too if using the <code>W</code> model.</p>
+</li>
+<li><p>Username and password are needed to access the API itself, but they will <strong>not</strong> decrypt the records, that’s why the encryption key is requested as well. You can login with the same API credentials but different encryption keys, you will create records with a new key and will not be able to decrypt other records that have been created with a different AES key.</p>
+</li>
+<li><p>Elements can be configured with an expiration date, using it is a good way to remember how old a given password is and have some sort of reminder when it’s time to change it (or just encrypted reminders ^_^).</p>
+</li>
+</ul>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>The project is <a href="https://github.com/evilsocket/arc" target="_blank" rel="external">available on my github</a> as usual, there’s still <a href="https://github.com/evilsocket/arc/milestone/1" target="_blank" rel="external">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
+<p>Stay safe, have fun and …</p>
+<p align="center"><br>    <img src="https://i.imgur.com/h5cpCeN.png" alt="Encrypt all the things!"><br></p>
+
+<h3 id="One-last-thing-…"><a href="#One-last-thing-…" class="headerlink" title="One last thing …"></a>One last thing …</h3><p>Yes, it works with smartphones and tablets in OTG mode :)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I need to store safely (encrypted) my passwords, sensitive files, notes, etc.&lt;/li&gt;
+&lt;li&gt;I need to access them from anywhere, with every possible device ( desktop, mobile, terminal ).&lt;/li&gt;
+&lt;li&gt;I need those objects to be syncronized accros all my devices.&lt;/li&gt;
+&lt;li&gt;I don’t want to use “the cloud”.&lt;/li&gt;
+&lt;li&gt;I don’t want to pay for a server.&lt;/li&gt;
+&lt;li&gt;I don’t want to enable port forwarding and host it myself with DynDNS or alikes.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So I wrote &lt;strong&gt;ARC&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/NvLlafA.png&quot; alt=&quot;arcd&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
+    
+      <category term="arc" scheme="https://www.evilsocket.net/tags/arc/"/>
+    
+      <category term="arcd" scheme="https://www.evilsocket.net/tags/arcd/"/>
+    
+      <category term="passwords" scheme="https://www.evilsocket.net/tags/passwords/"/>
+    
+      <category term="secrets" scheme="https://www.evilsocket.net/tags/secrets/"/>
+    
+      <category term="notes" scheme="https://www.evilsocket.net/tags/notes/"/>
+    
+      <category term="password manager" scheme="https://www.evilsocket.net/tags/password-manager/"/>
+    
+      <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
+    
+      <category term="aes" scheme="https://www.evilsocket.net/tags/aes/"/>
+    
+      <category term="go" scheme="https://www.evilsocket.net/tags/go/"/>
+    
+      <category term="golang" scheme="https://www.evilsocket.net/tags/golang/"/>
+    
+  </entry>
   
   <entry>
     <title>This Is Not a Post About BLE, Introducing BLEAH</title>
@@ -766,11 +903,11 @@ Options:
     </summary>
     
     
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -1566,11 +1703,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
     
+      <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
+    
       <category term="emulator" scheme="https://www.evilsocket.net/tags/emulator/"/>
     
       <category term="mobile" scheme="https://www.evilsocket.net/tags/mobile/"/>
-    
-      <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
     
       <category term="obfuscation" scheme="https://www.evilsocket.net/tags/obfuscation/"/>
     
@@ -1729,53 +1866,6 @@ MBTS ready
       <category term="gsm intercept" scheme="https://www.evilsocket.net/tags/gsm-intercept/"/>
     
       <category term="gsm sniffing" scheme="https://www.evilsocket.net/tags/gsm-sniffing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OSX Mass Pwning Using BetterCap and the Sparkle Updater Vulnerability.</title>
-    <link href="https://www.evilsocket.net/2016/01/30/osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability/"/>
-    <id>https://www.evilsocket.net/2016/01/30/osx-mass-pwning-using-bettercap-and-the-sparkle-updater-vulnerability/</id>
-    <published>2016-01-30T16:57:13.000Z</published>
-    <updated>2016-01-30T17:46:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://www.bettercap.org/" target="_blank"><br><img src="/images/2016/01/bettercap.png" alt="bettercap" title="" style="width: 100%"><br></a></p>
-<p>Yesterday <a href="https://twitter.com/radekk" target="_blank" rel="external">Radek</a> from VulnSec posted an interesting article named “<strong><a href="https://vulnsec.com/2016/osx-apps-vulnerabilities/" target="_blank" rel="external">There’s a lot of vulnerable OS X applications out there.</a></strong>“, he discovered that the <strong>Sparkle</strong> update system ( used by some very popular OSX apps such as <strong>VLC</strong>, <strong>Adium</strong>, <strong>iTerm</strong> and so forth ) uses HTTP instead of HTTPS to fetch updates informations for such applications, making <strong>all of them</strong> vulnerable to <strong>man in the middle</strong> attacks and, as he shown, <strong>remote command execution</strong> attacks.</p>
-<p>I’m not going to explain the details of his attack, his post is quite self explainatory, but I’ll show you how easy it is to mass pwn OSX machines on your network using the new <a href="https://github.com/evilsocket/bettercap-proxy-modules/blob/master/osxsparkle.rb" target="_blank" rel="external">OSX Sparkle</a> bettercap proxy module.</p>
-<a id="more"></a>
-<p>Moreover, I improved the attack … Radek shown how to get RCE using an OSX terminal profile file, <strong>I will show you how to make the target execute any Mach-O exetutable you want!</strong> ( <a href="https://www.offensive-security.com/metasploit-unleashed/msf-os/" target="_blank" rel="external">metasploit anyone</a>? )</p>
-<p>This is a screenshot of my MacBook Pro running OSX El Capitan with the latest version of VLC installed, being exploited and running a sample “Hello World” binary.</p>
-<p><img src="/images/2016/01/yo.png" alt="Hello World Sparkle"></p>
-<p>Once you downloaded the aforementioned proxy module, install the <strong>ftpd</strong> gem:</p>
-<pre><code>sudo gem install ftpd
-</code></pre><p>and use the bettercap command line:</p>
-<pre><code>sudo bettercap --proxy-module osxsparkle.rb --sparkle-rce-file /path/to/some/executable
-</code></pre><p>Where <strong>/path/to/some/executable</strong> is the path to a Mach-O executable on your computer, this is the executable that all the targets are going to execute.</p>
-<p>Well, enough said, have fun :)</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://www.bettercap.org/&quot; target=&quot;_blank&quot;&gt;&lt;br&gt;&lt;img src=&quot;/images/2016/01/bettercap.png&quot; alt=&quot;bettercap&quot; title=&quot;&quot; style=&quot;width: 100%&quot;&gt;&lt;br&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Yesterday &lt;a href=&quot;https://twitter.com/radekk&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Radek&lt;/a&gt; from VulnSec posted an interesting article named “&lt;strong&gt;&lt;a href=&quot;https://vulnsec.com/2016/osx-apps-vulnerabilities/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;There’s a lot of vulnerable OS X applications out there.&lt;/a&gt;&lt;/strong&gt;“, he discovered that the &lt;strong&gt;Sparkle&lt;/strong&gt; update system ( used by some very popular OSX apps such as &lt;strong&gt;VLC&lt;/strong&gt;, &lt;strong&gt;Adium&lt;/strong&gt;, &lt;strong&gt;iTerm&lt;/strong&gt; and so forth ) uses HTTP instead of HTTPS to fetch updates informations for such applications, making &lt;strong&gt;all of them&lt;/strong&gt; vulnerable to &lt;strong&gt;man in the middle&lt;/strong&gt; attacks and, as he shown, &lt;strong&gt;remote command execution&lt;/strong&gt; attacks.&lt;/p&gt;
-&lt;p&gt;I’m not going to explain the details of his attack, his post is quite self explainatory, but I’ll show you how easy it is to mass pwn OSX machines on your network using the new &lt;a href=&quot;https://github.com/evilsocket/bettercap-proxy-modules/blob/master/osxsparkle.rb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;OSX Sparkle&lt;/a&gt; bettercap proxy module.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
-    
-      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
-    
-      <category term="man in the middle" scheme="https://www.evilsocket.net/tags/man-in-the-middle/"/>
-    
-      <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
-    
-      <category term="sparkle" scheme="https://www.evilsocket.net/tags/sparkle/"/>
-    
-      <category term="proxy module" scheme="https://www.evilsocket.net/tags/proxy-module/"/>
-    
-      <category term="update" scheme="https://www.evilsocket.net/tags/update/"/>
     
   </entry>
   
