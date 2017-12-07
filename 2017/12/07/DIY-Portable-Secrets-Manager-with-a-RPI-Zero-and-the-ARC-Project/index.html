@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.imgur.com/KCn4RGw.png">
 <meta property="og:image" content="https://i.imgur.com/nxqmRqY.png">
 <meta property="og:image" content="https://i.imgur.com/h5cpCeN.png">
-<meta property="og:updated_time" content="2017-12-07T18:13:43.732Z">
+<meta property="og:updated_time" content="2017-12-07T18:31:34.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC">
 <meta name="twitter:description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
@@ -198,6 +198,8 @@ mv arcd_arm arcd
 <li><p>It should be obvious, but physically isolated data on dedicated hardware is safer.</p>
 </li>
 <li><p>All the data is encrypted client side, which means everything that is stored physically on the RPiZ is encrypted with <code>AES</code>, make sure to use a strong encryption key, the stronger the key, the safer the data will be in case you lose the hardware.</p>
+</li>
+<li><p>For additional security, you might store the <code>arc.db</code> server database on a LUKS volume which you will need to manually unlock at boot.</p>
 </li>
 <li><p>You should generate your own self signed certificate and use it in the <code>tls</code> configuration of Arc in order to use https instead of http.</p>
 </li>
