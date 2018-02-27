@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/</loc>
+    
+    <lastmod>2018-02-27T20:53:59.326Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/</loc>
     
     <lastmod>2017-12-07T19:41:14.084Z</lastmod>
@@ -37,7 +44,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/06/19/presenting-openbank-a-safe-and-easy-to-use-btc-tracker/</loc>
+    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -51,21 +58,14 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/2016/06/19/presenting-openbank-a-safe-and-easy-to-use-btc-tracker/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -80,6 +80,13 @@
   
   <url>
     <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
@@ -121,14 +128,14 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/</loc>
+    <loc>https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/</loc>
     
     <lastmod>2017-08-11T14:28:47.027Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/</loc>
+    <loc>https://www.evilsocket.net/2016/01/18/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability/</loc>
     
     <lastmod>2017-08-11T14:28:47.027Z</lastmod>
     
