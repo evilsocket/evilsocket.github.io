@@ -4,7 +4,7 @@
   <url>
     <loc>https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/</loc>
     
-    <lastmod>2018-02-27T20:53:59.326Z</lastmod>
+    <lastmod>2018-02-27T22:37:19.688Z</lastmod>
     
   </url>
   
@@ -40,13 +40,6 @@
     <loc>https://www.evilsocket.net/books.html</loc>
     
     <lastmod>2017-08-11T18:47:49.867Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
-    
-    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
   </url>
   
@@ -87,6 +80,13 @@
   
   <url>
     <loc>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</loc>
+    
+    <lastmod>2017-08-11T14:28:47.043Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
     
     <lastmod>2017-08-11T14:28:47.043Z</lastmod>
     
