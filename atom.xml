@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2018-02-27T22:37:19.688Z</updated>
+  <updated>2018-02-28T00:27:44.312Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/"/>
     <id>https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/</id>
     <published>2018-02-27T19:37:20.000Z</published>
-    <updated>2018-02-27T22:37:19.688Z</updated>
+    <updated>2018-02-28T00:27:44.312Z</updated>
     
     <content type="html"><![CDATA[<p>It’s with immense pleasure that I announce the <a href="https://github.com/bettercap/bettercap/releases/tag/v2.0.0" target="_blank" rel="external">release of the second generation of bettercap</a>, a complete reimplementation of the most complete and advanced Man-in-the-Middle attack framework. This release not only brings MITM attacks to the next level, but it aims to be the reference framework for network monitoring (we &lt;3 blueteams too), 802.11, BLE attacks and more! :D</p>
 <center><br><strong style="font-size:25px"><br>ベッターキャップ！<br></strong><br><img width="200px" src="https://www.bettercap.org/img/logo.png"><br></center>
@@ -53,7 +53,7 @@
 <p>These are just a few basic examples, I strongly encourage you to check the <a href="https://github.com/bettercap/caplets" target="_blank" rel="external">caplets repository</a>.</p>
 <h3 id="WiFi-BLE-and-more-to-come"><a href="#WiFi-BLE-and-more-to-come" class="headerlink" title="WiFi, BLE and more to come!"></a>WiFi, BLE and more to come!</h3><p>There’s a brand new <code>wifi.recon</code> module that will either stick to a channel or perform channel hopping, both for 2.4Ghz and 5.0Ghz frequencies, reporting useful information on what’s going on at the <strong>802.11</strong> layer, the <code>wifi.deauth</code> module will deauth clients (doh!) while the <code>net.sniff</code>er will capture WPA2 handshakes (<strong>bye bye kismet, airodump, airmon, wifite</strong>, etc!). Meanwhile, the <code>ble.recon</code> will discover every <strong>Bluetooth Low Energy</strong> device you might want to inspect with <code>ble.enum</code> or fuzz with <code>ble.write</code>. Also <code>wifi.fuzz</code> and <code>ble.fuzz</code> modules are work in progress, as well as <code>sdr.*</code> modules and others.</p>
 <p>Did I mention that this works on macOS and Windows too? :D Oh, and probably your macOS has <a href="https://twitter.com/bettercap/status/967453847114407936" target="_blank" rel="external">a WiFi card capable of monitor mode and frames injection already</a> :D This release is taking everything to the next level, we’re not just in the ethernet, <strong>we are everywhere</strong>.</p>
-<h3 id="Abemus-API"><a href="#Abemus-API" class="headerlink" title="Abemus API"></a>Abemus API</h3><p>I believe this is functionally the biggest change, or at least the one with the biggest potential: <strong>we finally have a <a href="https://github.com/bettercap/bettercap/wiki/api.rest" target="_blank" rel="external">REST API</a>!</strong> Imagine having a mobile client for your bettercap instance running in your dropbox, or simply imagine to develop a mobile application just by launching the Android executable, using the <code>http.server</code> module itself to serve a web UI and just create a WebView to render it … boom, easy mobile baby! :D</p>
+<h3 id="Habemus-API"><a href="#Habemus-API" class="headerlink" title="Habemus API"></a>Habemus API</h3><p>I believe this is functionally the biggest change, or at least the one with the biggest potential: <strong>we finally have a <a href="https://github.com/bettercap/bettercap/wiki/api.rest" target="_blank" rel="external">REST API</a>!</strong> Imagine having a mobile client for your bettercap instance running in your dropbox, or simply imagine to develop a mobile application just by launching the Android executable, using the <code>http.server</code> module itself to serve a web UI and just create a WebView to render it … boom, easy mobile baby! :D</p>
 <p>You can read every single bit of information, you can have per IP realtime network statistics, you can send commands, wait for events … the sky is the limit!!! <em>-put evil laugh here-</em></p>
 <center><br><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">There&#39;s power on that USB … kismet on a drone ftw <a href="https://t.co/CbeeyL0QtZ" target="_blank" rel="external">pic.twitter.com/CbeeyL0QtZ</a></p>&mdash; 🦄 (@evilsocket) <a href="https://twitter.com/evilsocket/status/941320272728264705?ref_src=twsrc%5Etfw" target="_blank" rel="external">December 14, 2017</a></blockquote><br><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
 
@@ -606,11 +606,11 @@ Connection: close
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
-    
       <category term="terramaster" scheme="https://www.evilsocket.net/tags/terramaster/"/>
     
       <category term="nas" scheme="https://www.evilsocket.net/tags/nas/"/>
+    
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
@@ -818,11 +818,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -980,11 +980,11 @@ Options:
     </summary>
     
     
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -1229,13 +1229,13 @@ esac
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
+    
       <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
     
       <category term="osmobb" scheme="https://www.evilsocket.net/tags/osmobb/"/>
     
       <category term="osmobts" scheme="https://www.evilsocket.net/tags/osmobts/"/>
-    
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
@@ -1774,11 +1774,11 @@ routine, eventually it will output all the cleartexts I need!
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
     
