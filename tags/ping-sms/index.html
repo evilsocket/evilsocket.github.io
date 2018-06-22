@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: ping sms | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="I hack stuff.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="evilsocket &#x2F; Simone">
+<meta property="og:url" content="https://www.evilsocket.net/tags/ping-sms/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="I hack stuff.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="evilsocket &#x2F; Simone">
+<meta name="twitter:description" content="I hack stuff.">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/">How to Use Old GSM Protocols/encodings to Know if a User Is Online on the GSM Network AKA PingSMS 2.0</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-07-27T19:47:03.000Z" itemprop="datePublished">2015-07-27</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In the last few months I’ve been playing with Android’s low level GSM API, a few years ago the (in)famous <strong>sendRawPdu</strong> API was available, allowing a developer to manually encode a SMS message at a very low level before sending it to the GSM baseband itself and quite a few applications sending all kind of weird SMS ( flash sms, silent sms, etc ) were born ( for a brief overview of PDU encoding refer to <a href="http://www.smartposition.nl/resources/sms_pdu.html" target="_blank" rel="external">this page</a> ).</p>
+<p>(Un)fortunately Google decided to remove that API, it’s still not sure if they did it for security related purposes or during some refactoring of their IPC IBinder mechanism, but nowadays it’s no more available unless you use some very old phones/firmwares ( on most devices they removed the ttyUSB serial interfaces to send AT commands to the GSM modem as well ).</p>
+<p>Until a couple of months ago, when I found the <strong>SmsManager.sendDataMessage</strong> API which, apparently, it’s not used anywhere ( if you search for it you’ll find only a few examples, but nothing regarding how to use it with manually encoded PDUs ).<br>Using this API we’re able to manually encode our SMS, moreover we can specific a “port” as one of its arguments which will identify what kind of sms we’re gonna send, in this post I’ll talk about port 2948, namely the port used to send <strong>WAP PUSH notifications</strong>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SmsManager/">SmsManager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SmsManager-sendDataMessage/">SmsManager.sendDataMessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delivery-report/">delivery report</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm/">gsm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mms/">mms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdu/">pdu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ping-sms/">ping sms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sendDataMessage/">sendDataMessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sms/">sms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap/">wap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap-push/">wap push</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap-push-notifications/">wap push notifications</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

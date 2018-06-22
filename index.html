@@ -1,12 +1,633 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
+  
+  <title>evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="I hack stuff.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="evilsocket &#x2F; Simone">
+<meta property="og:url" content="https://www.evilsocket.net/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="I hack stuff.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="evilsocket &#x2F; Simone">
+<meta name="twitter:description" content="I hack stuff.">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
 
-  <title>🖕</title>
-  <meta name="description" content="🖕">
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
 </head>
+
 <body>
-<p>🖕</p>
-</body>
-</html>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Go-is-amazing-so-here-s-what-i-don-t-like-about-it" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/">Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2018-03-14T22:39:09.000Z" itemprop="datePublished">2018-03-14</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>After my last post and generally the kind of indirect advertising I’m doing to the Go programming language for a few months now, I heard about and talked with a lot of people who started being interested in the language, so for once I decided to write what I don’t like about it instead, to provide a more balanced perspective of what’s my experience so far and maybe let some of those people realize that Go is not the right choice for their projects after all.</p>
+<p><strong>NOTE 1</strong></p>
+<p>It’s important to say that some, if not most of the things I’m about to write are purely subjective and related to my programming habits, they do not necessarily represent so called “best practices” and should not be taken like so. Moreover, I’m still a Go noob, some of the things I’m going to say might just be inaccurate / wrong, in which case feel free to correct me and teach me something new, <strong>please</strong> :D</p>
+<p><strong>NOTE 2</strong></p>
+<p>Before we start: I love this language and I already explained why I still consider it a better choice for several applications, but I’m not interested in an opinion war about Go vs Rust, or Go vs whatever … use what you think it’s best for what you have to do: if that’s Rust go for it, if you think it’s binary code you send to the processor by using your nipples to inject faults into some data bus, go for it, both cases, code and let code, life is too short for being a language hipster.</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-patterns/">design patterns</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/developing/">developing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oop/">oop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-All-hail-bettercap-2-0-one-tool-to-rule-them-all" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/">All Hail Bettercap 2.0, One Tool to Rule Them All.</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2018-02-27T19:37:20.000Z" itemprop="datePublished">2018-02-27</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s with immense pleasure that I announce the <a href="https://github.com/bettercap/bettercap/releases/tag/v2.0.0" target="_blank" rel="external">release of the second generation of bettercap</a>, a complete reimplementation of the most complete and advanced Man-in-the-Middle attack framework. This release not only brings MITM attacks to the next level, but it aims to be the reference framework for network monitoring (we &lt;3 blueteams too), 802.11, BLE attacks and more! :D</p>
+<center><br><strong style="font-size:25px"><br>ベッターキャップ！<br></strong><br><img width="200px" src="https://www.bettercap.org/img/logo.png"><br></center>
+        
+          <p class="article-more-link">
+            <a href="/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2/">2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ble/">ble</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mitm/">mitm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/release/">release</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi/">wifi</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/">DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-12-07T16:42:48.000Z" itemprop="datePublished">2017-12-07</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:</p>
+<ol>
+<li>I need to store safely (encrypted) my passwords, sensitive files, notes, etc.</li>
+<li>I need to access them from anywhere, with every possible device ( desktop, mobile, terminal ).</li>
+<li>I need those objects to be syncronized accros all my devices.</li>
+<li>I don’t want to use “the cloud”.</li>
+<li>I don’t want to pay for a server.</li>
+<li>I don’t want to enable port forwarding and host it myself with DynDNS or alikes.</li>
+</ol>
+<p>So I wrote <strong>ARC</strong>.</p>
+<p><img src="https://i.imgur.com/NvLlafA.png" alt="arcd"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aes/">aes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arc/">arc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/arcd/">arcd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/encryption/">encryption</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notes/">notes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oss/">oss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/password-manager/">password manager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/passwords/">passwords</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/secrets/">secrets</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-This-is-not-a-post-about-BLE-introducing-BLEAH" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/">This Is Not a Post About BLE, Introducing BLEAH</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-09-23T15:06:56.000Z" itemprop="datePublished">2017-09-23</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source one of the last tools I’ve made and that I kept private so far. I moved the features I thought to be dangerous ( aka: auto fuzzing all the BLE things and bring chaos ) in a private fork which will stay private, however it’s not that complicated to chain <code>bleah</code> with other tools ( cough … radamsa … cough ) and have <strong>lots of fun</strong>.</p>
+<p><img src="/images/2017/09/dr_evil.jpg" alt="dr.evil"></p>
+<p>Oh and this is also because <a href="https://twitter.com/Viss" target="_blank" rel="external">someone</a> asked me some intro on BLE, so yeah, his fault.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ble/">ble</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bleah/">bleah</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth-low-energy/">bluetooth low energy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btle/">btle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/">Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-08-25T01:10:53.000Z" itemprop="datePublished">2017-08-25</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a <a href="/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">new</a> short adventure in the <strong>Bluetooth Low Energy</strong> world. I’m a happy <a href="https://www.storz-bickel.com/eu/en/crafty.html" target="_blank" rel="external">Crafty</a> vaporizer owner and as I discovered by chance, I can access it using my laptop.</p>
+<p><img src="/images/2017/08/ble_1.png" alt="ble_1"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ble/">ble</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth-low-energy/">bluetooth low energy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btle/">btle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crafty/">crafty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crafty-vaporizer/">crafty vaporizer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hacking/">hacking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/low-energy/">low energy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terminal/">terminal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vaporizer/">vaporizer</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/">GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-08-15T15:13:21.000Z" itemprop="datePublished">2017-08-15</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s no secret I’ve been recently playing with the <a href="https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2" target="_blank" rel="external">GPD Pocket 7</a>, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the <a href="https://www.google.com/search?&amp;source=lnms&amp;tbm=isch&amp;q=open+zaurus+sl-c1000" target="_blank" rel="external">Sharp Zaurus</a> series. Considering that a <a href="https://twitter.com/evilsocket/status/896847606072127488" target="_blank" rel="external">lot of people were interested</a> I decided to write this post to share my impressions, installation procedure and configuration tips.</p>
+<p><img src="https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg" alt="gpd"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/equipment/">equipment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gpd/">gpd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gpd-pocket-7/">gpd pocket 7</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hardware/">hardware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mana/">mana</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mitm/">mitm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pentest/">pentest</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/red-teaming/">red teaming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rogue-ap/">rogue ap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sdr/">sdr</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sigint/">sigint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi-pentesting/">wifi pentesting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wireless/">wireless</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/">TLS, Server Name Indication and Why We Need to Encrypt It</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-06-30T10:28:18.000Z" itemprop="datePublished">2017-06-30</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yesterday I released version 1.6.1 of <a href="https://bettercap.org" target="_blank" rel="external">bettercap</a> and among other things, you can read in the changelog:</p>
+<pre><code>* Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in order to extract the real hostname.
+...
+</code></pre><p>But what does this actually mean? And how can we protect ourselves from it? (Hint: <strong>we can’t, yet</strong>)</p>
+<p><img src="/images/2017/07/sni.png" alt="sni"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mitm/">mitm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/privacy/">privacy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/server-name-indication/">server name indication</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sni/">sni</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tls/">tls</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Terramaster-NAS-Unauthenticated-RCE-as-root" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/">TerraMaster NAS TOS &lt;= 3.0.30 Unauthenticated RCE as Root</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-05-30T11:15:28.000Z" itemprop="datePublished">2017-05-30</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently I bought a TerraMaster F2-420 NAS from Amazon in order to store my private code, backups and this kind of stuff. As soon as it arrived I started to play with its web interface and eventually I wanted to see how it was implemented, moreover I was curious to see if I could find any remotely exploitable vulnerability.</p>
+<p>As you can see … I succeeded :)</p>
+<p><img src="/images/2017/05/exploit.png" alt="nas"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/disclosure/">disclosure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/exploit/">exploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nas/">nas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rce/">rce</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/terramaster/">terramaster</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vulnerability/">vulnerability</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Android-Applications-Reversing-101" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/Android-Applications-Reversing-101/">Android Applications Reversing 101</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-04-27T17:09:48.000Z" itemprop="datePublished">2017-04-27</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, <a href="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">smart fitness devices</a> and <a href="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/">smart coffee machines</a> … but is this stuff just smart or is it <strong>secure</strong> as well? :)</p>
+<p>Reversing an Android application can be a (relatively) easy and fun way to answer this question, that’s why I decided to write this blog post where I’ll try to explain the basics and give you some of my “tricks” to reverse this stuff faster and more effectively.</p>
+<p>I’m not going to go very deep into technical details, you can learn yourself how Android works, how the Dalvik VM works and so forth, this is gonna be a <strong>very basic practical guide</strong> instead of a post full of theoretical stuff but no really useful contents.</p>
+<p>Let’s start! :)</p>
+<p><img src="/images/2017/04/head.jpeg" alt="start"></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/04/27/Android-Applications-Reversing-101/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dex2Jar/">Dex2Jar</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Frida/">Frida</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hopper/">Hopper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDA/">IDA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JADX/">JADX</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JD-GUI/">JD-GUI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XPosed/">XPosed</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XPosed-Framework/">XPosed Framework</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apk/">apk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apktool/">apktool</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dalvik/">dalvik</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dex/">dex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/re/">re</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reversing/">reversing</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/">Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2017-01-14T19:10:02.000Z" itemprop="datePublished">2017-01-14</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yesterday <a href="https://twitter.com/tobiasboelter" target="_blank" rel="external">Tobias Boelter</a> posted on his blog <a href="https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/" target="_blank" rel="external">this article</a> which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user <strong>after</strong> the message has been sent.<br>The Guardian has then picked up the info and posted the article “<a href="https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages" target="_blank" rel="external">WhatsApp vulnerability allows snooping on encrypted messages</a>“. </p>
+<p>In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are <strong>not</strong> experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made <strong>Signal</strong>, the only really secure messaging app we’re aware of <strong>and</strong> the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “<a href="https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/" target="_blank" rel="external">There is no WhatsApp ‘backdoor’</a>“, which <strong>seemed</strong> to have put the word END to this conversation.</p>
+<p>I do not agree and, since a lot of <strong>ego</strong> is going on here, I’d like to share my thoughts as well.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backdoor/">backdoor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/end-to-end-encryption/">end to end encryption</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/privacy/">privacy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/the-guardian/">the guardian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/whatsapp/">whatsapp</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+<script async>'use strict';'serviceWorker'in navigator&&navigator.serviceWorker.register('service-worker.js').then(function(a){a.onupdatefound=function(){var b=a.installing;b.onstatechange=function(){switch(b.state){case'installed':navigator.serviceWorker.controller?console.log('New or updated content is available.'):console.log('Content is now available offline!');break;case'redundant':console.error('The installing service worker became redundant.');}}}}).catch(function(a){console.error('Error during service worker registration:',a)});
+</script></body></html>

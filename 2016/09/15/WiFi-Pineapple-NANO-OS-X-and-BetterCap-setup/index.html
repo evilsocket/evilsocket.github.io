@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>WiFi Pentesting With a Pineapple NANO, OS X and BetterCap | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.Since different people from different forum">
+<meta name="keywords" content="bettercap,mitm,osx,wifi pineapple,wifi pentesting,internet connection sharing,firewall,pineapple nano,setup">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WiFi Pentesting With a Pineapple NANO, OS X and BetterCap">
+<meta property="og:url" content="https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.Since different people from different forum">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/nano.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ics.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ip.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ics_working.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/pineap.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/setup.jpg">
+<meta property="og:updated_time" content="2017-08-11T14:28:47.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WiFi Pentesting With a Pineapple NANO, OS X and BetterCap">
+<meta name="twitter:description" content="After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.Since different people from different forum">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2016/09/nano.jpg">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WiFi Pentesting With a Pineapple NANO, OS X and BetterCap
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-09-15T12:48:23.000Z" itemprop="datePublished">2016-09-15</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.<br>Since different people from different forums had issues making this work ( mostly due to the difficulties of internet connection sharing between OSX and the Pineapple ) I’ve decided to share my setup today ^_^</p>
+<center><br><img src="/images/2016/09/nano.jpg" alt="nano"><br></center>
+
+<a id="more"></a>
+<h3 id="WiFi-Pineapple-AKA-KARMA-attack-for-the-masses"><a href="#WiFi-Pineapple-AKA-KARMA-attack-for-the-masses" class="headerlink" title="WiFi Pineapple AKA KARMA attack for the masses"></a>WiFi Pineapple AKA KARMA attack for the masses</h3><p>First of all, let’s talk a little bit about the KARMA attack in case you have no idea what I’m talking about. <a href="https://digi.ninja/karma/" target="_blank" rel="external">DigiNinja</a> page on karma says:</p>
+<pre><code>Karma is a set of patches to access point software to get it to respond to probe requests not just for itself but for any ESSID requested. This allows the AP to act as a lure to draw in any clients probing for known networks. The original Karma patches were released by Dino Dai Zovi for Madwifi, I then took over and ported the patches to Madwifi-ng and have now taken them to the new hostapd.
+</code></pre><p>Long story short, on each WiFi access point there’s a demon running called <strong>hostapd</strong> which receives probes from nearby clients ( your laptop, mobile, etc ) and only responds to the probes that were sent to its SSID, discarding everything else.<br>Someone created a patched version of the hostapd binary which instead accepts <strong>every probe</strong>, this results in a WiFi access point that pretends to be (for instance) your home network thus <strong>forcing</strong> nearby devices to automatically connect to it.</p>
+<p>You can create such kind of “Evil Twin” AP using a Kali distribution, the right drivers, the right hardware and so forth, or you can also <a href="https://penturalabs.wordpress.com/2013/04/25/blue-for-the-pineapple/" target="_blank" rel="external">hack a cheap TPLink WR703N</a>, but the easiest, quickest (and IMHO more stable) solution is buying a WiFi Pineapple from <a href="http://hakshop.myshopify.com/" target="_blank" rel="external">Hak5 online shop</a>.</p>
+<p>In my case, I have a MKV, a Tetra and a NANO, in this post I’ll talk about the latter.</p>
+<h3 id="Internet-Connection-Sharing-with-OS-X"><a href="#Internet-Connection-Sharing-with-OS-X" class="headerlink" title="Internet Connection Sharing with OS X"></a>Internet Connection Sharing with OS X</h3><p>Once you’ve done with the <a href="https://www.wifipineapple.com/pages/setup#nano" target="_blank" rel="external">basic NANO configuration</a>, you’ll have your device up and running with the ip address <em>172.16.42.1</em>, in order to share the connection from your Mac wifi adapter to the NANO ( which is plugged to the Mac’s USB port at this point ) you’ll need to change this ip address to a different one which eventually will be “accepted” by the ICS OS X mechanism, so:</p>
+<pre><code>ssh root@172.16.42.1
+
+uci set network.lan.ipaddr=&apos;192.168.2.10&apos;
+uci set network.lan.gateway=&apos;192.168.2.1&apos;
+uci commit &amp;&amp; reboot
+</code></pre><p>You’ll then enable internet connection sharing from your Mac WiFi adapter to the NANO USB-Eth adapter:</p>
+<center><br><img src="/images/2016/09/ics.png" alt="ics"><br></center>
+
+<p>And eventually you’ll need to configure a static ip address for the interface:</p>
+<center><br><img src="/images/2016/09/ip.png" alt="ip"><br></center>
+
+<p>Almost done, you need to apply the correct firewall rules on your Mac to make everything work between the two interfaces, this is a bash script I’ve made ( in my case the NANO ethernet interface is <strong>en4</strong>, change it to your needs ):</p>
+<pre><code>#!/bin/bash
+
+if [ &quot;$(id -u)&quot; != &quot;0&quot; ]; then
+   echo &quot;This script must be run as root.&quot; 1&gt;&amp;2
+   exit 1
+fi
+
+sysctl -w net.inet.ip.forwarding=1
+pfctl -e
+echo &quot;nat on en0 from en4:network to any -&gt; (en0)&quot; | pfctl -f -
+</code></pre><p>Once you’ve launched it, you can ssh again into your NANO and verify that the connection sharing is actually working.</p>
+<center><br><img src="/images/2016/09/ics_working.png" alt="ics working"><br></center>
+
+<p>Last step, just configure and start <strong>PineAP</strong> as you normally would:</p>
+<center><br><img src="/images/2016/09/pineap.png" alt="pineap"><br></center>
+
+<p>You now have your KARMA attack running and nearby WiFi enabled devices should start connecting to your evil AP very soon :)</p>
+<h3 id="Port-Redirection-and-BetterCap"><a href="#Port-Redirection-and-BetterCap" class="headerlink" title="Port Redirection and BetterCap"></a>Port Redirection and BetterCap</h3><p>Unfortunately making bettercap run on the NANO is a <strong>pain in the ass</strong> and, even if you manage to do it, its hardware is simply not powerful enough to properly running it while handling multiple connections, so I’ve decided to run it on the laptop and have the NANO redirect all HTTP (and optionally HTTPS) traffic to it.</p>
+<p>Here’s a simple bash script that you need to copy to your NANO, it will enable or disable port redirection to your bettercap instance running on the laptop:</p>
+<pre><code>#!/bin/bash
+
+if [[ $# -eq 0 ]] ; then
+    echo &quot;Usage: $0 (enable|disable)&quot;
+    exit 1
+fi
+
+action=&quot;$1&quot;
+case $action in
+    enable)
+      echo &quot;Enabling ...&quot;
+      iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $(uci get network.lan.gateway):8080
+      iptables -t nat -A POSTROUTING -j MASQUERADE
+    ;;
+    disable)
+      echo &quot;Disabling ...&quot;
+      iptables -t nat -D PREROUTING -p tcp --dport 80 -j DNAT --to-destination $(uci get network.lan.gateway):8080
+    ;;
+    *)
+      echo &quot;Usage: $0 (enable|disable)&quot;
+      exit 1
+    ;;
+esac
+</code></pre><p>Once you’ve enabled port redirection, you can simply start bettercap on your laptop with your preferred command line and start intercepting the traffic of the target clients that have been forced to connect to your evil access point :D</p>
+<center><br><img src="/images/2016/09/setup.jpg" alt="final setup"><br></center>
+
+<p><strong>DONE! :D</strong> You won’t even need to MITM something, with this attack the targets will connect to you … enjoy! :)</p>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firewall/">firewall</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/internet-connection-sharing/">internet connection sharing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mitm/">mitm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/osx/">osx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pineapple-nano/">pineapple nano</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/setup/">setup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi-pentesting/">wifi pentesting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi-pineapple/">wifi pineapple</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Un Po Di Consigli per Aspiranti Professionisti Del Settore Della Sicurezza Informatica
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/24/RCE-against-every-open-source-BTS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DISCLOSURE - RCE Against Every Open Source BTS Software.</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

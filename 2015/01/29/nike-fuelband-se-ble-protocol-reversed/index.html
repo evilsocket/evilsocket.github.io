@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Nike+ FuelBand SE BLE Protocol Reversed | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="During the last two weeks I had fun playing with the BLE protocol of the Nike+ FuelBand SE, a device to track daily steps, calories, time, etc.">
+<meta name="keywords" content="hacking,reversing,authentication,bluetooth,bluetooth low energy,BLE,nike,nike+ fuelband se,fuelband,nike fuelband,protocol,nikeband">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nike+ FuelBand SE BLE Protocol Reversed">
+<meta property="og:url" content="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="During the last two weeks I had fun playing with the BLE protocol of the Nike+ FuelBand SE, a device to track daily steps, calories, time, etc.">
+<meta property="og:image" content="https://www.evilsocket.net/images/2015/Jan/nikeband.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2015/Jan/Schermata-2015-01-29-alle-20-53-25.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2015/Jan/gatto_guerra.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2015/Jan/major-facepalm.jpg">
+<meta property="og:updated_time" content="2015-01-30T23:23:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nike+ FuelBand SE BLE Protocol Reversed">
+<meta name="twitter:description" content="During the last two weeks I had fun playing with the BLE protocol of the Nike+ FuelBand SE, a device to track daily steps, calories, time, etc.">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2015/Jan/nikeband.jpg">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-nike-fuelband-se-ble-protocol-reversed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nike+ FuelBand SE BLE Protocol Reversed
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-01-29T21:52:31.000Z" itemprop="datePublished">2015-01-29</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>During the last two weeks I had fun playing with the <a href="http://en.wikipedia.org/wiki/Bluetooth_low_energy" target="_blank" rel="external">BLE</a> protocol of the <a href="http://www.nike.com/us/en_us/c/nikeplus-fuelband" target="_blank" rel="external">Nike+ FuelBand SE</a>, a device to track daily steps, calories, time, etc.</p>
+<p><img src="/images/2015/Jan/nikeband.jpg" alt="nikeband"></p>
+<a id="more"></a>
+<p>I’ve completely reversed its protocol and found out the following key points:</p>
+<ul>
+<li><strong>The authentication system is vulnerable</strong>, anyone could connect to your device.</li>
+<li>The protocol supports <strong>direct reading and writing of the device memory</strong>, up to 65K of contents.</li>
+<li>The protocol supports commands that are not supposed to be implemented in a production release ( <strong>bootloader mode</strong>, device self test, etc ).</li>
+</ul>
+<p>I’ve published a <a href="https://github.com/evilsocket/nikeplus-fuelband-se-reversed" target="_blank" rel="external">proof of concept Android application on github</a>, don’t expect it to be production ready code of course, but it works :)</p>
+<p><img src="/images/2015/Jan/Schermata-2015-01-29-alle-20-53-25.png" alt="poc logcat"></p>
+<h1 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h1><p>Because! I had fun reversing it, I hate closed source hardware protocols, and as long as I know I’m the first one to actually manage to do it, despite <a href="http://hacknikefuelband.com" target="_blank" rel="external">many are trying</a> since the first version with no luck.  </p>
+<p>Kudos to <a href="https://twitter.com/tompohl" target="_blank" rel="external">Tom Pohl</a> for being the first one to <a href="http://tompohl.com/2012/05/16/hacking-the-nike-fuelband/" target="_blank" rel="external">reverse and somehow hack</a> the HTTP API of the FuelBand and to <a href="https://twitter.com/qDot" target="_blank" rel="external">Kyle Machulis</a> for his reversing of the <a href="https://github.com/qdot/libfuelband" target="_blank" rel="external">FB USB protocol</a>. You rock guys!</p>
+<pre><code>The question is never why, the question is always **how**.
+</code></pre><p><img src="/images/2015/Jan/gatto_guerra.jpg" alt="fucku"></p>
+<h1 id="BLE"><a href="#BLE" class="headerlink" title="BLE"></a>BLE</h1><pre><code>The **B**luetooth **L**ow **E**nergy is a wireless personal area network technology
+designed and marketed by the Bluetooth Special Interest Group aimed at novel applications
+in the healthcare, fitness, beacons, **security** ( LOL, more on this later ), and home
+entertainment industries. Compared to Classic Bluetooth, Bluetooth Smart is intended to
+provide considerably reduced power consumption and cost while maintaining a similar
+communication range.
+</code></pre><p>Basically it’s something that works on the bluetooth frequencies, but has very little in common to the classic bluetooth, mostly because the device protocol must be implemented by each vendor since there isn’t really a standard (yet?).  </p>
+<p>Each device has its <strong>characteristics</strong> which basically are read/write channels (thing about them as sockets), while the writing method is only one, there are two modes of reading data, either you perform an active reading or you wait for the <code>onCharacteristicChanged</code> event and get the available data from the read channel.</p>
+<p>The annoying part of this technology is <strong>synchronization</strong>, since read and write operations can not be performed simultaneously, instead each one needs the previous operation to be completed before being scheduled … <strong>event programming</strong> dudes!</p>
+<p>That’s why you will find an event queue and a lot of sinchronization code in my PoC, not my fault :P</p>
+<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>Fortunately there’s a <a href="https://play.google.com/store/apps/details?id=com.nike.fb" target="_blank" rel="external">Nike official Android application</a> that I managed to reverse, since I don’t (actually <strong>didn’t</strong>, more on this later ) know smali, I used the lame method of converting the APK to a JAR package using the great <a href="https://code.google.com/p/dex2jar/" target="_blank" rel="external">dex2jar</a> tool and then <a href="http://jd.benow.ca/" target="_blank" rel="external">JD-Gui</a> to easily read the Java source code.</p>
+<p>First thing first, the device is detected and recognized by its <strong>COMPANYCODE</strong> in the advertisment data ( <code>byte[] NIKE_COMPANY_CODE = { 0, 120 }</code> ), then a <strong>GATT</strong> service discovery is launched.</p>
+<p>The main command service UUID is <code>83cdc410-31dd-11e2-81c1-0800200c9a66</code> and it has two characteristics:</p>
+<ul>
+<li>Command Channel (where you write commands) : <code>c7d25540-31dd-11e2-81c1-0800200c9a66</code></li>
+<li>Response Channel (where you wait for responses) : <code>d36f33f0-31dd-11e2-81c1-0800200c9a66</code></li>
+</ul>
+<p>Once the client device attaches to these two channels, it enables notifications on the response one and the authentication procedure starts.</p>
+<h1 id="How-the-Authentication-Procedure-Theoretically-Works"><a href="#How-the-Authentication-Procedure-Theoretically-Works" class="headerlink" title="How the Authentication Procedure Theoretically Works"></a>How the Authentication Procedure Theoretically Works</h1><p>I’m saying <strong>theoretically</strong> because that’s what some parts of the application suggest it <strong>should</strong> work, but actually I’ve found out that most of the authentication code is bypassed and some pretty funny constants are used :)</p>
+<p>Everything starts with a <strong>PIN</strong>, a string that “someone” will send you (probably the Nike web api)  during the first login/setup with the device, this string is stored inside the XML file <code>/data/data/com.nike.fb/shared_prefs/profilePreferences.xml</code>, in my case its node is:</p>
+<pre><code>...
+&lt;string name=&quot;pin&quot;&gt;69AB8DA2-F7D6-497C-869D-493CCF8FE8BC&lt;/string&gt;
+...
+</code></pre><p>The pin is then hashed with the <strong>MD5</strong> function and the first 6 bytes of the resulting hash are converted to hexadecimal, those 6 bytes will become the <strong>discovery_token</strong> stored in the same file:</p>
+<pre><code>...
+&lt;string name=&quot;discovery_token&quot;&gt;5E5E6F7A7FE2&lt;/string&gt;
+...
+</code></pre><p>Every time the app finds the device and wants to connect with it, it sends the following <strong>START AUTHENTICATION</strong> command:</p>
+<pre><code>0x90 0x0101 0x00 0x00 0x00 ....
+</code></pre><p><strong>0x90</strong> indicates that’s a <strong>SESSION</strong> command and its bits contains the sequence number, number of total packets in the transaction and packet index ( <a href="https://github.com/evilsocket/nikeplus-fuelband-se-reversed/blob/master/src/com/evilsocket/blehacks/Packet.java" target="_blank" rel="external">this</a> is the encoder ).</p>
+<p><strong>0x0101</strong> are the bytes indicating the <strong>START AUTH</strong> command and all the <strong>0x00</strong> are zero bytes padding up to 19 bytes.</p>
+<p>Once the app sends this packet, the device replies with a <strong>challenge response</strong> containing a 16 bytes long <strong>nonce</strong> buffer.</p>
+<pre><code>0xC0 0x11 0x41 0xF495C98693075322225EB8B8A4D79B39
+</code></pre><ul>
+<li><strong>0xC0</strong> Reply opcode ( SESSION protocol, 0 following packets, packet index 0, sequence number 4 ).</li>
+<li><strong>0x11</strong> Following data size ( 16 of the nonce + 1 of 0x41 ).</li>
+<li><strong>0x41</strong> Auth opcode <strong>OPCODE_AUTH_CHALLENGE</strong> ( namely: “Hey dude, I’m sending you the <strong>nonce</strong>! )</li>
+<li><strong>0xF495C98693075322225EB8B8A4D79B39</strong> : The <strong>nonce</strong> itself.</li>
+</ul>
+<p>To succesfully authenticate to the device, you need to take this <strong>nonce</strong>, the previously discussed <strong>discovery_token</strong>, get a <strong>CRC32</strong> of them, truncate it to two bytes and send it back to the device, so the resulting packet would be something like:</p>
+<pre><code>0xB0 0x0302 XX XX 0x00 0x00 ........
+</code></pre><ul>
+<li><strong>0xB0</strong> : SESSION protocol, 0 following packets, packet index 0, sequence number 5.</li>
+<li><strong>0x0302</strong> : Authentication request opcode.</li>
+<li><strong>XX XX</strong> : The two bytes of the truncated CRC32.</li>
+<li><strong>0x00 …</strong> : Zero padding up to 19 bytes.</li>
+</ul>
+<p>Sounds quite simple yet robust doesn’t it? Since you need both the <strong>pin</strong> ( which is probably linked to the user account ) and the <strong>nonce</strong> sent by the device, there’s no way you can remotely connect to a FuelBand unless you have physical access to the owner device or you have hacked his account and used it on your device to force the web api to send you back his pin.</p>
+<p>Right? ….. <strong>WRONG</strong> ! :D</p>
+<p><strong>NOTE</strong>: Besides what I’m about to write, the device is broadcasting the user discovery_token within its <strong>advertisment data</strong> ( the <strong>MANUDATA</strong> field ), so you could sniff it anyway … LOL!</p>
+<p>I’ve been stucked a couple of days on this … I implemented everything in the right way, I was using my own <strong>discovery_token</strong>, succesfully initiated the connection to the device and got the <strong>nonce</strong>, CRC32’ed them together … and then I got an <strong>InvalidParameterException</strong> from the <a href="https://github.com/evilsocket/nikeplus-fuelband-se-reversed/blob/master/src/com/evilsocket/blehacks/CopperheadCRC32.java#L42" target="_blank" rel="external">class which was computing the CRC32 checksum</a> ( that I copied from the JD-GUI decompilation ) with the message:</p>
+<pre><code>Length of data must be a multiple of 4
+</code></pre><p><strong>WTF DUDE?!</strong> How could the discovery_token, which is only 6 bytes long, have a size which is divisible by 4?!<br>So I tried to truncate it to 4 bytes, pad it, hash it … you say it!<br>Nothing was working.</p>
+<p>So I decided that it was the time for me to learn to read and write in <strong>Smali</strong> ( took me a couple of hours, quite simple actually ).</p>
+<p>I decompiled the APK again, this time using <a href="https://code.google.com/p/android-apktool/" target="_blank" rel="external">apktool</a> to get the smali code, injected some code of mine to make the application log the actual token it was using, recompiled it with apktool, signed it with <strong>signapk</strong> and reinstalled to my device.</p>
+<p>I’ve modified the class <code>com.nike.nikerf.protocol.impl.CopperheadAuthenticationHandler</code>, adding the <strong>Smali</strong> code to log the token to its method <code>calculateChallengeResponse</code>.</p>
+<p><strong>Original</strong> ( Java version )</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] mAuthToken;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">short</span> <span class="title">calculateChallengeResponse</span><span class="params">(<span class="keyword">byte</span>[] nonce)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    CopperheadCRC32 crc32 = <span class="keyword">new</span> CopperheadCRC32();</div><div class="line">    crc32.update(nonce);</div><div class="line">    crc32.update(<span class="keyword">this</span>.mAuthToken);</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">short</span>)(<span class="number">0xFFFF</span> &amp; crc32.getValue() ^ <span class="number">0xFFFF</span> &amp; crc32.getValue() &gt;&gt;&gt; <span class="number">16</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Patched</strong> ( Java version )</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">byte</span>[] mAuthToken;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">short</span> <span class="title">calculateChallengeResponse</span><span class="params">(<span class="keyword">byte</span>[] nonce)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    CopperheadCRC32 crc32 = <span class="keyword">new</span> CopperheadCRC32();</div><div class="line">    crc32.update(nonce);</div><div class="line">    crc32.update(<span class="keyword">this</span>.mAuthToken);</div><div class="line"></div><div class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.mAuthToken.length; ++i )&#123;</div><div class="line">        android.util.Log.w( <span class="string">"HACK"</span>, <span class="string">"AUTH_TOKEN["</span> + i + <span class="string">"] = "</span> + String.format(<span class="string">"%02X "</span>, <span class="keyword">this</span>.mAuthToken[i] ) );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (<span class="keyword">short</span>)(<span class="number">0xFFFF</span> &amp; crc32.getValue() ^ <span class="number">0xFFFF</span> &amp; crc32.getValue() &gt;&gt;&gt; <span class="number">16</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Guess what?</p>
+<h1 id="How-the-Authentication-Procedure-Really-Works"><a href="#How-the-Authentication-Procedure-Really-Works" class="headerlink" title="How the Authentication Procedure Really Works"></a>How the Authentication Procedure Really Works</h1><pre><code>Fuck it, who fucking cares about that token anyway? Let&apos;s just use **0xff 0xff 0xff 0xff 0xff 0xff ....** !
+</code></pre><p><img src="/images/2015/Jan/major-facepalm.jpg" alt="facepalm"></p>
+<p>Yeah … although the code is there and all the mechanism described in the previous section could be robust … they are just using a hard coded token of 0xff 0xff 0xff 0xff 0xff 0xff …. meaning that, anyonce who’s able to get the <strong>nonce</strong> from the device ( so anyone with a BLE capable Android smarphone since the device itself it’s sending it ) will be able to authenticate against your device and send any command … let me facepalm again ….</p>
+<p>So basically here the code to create an authentication packet:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">CopperheadCRC32 crc = <span class="keyword">new</span> CopperheadCRC32();</div><div class="line"></div><div class="line"><span class="keyword">byte</span>[] auth_token = Utils.hexToBytes(<span class="string">"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"</span>);</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * Create the response packet: 0xb0 0x03 0x02 [2 BYTES OF CRC] 0x00 ...</span></div><div class="line"><span class="comment"> */</span></div><div class="line">Packet resp_packet = <span class="keyword">new</span> Packet(<span class="number">19</span>);</div><div class="line"></div><div class="line">resp_packet.setProtocolLayer( CommandResponseOperation.ProtocolLayer.SESSION );</div><div class="line">resp_packet.setPacketCount(<span class="number">0</span>);</div><div class="line">resp_packet.setPacketIndex(<span class="number">0</span>);</div><div class="line">resp_packet.setSequenceNumber( challenge_packet.getSequenceNumber() + <span class="number">1</span> );</div><div class="line"></div><div class="line">ByteBuffer response = ByteBuffer.allocate(<span class="number">18</span>);</div><div class="line"></div><div class="line">response.put( (<span class="keyword">byte</span>)<span class="number">0x03</span> );</div><div class="line">response.put( (<span class="keyword">byte</span>)<span class="number">0x02</span> );</div><div class="line"></div><div class="line">crc.update(nonce);</div><div class="line">crc.update(auth_token);</div><div class="line"></div><div class="line"><span class="keyword">short</span> sum = (<span class="keyword">short</span>)((<span class="number">0xFFFF</span> &amp; crc.getValue()) ^ (<span class="number">0xFFFF</span> &amp; crc.getValue() &gt;&gt;&gt; <span class="number">16</span>));</div><div class="line"></div><div class="line">response.putShort(sum);</div><div class="line"></div><div class="line">resp_packet.setPayload( response.array() );</div></pre></td></tr></table></figure>
+<p>And finally the device will reply with:</p>
+<pre><code>0xE0 0x01 0x42 0x00000000000000000000000000000000
+</code></pre><ul>
+<li><strong>0xE0</strong>: SESSION layer reply, bla bla bla.</li>
+<li><strong>0x01</strong>: 1 byte of reply.</li>
+<li><strong>0x42</strong>: Succesfully authenticated ( FUCK YEAH! )</li>
+<li><strong>0x00..</strong>: Padding.</li>
+</ul>
+<h1 id="Sending-Commands"><a href="#Sending-Commands" class="headerlink" title="Sending Commands"></a>Sending Commands</h1><p>Once you’re succesfully authenticated, you can start sending command, each command has its own encoding standard, but the first three bytes are always:</p>
+<ul>
+<li><strong>protocol byte</strong>: SESSION or COMMAND constants + some bit hacking to set sequence number etc.</li>
+<li><strong>length byte</strong>: Size of the following data.</li>
+<li><strong>opcode</strong> : Code of the command:</li>
+</ul>
+<p>Each command ( and its encode ) is implemented inside the class <code>com.nike.nikerf.protocol.impl.NikeProtocolCoder_Copperhead</code>, for instance here’s the redacted implementation of <strong>Cmd_GenericMemoryBlock</strong> ( yeah -.- ):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Cmd_GenericMemoryBlock</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_ADDRESS = <span class="number">65536</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR1 = <span class="string">"Request packet does not contain all required fields"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR2 = <span class="string">"Request fields contain invalid values"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR3 = <span class="string">"Transaction already in progress"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR4 = <span class="string">"Request does not belong to a transaction"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR5 = <span class="string">"Failed to open a transaction"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR6 = <span class="string">"Failed to close a transaction"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String MSG_ERR7 = <span class="string">"I/O failed"</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span> SUBCMD_END_TRANSACTION = <span class="number">3</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span> SUBCMD_READ_CHUNK = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span> SUBCMD_START_READ = <span class="number">4</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span> SUBCMD_START_WRITE = <span class="number">2</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">byte</span> SUBCMD_WRITE_CHUNK = <span class="number">1</span>;</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> NikeMessage <span class="title">decode</span><span class="params">(<span class="keyword">final</span> NikeTransaction nikeTransaction)</span> <span class="keyword">throws</span> ProtocolCoderException </span>&#123;</div><div class="line">        ... decode a response ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">encode</span><span class="params">(<span class="keyword">final</span> NikeTransaction nikeTransaction)</span> <span class="keyword">throws</span> ProtocolCoderException </span>&#123;</div><div class="line">        ... encode <span class="keyword">this</span> command ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">byte</span> <span class="title">getOpCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>In my proof of concept application you will find the code to create and send <strong>Cmd_Settings_Get</strong> commands, retrieving some sample data such as <strong>BAND_COLOR</strong>, <strong>FUEL</strong> level, owner <strong>FIRST_NAME</strong> and device <strong>SERIAL_NUMBER</strong>.</p>
+<h1 id="Commands-Lists"><a href="#Commands-Lists" class="headerlink" title="Commands Lists"></a>Commands Lists</h1><ul>
+<li><strong>Cmd_BatteryState</strong>: Retrieve battery state.</li>
+<li><strong>Cmd_Bootloader</strong>: Set the device to bootloader mode ( basically it locks down the device, the official app won’t work either … only resetting it with the usb cable will unlock it ).</li>
+<li><strong>Cmd_DesktopData</strong>: ???</li>
+<li><strong>Cmd_EventLog</strong>: Get device event log.</li>
+<li><strong>Cmd_GenericMemoryBlock</strong>: Read or Write a memory address from 0 to 0xFFFF.</li>
+<li><strong>Cmd_MetricNotificationIntervalUpdate</strong>: Set interval time to receive metrics update notifications.</li>
+<li><strong>Cmd_Notification_Subscribe</strong>: Subscribe to the notification of a specific metric.</li>
+<li><strong>Cmd_ProtocolVersion</strong>: Get device protocol version.</li>
+<li><strong>Cmd_RTC</strong>: Configure the device real time clock.</li>
+<li><strong>Cmd_Reset</strong>: Reset the device.</li>
+<li><strong>Cmd_ResetStatus</strong>: Reset the user data.</li>
+<li><strong>Cmd_SampleStore</strong>: Use the device memory to store a custom object (!!!).</li>
+<li><strong>Cmd_SampleStoreAsync</strong>: Same, but async.</li>
+<li><strong>Cmd_SelfTest</strong>: Perform a hardware self test and get the results.</li>
+<li><strong>Cmd_Session_Ctrl</strong>: Login/Logout/Ping</li>
+<li><strong>Cmd_Settings_Get</strong>: Get a setting value by its code.</li>
+<li><strong>Cmd_Settings_Get_Activity_Stats</strong>: Get user activity statistics.</li>
+<li><strong>Cmd_Settings_Get_Boolean</strong>: Get a boolean setting.</li>
+<li><strong>Cmd_Settings_Get_Int</strong>: Get an integer setting.</li>
+<li><strong>Cmd_Settings_Get_MoveReminder</strong>: Get a “move reminder” type setting.</li>
+<li><strong>Cmd_Settings_Set</strong>: Set the value of a setting by its code.</li>
+<li><strong>Cmd_Settings_Set_MoveReminder</strong>: Set a “movie reminder” setting.</li>
+<li><strong>Cmd_UploadGraphic</strong>: Upload a bitmap to show on the device led screen ( a subclass of Cmd_GenericMemoryBlock ).</li>
+<li><strong>Cmd_UploadGraphicsPack</strong>: ???</li>
+<li><strong>Cmd_Version</strong>: Get device firmware version.</li>
+</ul>
+<h1 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h1><p>Altough the device does not contain sensitive data about the user, this is a good proof of concept on how a badly implemented BLE custom protocol could lead an attacker to compromise a device ( such as the <strong>BLE proximity sensor of an alarm</strong> :) ) without any kind of authentication or expensive hardware.</p>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BLE/">BLE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/authentication/">authentication</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth-low-energy/">bluetooth low energy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fuelband/">fuelband</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hacking/">hacking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nike/">nike</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nike-fuelband/">nike fuelband</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nike-fuelband-se/">nike+ fuelband se</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nikeband/">nikeband</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/protocol/">protocol</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reversing/">reversing</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/01/huawei-usb-modems-authentication-bypass/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Huawei Modems Authentication Bypass
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/16/how-to-install-metasploit-on-os-x-mavericks-and-yosemite-an-updated-guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to Install Metasploit on OS X Mavericks and Yosemite, an Updated Guide</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

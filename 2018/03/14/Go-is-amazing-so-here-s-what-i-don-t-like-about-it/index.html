@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="After my last post and generally the kind of indirect advertising I’m doing to the Go programming language for a few months now, I heard about and talked with a lot of people who started being interes">
+<meta name="keywords" content="go,golang,programming,developing,design patterns,oop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It">
+<meta property="og:url" content="https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="After my last post and generally the kind of indirect advertising I’m doing to the Go programming language for a few months now, I heard about and talked with a lot of people who started being interes">
+<meta property="og:image" content="https://abs.twimg.com/emoji/v2/72x72/1f984.png">
+<meta property="og:updated_time" content="2018-03-16T10:58:04.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It">
+<meta name="twitter:description" content="After my last post and generally the kind of indirect advertising I’m doing to the Go programming language for a few months now, I heard about and talked with a lot of people who started being interes">
+<meta name="twitter:image" content="https://abs.twimg.com/emoji/v2/72x72/1f984.png">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/books.html">Books</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About Me</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Go-is-amazing-so-here-s-what-i-don-t-like-about-it" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2018-03-14T22:39:09.000Z" itemprop="datePublished">2018-03-14</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>After my last post and generally the kind of indirect advertising I’m doing to the Go programming language for a few months now, I heard about and talked with a lot of people who started being interested in the language, so for once I decided to write what I don’t like about it instead, to provide a more balanced perspective of what’s my experience so far and maybe let some of those people realize that Go is not the right choice for their projects after all.</p>
+<p><strong>NOTE 1</strong></p>
+<p>It’s important to say that some, if not most of the things I’m about to write are purely subjective and related to my programming habits, they do not necessarily represent so called “best practices” and should not be taken like so. Moreover, I’m still a Go noob, some of the things I’m going to say might just be inaccurate / wrong, in which case feel free to correct me and teach me something new, <strong>please</strong> :D</p>
+<p><strong>NOTE 2</strong></p>
+<p>Before we start: I love this language and I already explained why I still consider it a better choice for several applications, but I’m not interested in an opinion war about Go vs Rust, or Go vs whatever … use what you think it’s best for what you have to do: if that’s Rust go for it, if you think it’s binary code you send to the processor by using your nipples to inject faults into some data bus, go for it, both cases, code and let code, life is too short for being a language hipster.</p>
+<a id="more"></a>
+<p>Let’s start from the smallest things to the more serious ones …</p>
+<h3 id="Plz-Gimme-a-Ternary-Operator"><a href="#Plz-Gimme-a-Ternary-Operator" class="headerlink" title="Plz Gimme a Ternary Operator"></a>Plz Gimme a Ternary Operator</h3><p>Writing mostly apps that run in a terminal emulator, I often find myself printing the status of the parts of the system I’m working on in terms of <code>enabled</code> / <code>disabled</code> (like enabling or disabling one of bettercap’s modules and reporting that information), which means most of the times I need to translate a <code>boolean</code> variable to a more descriptive <code>string</code>, in C++ or any other language supporting <a href="https://en.wikipedia.org/wiki/%3F:" target="_blank" rel="external">this operator</a> it would be something like:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bool</span> someEnabledFlagHere = <span class="literal">false</span>;</div><div class="line"></div><div class="line"><span class="built_in">printf</span>(<span class="string">"Cool module is: %s\n"</span>, someEnabledFlagHere ? <span class="string">"enabled"</span> : <span class="string">"not enabled"</span>);</div></pre></td></tr></table></figure>
+<p>Unfortunately Go does not support this, which means you end up doing ugly stuff like:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">someEnabledFlagHere := <span class="literal">false</span></div><div class="line">isEnabledString := <span class="string">"not enabled"</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> someEnabledFlagHere == <span class="literal">true</span> &#123;</div><div class="line">    isEnabledString = <span class="string">"enabled"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">log.Printf(<span class="string">"Cool module is: %s\n"</span>, isEnabledString)</div></pre></td></tr></table></figure>
+<p>And this is basically the most elegant way you have to do it (other that actually having a <code>map[bool]string</code> just for that …) … is it less convenient? is it more? For me it’s ugly, and when your system is highly modular, repeating this stuff over and over again can considerably increase the size of your code base, basically for no valid reason but the lack of an operator. ¯\_(ツ)_/¯</p>
+<p><strong>NOTE</strong> Yes, I know you can do this by creating a function or aliasing the <code>string</code> type, there’s no need to post every possible ugly workaround on the comments, thanks :)</p>
+<h3 id="Auto-generated-stuff-Documentation"><a href="#Auto-generated-stuff-Documentation" class="headerlink" title="Auto generated stuff != Documentation"></a>Auto generated stuff != Documentation</h3><p>Dear Go experts, I’m really thankful for the code you share and the stuff I manage to learn everyday by reading it, but I don’t think this is of any real use:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// this function adds two integers </span></div><div class="line"><span class="comment">// -put captain obvious meme here-</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTwoNumbers</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>As I do not think that <a href="https://godoc.org/github.com/google/gopacket" target="_blank" rel="external">things like these</a> are valid substitutes for documentation, while it looks like this is the standard way gophers document their code (with some exceptions of course), even if it’s about frameworks with thousands of forks and users we’re talking about … not a fan of super detailed documentation myself and this is not necessarily a huge problem if you enjoy digging into the code itself anyway, but if you’re a documentation junkie, be prepared to a continuous disappointment.</p>
+<h3 id="Git-repos-as-a-Package-System-is-nuts"><a href="#Git-repos-as-a-Package-System-is-nuts" class="headerlink" title="Git repos as a Package System is nuts"></a>Git repos as a Package System is nuts</h3><p>I had an interesting conversation on Twitter a few days ago, I was explaining to someone why Go imports look like github URLs:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">"github.com/bettercap/bettercap"</span></div></pre></td></tr></table></figure>
+<p>Or simply what happens when you:</p>
+<pre><code># go get github.com/bettercap/bettercap
+</code></pre><p>Basically, in the simplest Go installation you might possibly use (not using <code>vendor</code> folders and/or not overriding <code>$GOPATH</code>), everything (not really but let’s pretend for the sake of simplicity) lives in this arbitrary folder you decided and with which you filled the <code>$GOPATH</code> variable, let’s say in my case it’s <code>/home/evilsocket/gocode</code> (well, <a href="https://github.com/evilsocket/dotfiles/blob/master/data/go.zshrc#L2" target="_blank" rel="external">it actually is</a>). Whenever I either <code>go get</code> something, or I am importing it and using <code>go get</code> to <a href="https://github.com/bettercap/bettercap/blob/master/Makefile#L28" target="_blank" rel="external">automagically download the needed packages</a>, what basically happens on my computer is:</p>
+<pre><code># mkdir -p $GOHOME/src
+# git clone https://github.com/bettercap/bettercap.git $GOHOME/src/github.com/bettercap/bettercap
+</code></pre><p>Yes, Go actually uses Git repositories for packages, applications and everything Go related … which is very convenient in a way, but it creates a huge problem: as long as you don’t use different tools and / or ugly workarounds (more on this in a bit), everytime you compile a software on a new system which is missing a given package, the <code>master</code> branch of the repository of that package will be cloned, meaning <strong>you’ll potentially have different code every time you compile your project on a new computer even if the code of the application you’re compiling did not change at all</strong> (but the master branch of any of the packages did). </p>
+<center><br><iframe src="https://giphy.com/embed/12NUbkX6p4xOO4" width="480" height="440" frameborder="0" class="giphy-embed" allowfullscreen></iframe><p><a href="https://giphy.com/gifs/shia-labeouf-12NUbkX6p4xOO4" target="_blank" rel="external">via GIPHY</a></p><br></center>
+
+<p>Have fun when users will start reporting bugs about third party libraries and you have no idea at which commit the repos where at when they built their version of the software from source ^_^</p>
+<p>Yes, yes, <strong>yes</strong>. You can use <a href="https://github.com/Masterminds/glide" target="_blank" rel="external">stuff like Glide</a> or any other tool that will “freeze” your dependencies to specific commits / tags and use a separate folder for them … but that is an ugly workaround for a terrible design choice, we all know it, it works, but it’s ugly.</p>
+<p>Pretty much like <a href="http://labix.org/gopkg.in" target="_blank" rel="external">using URL redirectors</a> in order to be able to import specific versions of a package … it works, but it’s ugly and maybe somebody might also be concerned about the security implications of that … who’s in control of those redirections? Does this whole mechanism make you feel comfortable with the stuff you’re importing in your code and compiling and running on your computer, maybe as root with sudo? <strong>It should not</strong>. </p>
+<h3 id="Reflection-Mmm-not-really-…"><a href="#Reflection-Mmm-not-really-…" class="headerlink" title="Reflection? Mmm not really …"></a>Reflection? Mmm not really …</h3><p>When I first heard about Go having reflection and, being used to the concept of reflection from other languages such as Python, Ruby, but also Java, C# and so on, I had so many ideas on how to use it (or, how to use what I thought to be Go’s reflection), like automagically enumerate available 802.11 layer types and build packets out of those, resulting in automatic WiFi fuzzing or something very close to that … it turns out, <code>reflection</code> is a big word when it comes to Go :D</p>
+<p>Yes, given an opaque <code>obj interface{}</code> you can get its original type and you can also list the fields of a given object, but you can’t do simple stuff like enumerating the objects ( <code>struct</code>s and generally <code>type</code>s ) that a given package exports, which might seems trivial, but without it you can’t do stuff like:</p>
+<ol>
+<li>Build a plugin system that autoloads stuff from a given package without explicit declarations.</li>
+<li>Basically everything you can do with <code>dir</code> in Python.</li>
+<li>Build the definitive 802.11 fuzzer I had in mind.</li>
+</ol>
+<p>So yeah, reflection is kind of limited compared to other languages … I don’t know about you, but it bothers me …</p>
+<h3 id="Generics-Nah"><a href="#Generics-Nah" class="headerlink" title="Generics? Nah"></a>Generics? Nah</h3><p>While most people coming from object oriented languages will complain about the lack of generics in Go, I personally don’t find that a big issue not being a super fan of OOP-at-all-costs myself. Instead, I do think Go object model (which is basically not an object model) is simple and slim, this design is inconsistent with the complexity that generics would add IMO.</p>
+<pre><code>NOTE
+
+With this I don&apos;t mean &quot;generics == OOP&quot;, but just that the majority of developers expecting generics is because they replaced C++ with Go and expect something like templates, or the Java generics ... we can surely talk about the small minority coming from functional languages with generics or whatever, but for my experience those are not statistically relevant.
+</code></pre><p>On the other end, this simplistic object model, which is quite close to <a href="https://www.thejach.com/view/2010/1/oop_in_c_with_function_pointers_and_structs" target="_blank" rel="external">just using function pointers and structs in C</a>, makes something else less simple and immediate than the average language.</p>
+<p>Let’s say you’re developing a software that has many modules (I like modularity in case that wasn’t clear already :D), all of them derive from the same base object (so you can expect a given interface and handle them transparently) which also needs to have some default functionality already implemented and shared among all derived modules (methods all the derived modules would use so they’re directly implemented in the base object for convenience).</p>
+<p>Well, while on other languages you’d have abstract classes, or stuff that is partially implemented (the common and shared methods) and partially only describes an interface (pure <code>virtual</code> methods):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseObject</span> &#123;</span></div><div class="line"><span class="keyword">protected</span>:</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">commonMethod</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"I'm available to all derived objects!"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="comment">// while this needs to be implemented by every derived object</span></div><div class="line">  <span class="function"><span class="keyword">virtual</span> <span class="title">interfaceMethod</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>It happens that Go simply does not support this, something can either be an <code>interface</code> or a base <code>struct</code> (object), but it can’t be both at the same time, so we’d need to “split” this example in this way:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> BaseObjectForMethods <span class="keyword">struct</span> &#123; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(o BaseObjectForMethods)</span> <span class="title">commonMethod</span><span class="params">()</span></span> &#123;</div><div class="line">    log.Printf(<span class="string">"I'm available to all derived objects!\n"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> BaseInterface <span class="keyword">interface</span> &#123;</div><div class="line">    interfaceMethod()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Derived <span class="keyword">struct</span> &#123;</div><div class="line">    <span class="comment">// I just swallowed my base object and got its methods</span></div><div class="line">    BaseObjectForMethods</div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="comment">// and here we implement the interface method instead</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Derived)</span> <span class="title">interfaceMethod</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// whatever, i'm a depressed object model anyway ... :/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>And eventually your derived object will implement the interface and extend the base structure … it might look like the same or also that this is a more elegant and decoupled approach, but it can get messy quite fast when you try to push Go polymorphism a little bit further than this ( <a href="https://github.com/bettercap/bettercap/blob/master/session/module.go" target="_blank" rel="external">here a more realistic example</a> ).</p>
+<h3 id="Go-stuff-is-easy-to-build-CGO-is-hell"><a href="#Go-stuff-is-easy-to-build-CGO-is-hell" class="headerlink" title="Go stuff is easy to build, CGO is hell."></a>Go stuff is easy to build, CGO is hell.</h3><p>Building (and crosscompiling) Go apps is incredibly easy, no matter for what platform you’re building it for or from. Using the same Go installation you can compile the same app for Windows, or macOS, or Android or some MIPS device with GNU/Linux if you want, no toolchains needed, no exotic compilers, no OS specific flags to remember, no weird <code>configure</code> scripts that never really work as we expect them to … <strong>HOW COOL IS THAT?!</strong> (if you come from the C/C++ world and used to cross compile your stuff a lot, you know this is huge…or if you’re a security consultant who needs to quickly cross compile his agents for both that tasty Windows domain controller and the crappy MIPS IP Cam he infected yesterday).</p>
+<p>Well, <strong>it happens this is simply not the case if you’re using any native library which was not originally implemented in Go</strong>, and you probably will unless you won’t just use Go for “hello world”.</p>
+<p>Let’s say your Go project is using <code>libsqlite3</code>, or <code>libmysql</code>, or <code>libwhatever</code> because whoever wrote that neat ORM you’re using in your super fast Go API did not bother reimplementing the whole DB protocol in Go (of course) but just used some nice, default, standard and well tested system library wrapped in a CGO module … so far so good, all languages have some wrapping mechanism for native libraries … and also, all is good as long as you’re just compiling your project for your host system, where <code>libsqlite3.so</code>, or <code>libmysql.so</code>, or <code>libwhatever.so</code> are available via some <code>apt-get install precompiled-swag</code> thing, but what happens when you have to crosscompile, let’s say, this project for Android? <strong>What if the destination system does not have <code>libXXXXXX.so</code> as default? Of course, you’ll either need that system’s C/C++ toolchain and compile the library yourself</strong>, or just find a way to install the compiler direcly on that system and compile everything there (using your Android tablet as a build machine basically). Have fun with that.</p>
+<p>Needless to say, if you want / need to support several operating systems and architectures (why you shouldn’t given one of Go biggest strength, as we said, is exactly this?) this adds a huge amount of complexity to your build pipeline, making a Go project at least as complex to cross compile (sometimes, ironically, even more) than just a C/C++ codebase.</p>
+<p>For <a href="https://github.com/evilsocket/arc" target="_blank" rel="external">some project of mine</a> at some point I just fully replaced the <code>sqlite</code> database I was using with JSON files, that allowed me to get rid of the native dependency and have a 100% Go app, which made crosscompilation <a href="https://github.com/evilsocket/arc/releases" target="_blank" rel="external">super easy again</a> ( while <a href="https://github.com/bettercap/bettercap/blob/master/build.sh" target="_blank" rel="external">this is the hell</a> you’re going to have to manage if you just can’t avoid having native dependencies … sorry about that :/ ).</p>
+<p>If your <code>super-smart-self</code> is now screaming <strong>USE STATIC BUILDS!!!!</strong> all over (statically compile libraries in order to at least have them -inside- the binary), just don’t. If you compile everything statically with a given version of <code>glibc</code> the binary will not work on systems with a different <code>glibc</code>.</p>
+<p>If your <code>even-smarter-self</code> is now screaming <strong>USE DOCKER FOR BUILDS!!!!!</strong>, find a way to do it correctly for -every- platform and -every- arch and then send me an email :)</p>
+<p>If your <code>but-i-kinda-know-go-for-real-self</code> is about to suggest some exotic <code>glibc</code> alternative, see requirements for his brother, Mr <code>even-smarter-self</code> :D</p>
+<h3 id="ASLR-Nope-troll-face"><a href="#ASLR-Nope-troll-face" class="headerlink" title="ASLR? Nope! -troll face-"></a>ASLR? Nope! -troll face-</h3><p>So ok, this is kind of controversial, <a href="https://rain-1.github.io/golang-aslr.html" target="_blank" rel="external">Go binaries have no ASLR</a>, <strong>BUT</strong>, given how Go manages memory (and mostly, given <a href="https://golang.org/doc/faq#no_pointer_arithmetic" target="_blank" rel="external">it doesn’t have pointer arithmetic</a>) that <strong>should not</strong> be a security issue, as long as you do not use bindings to native libraries with vulnerabilities, in which case the lack of Go ASLR would <a href="http://blog.securitymouse.com/2014/07/bla-bla-lz4-bla-bla-golang-or-whatever.html" target="_blank" rel="external">make exploitation way easier</a>.</p>
+<p>Now, I kind of get Go developers point and I kind of don’t: why adding complexity to the runtime just to protect the runtime from something it is not vulnerable to in the first place? … but considering how often you end up using native libraries (see the previous section of this post :P) just ignoring the problem is not a wise approach regardless IMHO.</p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>There are many other small things I don’t like about Go, but that is also true for every other language I know, so I just focused on the main things and tried to skip stuff like <code>i don&#39;t like this syntax X</code> which is completely subjective (and I do like Go syntax btw). I saw many people, blindly embracing a new language just because it’s trending on GitHub … on one hand, if so many developers decided to use it, there are indeed good reasons (or they’re just <code>compile-anything-to-javascript</code> hipsters), but the perfect language which is the best option for every possible application does not exist (yet, I still have faith in nipples and fault injection U.U), always better to double check the pros and cons.</p>
+<center><br>peace<br><br><img src="https://abs.twimg.com/emoji/v2/72x72/1f984.png"><br></center>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-patterns/">design patterns</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/developing/">developing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oop/">oop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/">programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">All Hail Bettercap 2.0, One Tool to Rule Them All.</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/books.html" class="mobile-nav-link">Books</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About Me</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
