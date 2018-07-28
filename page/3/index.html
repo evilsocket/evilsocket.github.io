@@ -93,6 +93,52 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-is-this-a-declaration-of-cyber-war" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/03/is-this-a-declaration-of-cyber-war/">Is This a Declaration of Cyber War?</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2016-05-02T22:28:30.000Z" itemprop="datePublished">2016-05-03</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Hey guys, I’m writing this post mostly to save the stuff I’m going to share from being censored/removed, but also to share some of my thoughts about the thing.</p>
+<p>I like spy movies a lot, so if this just looks like bullshit to you be fair and be good, I’m just worried about the people’s privacy :)</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/03/is-this-a-declaration-of-cyber-war/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2016/05/03/is-this-a-declaration-of-cyber-war/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btc/">btc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/craig-wright/">craig wright</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cryptography/">cryptography</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/government/">government</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/identity/">identity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/privacy/">privacy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/satoshi-nakamoto/">satoshi nakamoto</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -503,53 +549,6 @@ ga('send', 'pageview');
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dsploit/">dsploit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/italian/">italian</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/italiano/">italiano</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/job/">job</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lavoro/">lavoro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/open-source/">open source</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vita/">vita</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/">How to Use Old GSM Protocols/encodings to Know if a User Is Online on the GSM Network AKA PingSMS 2.0</a>
-    </h1>
-  
-
-      </header>
-    
-    <br/>
-    <div class="article-meta">
-      Posted on <time datetime="2015-07-27T19:47:03.000Z" itemprop="datePublished">2015-07-27</time>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In the last few months I’ve been playing with Android’s low level GSM API, a few years ago the (in)famous <strong>sendRawPdu</strong> API was available, allowing a developer to manually encode a SMS message at a very low level before sending it to the GSM baseband itself and quite a few applications sending all kind of weird SMS ( flash sms, silent sms, etc ) were born ( for a brief overview of PDU encoding refer to <a href="http://www.smartposition.nl/resources/sms_pdu.html" target="_blank" rel="external">this page</a> ).</p>
-<p>(Un)fortunately Google decided to remove that API, it’s still not sure if they did it for security related purposes or during some refactoring of their IPC IBinder mechanism, but nowadays it’s no more available unless you use some very old phones/firmwares ( on most devices they removed the ttyUSB serial interfaces to send AT commands to the GSM modem as well ).</p>
-<p>Until a couple of months ago, when I found the <strong>SmsManager.sendDataMessage</strong> API which, apparently, it’s not used anywhere ( if you search for it you’ll find only a few examples, but nothing regarding how to use it with manually encoded PDUs ).<br>Using this API we’re able to manually encode our SMS, moreover we can specific a “port” as one of its arguments which will identify what kind of sms we’re gonna send, in this post I’ll talk about port 2948, namely the port used to send <strong>WAP PUSH notifications</strong>.</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/">Read More</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a href="https://www.evilsocket.net/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SmsManager/">SmsManager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SmsManager-sendDataMessage/">SmsManager.sendDataMessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delivery-report/">delivery report</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm/">gsm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mms/">mms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdu/">pdu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ping-sms/">ping sms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sendDataMessage/">sendDataMessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sms/">sms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap/">wap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap-push/">wap push</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap-push-notifications/">wap push notifications</a></li></ul>
 
     </footer>
   </div>

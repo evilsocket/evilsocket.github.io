@@ -93,6 +93,53 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/">How to Use Old GSM Protocols/encodings to Know if a User Is Online on the GSM Network AKA PingSMS 2.0</a>
+    </h1>
+  
+
+      </header>
+    
+    <br/>
+    <div class="article-meta">
+      Posted on <time datetime="2015-07-27T19:47:03.000Z" itemprop="datePublished">2015-07-27</time>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In the last few months I’ve been playing with Android’s low level GSM API, a few years ago the (in)famous <strong>sendRawPdu</strong> API was available, allowing a developer to manually encode a SMS message at a very low level before sending it to the GSM baseband itself and quite a few applications sending all kind of weird SMS ( flash sms, silent sms, etc ) were born ( for a brief overview of PDU encoding refer to <a href="http://www.smartposition.nl/resources/sms_pdu.html" target="_blank" rel="external">this page</a> ).</p>
+<p>(Un)fortunately Google decided to remove that API, it’s still not sure if they did it for security related purposes or during some refactoring of their IPC IBinder mechanism, but nowadays it’s no more available unless you use some very old phones/firmwares ( on most devices they removed the ttyUSB serial interfaces to send AT commands to the GSM modem as well ).</p>
+<p>Until a couple of months ago, when I found the <strong>SmsManager.sendDataMessage</strong> API which, apparently, it’s not used anywhere ( if you search for it you’ll find only a few examples, but nothing regarding how to use it with manually encoded PDUs ).<br>Using this API we’re able to manually encode our SMS, moreover we can specific a “port” as one of its arguments which will identify what kind of sms we’re gonna send, in this post I’ll talk about port 2948, namely the port used to send <strong>WAP PUSH notifications</strong>.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/">Read More</a>
+          </p>
+        
+      
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a href="https://www.evilsocket.net/2015/07/27/how-to-use-old-gsm-protocolsencodings-know-if-a-user-is-online-on-the-gsm-network-aka-pingsms-2-0/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SmsManager/">SmsManager</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SmsManager-sendDataMessage/">SmsManager.sendDataMessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delivery-report/">delivery report</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gsm/">gsm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mms/">mms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pdu/">pdu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ping-sms/">ping sms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sendDataMessage/">sendDataMessage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sms/">sms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap/">wap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap-push/">wap push</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wap-push-notifications/">wap push notifications</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -521,52 +568,6 @@ testing regimes down the road.
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/BLE/">BLE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth/">bluetooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bluetooth-low-energy/">bluetooth low energy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gem/">gem</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hack/">hack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/library/">library</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/porting/">porting</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rubertooth/">rubertooth</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ruby/">ruby</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubertooth/">ubertooth</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hackers-phishing-leakers-a-new-bitcoin-phishing-social-technique" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/11/hackers-phishing-leakers-a-new-bitcoin-phishing-social-technique/">Hackers Phishing Leakers: A New BitCoin Phishing Social Technique.</a>
-    </h1>
-  
-
-      </header>
-    
-    <br/>
-    <div class="article-meta">
-      Posted on <time datetime="2015-02-11T19:48:52.000Z" itemprop="datePublished">2015-02-11</time>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Recently I’m playing with a simple <strong>pastebin</strong> bot, basicaly it’s a crawler for the pastebin.com website that applies a few regular expressions to new pastes and saves interesting ones. Services like this are all around the internet, one example is the <a href="http://www.leakedin.com/" target="_blank" rel="external">leakedin</a> website where you can find potential data leaks almost in real time and it’s not new that hackers are already crawling for this kind of contents waiting for dumps, leaks or any sort of interesting data to use for malicious purposes.</p>
-<p>While collecting data with my bot, I found something which is very interesting and potentially a <strong>whole new phishing/social technique</strong> that I never saw before.</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/02/11/hackers-phishing-leakers-a-new-bitcoin-phishing-social-technique/">Read More</a>
-          </p>
-        
-      
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a href="https://www.evilsocket.net/2015/02/11/hackers-phishing-leakers-a-new-bitcoin-phishing-social-technique/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bitcoin/">bitcoin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bot/">bot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bots/">bots</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/btc/">btc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pastebin/">pastebin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pastebot/">pastebot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/phishing/">phishing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/social/">social</a></li></ul>
 
     </footer>
   </div>
