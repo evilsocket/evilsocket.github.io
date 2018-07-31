@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2018-07-31T12:10:16.287Z</updated>
+  <updated>2018-07-31T12:27:20.399Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"/>
     <id>https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/</id>
     <published>2018-07-28T17:01:56.000Z</published>
-    <updated>2018-07-31T12:10:16.287Z</updated>
+    <updated>2018-07-31T12:27:20.399Z</updated>
     
     <content type="html"><![CDATA[<p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
 <p>Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given <a href="https://twitter.com/evilsocket/status/1021367629901115392" target="_blank" rel="external">the interest the tweet had</a> I thought to share this writeup :)</p>
@@ -36,11 +36,11 @@
 <p>BECAUSE. The point of this post is not just the hardware, but mostly how to use bettercap to attack wifi.</p>
 <h3 id="0x01-Kali-image-and-initial-headless-configuration"><a href="#0x01-Kali-image-and-initial-headless-configuration" class="headerlink" title="[0x01] Kali image and initial headless configuration."></a>[0x01] Kali image and initial headless configuration.</h3><p>First thing first, you’ll need to download the <strong>Kali Linux Rpi0w Nexmon</strong> image from <a href="https://www.offensive-security.com/kali-linux-arm-images/" target="_blank" rel="external">this page</a> and burn it to the uSD card you’re going to use for the rpi using the usual <code>dd</code> method, but before unmounting it, we need to enable SSH at boot and configure it to connect to our home WiFi network for the initial configuration, keep in mind this is just temporary and the main wifi interface will be used for packet injection later, while we will be able to connect via bluetooth to the board.</p>
 <p>From the computer you used to burn the image on your micro sd, mount it again if needed and then:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># this will enable ssh at boot</span></div><div class="line">touch /sd-mount-point/boot/ssh</div><div class="line"><span class="comment"># let's setup wlan0</span></div><div class="line">nano /sd-mount-point/root/etc/network/interfaces</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># this will enable ssh at boot</span></div><div class="line">touch /sd-mount-point/boot/ssh</div><div class="line"><span class="comment"># let's setup wlan0</span></div><div class="line">nano /sd-mount-point/etc/network/interfaces</div></pre></td></tr></table></figure>
 <p>Fill this file with the following contents:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">auto lo</div><div class="line"></div><div class="line">iface lo inet loopback</div><div class="line"></div><div class="line">allow-hotplug wlan0</div><div class="line">iface wlan0 inet dhcp</div><div class="line">wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</div><div class="line">iface default inet dhcp</div></pre></td></tr></table></figure>
 <p>Now we’ll add the details of the WiFi network we want the rpi to connect automatically for configuration:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /sd-mount-point/root/etc/wpa_supplicant/wpa_supplicant.conf</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nano /sd-mount-point/etc/wpa_supplicant/wpa_supplicant.conf</div></pre></td></tr></table></figure>
 <p>And add this:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">country=GB</div><div class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</div><div class="line">update_config=1</div><div class="line"></div><div class="line">network=&#123;</div><div class="line">        ssid=&quot;YourWiFiName&quot;</div><div class="line">        psk=&quot;y0urw1f!p455w0rd&quot;</div><div class="line">        key_mgmt=WPA-PSK</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Reboot the RPI and it should connect to your WiFi, search for its IP address (either by broadcast ping, or using bettercap itself, i usually use the <a href="https://github.com/bettercap/caplets/blob/master/netmon.cap" target="_blank" rel="external">netmon</a> caplet to see what’s going on on my network) and finally SSH to it using the default Kali credentials:</p>
@@ -549,9 +549,9 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     </summary>
     
     
-      <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
+    
+      <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
     
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
@@ -1179,11 +1179,11 @@ Options:
     </summary>
     
     
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     

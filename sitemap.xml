@@ -4,7 +4,7 @@
   <url>
     <loc>https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/</loc>
     
-    <lastmod>2018-07-31T12:10:16.287Z</lastmod>
+    <lastmod>2018-07-31T12:27:20.399Z</lastmod>
     
   </url>
   
@@ -23,14 +23,14 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</loc>
+    <loc>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</loc>
     
     <lastmod>2018-07-28T14:17:57.096Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/</loc>
+    <loc>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</loc>
     
     <lastmod>2018-07-28T14:17:57.096Z</lastmod>
     
@@ -51,20 +51,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
-    
-    <lastmod>2018-07-28T14:17:57.096Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</loc>
-    
-    <lastmod>2018-07-28T14:17:57.096Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
     
     <lastmod>2018-07-28T14:17:57.096Z</lastmod>
@@ -72,7 +58,21 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
+    
+    <lastmod>2018-07-28T14:17:57.096Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
+    
+    <lastmod>2018-07-28T14:17:57.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/</loc>
     
     <lastmod>2018-07-28T14:17:57.096Z</lastmod>
     
@@ -100,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/</loc>
-    
-    <lastmod>2018-07-28T14:17:57.080Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/2016/05/30/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins-EPISODE-2/</loc>
     
     <lastmod>2018-07-28T14:17:57.080Z</lastmod>
@@ -115,6 +108,13 @@
   
   <url>
     <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
+    
+    <lastmod>2018-07-28T14:17:57.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/</loc>
     
     <lastmod>2018-07-28T14:17:57.080Z</lastmod>
     
