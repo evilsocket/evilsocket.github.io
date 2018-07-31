@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2018-07-29T12:08:29.247Z</updated>
+  <updated>2018-07-31T12:10:16.287Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"/>
     <id>https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/</id>
     <published>2018-07-28T17:01:56.000Z</published>
-    <updated>2018-07-29T12:08:29.247Z</updated>
+    <updated>2018-07-31T12:10:16.287Z</updated>
     
     <content type="html"><![CDATA[<p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
 <p>Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given <a href="https://twitter.com/evilsocket/status/1021367629901115392" target="_blank" rel="external">the interest the tweet had</a> I thought to share this writeup :)</p>
@@ -51,7 +51,7 @@
 <center><br><blockquote class="twitter-tweet" data-conversation="none" data-lang="it"><p lang="en" dir="ltr">Power from your smartphone, ssh over bluetooth and a mass deauther in your pocket 😈<a href="https://twitter.com/bettercap?ref_src=twsrc%5Etfw" target="_blank" rel="external">@bettercap</a> + <a href="https://twitter.com/hashtag/pita?src=hash&amp;ref_src=twsrc%5Etfw" target="_blank" rel="external">#pita</a> = ❤️ <a href="https://t.co/lDn9Tie3W9" target="_blank" rel="external">pic.twitter.com/lDn9Tie3W9</a></p>&mdash; 👽 (@evilsocket) <a href="https://twitter.com/evilsocket/status/1021378841749721091?ref_src=twsrc%5Etfw" target="_blank" rel="external">23 luglio 2018</a></blockquote><br><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
 
 <p>Let’s connect once more via WiFi and SSH:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ssh root@pita-ip</div><div class="line"></div><div class="line"><span class="comment"># install a few dependencies</span></div><div class="line">apt install pulseaudio pulseaudio-module-zeroconf alsa-utils avahi-daemon pulseaudio-module-bluetooth</div><div class="line">git <span class="built_in">clone</span> https://github.com/bablokb/pi-btnap</div><div class="line"><span class="comment"># install btnap as a server</span></div><div class="line">./pi-btnap/tools/install-btnap server</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ssh root@pita-ip</div><div class="line"></div><div class="line"><span class="comment"># install a few dependencies</span></div><div class="line">apt install pulseaudio pulseaudio-module-zeroconf alsa-utils avahi-daemon pulseaudio-module-bluetooth</div><div class="line">git <span class="built_in">clone</span> https://github.com/bablokb/pi-btnap.git</div><div class="line"><span class="comment"># install btnap as a server</span></div><div class="line">./pi-btnap/tools/install-btnap server</div></pre></td></tr></table></figure>
 <p>Fix the bluetooth configuration file <code>/etc/systemd/system/bluetooth.target.wants/bluetooth.service</code> by disabling the SAP plugin that would break bluetooth, change the <code>ExecStart</code> part with:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ExecStart=/usr/lib/bluetooth/bluetoothd --noplugin=sap</div></pre></td></tr></table></figure>
 <p>Let’s set the bluetooth name of your device by editing <code>/etc/bluetooth/main.conf</code> and finally edit the btnap configuration file itself, <code>/etc/btnap.conf</code>:</p>
@@ -549,9 +549,9 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     </summary>
     
     
-      <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
-    
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
