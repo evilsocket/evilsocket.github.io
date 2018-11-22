@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="It’s been a few weeks I’ve been playing with afl-fuzz ( american fuzzy lop ), a great tool from lcamtuf which uses binary instrumentation to create edge-cases for a given software, the description on">
 <meta name="keywords" content="exploit,afl,fuzzing,lcamtuf,fuzzer,binary instrumentation,gcc,clang,qemu,llvm,crash,american fuzzy lop">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -68,7 +68,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -85,7 +85,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -97,7 +97,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&name=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&description=&lt;p&gt;It’s been a few weeks I’ve been playing with &lt;a href=&quot;http://lcamtuf.coredump.cx/afl/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;afl-fuzz&lt;/a&gt; ( &lt;em&gt;american fuzzy lop&lt;/em&gt; ), a great tool from &lt;a href=&quot;http://lcamtuf.coredump.cx/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;lcamtuf&lt;/a&gt; which uses binary instrumentation to create edge-cases for a given software, the description on the website is:&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&name=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&description=&lt;p&gt;It’s been a few weeks I’ve been playing with &lt;a href=&quot;http://lcamtuf.coredump.cx/afl/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;afl-fuzz&lt;/a&gt; ( &lt;em&gt;american fuzzy lop&lt;/em&gt; ), a great tool from &lt;a href=&quot;http://lcamtuf.coredump.cx/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lcamtuf&lt;/a&gt; which uses binary instrumentation to create edge-cases for a given software, the description on the website is:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
 instrumentation and genetic algorithms to automatically discover clean, interesting test cases
 that trigger new internal states in the targeted binary.
@@ -117,7 +117,7 @@ testing regimes down the road.
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -144,11 +144,11 @@ testing regimes down the road.
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
-    <p>It’s been a few weeks I’ve been playing with <a href="http://lcamtuf.coredump.cx/afl/" target="_blank" rel="external">afl-fuzz</a> ( <em>american fuzzy lop</em> ), a great tool from <a href="http://lcamtuf.coredump.cx/" target="_blank" rel="external">lcamtuf</a> which uses binary instrumentation to create edge-cases for a given software, the description on the website is:</p>
+    <p>It’s been a few weeks I’ve been playing with <a href="http://lcamtuf.coredump.cx/afl/" target="_blank" rel="noopener">afl-fuzz</a> ( <em>american fuzzy lop</em> ), a great tool from <a href="http://lcamtuf.coredump.cx/" target="_blank" rel="noopener">lcamtuf</a> which uses binary instrumentation to create edge-cases for a given software, the description on the website is:</p>
 <pre><code>American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
 instrumentation and genetic algorithms to automatically discover clean, interesting test cases
 that trigger new internal states in the targeted binary.
@@ -159,7 +159,7 @@ testing regimes down the road.
 <a id="more"></a>
 <h1 id="Binary-Instrumentation"><a href="#Binary-Instrumentation" class="headerlink" title="Binary Instrumentation"></a>Binary Instrumentation</h1><p>The first component of AFL is a wrapper for GCC/CLang compilers that will inject during compilation its own assembly code into the target software.<br>The fuzzer will use this code to trace execution paths while feeding the system with new inputs and to determine if a new mutation of the input is able to trigger known or unkown ( new ) execution paths.</p>
 <p>If you can’t/don’t want to recompile the source code of the target program, AFL also supports a QEMU mode, an extension that leverages the QEMU “user emulation” mode and allows callers to obtain instrumentation output for black-box, closed-source binaries. This mechanism can be then used by afl-fuzz to stress-test targets that couldn’t be built with afl-gcc.</p>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>The installation of AFL is trivial, just download the <a href="http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz" target="_blank" rel="external">latest version</a> of the source code, extract it and do the usual:</p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>The installation of AFL is trivial, just download the <a href="http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz" target="_blank" rel="noopener">latest version</a> of the source code, extract it and do the usual:</p>
 <pre><code>make
 sudo make install
 </code></pre><h1 id="A-practical-example"><a href="#A-practical-example" class="headerlink" title="A practical example"></a>A practical example</h1><p>Being AFL particularly well suited for programs that accept a file as input, I thought about trying it against the <strong>binutils</strong> and specifically against the <strong>readelf</strong> binary … AFL found eight distinct crashes cases ( potentially exploitable ) in the first five minutes of elaboration, and more than 30 after less than one hour!</p>
@@ -271,7 +271,7 @@ Program received signal SIGABRT, Aborted.
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&name=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&description=&lt;p&gt;It’s been a few weeks I’ve been playing with &lt;a href=&quot;http://lcamtuf.coredump.cx/afl/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;afl-fuzz&lt;/a&gt; ( &lt;em&gt;american fuzzy lop&lt;/em&gt; ), a great tool from &lt;a href=&quot;http://lcamtuf.coredump.cx/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;lcamtuf&lt;/a&gt; which uses binary instrumentation to create edge-cases for a given software, the description on the website is:&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/04/30/fuzzing-with-afl-fuzz-a-practical-example-afl-vs-binutils/&name=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&description=&lt;p&gt;It’s been a few weeks I’ve been playing with &lt;a href=&quot;http://lcamtuf.coredump.cx/afl/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;afl-fuzz&lt;/a&gt; ( &lt;em&gt;american fuzzy lop&lt;/em&gt; ), a great tool from &lt;a href=&quot;http://lcamtuf.coredump.cx/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lcamtuf&lt;/a&gt; which uses binary instrumentation to create edge-cases for a given software, the description on the website is:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
 instrumentation and genetic algorithms to automatically discover clean, interesting test cases
 that trigger new internal states in the targeted binary.

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Today, finally my ubertooth arrived and I immediately started hacking with it.  I installed its libraries and tools both on OS X and on my Linux virtual machine, and after a while I noticed a few thin">
 <meta name="keywords" content="library,hack,bluetooth,bluetooth low energy,BLE,ubertooth,rubertooth,ruby,gem,porting">
 <meta property="og:type" content="article">
@@ -50,7 +50,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -69,7 +69,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -86,7 +86,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/02/12/rubertooth-a-complete-ruby-porting-of-the-ubertooth-libraries-and-utilities/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -108,7 +108,7 @@
 &lt;li&gt;There’s no way to create my own UberTooth scripts without using C.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Regarding the last point, there is a Python porting which is incomplete, it lacks most of the features that the native libraries have, so ubertooth is definitely not a scriptable device … or maybe not :)&lt;/p&gt;
-&lt;p&gt;I studied the USB communication protocol implemented inside &lt;a href=&quot;https://github.com/greatscottgadgets/ubertooth/tree/master/host/libubertooth&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;libubertooth&lt;/a&gt; and found out that is very easy and well implemented, so I started to write some Ruby code ( &lt;strong&gt;I hate Python!&lt;/strong&gt; ) using the &lt;strong&gt;libusb&lt;/strong&gt; gem and a new project was born :)&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;p&gt;I studied the USB communication protocol implemented inside &lt;a href=&quot;https://github.com/greatscottgadgets/ubertooth/tree/master/host/libubertooth&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;libubertooth&lt;/a&gt; and found out that is very easy and well implemented, so I started to write some Ruby code ( &lt;strong&gt;I hate Python!&lt;/strong&gt; ) using the &lt;strong&gt;libusb&lt;/strong&gt; gem and a new project was born :)&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -121,7 +121,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -148,7 +148,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -162,12 +162,12 @@
 <li>There’s no way to create my own UberTooth scripts without using C.</li>
 </ul>
 <p>Regarding the last point, there is a Python porting which is incomplete, it lacks most of the features that the native libraries have, so ubertooth is definitely not a scriptable device … or maybe not :)</p>
-<p>I studied the USB communication protocol implemented inside <a href="https://github.com/greatscottgadgets/ubertooth/tree/master/host/libubertooth" target="_blank" rel="external">libubertooth</a> and found out that is very easy and well implemented, so I started to write some Ruby code ( <strong>I hate Python!</strong> ) using the <strong>libusb</strong> gem and a new project was born :)</p>
+<p>I studied the USB communication protocol implemented inside <a href="https://github.com/greatscottgadgets/ubertooth/tree/master/host/libubertooth" target="_blank" rel="noopener">libubertooth</a> and found out that is very easy and well implemented, so I started to write some Ruby code ( <strong>I hate Python!</strong> ) using the <strong>libusb</strong> gem and a new project was born :)</p>
 <a id="more"></a>
 <p><img src="/images/2015/02/Schermata-2015-02-12-alle-20-25-17.png" alt="rubertooth in action"></p>
-<p>This project, <a href="https://github.com/evilsocket/rubertooth" target="_blank" rel="external">RuberTooth</a>, aims to be a complete Ruby porting of the ubertooth libraries and utilities, made by hackers for hackers, so anyone will be able to easily create scripts for their ubertooth devices.</p>
+<p>This project, <a href="https://github.com/evilsocket/rubertooth" target="_blank" rel="noopener">RuberTooth</a>, aims to be a complete Ruby porting of the ubertooth libraries and utilities, made by hackers for hackers, so anyone will be able to easily create scripts for their ubertooth devices.</p>
 <p>Here’s an example BLE packet sniffer ( which is the equivalent of the <strong>ubertooth-btle</strong> native tool ).</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">$LOAD_PATH.unshift File.expand_path(<span class="string">"../../lib"</span>, __FILE_<span class="number">_</span>)</div><div class="line"></div><div class="line"><span class="keyword">require</span> <span class="string">'ubertooth'</span></div><div class="line"><span class="keyword">require</span> <span class="string">'usbpktrx'</span></div><div class="line"><span class="keyword">require</span> <span class="string">'lepacket'</span></div><div class="line"></div><div class="line">MODES = &#123; <span class="symbol">:follow</span> =&gt; <span class="number">0</span>, <span class="symbol">:promisc</span> =&gt; <span class="number">1</span> &#125;</div><div class="line"></div><div class="line">mode = MODES[<span class="symbol">:follow</span>]</div><div class="line">uber = RUbertooth::Ubertooth.new</div><div class="line"></div><div class="line">puts <span class="string">"Found device: '<span class="subst">#&#123;uber.device.inspect&#125;</span>'"</span></div><div class="line"></div><div class="line">uber.set_modulation RUbertooth::Ubertooth::MODULATIONS[<span class="symbol">:MOD_BT_LOW_ENERGY</span>]</div><div class="line"></div><div class="line"><span class="keyword">if</span> mode == MODES[<span class="symbol">:follow</span>]</div><div class="line">    uber.set_channel <span class="number">2402</span></div><div class="line">    uber.btle_sniffing <span class="number">2</span></div><div class="line"><span class="keyword">else</span></div><div class="line">    uber.btle_promisc</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">prev_ts = <span class="number">0</span></div><div class="line"></div><div class="line">puts <span class="string">"Starting polling loop ..."</span></div><div class="line"></div><div class="line">uber.keep_polling <span class="number">0</span>.<span class="number">5</span> <span class="keyword">do</span> <span class="params">|pkt|</span></div><div class="line">    ts_diff = pkt.clk100ns - prev_ts</div><div class="line">    prev_ts = pkt.clk100ns</div><div class="line"></div><div class="line">    printf <span class="string">"\nfreq=%d addr=%08x delta_t=%.03f ms\n"</span>, pkt.frequency, pkt.access_address, ts_diff / <span class="number">10000.0</span></div><div class="line"></div><div class="line">    (<span class="number">4</span>..pkt.data_length - <span class="number">1</span>).each <span class="keyword">do</span> <span class="params">|i|</span></div><div class="line">        printf <span class="string">" %02x"</span>, pkt.data[i]</div><div class="line">    <span class="keyword">end</span></div><div class="line">    puts</div><div class="line"></div><div class="line">    lepkt = RUbertooth::BlueTooth::LePacket.decode pkt.data, pkt.frequency, pkt.clk100ns</div><div class="line"></div><div class="line">    lepkt.dump</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">$LOAD_PATH.unshift File.expand_path(<span class="string">"../../lib"</span>, __FILE_<span class="number">_</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">'ubertooth'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'usbpktrx'</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">'lepacket'</span></span><br><span class="line"></span><br><span class="line">MODES = &#123; <span class="symbol">:follow</span> =&gt; <span class="number">0</span>, <span class="symbol">:promisc</span> =&gt; <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line">mode = MODES[<span class="symbol">:follow</span>]</span><br><span class="line">uber = RUbertooth::Ubertooth.new</span><br><span class="line"></span><br><span class="line">puts <span class="string">"Found device: '<span class="subst">#&#123;uber.device.inspect&#125;</span>'"</span></span><br><span class="line"></span><br><span class="line">uber.set_modulation RUbertooth::Ubertooth::MODULATIONS[<span class="symbol">:MOD_BT_LOW_ENERGY</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> mode == MODES[<span class="symbol">:follow</span>]</span><br><span class="line">    uber.set_channel <span class="number">2402</span></span><br><span class="line">    uber.btle_sniffing <span class="number">2</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    uber.btle_promisc</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">prev_ts = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">"Starting polling loop ..."</span></span><br><span class="line"></span><br><span class="line">uber.keep_polling <span class="number">0</span>.<span class="number">5</span> <span class="keyword">do</span> <span class="params">|pkt|</span></span><br><span class="line">    ts_diff = pkt.clk100ns - prev_ts</span><br><span class="line">    prev_ts = pkt.clk100ns</span><br><span class="line"></span><br><span class="line">    printf <span class="string">"\nfreq=%d addr=%08x delta_t=%.03f ms\n"</span>, pkt.frequency, pkt.access_address, ts_diff / <span class="number">10000.0</span></span><br><span class="line"></span><br><span class="line">    (<span class="number">4</span>..pkt.data_length - <span class="number">1</span>).each <span class="keyword">do</span> <span class="params">|i|</span></span><br><span class="line">        printf <span class="string">" %02x"</span>, pkt.data[i]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    puts</span><br><span class="line"></span><br><span class="line">    lepkt = RUbertooth::BlueTooth::LePacket.decode pkt.data, pkt.frequency, pkt.clk100ns</span><br><span class="line"></span><br><span class="line">    lepkt.dump</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
   </div>
 </article>
@@ -220,7 +220,7 @@
 &lt;li&gt;There’s no way to create my own UberTooth scripts without using C.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Regarding the last point, there is a Python porting which is incomplete, it lacks most of the features that the native libraries have, so ubertooth is definitely not a scriptable device … or maybe not :)&lt;/p&gt;
-&lt;p&gt;I studied the USB communication protocol implemented inside &lt;a href=&quot;https://github.com/greatscottgadgets/ubertooth/tree/master/host/libubertooth&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;libubertooth&lt;/a&gt; and found out that is very easy and well implemented, so I started to write some Ruby code ( &lt;strong&gt;I hate Python!&lt;/strong&gt; ) using the &lt;strong&gt;libusb&lt;/strong&gt; gem and a new project was born :)&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;p&gt;I studied the USB communication protocol implemented inside &lt;a href=&quot;https://github.com/greatscottgadgets/ubertooth/tree/master/host/libubertooth&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;libubertooth&lt;/a&gt; and found out that is very easy and well implemented, so I started to write some Ruby code ( &lt;strong&gt;I hate Python!&lt;/strong&gt; ) using the &lt;strong&gt;libusb&lt;/strong&gt; gem and a new project was born :)&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

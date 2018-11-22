@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a Smarter Coffee machine on Amazon, basically a coffee machine that y">
-<meta name="keywords" content="hack,hacking,reversing,coffee,nerd,smarter coffee,binary protocol,reversed">
+<meta name="keywords" content="reversing,hack,hacking,coffee,nerd,smarter coffee,binary protocol,reversed">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.">
 <meta property="og:url" content="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/10/terminal.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/10/methods.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/10/firmware.jpg">
-<meta property="og:updated_time" content="2018-07-28T14:17:57.088Z">
+<meta property="og:updated_time" content="2018-11-22T15:29:42.745Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.">
 <meta name="twitter:description" content="I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a Smarter Coffee machine on Amazon, basically a coffee machine that y">
@@ -51,7 +51,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -70,7 +70,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -87,7 +87,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -99,7 +99,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&title=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&title=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&title=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&name=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.&description=&lt;p&gt;I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a &lt;a href=&quot;http://smarter.am/coffee/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Smarter Coffee&lt;/a&gt; machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).&lt;br&gt;The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&name=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.&description=&lt;p&gt;I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a &lt;a href=&quot;http://smarter.am/coffee/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Smarter Coffee&lt;/a&gt; machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).&lt;br&gt;The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.&lt;/p&gt;
 &lt;p&gt;Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D&lt;/p&gt;
 &lt;p&gt;Yep, i can make coffee using the terminal now :D&lt;/p&gt;
 &lt;center&gt;&lt;br&gt;&lt;img src=&quot;/images/2016/10/terminal.png&quot; alt=&quot;terminal&quot;&gt;&lt;br&gt;&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
@@ -115,7 +115,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -142,18 +142,18 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
-    <p>I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a <a href="http://smarter.am/coffee/" target="_blank" rel="external">Smarter Coffee</a> machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).<br>The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.</p>
+    <p>I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a <a href="http://smarter.am/coffee/" target="_blank" rel="noopener">Smarter Coffee</a> machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).<br>The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.</p>
 <p>Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D</p>
 <p>Yep, i can make coffee using the terminal now :D</p>
 <center><br><img src="/images/2016/10/terminal.png" alt="terminal"><br></center>
 
 <a id="more"></a>
-<h3 id="Reversing-the-Protocol"><a href="#Reversing-the-Protocol" class="headerlink" title="Reversing the Protocol"></a>Reversing the Protocol</h3><p>I decided to reverse the <a href="https://play.google.com/store/apps/details?id=am.smarter.smarterandroid" target="_blank" rel="external">Android application</a> since it’s usualy way easier than reversing iOS ones ( java vs assembly :D ), once I downloaded the APK I started studying the various classes and methods.</p>
-<p>So I fired up <a href="https://github.com/skylot/jadx" target="_blank" rel="external">JADX</a> ( with the <code>--show-bad-code</code> argument ), I launched CTAGS inside the exported source code folder and VIM to navigate it.<br>A few hours later, I found the interesting part in the <code>am.smarter.smarterandroid.models.a</code> class and noticed a few methods like the following:</p>
+<h3 id="Reversing-the-Protocol"><a href="#Reversing-the-Protocol" class="headerlink" title="Reversing the Protocol"></a>Reversing the Protocol</h3><p>I decided to reverse the <a href="https://play.google.com/store/apps/details?id=am.smarter.smarterandroid" target="_blank" rel="noopener">Android application</a> since it’s usualy way easier than reversing iOS ones ( java vs assembly :D ), once I downloaded the APK I started studying the various classes and methods.</p>
+<p>So I fired up <a href="https://github.com/skylot/jadx" target="_blank" rel="noopener">JADX</a> ( with the <code>--show-bad-code</code> argument ), I launched CTAGS inside the exported source code folder and VIM to navigate it.<br>A few hours later, I found the interesting part in the <code>am.smarter.smarterandroid.models.a</code> class and noticed a few methods like the following:</p>
 <center><br><img src="/images/2016/10/methods.png" alt="methods"><br></center>
 
 <p>Each of these “packets” is sent to tcp port <code>2081</code> of the machine, the protocol is <strong>very</strong> simple.</p>
@@ -173,7 +173,7 @@
 <p>So I’ve mapped all the commands I needed in order to write a minimal console client and tested it … this is the result, it works like a charm! :D</p>
 <center><br><iframe width="100%" height="400" src="https://www.youtube.com/embed/9PeR9d18E14" frameborder="0" allowfullscreen></iframe><br></center>
 
-<p>You can <a href="https://github.com/evilsocket/coffee" target="_blank" rel="external">download the client code here</a>, you’ll need to specify the machine ip address the first time, then it will be saved in the <code>~/.smartercoffee</code> file and won’t be needed anymore.</p>
+<p>You can <a href="https://github.com/evilsocket/coffee" target="_blank" rel="noopener">download the client code here</a>, you’ll need to specify the machine ip address the first time, then it will be saved in the <code>~/.smartercoffee</code> file and won’t be needed anymore.</p>
 <pre><code>coffee make -A 192.168.1.50
 </code></pre><p><strong>A few examples:</strong></p>
 <p>Just make one cup of coffee:</p>
@@ -245,7 +245,7 @@ Options:
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&title=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&title=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&title=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&name=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.&description=&lt;p&gt;I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a &lt;a href=&quot;http://smarter.am/coffee/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Smarter Coffee&lt;/a&gt; machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).&lt;br&gt;The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&name=Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.&description=&lt;p&gt;I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a &lt;a href=&quot;http://smarter.am/coffee/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Smarter Coffee&lt;/a&gt; machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).&lt;br&gt;The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.&lt;/p&gt;
 &lt;p&gt;Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D&lt;/p&gt;
 &lt;p&gt;Yep, i can make coffee using the terminal now :D&lt;/p&gt;
 &lt;center&gt;&lt;br&gt;&lt;img src=&quot;/images/2016/10/terminal.png&quot; alt=&quot;terminal&quot;&gt;&lt;br&gt;&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="You probably already heard about SuperFish around the web, an adware that Lenovo pre-installed on its computers since mid-2014. The danger does not reside inside the adware itself, that basically just">
 <meta name="keywords" content="malware,adware,superfish,chrome,xnotifier,x-notifier,extension,browser,inject,adv">
 <meta property="og:type" content="article">
@@ -50,7 +50,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -69,7 +69,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -86,7 +86,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/02/20/superfish-adware-found-inside-x-notifier-extension-code/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -112,7 +112,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -139,20 +139,20 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
     <p>You probably already heard about <strong>SuperFish</strong> around the web, an adware that Lenovo pre-installed on its computers since mid-2014. The danger does not reside inside the adware itself, that basically just injects some advertisment inside user web searches, but in the fact that, in order to handle HTTPS search engines ( Google ), it installs a root CA on the computer and replaces every HTTPS certificate sent by the web server with this one, leaving the victim vulnerable to SLL man in the middle attacks.</p>
 <p>As soon as I heard the name “SuperFish”, it suddenly was somehow familiar to me … “Where the hell did I hear this name before?”</p>
 <a id="more"></a>
-<p>And there it goes, I have the <a href="http://xnotifier.tobwithu.com/" target="_blank" rel="external"><strong>X-Notifier</strong></a> browser extension installed on Google Chrome, wich is very useful to handle multiple gmail accounts at once without using a desktop email client, this is its options panel:</p>
+<p>And there it goes, I have the <a href="http://xnotifier.tobwithu.com/" target="_blank" rel="noopener"><strong>X-Notifier</strong></a> browser extension installed on Google Chrome, wich is very useful to handle multiple gmail accounts at once without using a desktop email client, this is its options panel:</p>
 <p><img src="/images/2015/02/Schermata-2015-02-20-alle-18-22-34.png" alt="xnotifier options"></p>
 <p>Look at the bottom left of the picture …. there you go, the extension offers an optional ( but turned on by default ) SuperFish injection :D</p>
 <p>When enabled, you will find this request for each page you visit:</p>
 <p><img src="/images/2015/02/Schermata-2015-02-20-alle-18-22-05.png" alt="superfish request"></p>
 <p>And here’s the code ( xnotifier/js/inject.js ):</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  chrome.extension.sendMessage(&#123;<span class="attr">msg</span>:<span class="string">"enabled"</span>&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(response.enabled)&#123;</div><div class="line">      <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">      script.type=<span class="string">'text/javascript'</span>;</div><div class="line">      script.src=<span class="built_in">document</span>.location.protocol + <span class="string">"//www.superfish.com/ws/sf_main.jsp?dlsource=xnotifier&amp;userId="</span>+response.uid+<span class="string">"&amp;CTID=xn-cr"</span>;</div><div class="line">      <span class="keyword">var</span> h=<span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">      h.appendChild(script);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  chrome.extension.sendMessage(&#123;<span class="attr">msg</span>:<span class="string">"enabled"</span>&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(response.enabled)&#123;</span><br><span class="line">      <span class="keyword">var</span> script=<span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">      script.type=<span class="string">'text/javascript'</span>;</span><br><span class="line">      script.src=<span class="built_in">document</span>.location.protocol + <span class="string">"//www.superfish.com/ws/sf_main.jsp?dlsource=xnotifier&amp;userId="</span>+response.uid+<span class="string">"&amp;CTID=xn-cr"</span>;</span><br><span class="line">      <span class="keyword">var</span> h=<span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">      h.appendChild(script);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>Fortunately the server seems to be down, but the domain itself is still active:</p>
 <pre><code>Registrant Org: Superfish Inc. is associated with ~1 other domains
 ...

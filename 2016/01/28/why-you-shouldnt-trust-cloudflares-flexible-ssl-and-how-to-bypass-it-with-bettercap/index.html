@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Let me clear one thing about this post … this is not a CloudFlare vulnerability report and, even in that case, there’s really nothing they could do in order to fix it     unless they’d block direct tr">
 <meta name="keywords" content="bettercap,mitm,security,ssl,https,http,ssl stripping,sslstrip,sslstripping,cloudflare,flexible ssl,hsts">
 <meta property="og:type" content="article">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/01/hsts.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/01/pagerule.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/01/bettercap_cloudflare.png">
-<meta property="og:updated_time" content="2018-07-28T14:17:57.096Z">
+<meta property="og:updated_time" content="2018-11-22T15:29:42.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Why You Shouldn&#39;t Trust CloudFlare&#39;s &#39;Flexible SSL&#39; and How to Bypass It With BetterCap">
 <meta name="twitter:description" content="Let me clear one thing about this post … this is not a CloudFlare vulnerability report and, even in that case, there’s really nothing they could do in order to fix it     unless they’d block direct tr">
@@ -54,7 +54,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -73,7 +73,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -90,7 +90,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -115,7 +115,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -142,14 +142,14 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
     <p>Let me clear one thing about this post … this is <strong>not</strong> a CloudFlare vulnerability report and, even in that case, there’s really nothing they could do in order to fix it     <del>unless they’d block direct traffic to HTTP websites</del>.<br>This is only a blog post about why you shouldn’t blindly trust free services that offer you some sort of SSL protection if your server itself is not SSL protected by default.</p>
 <a id="more"></a>
-<p><strong>UPDATE</strong>: <em>n0on3</em> <a href="https://twitter.com/n0on3/status/692763330210091009" target="_blank" rel="external">noted on twitter</a> that <em>even a properly configured server / blocking plain HTTP won’t work if the mitm catches the first request</em>.</p>
-<p>During this week, I’ve been playing with CloudFlare free plan in order to turn my websites into HTTPS protected websites, while configuring my account and playing a little bit with <a href="https://www.bettercap.org/" target="_blank" rel="external">bettercap</a> I figured out something really weird and I tweeted <a href="https://twitter.com/bettercap/status/691991056469118976" target="_blank" rel="external">this</a> ( from the @bettercap account ):</p>
+<p><strong>UPDATE</strong>: <em>n0on3</em> <a href="https://twitter.com/n0on3/status/692763330210091009" target="_blank" rel="noopener">noted on twitter</a> that <em>even a properly configured server / blocking plain HTTP won’t work if the mitm catches the first request</em>.</p>
+<p>During this week, I’ve been playing with CloudFlare free plan in order to turn my websites into HTTPS protected websites, while configuring my account and playing a little bit with <a href="https://www.bettercap.org/" target="_blank" rel="noopener">bettercap</a> I figured out something really weird and I tweeted <a href="https://twitter.com/bettercap/status/691991056469118976" target="_blank" rel="noopener">this</a> ( from the @bettercap account ):</p>
 <p><img src="/images/2016/01/Schermata-2016-01-28-alle-18-08-27.png" alt="my tweet"></p>
 <p>Someone from their team asked me to report this issue on HackerONE and eventually they decided to not accept it … well, not a big deal, I didn’t want to get money out of it in the first place and I didn’t consider this to be a “real” vulnerability from their side, but just something they should take into account while writing their documentation and informing users, this is how it ended ( and that’s why I’m disclosing this ) :</p>
 <p><img src="/images/2016/01/pasha.png" alt="HackerOne response"></p>

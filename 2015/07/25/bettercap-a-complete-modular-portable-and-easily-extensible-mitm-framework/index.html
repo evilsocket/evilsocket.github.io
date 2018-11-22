@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Today I want to present my last project called bettercap. Bettercap is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature y">
 <meta name="keywords" content="bettercap,mitm,transparent proxy,project,ettercap,man in the middle,arp spoofing,arp poisoning,oss">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -68,7 +68,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -85,7 +85,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -98,7 +98,7 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&title=Bettercap - a Complete, Modular, Portable and Easily Extensible MITM Framework."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&title=Bettercap - a Complete, Modular, Portable and Easily Extensible MITM Framework."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&name=Bettercap - a Complete, Modular, Portable and Easily Extensible MITM Framework.&description=&lt;p&gt;Today I want to present my last project called &lt;strong&gt;bettercap&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.bettercap.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bettercap&lt;/a&gt; is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature you could need in order to perform a man in the middle attack.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.bettercap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Bettercap&lt;/a&gt; is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature you could need in order to perform a man in the middle attack.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2015/07/quantum_of_solace_james_bond_roll_parody_rick_astley_rickroll_desktop_1680x1050_wallpaper-249024.jpg&quot; alt=&quot;rickrolld&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
@@ -112,7 +112,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -139,12 +139,12 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
     <p>Today I want to present my last project called <strong>bettercap</strong>.</p>
-<p><a href="http://www.bettercap.org/" target="_blank" rel="external">Bettercap</a> is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature you could need in order to perform a man in the middle attack.</p>
+<p><a href="http://www.bettercap.org/" target="_blank" rel="noopener">Bettercap</a> is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature you could need in order to perform a man in the middle attack.</p>
 <p><img src="/images/2015/07/quantum_of_solace_james_bond_roll_parody_rick_astley_rickroll_desktop_1680x1050_wallpaper-249024.jpg" alt="rickrolld"></p>
 <a id="more"></a>
 <p><strong>MOTIVATIONS</strong></p>
@@ -159,9 +159,9 @@
 <li>yeah you can see connections and raw pcap stuff, <strong>nice toy</strong>, but <strong>as a professional researcher I want to see only relevant stuff</strong>.</li>
 <li>unless you’re a C/C++ developer, you can’t easily extend ettercap or make your own module.</li>
 </ul>
-<p>Indeed you could use more than just one tool … maybe <a href="http://linux.die.net/man/8/arpspoof" target="_blank" rel="external">arpspoof</a> to perform the actual poisoning, <a href="http://mitmproxy.org" target="_blank" rel="external">mitmproxy</a> to intercept HTTP stuff and inject your payloads and so forth … I don’t know about you, but I <strong>hate</strong> when I need to use a dozen of tools just to perform one single attack, especially when I need to do some black magic in order to make all of them work on my distro or on OSX … what about the <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" rel="external">KISS</a> principle?</p>
+<p>Indeed you could use more than just one tool … maybe <a href="http://linux.die.net/man/8/arpspoof" target="_blank" rel="noopener">arpspoof</a> to perform the actual poisoning, <a href="http://mitmproxy.org" target="_blank" rel="noopener">mitmproxy</a> to intercept HTTP stuff and inject your payloads and so forth … I don’t know about you, but I <strong>hate</strong> when I need to use a dozen of tools just to perform one single attack, especially when I need to do some black magic in order to make all of them work on my distro or on OSX … what about the <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" rel="noopener">KISS</a> principle?</p>
 <p>So <strong>bettercap</strong> was born ( isn’t the name pure genius? XD ).</p>
-<p>You can find infos on the project on the <a href="http://www.bettercap.org/" target="_blank" rel="external">official website</a> or on its <a href="https://github.com/evilsocket/bettercap" target="_blank" rel="external">github repository</a>.</p>
+<p>You can find infos on the project on the <a href="http://www.bettercap.org/" target="_blank" rel="noopener">official website</a> or on its <a href="https://github.com/evilsocket/bettercap" target="_blank" rel="noopener">github repository</a>.</p>
 <p>Enjoy!</p>
 
   </div>
@@ -206,7 +206,7 @@
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&title=Bettercap - a Complete, Modular, Portable and Easily Extensible MITM Framework."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&title=Bettercap - a Complete, Modular, Portable and Easily Extensible MITM Framework."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&name=Bettercap - a Complete, Modular, Portable and Easily Extensible MITM Framework.&description=&lt;p&gt;Today I want to present my last project called &lt;strong&gt;bettercap&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.bettercap.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bettercap&lt;/a&gt; is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature you could need in order to perform a man in the middle attack.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.bettercap.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Bettercap&lt;/a&gt; is a complete, modular, portable and easily extensible MITM tool and framework with every kind of diagnostic and offensive feature you could need in order to perform a man in the middle attack.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/2015/07/quantum_of_solace_james_bond_roll_parody_rick_astley_rickroll_desktop_1680x1050_wallpaper-249024.jpg&quot; alt=&quot;rickrolld&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 

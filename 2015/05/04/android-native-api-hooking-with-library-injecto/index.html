@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android/ARM“ and a proof of concept of the same, namely what can be done with">
 <meta name="keywords" content="android,hooking,api hooking,library,injection,elf relocation,arm,elf,open,dalvik,plt,relocation,relocation table,symtab,strtab">
 <meta property="og:type" content="article">
@@ -47,7 +47,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -66,7 +66,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -83,7 +83,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/05/04/android-native-api-hooking-with-library-injecto/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -108,7 +108,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -135,13 +135,13 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
     <p>This post can be considered both the part 2 of the previous “<a href="http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically inject a shared library into a running process on Android/ARM</a>“ and a proof of concept of the same, namely what can be done with library injection on Android.</p>
 <a id="more"></a>
-<h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><p>I’ve updated the source code of the <a href="https://github.com/evilsocket/arminject" target="_blank" rel="external">arminject</a> project on github adding a library that once injected into a process will hook its <strong>open</strong> API and print some logs to the logcat, the <strong>make test</strong> command will basically start a new <strong>Chrome</strong> browser process, use the <strong>injector</strong> discussed in the previous post to inject <strong>libhook.so</strong> into it and wait for its logs to appear, an example output could be like:</p>
+<h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><p>I’ve updated the source code of the <a href="https://github.com/evilsocket/arminject" target="_blank" rel="noopener">arminject</a> project on github adding a library that once injected into a process will hook its <strong>open</strong> API and print some logs to the logcat, the <strong>make test</strong> command will basically start a new <strong>Chrome</strong> browser process, use the <strong>injector</strong> discussed in the previous post to inject <strong>libhook.so</strong> into it and wait for its logs to appear, an example output could be like:</p>
 <pre><code>@ Attaching to process com.android.chrome ...
 @ Injecting library /data/local/tmp/libhook.so into process 8511.
 @ Calling dlopen in target process ...
@@ -163,9 +163,9 @@ I/LIBHOOK ( 8511): [8511] open(&apos;/dev/ashmem&apos;, 2)
 I/LIBHOOK ( 8511): [8511] open(&apos;/dev/ashmem&apos;, 2)
 ...
 ...
-</code></pre><h1 id="Hooking-System-Functions"><a href="#Hooking-System-Functions" class="headerlink" title="Hooking System Functions"></a>Hooking System Functions</h1><p>As I basically wrote everywhere in the source to avoid any kind of misunderstanding, the libhook.so code is almost totally based on <strong>Andrey Petrov</strong>‘s blog post “<a href="http://shadowwhowalks.blogspot.it/2013/01/android-hacking-hooking-system.html" target="_blank" rel="external">Android hacking: hooking system functions used by Dalvik</a>“, although I had to modify and fix its original version since it didn’t work ( page align errors, memory protection faults and so forth ).</p>
+</code></pre><h1 id="Hooking-System-Functions"><a href="#Hooking-System-Functions" class="headerlink" title="Hooking System Functions"></a>Hooking System Functions</h1><p>As I basically wrote everywhere in the source to avoid any kind of misunderstanding, the libhook.so code is almost totally based on <strong>Andrey Petrov</strong>‘s blog post “<a href="http://shadowwhowalks.blogspot.it/2013/01/android-hacking-hooking-system.html" target="_blank" rel="noopener">Android hacking: hooking system functions used by Dalvik</a>“, although I had to modify and fix its original version since it didn’t work ( page align errors, memory protection faults and so forth ).</p>
 <p>The main concept is quite simple yet neat, once the library is injected inside the target process, its <strong>constructor</strong> will be executed.<br>A constructor function is declared like this:</p>
-<figure class="highlight plain"><figcaption><span>lang-c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">__attribute__((constructor)) somefunction() &#123;</div><div class="line">    // something</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>lang-c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__attribute__((constructor)) somefunction() &#123;</span><br><span class="line">    // something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>This means that “somefunction” will be executed as soon as the library is loaded.</p>
 <p>This allowed me to exploit Petrov’s code at runtime and patch the process relocation table, an <strong>ELF</strong> structure that holds the addressess of system functions used by the program.<br>The logic steps to do this are:</p>
 <ul>
@@ -175,7 +175,7 @@ I/LIBHOOK ( 8511): [8511] open(&apos;/dev/ashmem&apos;, 2)
 <li>Backup its original address and finally patch it with our own hook function address.</li>
 </ul>
 <p>Once the hook function is called, it will log its parameters and then call the original function we previously backupped:</p>
-<figure class="highlight plain"><figcaption><span>lang-c</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">int hook_open(const char *pathname, int flags) &#123;</div><div class="line">    HOOKLOG( &quot;[%d] open(&apos;%s&apos;, %d)&quot;, getpid(), pathname, flags );</div><div class="line"></div><div class="line">    return __open( pathname, flags );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>lang-c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int hook_open(const char *pathname, int flags) &#123;</span><br><span class="line">    HOOKLOG( &quot;[%d] open(&apos;%s&apos;, %d)&quot;, getpid(), pathname, flags );</span><br><span class="line"></span><br><span class="line">    return __open( pathname, flags );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Obviously this method can be applied to any kind of function, even Dalvik high level native API.</p>
 <p>Enjoy :)</p>
 

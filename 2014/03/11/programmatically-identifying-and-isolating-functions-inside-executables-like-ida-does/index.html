@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static">
 <meta name="keywords" content="reversing,libpe,ida,distorm,subroutines,routines,functions,static analysis">
 <meta property="og:type" content="article">
@@ -47,7 +47,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -66,7 +66,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -83,7 +83,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -95,8 +95,8 @@
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&name=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&description=&lt;p&gt;Even though it’s one of the tools I use on a daily basis, Hex-Rays &lt;strong&gt;&lt;a href=&quot;https://www.hex-rays.com/products/ida/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IDA&lt;/a&gt;&lt;/strong&gt; always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a &lt;em&gt;“make yourself the tools you need”&lt;/em&gt; guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.&lt;/p&gt;
-&lt;p&gt;I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with &lt;strong&gt;and&lt;/strong&gt; because I came accross &lt;a href=&quot;http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this blog post&lt;/a&gt; that shows how great IDA python libraries are.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&name=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&description=&lt;p&gt;Even though it’s one of the tools I use on a daily basis, Hex-Rays &lt;strong&gt;&lt;a href=&quot;https://www.hex-rays.com/products/ida/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;IDA&lt;/a&gt;&lt;/strong&gt; always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a &lt;em&gt;“make yourself the tools you need”&lt;/em&gt; guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.&lt;/p&gt;
+&lt;p&gt;I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with &lt;strong&gt;and&lt;/strong&gt; because I came accross &lt;a href=&quot;http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;this blog post&lt;/a&gt; that shows how great IDA python libraries are.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -109,7 +109,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -136,35 +136,35 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
-    <p>Even though it’s one of the tools I use on a daily basis, Hex-Rays <strong><a href="https://www.hex-rays.com/products/ida/" target="_blank" rel="external">IDA</a></strong> always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a <em>“make yourself the tools you need”</em> guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.</p>
-<p>I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with <strong>and</strong> because I came accross <a href="http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html" target="_blank" rel="external">this blog post</a> that shows how great IDA python libraries are.</p>
+    <p>Even though it’s one of the tools I use on a daily basis, Hex-Rays <strong><a href="https://www.hex-rays.com/products/ida/" target="_blank" rel="noopener">IDA</a></strong> always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a <em>“make yourself the tools you need”</em> guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.</p>
+<p>I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with <strong>and</strong> because I came accross <a href="http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html" target="_blank" rel="noopener">this blog post</a> that shows how great IDA python libraries are.</p>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># for all function offsets</span></div><div class="line"><span class="keyword">for</span> fn_ea <span class="keyword">in</span> Functions():</div><div class="line">  <span class="keyword">if</span> fn_ea == <span class="keyword">None</span>:</div><div class="line">    <span class="keyword">continue</span></div><div class="line"></div><div class="line">  <span class="comment"># get function from offset</span></div><div class="line">  f = idaapi.get_func(fn_ea)</div><div class="line"></div><div class="line">  <span class="comment"># get function bytes</span></div><div class="line">  start = f.startEA</div><div class="line">  size = f.endEA - start</div><div class="line">  bytes = GetManyBytes(start, size)</div><div class="line">  ...</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for all function offsets</span></span><br><span class="line"><span class="keyword">for</span> fn_ea <span class="keyword">in</span> Functions():</span><br><span class="line">  <span class="keyword">if</span> fn_ea == <span class="keyword">None</span>:</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function from offset</span></span><br><span class="line">  f = idaapi.get_func(fn_ea)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function bytes</span></span><br><span class="line">  start = f.startEA</span><br><span class="line">  size = f.endEA - start</span><br><span class="line">  bytes = GetManyBytes(start, size)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 <p>Wouldn’t be cool to have such features without the whole Python and IDA SDK distribution ? :)</p>
-<p>Actually this showed to be way much a simpler task than I’ve initially imagined, you only need a <a href="/2014/02/21/libpe-a-fast-pe32pe32-parsing-library/">good portable executable parsing library</a> and a fast disassembler library, for this purpose I’ve used <a href="https://code.google.com/p/distorm/" target="_blank" rel="external">Distorm</a> which is fast and easy to integrate.</p>
+<p>Actually this showed to be way much a simpler task than I’ve initially imagined, you only need a <a href="/2014/02/21/libpe-a-fast-pe32pe32-parsing-library/">good portable executable parsing library</a> and a fast disassembler library, for this purpose I’ve used <a href="https://code.google.com/p/distorm/" target="_blank" rel="noopener">Distorm</a> which is fast and easy to integrate.</p>
 <blockquote>
 <p><strong>NOTE</strong></p>
-<p>A few smart people <a href="http://www.reddit.com/r/ReverseEngineering/comments/206gs5/programmatically_identifying_and_isolating/" target="_blank" rel="external">pointed out</a> that the following system is prone to false positives. <strong>This is totally true</strong>, I never claimed it to be a perfect approach, but just a proof of concept of what can be achieved using a couple of well written libraries and a few lines of C code.</p>
 </blockquote>
+<p>A few smart people <a href="http://www.reddit.com/r/ReverseEngineering/comments/206gs5/programmatically_identifying_and_isolating/" target="_blank" rel="noopener">pointed out</a> that the following system is prone to false positives. <strong>This is totally true</strong>, I never claimed it to be a perfect approach, but just a proof of concept of what can be achieved using a couple of well written libraries and a few lines of C code.</p>
 <p>The main algorithm is very simple.</p>
 <ul>
 <li>Search for every code/executable section in the PE.</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">PE_FOREACH_SECTION( &amp;pe, pSection )</div><div class="line">&#123;</div><div class="line">    <span class="comment">// skip empty sections</span></div><div class="line">    <span class="keyword">if</span>( pSection-&gt;SizeOfRawData == <span class="number">0</span> )</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    <span class="comment">// skip non executable or non code sections</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>( !( pSection-&gt;Characteristics &amp; IMAGE_SCN_CNT_CODE ) &amp;&amp; !( pSection-&gt;Characteristics &amp; IMAGE_SCN_MEM_EXECUTE ) )</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PE_FOREACH_SECTION( &amp;pe, pSection )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// skip empty sections</span></span><br><span class="line">    <span class="keyword">if</span>( pSection-&gt;SizeOfRawData == <span class="number">0</span> )</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="comment">// skip non executable or non code sections</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>( !( pSection-&gt;Characteristics &amp; IMAGE_SCN_CNT_CODE ) &amp;&amp; !( pSection-&gt;Characteristics &amp; IMAGE_SCN_MEM_EXECUTE ) )</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Analyze each section and search for <strong>CALL</strong> branch instructions to a relative address, save that address as a function start.</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Is this instruction a suitable call ?</span></div><div class="line"><span class="keyword">if</span>( ( inst-&gt;opcode == I_CALL || inst-&gt;opcode == I_CALL_FAR ) &amp;&amp; inst-&gt;ops[<span class="number">0</span>].type == O_PC )</div><div class="line">&#123;</div><div class="line">    <span class="keyword">uint32_t</span> dwFunctionAddress = inst-&gt;addr + inst-&gt;imm.sdword + inst-&gt;size;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Is this instruction a suitable call ?</span></span><br><span class="line"><span class="keyword">if</span>( ( inst-&gt;opcode == I_CALL || inst-&gt;opcode == I_CALL_FAR ) &amp;&amp; inst-&gt;ops[<span class="number">0</span>].type == O_PC )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> dwFunctionAddress = inst-&gt;addr + inst-&gt;imm.sdword + inst-&gt;size;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Analyze the function start searching for the first <strong>RET</strong> instruction, that will be the function end.</li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>( inst-&gt;opcode == I_RET || inst-&gt;opcode == I_RETF )</div><div class="line">&#123;</div><div class="line">    pFunction-&gt;Address.Size = inst-&gt;addr - pFunction-&gt;Address.VA;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( inst-&gt;opcode == I_RET || inst-&gt;opcode == I_RETF )</span><br><span class="line">&#123;</span><br><span class="line">    pFunction-&gt;Address.Size = inst-&gt;addr - pFunction-&gt;Address.VA;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Easy isn’t it ? ^_^</p>
-<p>I’ve implemented this algorithm as the new <a href="https://github.com/evilsocket/libpe/tree/master/pefunctions" target="_blank" rel="external">pefunctions</a> project sample inside <strong>libpe</strong> repository, enjoy :)</p>
+<p>I’ve implemented this algorithm as the new <a href="https://github.com/evilsocket/libpe/tree/master/pefunctions" target="_blank" rel="noopener">pefunctions</a> project sample inside <strong>libpe</strong> repository, enjoy :)</p>
 
   </div>
 </article>
@@ -207,8 +207,8 @@
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&name=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&description=&lt;p&gt;Even though it’s one of the tools I use on a daily basis, Hex-Rays &lt;strong&gt;&lt;a href=&quot;https://www.hex-rays.com/products/ida/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;IDA&lt;/a&gt;&lt;/strong&gt; always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a &lt;em&gt;“make yourself the tools you need”&lt;/em&gt; guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.&lt;/p&gt;
-&lt;p&gt;I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with &lt;strong&gt;and&lt;/strong&gt; because I came accross &lt;a href=&quot;http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this blog post&lt;/a&gt; that shows how great IDA python libraries are.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/&name=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&description=&lt;p&gt;Even though it’s one of the tools I use on a daily basis, Hex-Rays &lt;strong&gt;&lt;a href=&quot;https://www.hex-rays.com/products/ida/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;IDA&lt;/a&gt;&lt;/strong&gt; always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a &lt;em&gt;“make yourself the tools you need”&lt;/em&gt; guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.&lt;/p&gt;
+&lt;p&gt;I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with &lt;strong&gt;and&lt;/strong&gt; because I came accross &lt;a href=&quot;http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;this blog post&lt;/a&gt; that shows how great IDA python libraries are.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

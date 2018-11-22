@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Yesterday I released version 1.6.1 of bettercap and among other things, you can read in the changelog: * Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in">
 <meta name="keywords" content="bettercap,mitm,tls,sni,server name indication,privacy">
 <meta property="og:type" content="article">
@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://www.evilsocket.net/images/2017/07/sni.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2017/07/encrypt.png">
-<meta property="og:updated_time" content="2018-07-28T14:17:57.072Z">
+<meta property="og:updated_time" content="2018-11-22T15:29:42.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TLS, Server Name Indication and Why We Need to Encrypt It">
 <meta name="twitter:description" content="Yesterday I released version 1.6.1 of bettercap and among other things, you can read in the changelog: * Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in">
@@ -50,7 +50,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -69,7 +69,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -86,7 +86,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -98,7 +98,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&title=TLS, Server Name Indication and Why We Need to Encrypt It"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&title=TLS, Server Name Indication and Why We Need to Encrypt It"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&title=TLS, Server Name Indication and Why We Need to Encrypt It"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&name=TLS, Server Name Indication and Why We Need to Encrypt It&description=&lt;p&gt;Yesterday I released version 1.6.1 of &lt;a href=&quot;https://bettercap.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bettercap&lt;/a&gt; and among other things, you can read in the changelog:&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&name=TLS, Server Name Indication and Why We Need to Encrypt It&description=&lt;p&gt;Yesterday I released version 1.6.1 of &lt;a href=&quot;https://bettercap.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;bettercap&lt;/a&gt; and among other things, you can read in the changelog:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;* Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in order to extract the real hostname.
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;But what does this actually mean? And how can we protect ourselves from it? (Hint: &lt;strong&gt;we can’t, yet&lt;/strong&gt;)&lt;/p&gt;
@@ -115,7 +115,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -142,11 +142,11 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
-    <p>Yesterday I released version 1.6.1 of <a href="https://bettercap.org" target="_blank" rel="external">bettercap</a> and among other things, you can read in the changelog:</p>
+    <p>Yesterday I released version 1.6.1 of <a href="https://bettercap.org" target="_blank" rel="noopener">bettercap</a> and among other things, you can read in the changelog:</p>
 <pre><code>* Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in order to extract the real hostname.
 ...
 </code></pre><p>But what does this actually mean? And how can we protect ourselves from it? (Hint: <strong>we can’t, yet</strong>)</p>
@@ -156,13 +156,13 @@
 <pre><code>GET / HTTP/1.1
 Host: somesite.com
 Connection: close
-</code></pre><p>As we all know, once it gets this request the server is able to “understand” what virtual host it’s supposed to serve by reading the <code>Host</code> header, but what happens when the request is HTTPS and therefore the server can not read the Host header before providing the certificate?<br>What if server X is hosting multiple domains behind HTTPS? What’s the certificate it should send to the client? Here it comes <strong>Server Name Indication</strong> ( <a href="https://en.wikipedia.org/wiki/Server_Name_Indication" target="_blank" rel="external">SNI</a> ) for the rescue!</p>
+</code></pre><p>As we all know, once it gets this request the server is able to “understand” what virtual host it’s supposed to serve by reading the <code>Host</code> header, but what happens when the request is HTTPS and therefore the server can not read the Host header before providing the certificate?<br>What if server X is hosting multiple domains behind HTTPS? What’s the certificate it should send to the client? Here it comes <strong>Server Name Indication</strong> ( <a href="https://en.wikipedia.org/wiki/Server_Name_Indication" target="_blank" rel="noopener">SNI</a> ) for the rescue!</p>
 <p>SNI is a mechanism which has been introduced in TLS as an extension to solve this problem, long story short, during the TLS handshake the client will send the name of the host it wants to connect to ( pretty much like the Host header on HTTP ), this piece of information is going to be transmitted <strong>unencrypted</strong> ( it has to! ), therefore we can intercept it.</p>
 <p>As you can see in the image, by parsing such handshakes, bettercap is now able to tell you <strong>exactly</strong> what websites the target is browsing even if they’re on HTTPS, while the version before only “assumed” which was the domain by resolving it from the IP (and most of the times, failing miserably to give any useful result).</p>
-<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>Very simple, with just a <a href="https://github.com/evilsocket/bettercap/blob/master/lib/bettercap/sniffer/parsers/https.rb" target="_blank" rel="external">few lines</a> of (bad) code of course!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"></div><div class="line"># poor man&apos;s TLS Client Hello with SNI extension parser :P</div><div class="line">if pkt.respond_to?(:tcp_dst) and \</div><div class="line"> pkt.payload[0] == &quot;\x16&quot; and \</div><div class="line"> pkt.payload[1] == &quot;\x03&quot; and \</div><div class="line"> pkt.payload =~ /\x00\x00.&#123;4&#125;\x00.&#123;2&#125;([a-z0-9]+([\-\.]&#123;1&#125;[a-z0-9]+)*\.[a-z]&#123;2,6&#125;)\x00/</div><div class="line">hostname = $1</div><div class="line">if pkt.tcp_dst != 443</div><div class="line">  hostname += &quot;:#&#123;pkt.tcp_dst&#125;&quot;</div><div class="line">end</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<h1 id="How"><a href="#How" class="headerlink" title="How"></a>How</h1><p>Very simple, with just a <a href="https://github.com/evilsocket/bettercap/blob/master/lib/bettercap/sniffer/parsers/https.rb" target="_blank" rel="noopener">few lines</a> of (bad) code of course!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"># poor man&apos;s TLS Client Hello with SNI extension parser :P</span><br><span class="line">if pkt.respond_to?(:tcp_dst) and \</span><br><span class="line"> pkt.payload[0] == &quot;\x16&quot; and \</span><br><span class="line"> pkt.payload[1] == &quot;\x03&quot; and \</span><br><span class="line"> pkt.payload =~ /\x00\x00.&#123;4&#125;\x00.&#123;2&#125;([a-z0-9]+([\-\.]&#123;1&#125;[a-z0-9]+)*\.[a-z]&#123;2,6&#125;)\x00/</span><br><span class="line">hostname = $1</span><br><span class="line">if pkt.tcp_dst != 443</span><br><span class="line">  hostname += &quot;:#&#123;pkt.tcp_dst&#125;&quot;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h1 id="What-can-we-do-about-it"><a href="#What-can-we-do-about-it" class="headerlink" title="What can we do about it?"></a>What can we do about it?</h1><p><img src="/images/2017/07/encrypt.png" alt="encrypt all the things"></p>
-<p>Seriously, there’s not much we can do about it right now, which means <strong>even if you’re using HTTPS only, the domains you’re browsing are leaked on the network anyway … adios privacy!</strong> The only logical thing would be to <a href="https://www.ietf.org/proceedings/94/slides/slides-94-tls-8.pdf" target="_blank" rel="external">encrypt the SNI payload</a> as suggested in this document ( tnx to <a href="https://twitter.com/fpietrosanti" target="_blank" rel="external">Fabio</a> for the link! ), but I guess we’ll have to wait some time :)</p>
+<p>Seriously, there’s not much we can do about it right now, which means <strong>even if you’re using HTTPS only, the domains you’re browsing are leaked on the network anyway … adios privacy!</strong> The only logical thing would be to <a href="https://www.ietf.org/proceedings/94/slides/slides-94-tls-8.pdf" target="_blank" rel="noopener">encrypt the SNI payload</a> as suggested in this document ( tnx to <a href="https://twitter.com/fpietrosanti" target="_blank" rel="noopener">Fabio</a> for the link! ), but I guess we’ll have to wait some time :)</p>
 <h1 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h1><p><strong>USE A VPN, ESPECIALLY ON PUBLIC NETWORKS FOR F°°°’S SAKE!!!</strong></p>
 
   </div>
@@ -206,7 +206,7 @@ Connection: close
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&title=TLS, Server Name Indication and Why We Need to Encrypt It"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&title=TLS, Server Name Indication and Why We Need to Encrypt It"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&title=TLS, Server Name Indication and Why We Need to Encrypt It"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&name=TLS, Server Name Indication and Why We Need to Encrypt It&description=&lt;p&gt;Yesterday I released version 1.6.1 of &lt;a href=&quot;https://bettercap.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bettercap&lt;/a&gt; and among other things, you can read in the changelog:&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/&name=TLS, Server Name Indication and Why We Need to Encrypt It&description=&lt;p&gt;Yesterday I released version 1.6.1 of &lt;a href=&quot;https://bettercap.org&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;bettercap&lt;/a&gt; and among other things, you can read in the changelog:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;* Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in order to extract the real hostname.
 ...
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;But what does this actually mean? And how can we protect ourselves from it? (Hint: &lt;strong&gt;we can’t, yet&lt;/strong&gt;)&lt;/p&gt;

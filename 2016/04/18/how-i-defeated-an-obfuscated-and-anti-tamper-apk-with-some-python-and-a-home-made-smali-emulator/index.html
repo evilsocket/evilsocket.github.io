@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="During this Saturday afternoon I was chatting with a friend of mine ( Matteo ) and he asked for some help to fix a Python script he was working on. He was trying to deobfuscate an APK in order to unde">
 <meta name="keywords" content="android,dalvik,reversing,apk,encryption,emulator,mobile,obfuscation,python,emulation,smali">
 <meta property="og:type" content="article">
@@ -55,7 +55,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -74,7 +74,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -91,7 +91,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -103,7 +103,7 @@
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&name=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&description=&lt;p&gt;During this Saturday afternoon I was chatting with a friend of mine ( &lt;a href=&quot;https://twitter.com/fvrmatteo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matteo&lt;/a&gt; ) and he asked for some help to fix a Python script he was working on.&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&name=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&description=&lt;p&gt;During this Saturday afternoon I was chatting with a friend of mine ( &lt;a href=&quot;https://twitter.com/fvrmatteo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Matteo&lt;/a&gt; ) and he asked for some help to fix a Python script he was working on.&lt;/p&gt;
 &lt;p&gt;He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.&lt;/p&gt;
 &lt;p&gt;This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&amp;gt; jd-gui -&amp;gt; &lt;strong&gt;done&lt;/strong&gt; ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.&lt;/p&gt;
 &lt;p&gt;I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
@@ -119,7 +119,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -146,11 +146,11 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
-    <p>During this Saturday afternoon I was chatting with a friend of mine ( <a href="https://twitter.com/fvrmatteo" target="_blank" rel="external">Matteo</a> ) and he asked for some help to fix a Python script he was working on.</p>
+    <p>During this Saturday afternoon I was chatting with a friend of mine ( <a href="https://twitter.com/fvrmatteo" target="_blank" rel="noopener">Matteo</a> ) and he asked for some help to fix a Python script he was working on.</p>
 <p>He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.</p>
 <p>This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&gt; jd-gui -&gt; <strong>done</strong> ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.</p>
 <p>I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.</p>
@@ -182,7 +182,7 @@
 
 <h3 id="Encrypted-Strings"><a href="#Encrypted-Strings" class="headerlink" title="Encrypted Strings"></a>Encrypted Strings</h3><p>As the lazy (or smart, you decide) reverser I am, instead of trying to understand the logic, at first I tried to search for meaningful strings that could give me some hints about what was going on in the app, but again I had a nasty surprise instead.</p>
 <p>Every single string was encrypted with a custom algorithm, basically every reference to a string was replaced by something like:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String decrypted = Class623::method5( <span class="keyword">new</span> <span class="keyword">int</span>[]&#123; -<span class="number">12</span>, <span class="number">44</span>, -<span class="number">35</span>, ... &#125;, <span class="number">52</span> );</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String decrypted = Class623::method5( <span class="keyword">new</span> <span class="keyword">int</span>[]&#123; -<span class="number">12</span>, <span class="number">44</span>, -<span class="number">35</span>, ... &#125;, <span class="number">52</span> );</span><br></pre></td></tr></table></figure>
 <p>Just a long array of integers and another integer as the second argument (maybe some sort of key?)</p>
 <p>What I usually do in these cases is:</p>
 <ol>
@@ -202,8 +202,8 @@
 <p>Long story short, I said to myself:</p>
 <pre><code>Fuck this, I&apos;m gonna write a smali parser and emulator and feed it with this
 routine, eventually it will output all the cleartexts I need!
-</code></pre><p>So I started reading <a href="http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html" target="_blank" rel="external">Dalvik opcodes specs</a> ( tnx to <strong>Gabor Paller</strong> for this! ) and putting some code together, after a few hours I had this simple script ready for testing:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> smali.emulator <span class="keyword">import</span> Emulator</div><div class="line"></div><div class="line">emu = Emulator()</div><div class="line"></div><div class="line"><span class="comment"># The smali file to emulate.</span></div><div class="line">filename = <span class="string">'decryptor.smali'</span></div><div class="line"><span class="comment"># Arguments for the method.</span></div><div class="line">args = &#123;</div><div class="line">    <span class="string">'p0'</span>: (<span class="number">-62</span>, <span class="number">-99</span>, <span class="number">-106</span>, <span class="number">-125</span>, <span class="number">-123</span>, <span class="number">-105</span>, <span class="number">-98</span>, <span class="number">-37</span>, <span class="number">-105</span>, <span class="number">-97</span>, <span class="number">-103</span>, <span class="number">-41</span>, <span class="number">-118</span>, <span class="number">-97</span>, <span class="number">-113</span>, <span class="number">-103</span>, <span class="number">-109</span>, <span class="number">-104</span>, <span class="number">-115</span>, <span class="number">111</span>, <span class="number">98</span>, <span class="number">103</span>, <span class="number">35</span>, <span class="number">52</span>),</div><div class="line">    <span class="string">'p1'</span>: <span class="number">19</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">ret = emu.run( filename, args )</div><div class="line"></div><div class="line"><span class="keyword">print</span> emu.stats</div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">"RESULT:\n"</span></div><div class="line"><span class="keyword">print</span> <span class="string">"'%s'"</span> % ret</div></pre></td></tr></table></figure>
+</code></pre><p>So I started reading <a href="http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html" target="_blank" rel="noopener">Dalvik opcodes specs</a> ( tnx to <strong>Gabor Paller</strong> for this! ) and putting some code together, after a few hours I had this simple script ready for testing:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> smali.emulator <span class="keyword">import</span> Emulator</span><br><span class="line"></span><br><span class="line">emu = Emulator()</span><br><span class="line"></span><br><span class="line"><span class="comment"># The smali file to emulate.</span></span><br><span class="line">filename = <span class="string">'decryptor.smali'</span></span><br><span class="line"><span class="comment"># Arguments for the method.</span></span><br><span class="line">args = &#123;</span><br><span class="line">    <span class="string">'p0'</span>: (<span class="number">-62</span>, <span class="number">-99</span>, <span class="number">-106</span>, <span class="number">-125</span>, <span class="number">-123</span>, <span class="number">-105</span>, <span class="number">-98</span>, <span class="number">-37</span>, <span class="number">-105</span>, <span class="number">-97</span>, <span class="number">-103</span>, <span class="number">-41</span>, <span class="number">-118</span>, <span class="number">-97</span>, <span class="number">-113</span>, <span class="number">-103</span>, <span class="number">-109</span>, <span class="number">-104</span>, <span class="number">-115</span>, <span class="number">111</span>, <span class="number">98</span>, <span class="number">103</span>, <span class="number">35</span>, <span class="number">52</span>),</span><br><span class="line">    <span class="string">'p1'</span>: <span class="number">19</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ret = emu.run( filename, args )</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> emu.stats</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"RESULT:\n"</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"'%s'"</span> % ret</span><br></pre></td></tr></table></figure>
 <p>Aaaaaaand:</p>
 <center><br><img src="/images/2016/04/pwned.png" alt="decrypted"><br></center>
 
@@ -211,7 +211,7 @@ routine, eventually it will output all the cleartexts I need!
 <p>I executed the script against every encrypted string and it worked like a charm, the emulator was able to correctly parse and execute the smali code of the decryption routine and decrypt every single entry I’ve extracted from the decompiled application … from that point on it was just a matter of replacing encrypted entries with their cleartexts and the reversing process became as easy as pie :)</p>
 <center><br><img src="/images/2016/04/victory.jpg" alt="victory"><br></center>
 
-<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>I’ve released the code on <a href="https://github.com/evilsocket/smali_emulator" target="_blank" rel="external">github</a> as usual, it still lacks the support for a lot of Dalvik opcodes, I’ve just implemented the ones I needed in order to emulate that routine ( which you can find in the repo as well ), but it’s quite easy to improve it and probably I’ll complete it in the next few days :)</p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>I’ve released the code on <a href="https://github.com/evilsocket/smali_emulator" target="_blank" rel="noopener">github</a> as usual, it still lacks the support for a lot of Dalvik opcodes, I’ve just implemented the ones I needed in order to emulate that routine ( which you can find in the repo as well ), but it’s quite easy to improve it and probably I’ll complete it in the next few days :)</p>
 
   </div>
 </article>
@@ -254,7 +254,7 @@ routine, eventually it will output all the cleartexts I need!
   <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&name=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&description=&lt;p&gt;During this Saturday afternoon I was chatting with a friend of mine ( &lt;a href=&quot;https://twitter.com/fvrmatteo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Matteo&lt;/a&gt; ) and he asked for some help to fix a Python script he was working on.&lt;/p&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/&name=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&description=&lt;p&gt;During this Saturday afternoon I was chatting with a friend of mine ( &lt;a href=&quot;https://twitter.com/fvrmatteo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Matteo&lt;/a&gt; ) and he asked for some help to fix a Python script he was working on.&lt;/p&gt;
 &lt;p&gt;He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.&lt;/p&gt;
 &lt;p&gt;This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&amp;gt; jd-gui -&amp;gt; &lt;strong&gt;done&lt;/strong&gt; ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.&lt;/p&gt;
 &lt;p&gt;I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
 <meta name="keywords" content="go,golang,oss,arc,arcd,passwords,secrets,notes,password manager,encryption,aes">
 <meta property="og:type" content="article">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://i.imgur.com/KCn4RGw.png">
 <meta property="og:image" content="https://i.imgur.com/nxqmRqY.png">
 <meta property="og:image" content="https://i.imgur.com/h5cpCeN.png">
-<meta property="og:updated_time" content="2018-07-28T14:17:57.076Z">
+<meta property="og:updated_time" content="2018-11-22T15:29:42.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC">
 <meta name="twitter:description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
@@ -55,7 +55,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -74,7 +74,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -91,7 +91,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -126,7 +126,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -153,7 +153,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -210,13 +210,13 @@
 </code></pre><p>Let’s finish the setup of the board, connect to it via SSH:</p>
 <pre><code>ssh pi@raspberrypi.local
 </code></pre><p>Expand the filesystem as usual, <strong>change the default SSH password</strong>, enable <strong>private key only SSH authentication</strong>, copy your certificate, etc … as for the hardware part, we’re ready :)</p>
-<h3 id="Software-Setup"><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h3><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage" target="_blank" rel="external">follow the instructions on the repository</a> to compile the server.</p>
+<h3 id="Software-Setup"><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h3><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage" target="_blank" rel="noopener">follow the instructions on the repository</a> to compile the server.</p>
 <p>Once you compiled it, edit the configuration file:</p>
 <pre><code>cd /path/to/arc/repo/arcd
 cp sample_config.json config.json
 vim config.json
 </code></pre><p>And change the <code>address</code> field so we’ll be able to connect to the Arc web interface:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"address"</span>: <span class="string">""</span>,</div><div class="line">    <span class="attr">"port"</span>: <span class="number">8080</span>,</div><div class="line">    <span class="attr">"username"</span>: <span class="string">"PUT_YOUR_USERNAME_HERE"</span>,</div><div class="line">    <span class="attr">"password"</span>: <span class="string">"PUT_YOUR_PASSWORD_HERE"</span>,</div><div class="line">    <span class="attr">"database"</span>: <span class="string">"~/arc.db"</span>,</div><div class="line">    <span class="attr">"token_duration"</span>: <span class="number">60</span>,</div><div class="line">    <span class="attr">"scheduler"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"period"</span>: <span class="number">10</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"tls"</span>: &#123;</div><div class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">"pem"</span>: <span class="string">"/some/file.pem"</span>,</div><div class="line">        <span class="attr">"key"</span>: <span class="string">"/some/file.key"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"address"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"port"</span>: <span class="number">8080</span>,</span><br><span class="line">    <span class="attr">"username"</span>: <span class="string">"PUT_YOUR_USERNAME_HERE"</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"PUT_YOUR_PASSWORD_HERE"</span>,</span><br><span class="line">    <span class="attr">"database"</span>: <span class="string">"~/arc.db"</span>,</span><br><span class="line">    <span class="attr">"token_duration"</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">"scheduler"</span>: &#123;</span><br><span class="line">        <span class="attr">"enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"period"</span>: <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"tls"</span>: &#123;</span><br><span class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"pem"</span>: <span class="string">"/some/file.pem"</span>,</span><br><span class="line">        <span class="attr">"key"</span>: <span class="string">"/some/file.key"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Now just copy the <code>arc</code> folder, the new <code>config.json</code> file and the ARM compiled <code>arcd</code> server to the RPiZ:</p>
 <pre><code>scp -r arc arcd_arm config.json pi@raspberrypi.local:/home/pi/
 </code></pre><p>SSH to the board and make sure that everything works:</p>
@@ -241,7 +241,7 @@ mv arcd_arm arcd
 <li><p>Elements can be configured with an expiration date, using it is a good way to remember how old a given password is and have some sort of reminder when it’s time to change it (or just encrypted reminders ^_^).</p>
 </li>
 </ul>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>The project is <a href="https://github.com/evilsocket/arc" target="_blank" rel="external">available on my github</a> as usual, there’s still <a href="https://github.com/evilsocket/arc/milestone/1" target="_blank" rel="external">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>The project is <a href="https://github.com/evilsocket/arc" target="_blank" rel="noopener">available on my github</a> as usual, there’s still <a href="https://github.com/evilsocket/arc/milestone/1" target="_blank" rel="noopener">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
 <p>Stay safe, have fun and …</p>
 <p align="center"><br>    <img src="https://i.imgur.com/h5cpCeN.png" alt="Encrypt all the things!"><br></p>
 

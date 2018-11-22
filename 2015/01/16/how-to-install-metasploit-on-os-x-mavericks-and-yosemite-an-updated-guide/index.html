@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Today I tried to install the Metasploit framework both on my Mavericks MacBook Pro and my Yosemite MacBook Air, unfortunately all the guides I’ve found seem to be quite outdated and various hacks are">
 <meta name="keywords" content="guide,howto,metasploit,osx,mavericks,yosemite,installation">
 <meta property="og:type" content="article">
@@ -47,7 +47,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -66,7 +66,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -83,7 +83,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/01/16/how-to-install-metasploit-on-os-x-mavericks-and-yosemite-an-updated-guide/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -100,7 +100,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">1.</span> <span class="toc-text">Requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XCode-Command-Line-Tools"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">XCode Command Line Tools</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Homebrew"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Homebrew</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nmap"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LibXML2"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">LibXML2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">PostgreSQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL-Configuration"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">PostgreSQL Configuration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Clone-the-Metasploit-Repo"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">Clone the Metasploit Repo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Nokogiri-Gem"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">HACK: Nokogiri Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-PG-Gem"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">HACK: PG Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Other-Gems"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">Other Gems</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Fix-the-‘robots’-Gem-Permissions"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">HACK: Fix the ‘robots’ Gem Permissions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-Database-Configuration"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">Create the Database Configuration</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Done"><span class="toc-number">2.</span> <span class="toc-text">Done</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">1.</span> <span class="toc-text">Requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XCode-Command-Line-Tools"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">XCode Command Line Tools</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Homebrew"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Homebrew</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nmap"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LibXML2"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">LibXML2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">PostgreSQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL-Configuration"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">PostgreSQL Configuration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Clone-the-Metasploit-Repo"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">Clone the Metasploit Repo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Nokogiri-Gem"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">HACK: Nokogiri Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-PG-Gem"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">HACK: PG Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Other-Gems"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">Other Gems</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Fix-the-‘robots’-Gem-Permissions"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">HACK: Fix the ‘robots’ Gem Permissions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-Database-Configuration"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">Create the Database Configuration</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Done"><span class="toc-number">2.</span> <span class="toc-text">Done</span></a></li>
     </div>
   </span>
 </div>
@@ -108,7 +108,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -135,7 +135,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -147,7 +147,7 @@
 </code></pre><p>And choose the <strong>Install</strong> option to install XCode command line tools needed for compilation, etc.</p>
 <h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><p>Make sure you have the latest <strong>Java SE JDK</strong> from Oracle, you can verify it issuing the command:</p>
 <pre><code>java -version
-</code></pre><p>Otherwise download it from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">here</a> and install it.</p>
+</code></pre><p>Otherwise download it from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">here</a> and install it.</p>
 <h5 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h5><p>Homebrew is a package manager for OS X, well not really a package manager since it just manages “formulas”, which are basically build scripts for open source projects ( very much like Arch / Slackware Linux build scripts ), you will need it to install other libraries and binaries.</p>
 <pre><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
 </code></pre><p>Then update your <strong>PATH</strong> environment variable with the homebrew binary folder:</p>
@@ -230,7 +230,7 @@ source ~/.bash_profile
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">1.</span> <span class="toc-text">Requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XCode-Command-Line-Tools"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">XCode Command Line Tools</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Homebrew"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Homebrew</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nmap"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LibXML2"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">LibXML2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">PostgreSQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL-Configuration"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">PostgreSQL Configuration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Clone-the-Metasploit-Repo"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">Clone the Metasploit Repo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Nokogiri-Gem"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">HACK: Nokogiri Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-PG-Gem"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">HACK: PG Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Other-Gems"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">Other Gems</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Fix-the-‘robots’-Gem-Permissions"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">HACK: Fix the ‘robots’ Gem Permissions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-Database-Configuration"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">Create the Database Configuration</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Done"><span class="toc-number">2.</span> <span class="toc-text">Done</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">1.</span> <span class="toc-text">Requirements</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#XCode-Command-Line-Tools"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">XCode Command Line Tools</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Homebrew"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">Homebrew</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Nmap"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#LibXML2"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">LibXML2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">PostgreSQL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PostgreSQL-Configuration"><span class="toc-number">1.0.0.7.</span> <span class="toc-text">PostgreSQL Configuration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Clone-the-Metasploit-Repo"><span class="toc-number">1.0.0.8.</span> <span class="toc-text">Clone the Metasploit Repo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Nokogiri-Gem"><span class="toc-number">1.0.0.9.</span> <span class="toc-text">HACK: Nokogiri Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-PG-Gem"><span class="toc-number">1.0.0.10.</span> <span class="toc-text">HACK: PG Gem</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Other-Gems"><span class="toc-number">1.0.0.11.</span> <span class="toc-text">Other Gems</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HACK-Fix-the-‘robots’-Gem-Permissions"><span class="toc-number">1.0.0.12.</span> <span class="toc-text">HACK: Fix the ‘robots’ Gem Permissions</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Create-the-Database-Configuration"><span class="toc-number">1.0.0.13.</span> <span class="toc-text">Create the Database Configuration</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Done"><span class="toc-number">2.</span> <span class="toc-text">Done</span></a></li>
     </div>
 
     <div id="share-footer" style="display: none">

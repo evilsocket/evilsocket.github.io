@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="This post is about SSDT patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.SSDT hooking is as far as I know the lowest">
 <meta name="keywords" content="hooking,hack,ssdt,kernel,win32,obcallbacks,ntoskrnl,cr0">
 <meta property="og:type" content="article">
@@ -49,7 +49,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -68,7 +68,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -83,7 +83,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/02/01/keservicedescriptortable-patching-aka-how-to-hook-win32-api-patching-the-kernel/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -108,7 +108,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -135,7 +135,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -144,19 +144,19 @@
 <p>If you open the file <strong>ntoskrnl.exe</strong> ( located in the System32/SysWOW64 folder ) with your preferred disassembler, you will noticed a <strong>KeServiceDescriptorTable</strong> symbol being exported:</p>
 <p><img src="/images/2014/Feb/KeServiceDescriptorTable_export.png" alt="KeServiceDescriptorTable"></p>
 <p>It’s a pointer to a kernel structure defined as</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SystemServiceDescriptorTable</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">  PULONG ServiceTableBase;</div><div class="line">  PULONG ServiceCounterTableBase;</div><div class="line">  ULONG NumberOfServices;</div><div class="line">  PUCHAR ParamTableBase;</div><div class="line">&#125;SSDT,*PSSDT;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SystemServiceDescriptorTable</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  PULONG ServiceTableBase;</span><br><span class="line">  PULONG ServiceCounterTableBase;</span><br><span class="line">  ULONG NumberOfServices;</span><br><span class="line">  PUCHAR ParamTableBase;</span><br><span class="line">&#125;SSDT,*PSSDT;</span><br></pre></td></tr></table></figure>
 <p>It works as a big lookup table of Windows Native System Services, a list of kernel API such as NtTerminateProcess, NtLoadDriver, etc.</p>
 <p>As you might correctly guess, if it’s exported it can be read and afterwards modified by a kernel driver with some hacks to temporary disable writing protection.</p>
 <p>Starting from the address <strong>ServiceTableBase</strong>, each routine can be translated to its service index by the following formula:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(*(PULONG)((PUCHAR)Api+<span class="number">1</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(*(PULONG)((PUCHAR)Api+<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <p>For instance, if we wanted to obtain the service index for <strong>ZwTerminateProcess</strong>, we would do:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ULONG ulZwTerminateProcessNumber = (*(PULONG)((PUCHAR)ZwTerminateProcess+<span class="number">1</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ULONG ulZwTerminateProcessNumber = (*(PULONG)((PUCHAR)ZwTerminateProcess+<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 <p>( This would suggest that every kernel service routine has its own service number stored in 4 bytes after the first byte of its opcodes )</p>
 <p>Once we have the correct service number for the API we want to hook, we can replace it in the descriptor table disabling write protection with the CR0 cpu register, setting the new routine address and then restoring CR0 protection.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">NTSTATUS</span> <span class="params">(*NtTerminateProcess_T)</span><span class="params">(HANDLE,NTSTATUS)</span></span>;</div><div class="line"></div><div class="line">ULONG ulZwTerminateProcessNumber = (*(PULONG)((PUCHAR)ZwTerminateProcess+<span class="number">1</span>))</div><div class="line"></div><div class="line"><span class="comment">// disable write protection</span></div><div class="line">__asm</div><div class="line">&#123;</div><div class="line">  mov eax,cr0</div><div class="line">  <span class="keyword">and</span> eax,<span class="keyword">not</span> <span class="number">0x10000</span></div><div class="line">  mov cr0,eax</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// store the original address to restore it on driver unloading</span></div><div class="line">NtTerminateProcess_T fnOriginalNtTerminateProcess = (NtTerminateProcess_T)*(PULONG)(ULONG)KeServiceDescriptorTable-&gt;ServiceTableBase + ulZwTerminateProcessNumber * <span class="number">4</span>;</div><div class="line"></div><div class="line"><span class="comment">// finally patch the table with our own function</span></div><div class="line">*((PULONG)ulZwTerminateProcessNumber) = (ULONG)OurNtTerminateProcessHook;</div><div class="line"></div><div class="line"><span class="comment">// restore write protection</span></div><div class="line">__asm</div><div class="line">&#123;</div><div class="line">  mov eax,cr0</div><div class="line">  <span class="keyword">or</span> eax,<span class="number">0x10000</span></div><div class="line">  mov cr0,eax</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">NTSTATUS</span> <span class="params">(*NtTerminateProcess_T)</span><span class="params">(HANDLE,NTSTATUS)</span></span>;</span><br><span class="line"></span><br><span class="line">ULONG ulZwTerminateProcessNumber = (*(PULONG)((PUCHAR)ZwTerminateProcess+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// disable write protection</span></span><br><span class="line">__asm</span><br><span class="line">&#123;</span><br><span class="line">  mov eax,cr0</span><br><span class="line">  <span class="keyword">and</span> eax,<span class="keyword">not</span> <span class="number">0x10000</span></span><br><span class="line">  mov cr0,eax</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// store the original address to restore it on driver unloading</span></span><br><span class="line">NtTerminateProcess_T fnOriginalNtTerminateProcess = (NtTerminateProcess_T)*(PULONG)(ULONG)KeServiceDescriptorTable-&gt;ServiceTableBase + ulZwTerminateProcessNumber * <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// finally patch the table with our own function</span></span><br><span class="line">*((PULONG)ulZwTerminateProcessNumber) = (ULONG)OurNtTerminateProcessHook;</span><br><span class="line"></span><br><span class="line"><span class="comment">// restore write protection</span></span><br><span class="line">__asm</span><br><span class="line">&#123;</span><br><span class="line">  mov eax,cr0</span><br><span class="line">  <span class="keyword">or</span> eax,<span class="number">0x10000</span></span><br><span class="line">  mov cr0,eax</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>As you can see we store the original function pointer, this is important since once the driver will start the unloading process, we need it to restore the original API address before closing. Forgetting about this step would lead to unpredictable behaviour ( almost surely a BSOD ) since the kernel would call an address that it’s not mapped anymore or that it’s being used by something else.</p>
-<p>This is a short overview of this old but effective technique, which was used to protect processes from being killed hooking <strong>NtTerminateProcess</strong> for instance and filtering by PID.<br>Since PatchGuard has been introduced, SSDT hooking became hard to perform therefore Microsoft released a whole new set of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558692(v=vs.85" target="_blank" rel="external">kernel callbacks</a>.aspx) for newer systems, I will talk about this on another post.</p>
-<p>The full source code for SSDT patching can be found <a href="http://www.emoticode.net/c/ssdt-hook-driver-with-process-protection.html" target="_blank" rel="external">here</a>, tnx to <strong>zwclose7</strong> from rohitab for the source code.</p>
+<p>This is a short overview of this old but effective technique, which was used to protect processes from being killed hooking <strong>NtTerminateProcess</strong> for instance and filtering by PID.<br>Since PatchGuard has been introduced, SSDT hooking became hard to perform therefore Microsoft released a whole new set of <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558692(v=vs.85" target="_blank" rel="noopener">kernel callbacks</a>.aspx) for newer systems, I will talk about this on another post.</p>
+<p>The full source code for SSDT patching can be found <a href="http://www.emoticode.net/c/ssdt-hook-driver-with-process-protection.html" target="_blank" rel="noopener">here</a>, tnx to <strong>zwclose7</strong> from rohitab for the source code.</p>
 
   </div>
 </article>

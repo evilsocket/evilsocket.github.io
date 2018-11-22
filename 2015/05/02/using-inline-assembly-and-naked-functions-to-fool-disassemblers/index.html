@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="On this post I want to share a simple trick I learned a while ago, it’s nothing special but if you think about it, it’s quite nice :) Sometimes we want to obfuscate/hide strings in our program to make">
 <meta name="keywords" content="arm,hack,ida,assembly,naked functions,inline,inline assembly,disassembler,hopper,objdump,trick">
 <meta property="og:type" content="article">
@@ -50,7 +50,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -69,7 +69,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -86,7 +86,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/05/02/using-inline-assembly-and-naked-functions-to-fool-disassemblers/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -113,7 +113,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -140,7 +140,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -160,11 +160,11 @@
 </li>
 </ul>
 <h1 id="Naked-Functions"><a href="#Naked-Functions" class="headerlink" title="Naked Functions"></a>Naked Functions</h1><p>Let’s start with the definition of what a <strong>naked</strong> function is. Basically whenever you declare a C/C++ function inside your code, the compiler will add some extra assembly code to the beginning and to the end of it, this code is responsible for cleaning the stack, popping arguments of the function and so forth.<br>If you try to compile the following function:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">( <span class="keyword">int</span> a, <span class="keyword">int</span> b )</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">( <span class="keyword">int</span> a, <span class="keyword">int</span> b )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The resulting ( ARM ) assembly will be:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">push	&#123;fp&#125;		; (str fp, [sp, #-4]!)</div><div class="line">add	fp, sp, #0</div><div class="line">sub	sp, sp, #12</div><div class="line">str	r0, [fp, #-8]</div><div class="line">str	r1, [fp, #-12]</div><div class="line">ldr	r2, [fp, #-8]</div><div class="line">ldr	r3, [fp, #-12]</div><div class="line">add	r3, r2, r3</div><div class="line">mov	r0, r3</div><div class="line">sub	sp, fp, #0</div><div class="line">pop	&#123;fp&#125;		; (ldr fp, [sp], #4)</div><div class="line">bx	lr</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">push	&#123;fp&#125;		; (str fp, [sp, #-4]!)</span><br><span class="line">add	fp, sp, #0</span><br><span class="line">sub	sp, sp, #12</span><br><span class="line">str	r0, [fp, #-8]</span><br><span class="line">str	r1, [fp, #-12]</span><br><span class="line">ldr	r2, [fp, #-8]</span><br><span class="line">ldr	r3, [fp, #-12]</span><br><span class="line">add	r3, r2, r3</span><br><span class="line">mov	r0, r3</span><br><span class="line">sub	sp, fp, #0</span><br><span class="line">pop	&#123;fp&#125;		; (ldr fp, [sp], #4)</span><br><span class="line">bx	lr</span><br></pre></td></tr></table></figure>
 <p>As you can see, there’s a lot of extra stuff rather than just the expected <strong>add</strong> operator.<br>The first instructions basically save the current frame pointer and load the function arguments into the appropriate registers, then the <strong>add r3, r2, r3</strong> itself is performed ( this is the original purpose of our sum function ), the result is moved inside <strong>R0</strong> ( which by convention is the register that stores the return value of the function ), the original stack is restored and eventually there’s a branch to <strong>LR</strong>, namely a jump back to the previous address ( the one that called <strong>sum</strong> ).</p>
-<p>In order to “avoid” those extra operators ( and generally speaking it’s not a good idea to avoid them unless you really know what you’re doing ), we can use the <strong>naked</strong> GCC attribute, its definition on the <a href="https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html" target="_blank" rel="external">docs</a> is:</p>
+<p>In order to “avoid” those extra operators ( and generally speaking it’s not a good idea to avoid them unless you really know what you’re doing ), we can use the <strong>naked</strong> GCC attribute, its definition on the <a href="https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html" target="_blank" rel="noopener">docs</a> is:</p>
 <pre><code>Use this attribute on the ARM, AVR, IP2K, RX and SPU ports to indicate that the specified
 function does not need prologue/epilogue sequences generated by the compiler.
 It is up to the programmer to provide these sequences. The only statements that can be safely
@@ -173,22 +173,22 @@ including declarations of local variables, if statements, and so forth, should b
 Naked functions should be used to implement the body of an assembly function, while allowing
 the compiler to construct the requisite function declaration for the assembler.
 </code></pre><p>Now, let’s try to use this attribute with the same sum function:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">__attribute__ ((naked)) <span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">( <span class="keyword">int</span> a, <span class="keyword">int</span> b )</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__attribute__ ((naked)) <span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">( <span class="keyword">int</span> a, <span class="keyword">int</span> b )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The resulting assembly code will be just:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mov	r2, r0</div><div class="line">mov	r3, r1</div><div class="line">add	r3, r2, r3</div><div class="line">mov	r0, r3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov	r2, r0</span><br><span class="line">mov	r3, r1</span><br><span class="line">add	r3, r2, r3</span><br><span class="line">mov	r0, r3</span><br></pre></td></tr></table></figure>
 <p>As you can see, only the add and return operations have been compiled this time, with no prologue and epilogue whatsoever.<br>Obviously if you try to call the naked sum function, the program will crash with a <strong>Segmentation Fault</strong> message, due to the stack not being properly prepared and cleaned as we saw in the previous example.</p>
 <p>So how can we use the naked attribute?</p>
-<h1 id="Inline-ASM"><a href="#Inline-ASM" class="headerlink" title="Inline ASM"></a>Inline ASM</h1><p>If you’re a C/C++ developer you probably already know ( or at least you should! ) that you can use raw assembly inside your C/C++ code using the <strong>asm</strong> gcc directive, if you don’t you definitely need to read the <a href="https://gcc.gnu.org/onlinedocs/gcc/Basic-Asm.html#Basic-Asm" target="_blank" rel="external">GCC documentation</a> about that ( and shame on you! :D ).<br>An interesting ASM directive we can exploit for our purpose is <strong>.long</strong> ( you can find it <a href="http://www.coranac.com/files/gba/re-ejected-gasref.pdf" target="_blank" rel="external">here</a> inside the “Constannt Definition Directives” section ), which basically allows you to directly define a constant value inside your assembly code.<br>You would normally use that to define a numeric constant to use in your code, but what happens if we embed it in a naked function?</p>
+<h1 id="Inline-ASM"><a href="#Inline-ASM" class="headerlink" title="Inline ASM"></a>Inline ASM</h1><p>If you’re a C/C++ developer you probably already know ( or at least you should! ) that you can use raw assembly inside your C/C++ code using the <strong>asm</strong> gcc directive, if you don’t you definitely need to read the <a href="https://gcc.gnu.org/onlinedocs/gcc/Basic-Asm.html#Basic-Asm" target="_blank" rel="noopener">GCC documentation</a> about that ( and shame on you! :D ).<br>An interesting ASM directive we can exploit for our purpose is <strong>.long</strong> ( you can find it <a href="http://www.coranac.com/files/gba/re-ejected-gasref.pdf" target="_blank" rel="noopener">here</a> inside the “Constannt Definition Directives” section ), which basically allows you to directly define a constant value inside your assembly code.<br>You would normally use that to define a numeric constant to use in your code, but what happens if we embed it in a naked function?</p>
 <p>Let’s take the following example:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">__attribute__ ((naked)) <span class="function"><span class="keyword">void</span> <span class="title">my_mum_said_im_special</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">asm</span> ( <span class="string">".long 0x6C6C6548"</span> );</div><div class="line">    <span class="keyword">asm</span> ( <span class="string">".long 0x6f57206f"</span> );</div><div class="line">    <span class="keyword">asm</span> ( <span class="string">".long 0x00646c72"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">__attribute__ ((naked)) <span class="function"><span class="keyword">void</span> <span class="title">my_mum_said_im_special</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">asm</span> ( <span class="string">".long 0x6C6C6548"</span> );</span><br><span class="line">    <span class="keyword">asm</span> ( <span class="string">".long 0x6f57206f"</span> );</span><br><span class="line">    <span class="keyword">asm</span> ( <span class="string">".long 0x00646c72"</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>What you see there is the definition of four constants of four bytes each, 16 bytes in total, which are the string</p>
 <pre><code>&quot;\0dlroW olleH&quot;
 </code></pre><p>Seems familiar? No? Well … try to reverse it and you’ll get the famous “Hello World” constant string with his null byte, since it’s represented as numbers the ARM endianess requires them to be in reverse order.</p>
 <p>Now some magic with pointers, let’s try to take the address of this function, cast it to a <strong>const char *</strong> and printf it.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">char</span> *s = (<span class="keyword">const</span> <span class="keyword">char</span> *)&amp;my_mum_said_im_special;</div><div class="line"><span class="built_in">printf</span>( <span class="string">"%s\n"</span>, s );</div></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *s = (<span class="keyword">const</span> <span class="keyword">char</span> *)&amp;my_mum_said_im_special;</span><br><span class="line"><span class="built_in">printf</span>( <span class="string">"%s\n"</span>, s );</span><br></pre></td></tr></table></figure>
 <p>The output will be, as expected, an “Hello World” :D</p>
 <p>But how does the decompiler sees this function? Is it able to determine it’s actually just data and not code? The answer of course it’s <strong>NO</strong>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">00000338 &lt;my_mum_said_im_special&gt;:</div><div class="line">  cfstr64vs	mvdx6, [ip], #-288	; 0xfffffee0</div><div class="line">  svcvs	0x0057206f</div><div class="line">  rsbeq	r6, r4, r2, ror ip</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00000338 &lt;my_mum_said_im_special&gt;:</span><br><span class="line">  cfstr64vs	mvdx6, [ip], #-288	; 0xfffffee0</span><br><span class="line">  svcvs	0x0057206f</span><br><span class="line">  rsbeq	r6, r4, r2, ror ip</span><br></pre></td></tr></table></figure>
 <p>The <strong>objdump</strong> utility simply took those bytes and tried to interpret them as ARM opcodes, miserably failing to detect them as data instead of code.<br>What about more sophisticated disassemblers?</p>
 <p>The following is a screenshot of the <strong>Hopper</strong> disassembler:</p>
 <p><img src="/images/2015/05/hopper.png" alt="Hopper"></p>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.Since different people from different forum">
 <meta name="keywords" content="bettercap,mitm,osx,wifi pineapple,wifi pentesting,internet connection sharing,firewall,pineapple nano,setup">
 <meta property="og:type" content="article">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ics_working.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/09/pineap.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/09/setup.jpg">
-<meta property="og:updated_time" content="2018-07-28T14:17:57.096Z">
+<meta property="og:updated_time" content="2018-11-22T15:29:42.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WiFi Pentesting With a Pineapple NANO, OS X and BetterCap">
 <meta name="twitter:description" content="After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.Since different people from different forum">
@@ -54,7 +54,7 @@
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
     
 </head>
 
@@ -73,7 +73,7 @@
         
       </ul>
     </span>
-    <br/>
+    <br>
     <span id="actions">
       <ul>
         
@@ -90,7 +90,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br/>
+    <br>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -116,7 +116,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -143,7 +143,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br/>
+    <br>
   
 
   <div class="content" itemprop="articleBody">
@@ -151,12 +151,12 @@
 <center><br><img src="/images/2016/09/nano.jpg" alt="nano"><br></center>
 
 <a id="more"></a>
-<h3 id="WiFi-Pineapple-AKA-KARMA-attack-for-the-masses"><a href="#WiFi-Pineapple-AKA-KARMA-attack-for-the-masses" class="headerlink" title="WiFi Pineapple AKA KARMA attack for the masses"></a>WiFi Pineapple AKA KARMA attack for the masses</h3><p>First of all, let’s talk a little bit about the KARMA attack in case you have no idea what I’m talking about. <a href="https://digi.ninja/karma/" target="_blank" rel="external">DigiNinja</a> page on karma says:</p>
+<h3 id="WiFi-Pineapple-AKA-KARMA-attack-for-the-masses"><a href="#WiFi-Pineapple-AKA-KARMA-attack-for-the-masses" class="headerlink" title="WiFi Pineapple AKA KARMA attack for the masses"></a>WiFi Pineapple AKA KARMA attack for the masses</h3><p>First of all, let’s talk a little bit about the KARMA attack in case you have no idea what I’m talking about. <a href="https://digi.ninja/karma/" target="_blank" rel="noopener">DigiNinja</a> page on karma says:</p>
 <pre><code>Karma is a set of patches to access point software to get it to respond to probe requests not just for itself but for any ESSID requested. This allows the AP to act as a lure to draw in any clients probing for known networks. The original Karma patches were released by Dino Dai Zovi for Madwifi, I then took over and ported the patches to Madwifi-ng and have now taken them to the new hostapd.
 </code></pre><p>Long story short, on each WiFi access point there’s a demon running called <strong>hostapd</strong> which receives probes from nearby clients ( your laptop, mobile, etc ) and only responds to the probes that were sent to its SSID, discarding everything else.<br>Someone created a patched version of the hostapd binary which instead accepts <strong>every probe</strong>, this results in a WiFi access point that pretends to be (for instance) your home network thus <strong>forcing</strong> nearby devices to automatically connect to it.</p>
-<p>You can create such kind of “Evil Twin” AP using a Kali distribution, the right drivers, the right hardware and so forth, or you can also <a href="https://penturalabs.wordpress.com/2013/04/25/blue-for-the-pineapple/" target="_blank" rel="external">hack a cheap TPLink WR703N</a>, but the easiest, quickest (and IMHO more stable) solution is buying a WiFi Pineapple from <a href="http://hakshop.myshopify.com/" target="_blank" rel="external">Hak5 online shop</a>.</p>
+<p>You can create such kind of “Evil Twin” AP using a Kali distribution, the right drivers, the right hardware and so forth, or you can also <a href="https://penturalabs.wordpress.com/2013/04/25/blue-for-the-pineapple/" target="_blank" rel="noopener">hack a cheap TPLink WR703N</a>, but the easiest, quickest (and IMHO more stable) solution is buying a WiFi Pineapple from <a href="http://hakshop.myshopify.com/" target="_blank" rel="noopener">Hak5 online shop</a>.</p>
 <p>In my case, I have a MKV, a Tetra and a NANO, in this post I’ll talk about the latter.</p>
-<h3 id="Internet-Connection-Sharing-with-OS-X"><a href="#Internet-Connection-Sharing-with-OS-X" class="headerlink" title="Internet Connection Sharing with OS X"></a>Internet Connection Sharing with OS X</h3><p>Once you’ve done with the <a href="https://www.wifipineapple.com/pages/setup#nano" target="_blank" rel="external">basic NANO configuration</a>, you’ll have your device up and running with the ip address <em>172.16.42.1</em>, in order to share the connection from your Mac wifi adapter to the NANO ( which is plugged to the Mac’s USB port at this point ) you’ll need to change this ip address to a different one which eventually will be “accepted” by the ICS OS X mechanism, so:</p>
+<h3 id="Internet-Connection-Sharing-with-OS-X"><a href="#Internet-Connection-Sharing-with-OS-X" class="headerlink" title="Internet Connection Sharing with OS X"></a>Internet Connection Sharing with OS X</h3><p>Once you’ve done with the <a href="https://www.wifipineapple.com/pages/setup#nano" target="_blank" rel="noopener">basic NANO configuration</a>, you’ll have your device up and running with the ip address <em>172.16.42.1</em>, in order to share the connection from your Mac wifi adapter to the NANO ( which is plugged to the Mac’s USB port at this point ) you’ll need to change this ip address to a different one which eventually will be “accepted” by the ICS OS X mechanism, so:</p>
 <pre><code>ssh root@172.16.42.1
 
 uci set network.lan.ipaddr=&apos;192.168.2.10&apos;
