@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.imgur.com/blcaser.png">
 <meta property="og:image" content="https://i.imgur.com/foFQrba.png">
 <meta property="og:image" content="https://i.imgur.com/rUQ1Het.png">
-<meta property="og:updated_time" content="2018-11-22T19:36:06.440Z">
+<meta property="og:updated_time" content="2018-11-22T19:52:11.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning">
 <meta name="twitter:description" content="It’s been a while that i’ve been quite intensively playing with Deep Learning both for work related research and personal projects. More specifically, I’ve been using the Keras framework on top of a T">
@@ -180,16 +180,16 @@ sudo pip3 install tensorflow-gpu
 </ol>
 <p>These files would be filled with some default code and only a minimum amount of changes would be needed in order to implement our experiment, changes that I already made available on <a href="https://github.com/evilsocket/ergo-planes-detector" target="_blank" rel="noopener">the planes-detector repo on GitHub</a>.</p>
 <p>The format that by default Ergo expects the dataset to be is a CSV file, where each row is composed as <code>y,x0,x1,x2,....</code> (<code>y</code> being the label and <code>xn</code> the scalars in the input vector), but our inputs are images, which have a width, a height and a RGB depth. In order to transform these 3-dimensional tensors into a flat vector that Ergo understands, we need to customize the <code>prepare.py</code> script to do some data preprocessing.</p>
-<script src="http://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/prepare.py"></script>
+<script src="https://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/prepare.py"></script>
 
 <p>This will loop all the pictures and flatten them to vectors of 1200 elements each (20x20x3), plus the <code>y</code> scalar (the label) at the beginning, and eventually return a <code>panda.DataFrame</code> that Ergo will now digest.</p>
 <h2 id="The-Model"><a href="#The-Model" class="headerlink" title="The Model"></a>The Model</h2><p>This is not a post about how convolutional neural networks (or neural networks at all) work so I won’t go into details about that, chances are that if you have the type of technical problems that Ergo solves, you know already. In short, CNNs can encode visual/spatial patterns from input images and use them as features in order to predict things like <code>how much this image looks like a cat</code> … or a plane :) TLDR: CNNs are great for images.</p>
 <p>This is how our <code>model.py</code> looks like:</p>
-<script src="http://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/model.py"></script>
+<script src="https://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/model.py"></script>
 
 <p>Other than <code>reshaping</code> the flat input back to the 3-dimensional shape that our convolutional layers understand, two <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D" target="_blank" rel="noopener">convolutional layers</a> with respectively 32 and 64 filters with a 3x3 kernel are present, plus the usual suspects that help us getting more accurate results after training (<code>MaxPooling2D</code> to pick the best visual features and a couple of <code>Dropout</code> filter layers to avoid <a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank" rel="noopener">overfitting</a>) and the <code>Dense</code> hidden and output layers. Pretty standard model for simple image recognition problems.</p>
 <h2 id="The-Training"><a href="#The-Training" class="headerlink" title="The Training"></a>The Training</h2><p>We can finally start talking about training. The <code>train.py</code> file was almost left unchanged and I only added a few lines to integrate it with <a href="https://www.tensorflow.org/guide/summaries_and_tensorboard" target="_blank" rel="noopener">TensorBoard</a>.</p>
-<script src="http://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/train.py"></script>
+<script src="https://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/train.py"></script>
 
 <p>The data preprocessing, import and training process can now be started with:</p>
 <pre><code>ergo train /path/to/planes-detector-project --dataset /path/to/planesnet-pictures
