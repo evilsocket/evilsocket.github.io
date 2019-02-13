@@ -1462,3 +1462,16 @@ code {
 .highlight .line {
   height: 22px;
 }
+.note {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  color: #405100;
+  font-family: "Inconsolata", monospace;
+  background-color: #c6d85d;
+  padding: 15px;
+  position: relative;
+  width: fit-content;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+}
