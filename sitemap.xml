@@ -4,7 +4,7 @@
   <url>
     <loc>https://www.evilsocket.net/2019/05/22/How-to-create-a-Malware-detection-system-with-Machine-Learning/</loc>
     
-    <lastmod>2019-05-23T13:36:29.784Z</lastmod>
+    <lastmod>2019-05-23T13:42:04.883Z</lastmod>
     
   </url>
   
@@ -23,6 +23,27 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
+    
+    <lastmod>2018-11-22T15:29:42.753Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</loc>
+    
+    <lastmod>2018-11-22T15:29:42.753Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
+    
+    <lastmod>2018-11-22T15:29:42.753Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2016/06/19/presenting-openbank-a-safe-and-easy-to-use-btc-tracker/</loc>
     
     <lastmod>2018-11-22T15:29:42.753Z</lastmod>
@@ -37,28 +58,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</loc>
-    
-    <lastmod>2018-11-22T15:29:42.753Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</loc>
-    
-    <lastmod>2018-11-22T15:29:42.753Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/2016/01/28/why-you-shouldnt-trust-cloudflares-flexible-ssl-and-how-to-bypass-it-with-bettercap/</loc>
-    
-    <lastmod>2018-11-22T15:29:42.753Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
     
     <lastmod>2018-11-22T15:29:42.753Z</lastmod>
     
@@ -72,21 +72,14 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</loc>
+    
+    <lastmod>2018-11-22T15:29:42.749Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/</loc>
-    
-    <lastmod>2018-11-22T15:29:42.749Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/</loc>
-    
-    <lastmod>2018-11-22T15:29:42.749Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
     
     <lastmod>2018-11-22T15:29:42.749Z</lastmod>
     
@@ -100,23 +93,16 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</loc>
+    <loc>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</loc>
     
     <lastmod>2018-11-22T15:29:42.749Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
+    <loc>https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/</loc>
     
-    <lastmod>2018-11-22T15:29:42.745Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/2016/07/27/How-The-United-Arab-Emirates-Intelligence-Tried-to-Hire-me-to-Spy-on-its-People/</loc>
-    
-    <lastmod>2018-11-22T15:29:42.745Z</lastmod>
+    <lastmod>2018-11-22T15:29:42.749Z</lastmod>
     
   </url>
   
@@ -128,7 +114,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/</loc>
+    <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
     
     <lastmod>2018-11-22T15:29:42.745Z</lastmod>
     
@@ -142,16 +128,16 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/</loc>
+    <loc>https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/</loc>
     
-    <lastmod>2018-11-22T15:29:42.741Z</lastmod>
+    <lastmod>2018-11-22T15:29:42.745Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/</loc>
+    <loc>https://www.evilsocket.net/2016/07/27/How-The-United-Arab-Emirates-Intelligence-Tried-to-Hire-me-to-Spy-on-its-People/</loc>
     
-    <lastmod>2018-11-22T15:29:42.741Z</lastmod>
+    <lastmod>2018-11-22T15:29:42.745Z</lastmod>
     
   </url>
   
@@ -170,7 +156,21 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/</loc>
+    
+    <lastmod>2018-11-22T15:29:42.741Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/</loc>
+    
+    <lastmod>2018-11-22T15:29:42.741Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/</loc>
     
     <lastmod>2018-11-22T15:29:42.741Z</lastmod>
     
