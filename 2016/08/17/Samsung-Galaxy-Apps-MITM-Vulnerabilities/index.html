@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/08/productDetailOverview.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/08/androidManifestList.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2016/08/mail.png">
-<meta property="og:updated_time" content="2018-11-22T15:29:42.749Z">
+<meta property="og:updated_time" content="2019-10-19T08:14:27.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Samsung Galaxy Apps MITM Vulnerabilities">
 <meta name="twitter:description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks whi">
@@ -71,7 +71,7 @@
         
       </ul>
     </span>
-    <br>
+    <br/>
     <span id="actions">
       <ul>
         
@@ -88,7 +88,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br>
+    <br/>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -107,15 +107,15 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Affected-Products"><span class="toc-number">1.</span> <span class="toc-text">Affected Products</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#MITM-Information-Leaks-and-Session-Hijacking"><span class="toc-number"></span> <span class="toc-text">MITM, Information Leaks and Session Hijacking</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Permissions-Dialog-Bypass"><span class="toc-number"></span> <span class="toc-text">Permissions Dialog Bypass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary-1"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details-1"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact-1"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mitigations-amp-Recommendations"><span class="toc-number">4.</span> <span class="toc-text">Mitigations &amp; Recommendations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Disclosure-Timeline"><span class="toc-number">5.</span> <span class="toc-text">Disclosure Timeline</span></a></li></ol>
-    </li></div>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Affected-Products"><span class="toc-number">1.</span> <span class="toc-text">Affected Products</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MITM-Information-Leaks-and-Session-Hijacking"><span class="toc-number"></span> <span class="toc-text">MITM, Information Leaks and Session Hijacking</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Permissions-Dialog-Bypass"><span class="toc-number"></span> <span class="toc-text">Permissions Dialog Bypass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary-1"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details-1"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact-1"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mitigations-amp-Recommendations"><span class="toc-number">4.</span> <span class="toc-text">Mitigations &amp; Recommendations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Disclosure-Timeline"><span class="toc-number">5.</span> <span class="toc-text">Disclosure Timeline</span></a></li></ol>
+    </div>
   </span>
 </div>
 
     
     <div class="content index my4">
         
-        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -142,7 +142,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br>
+    <br/>
   
 
   <div class="content" itemprop="articleBody">
@@ -221,8 +221,8 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Affected-Products"><span class="toc-number">1.</span> <span class="toc-text">Affected Products</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#MITM-Information-Leaks-and-Session-Hijacking"><span class="toc-number"></span> <span class="toc-text">MITM, Information Leaks and Session Hijacking</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Permissions-Dialog-Bypass"><span class="toc-number"></span> <span class="toc-text">Permissions Dialog Bypass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary-1"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details-1"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact-1"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mitigations-amp-Recommendations"><span class="toc-number">4.</span> <span class="toc-text">Mitigations &amp; Recommendations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Disclosure-Timeline"><span class="toc-number">5.</span> <span class="toc-text">Disclosure Timeline</span></a></li></ol>
-    </li></div>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Affected-Products"><span class="toc-number">1.</span> <span class="toc-text">Affected Products</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MITM-Information-Leaks-and-Session-Hijacking"><span class="toc-number"></span> <span class="toc-text">MITM, Information Leaks and Session Hijacking</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Permissions-Dialog-Bypass"><span class="toc-number"></span> <span class="toc-text">Permissions Dialog Bypass</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Summary-1"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Details-1"><span class="toc-number">2.</span> <span class="toc-text">Details</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Impact-1"><span class="toc-number">3.</span> <span class="toc-text">Impact</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mitigations-amp-Recommendations"><span class="toc-number">4.</span> <span class="toc-text">Mitigations &amp; Recommendations</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Disclosure-Timeline"><span class="toc-number">5.</span> <span class="toc-text">Disclosure Timeline</span></a></li></ol>
+    </div>
 
     <div id="share-footer" style="display: none">
       <ul>

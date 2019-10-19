@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +66,7 @@
         
       </ul>
     </span>
-    <br>
+    <br/>
     <span id="actions">
       <ul>
         
@@ -83,7 +83,7 @@
       <span id="i-top" class="info" style="display:none;">Back to top</span>
       <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
-    <br>
+    <br/>
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/03/11/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
@@ -109,7 +109,7 @@
     
     <div class="content index my4">
         
-        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
     <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
@@ -136,7 +136,7 @@
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
-    <br>
+    <br/>
   
 
   <div class="content" itemprop="articleBody">
@@ -148,8 +148,8 @@
 <p>Actually this showed to be way much a simpler task than I’ve initially imagined, you only need a <a href="/2014/02/21/libpe-a-fast-pe32pe32-parsing-library/">good portable executable parsing library</a> and a fast disassembler library, for this purpose I’ve used <a href="https://code.google.com/p/distorm/" target="_blank" rel="noopener">Distorm</a> which is fast and easy to integrate.</p>
 <blockquote>
 <p><strong>NOTE</strong></p>
-</blockquote>
 <p>A few smart people <a href="http://www.reddit.com/r/ReverseEngineering/comments/206gs5/programmatically_identifying_and_isolating/" target="_blank" rel="noopener">pointed out</a> that the following system is prone to false positives. <strong>This is totally true</strong>, I never claimed it to be a perfect approach, but just a proof of concept of what can be achieved using a couple of well written libraries and a few lines of C code.</p>
+</blockquote>
 <p>The main algorithm is very simple.</p>
 <ul>
 <li>Search for every code/executable section in the PE.</li>
