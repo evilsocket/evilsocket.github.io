@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2019-10-19T16:18:14.993Z</updated>
+  <updated>2019-10-19T22:04:35.192Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/"/>
     <id>https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/</id>
     <published>2019-10-19T08:45:28.000Z</published>
-    <updated>2019-10-19T16:18:14.993Z</updated>
+    <updated>2019-10-19T22:04:35.192Z</updated>
     
     <content type="html"><![CDATA[<p>This is the story of a summer project that started out of boredom and that evolved into something incredibly fun and unique. It is also the story of how that project went from being discussed on a porch by just two people, to having <a href="https://pwnagotchi.herokuapp.com/" target="_blank" rel="noopener">a community made of almost 700 awesome people</a> (and counting!) that gathered, polished it and made today’s release possible.</p>
 <p><strong>TL;DR: You can <a href="https://github.com/evilsocket/pwnagotchi/releases" target="_blank" rel="noopener">download the 1.0.0 .img file from here</a>, then just <a href="https://pwnagotchi.ai/installation/" target="_blank" rel="noopener">follow the instructions</a>.</strong></p>
@@ -42,7 +42,7 @@
 <p><strong>I had no idea</strong> back then that just adding a simple, ASCII based face to something was the best way to get emotionally overly attached to that thing … I also wasn’t expecting another effect that showed up from the beginning: by giving it different “moods”, and by having those moods depending on a real world environment, I created a WiFi-based <a href="https://en.wikipedia.org/wiki/Finite-state_machine" target="_blank" rel="noopener">automata</a> whose mood transitions were everything but trivial. In different words, if you take something as random as, say, wether your neighbour is using his smart TV or not and you make that influence a simple automata, that automata seems a bit alive :D</p>
 <p>This is where me and my girlfriend (sadly now ex, but <a href="https://www.instagram.com/p/B1Mup7GCrVt/" target="_blank" rel="noopener">still amazing</a>) went completely nuts about it. I named my unit Alpha and built a second one, Beta, that I gave her. She literally started nursing this thing, and we started playing: we went for random explorative walks just to make the units stop complaining about being bored, to see them happier, and to see that “number of unique pwned networks” going higher and higher due to some new network we managed to spot … it was amazing to literally look at the algorithm adapting to the WiFi scenario and “expressing itself” in different ways. It might sound a bit crazy but hey, if that gives two hackers an excuse to explore more the real world by looking at it with different eyes, and puts a smile on their faces, why not? :D</p>
 <p><img src="https://i.imgur.com/Pr0Lwdt.jpg" alt="love"></p>
-<h2 id="The-Personality"><a href="#The-Personality" class="headerlink" title="The Personality"></a>The Personality</h2><p>With time I kept adding more and more variables and parameters that determined how the algorithm adapted to different circumstances: counters so that if the unit was quickly losing sight of a target (becase, say, we were walking faster), it would refresh its data with a shorter period, timeouts, multipliers for the timeouts, everything you can imagine to add to such an algorithm to make it every day a bit smarter and a bit better in adapting fast to the places we were exploring. By the end of this process I ended up with this basic set parameters, that I started calling the “personality” of the unit:</p>
+<h2 id="The-Personality"><a href="#The-Personality" class="headerlink" title="The Personality"></a>The Personality</h2><p>With time I kept adding more and more variables and parameters that determined how the algorithm adapted to different circumstances: counters so that if the unit was quickly losing sight of a target (because, say, we were walking faster), it would refresh its data with a shorter period, timeouts, multipliers for the timeouts, everything you can imagine to add to such an algorithm to make it every day a bit smarter and a bit better in adapting fast to the places we were exploring. By the end of this process I ended up with this basic set parameters, that I started calling the “personality” of the unit:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">personality:</span></span><br><span class="line">    <span class="comment"># advertise our presence</span></span><br><span class="line"><span class="attr">    advertise:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># perform a deauthentication attack to client stations in order to get full or half handshakes</span></span><br><span class="line"><span class="attr">    deauth:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># send association frames to APs in order to get the PMKID</span></span><br><span class="line"><span class="attr">    associate:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># list of channels to recon on, or empty for all channels</span></span><br><span class="line"><span class="attr">    channels:</span> <span class="string">[]</span></span><br><span class="line">    <span class="comment"># minimum WiFi signal strength in dBm</span></span><br><span class="line"><span class="attr">    min_rssi:</span> <span class="bullet">-200</span></span><br><span class="line">    <span class="comment"># number of seconds for wifi.ap.ttl</span></span><br><span class="line"><span class="attr">    ap_ttl:</span> <span class="number">120</span></span><br><span class="line">    <span class="comment"># number of seconds for wifi.sta.ttl</span></span><br><span class="line"><span class="attr">    sta_ttl:</span> <span class="number">300</span></span><br><span class="line">    <span class="comment"># time in seconds to wait during channel recon</span></span><br><span class="line"><span class="attr">    recon_time:</span> <span class="number">30</span></span><br><span class="line">    <span class="comment"># number of inactive epochs after which recon_time gets multiplied by recon_inactive_multiplier</span></span><br><span class="line"><span class="attr">    max_inactive_scale:</span> <span class="number">2</span></span><br><span class="line">    <span class="comment"># if more than max_inactive_scale epochs are inactive, recon_time *= recon_inactive_multiplier</span></span><br><span class="line"><span class="attr">    recon_inactive_multiplier:</span> <span class="number">2</span></span><br><span class="line">    <span class="comment"># time in seconds to wait during channel hopping if activity has been performed</span></span><br><span class="line"><span class="attr">    hop_recon_time:</span> <span class="number">10</span></span><br><span class="line">    <span class="comment"># time in seconds to wait during channel hopping if no activity has been performed</span></span><br><span class="line"><span class="attr">    min_recon_time:</span> <span class="number">5</span></span><br><span class="line">    <span class="comment"># maximum amount of deauths/associations per BSSID per session</span></span><br><span class="line"><span class="attr">    max_interactions:</span> <span class="number">3</span></span><br><span class="line">    <span class="comment"># maximum amount of misses before considering the data stale and triggering a new recon</span></span><br><span class="line"><span class="attr">    max_misses_for_recon:</span> <span class="number">5</span></span><br><span class="line">    <span class="comment"># number of active epochs that triggers the excited state</span></span><br><span class="line"><span class="attr">    excited_num_epochs:</span> <span class="number">10</span></span><br><span class="line">    <span class="comment"># number of inactive epochs that triggers the bored state</span></span><br><span class="line"><span class="attr">    bored_num_epochs:</span> <span class="number">15</span></span><br><span class="line">    <span class="comment"># number of inactive epochs that triggers the sad state</span></span><br><span class="line"><span class="attr">    sad_num_epochs:</span> <span class="number">25</span></span><br></pre></td></tr></table></figure>
 <p>These parameters alone, even with very small changes, can influence how the algorithm works and how the UI reflects that dramatically. But I wasn’t entirely happy with it yet, because these parameters were just constants in a YAML configuration file. I had to pick them manually and change that file before booting the unit, depending on the type of walk (big office? fast walk in residential area? mall? etc): things like shorter timeouts for faster walks, longer ones for when we visited a place and were more stationary in it, and so on. The algorithm adapted, via the parameters, but the parameters themselves didn’t, I wanted to do better.</p>
 <p><img src="https://i.imgur.com/npYwQoI.png" alt="params"></p>
@@ -1266,6 +1266,8 @@ sudo git reset --hard origin/master
     
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
+      <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
+    
       <category term="gpd pocket 7" scheme="https://www.evilsocket.net/tags/gpd-pocket-7/"/>
     
       <category term="gpd" scheme="https://www.evilsocket.net/tags/gpd/"/>
@@ -1279,8 +1281,6 @@ sudo git reset --hard origin/master
       <category term="rogue ap" scheme="https://www.evilsocket.net/tags/rogue-ap/"/>
     
       <category term="mana" scheme="https://www.evilsocket.net/tags/mana/"/>
-    
-      <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
       <category term="pentest" scheme="https://www.evilsocket.net/tags/pentest/"/>
     
@@ -1398,11 +1398,11 @@ Connection: close
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
-    
       <category term="terramaster" scheme="https://www.evilsocket.net/tags/terramaster/"/>
     
       <category term="nas" scheme="https://www.evilsocket.net/tags/nas/"/>
+    
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
@@ -1610,11 +1610,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -1772,11 +1772,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -1958,9 +1958,9 @@ esac
     
       <category term="osx" scheme="https://www.evilsocket.net/tags/osx/"/>
     
-      <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
-    
       <category term="wifi pineapple" scheme="https://www.evilsocket.net/tags/wifi-pineapple/"/>
+    
+      <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
       <category term="internet connection sharing" scheme="https://www.evilsocket.net/tags/internet-connection-sharing/"/>
     
@@ -2021,13 +2021,13 @@ esac
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
+    
       <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
     
       <category term="osmobb" scheme="https://www.evilsocket.net/tags/osmobb/"/>
     
       <category term="osmobts" scheme="https://www.evilsocket.net/tags/osmobts/"/>
-    
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
