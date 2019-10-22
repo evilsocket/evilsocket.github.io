@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2019-10-19T22:04:35.192Z</updated>
+  <updated>2019-10-22T10:30:26.261Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/"/>
     <id>https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/</id>
     <published>2019-10-19T08:45:28.000Z</published>
-    <updated>2019-10-19T22:04:35.192Z</updated>
+    <updated>2019-10-22T10:30:26.261Z</updated>
     
     <content type="html"><![CDATA[<p>This is the story of a summer project that started out of boredom and that evolved into something incredibly fun and unique. It is also the story of how that project went from being discussed on a porch by just two people, to having <a href="https://pwnagotchi.herokuapp.com/" target="_blank" rel="noopener">a community made of almost 700 awesome people</a> (and counting!) that gathered, polished it and made today’s release possible.</p>
 <p><strong>TL;DR: You can <a href="https://github.com/evilsocket/pwnagotchi/releases" target="_blank" rel="noopener">download the 1.0.0 .img file from here</a>, then just <a href="https://pwnagotchi.ai/installation/" target="_blank" rel="noopener">follow the instructions</a>.</strong></p>
-<p>If you want the long version instead, sit back, relax and enjoy the ride. Let me me tell you: it’s going to be quite a long journey compared to my usual blog posts, but it’ll be worth it (i hope) and fun (i hope even harder).</p>
+<p>If you want the long version instead, sit back, relax and enjoy the ride. Let me tell you: it’s going to be quite a long journey compared to my usual blog posts, but it’ll be worth it (i hope) and fun (i hope even harder).</p>
 <p><img src="https://i.imgur.com/X68GXrn.png" alt="hack the planet"></p>
 <p>Let’s begin …</p>
 <a id="more"></a>
@@ -127,7 +127,7 @@
     
       &lt;p&gt;This is the story of a summer project that started out of boredom and that evolved into something incredibly fun and unique. It is also the story of how that project went from being discussed on a porch by just two people, to having &lt;a href=&quot;https://pwnagotchi.herokuapp.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;a community made of almost 700 awesome people&lt;/a&gt; (and counting!) that gathered, polished it and made today’s release possible.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;TL;DR: You can &lt;a href=&quot;https://github.com/evilsocket/pwnagotchi/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;download the 1.0.0 .img file from here&lt;/a&gt;, then just &lt;a href=&quot;https://pwnagotchi.ai/installation/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;follow the instructions&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;If you want the long version instead, sit back, relax and enjoy the ride. Let me me tell you: it’s going to be quite a long journey compared to my usual blog posts, but it’ll be worth it (i hope) and fun (i hope even harder).&lt;/p&gt;
+&lt;p&gt;If you want the long version instead, sit back, relax and enjoy the ride. Let me tell you: it’s going to be quite a long journey compared to my usual blog posts, but it’ll be worth it (i hope) and fun (i hope even harder).&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://i.imgur.com/X68GXrn.png&quot; alt=&quot;hack the planet&quot;&gt;&lt;/p&gt;
 &lt;p&gt;Let’s begin …&lt;/p&gt;
     
@@ -1398,11 +1398,11 @@ Connection: close
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
+    
       <category term="terramaster" scheme="https://www.evilsocket.net/tags/terramaster/"/>
     
       <category term="nas" scheme="https://www.evilsocket.net/tags/nas/"/>
-    
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
@@ -1610,11 +1610,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -1772,11 +1772,11 @@ Options:
     </summary>
     
     
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
+    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -2021,13 +2021,13 @@ esac
     
       <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
-      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
-    
       <category term="openbts" scheme="https://www.evilsocket.net/tags/openbts/"/>
     
       <category term="osmobb" scheme="https://www.evilsocket.net/tags/osmobb/"/>
     
       <category term="osmobts" scheme="https://www.evilsocket.net/tags/osmobts/"/>
+    
+      <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
     
   </entry>
   
