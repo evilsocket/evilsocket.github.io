@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic">
-<meta name="keywords" content="vulnerability,exploit,gsm,bts,yatebts,rce,openbts,osmobb,osmobts,disclosure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DISCLOSURE - RCE Against Every Open Source BTS Software.">
 <meta property="og:url" content="https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/index.html">
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png">
-<meta property="og:updated_time" content="2020-05-26T18:30:57.527Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-08-24T18:43:14.000Z">
+<meta property="article:modified_time" content="2020-05-26T18:30:57.527Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="vulnerability">
+<meta property="article:tag" content="exploit">
+<meta property="article:tag" content="gsm">
+<meta property="article:tag" content="bts">
+<meta property="article:tag" content="yatebts">
+<meta property="article:tag" content="rce">
+<meta property="article:tag" content="openbts">
+<meta property="article:tag" content="osmobb">
+<meta property="article:tag" content="osmobts">
+<meta property="article:tag" content="disclosure">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DISCLOSURE - RCE Against Every Open Source BTS Software.">
-<meta name="twitter:description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic">
-<meta name="twitter:image" content="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png">
     
     
         
@@ -41,19 +48,24 @@
     <!-- title -->
     <title>DISCLOSURE - RCE Against Every Open Source BTS Software.</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -88,16 +100,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&text=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&is_video=false&description=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&text=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&is_video=false&description=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=DISCLOSURE - RCE Against Every Open Source BTS Software.&body=Check out this article: https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&name=DISCLOSURE - RCE Against Every Open Source BTS Software.&description=&lt;p&gt;This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&name=DISCLOSURE - RCE Against Every Open Source BTS Software.&description=&lt;p&gt;This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;YateBTS &amp;lt;= 5.0.0&lt;/li&gt;
 &lt;li&gt;OpenBTS &amp;lt;= 4.0.0&lt;/li&gt;
@@ -105,7 +117,9 @@
 &lt;li&gt;Osmo-TRX/Osmo-BTS &amp;lt;= 0.1.10&lt;/li&gt;
 &lt;li&gt;Other products that share the same transceiver code base.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;center&gt;&lt;br&gt;&lt;img src=&quot;https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png&quot; alt=&quot;bts&quot;&gt;&lt;br&gt;&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;center&gt;
+![bts](https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png)
+&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -137,12 +151,12 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/bts/">bts</a>, <a class="tag-link" href="/tags/disclosure/">disclosure</a>, <a class="tag-link" href="/tags/exploit/">exploit</a>, <a class="tag-link" href="/tags/gsm/">gsm</a>, <a class="tag-link" href="/tags/openbts/">openbts</a>, <a class="tag-link" href="/tags/osmobb/">osmobb</a>, <a class="tag-link" href="/tags/osmobts/">osmobts</a>, <a class="tag-link" href="/tags/rce/">rce</a>, <a class="tag-link" href="/tags/vulnerability/">vulnerability</a>, <a class="tag-link" href="/tags/yatebts/">yatebts</a>
+        <a class="tag-link-link" href="/tags/bts/" rel="tag">bts</a>, <a class="tag-link-link" href="/tags/disclosure/" rel="tag">disclosure</a>, <a class="tag-link-link" href="/tags/exploit/" rel="tag">exploit</a>, <a class="tag-link-link" href="/tags/gsm/" rel="tag">gsm</a>, <a class="tag-link-link" href="/tags/openbts/" rel="tag">openbts</a>, <a class="tag-link-link" href="/tags/osmobb/" rel="tag">osmobb</a>, <a class="tag-link-link" href="/tags/osmobts/" rel="tag">osmobts</a>, <a class="tag-link-link" href="/tags/rce/" rel="tag">rce</a>, <a class="tag-link-link" href="/tags/vulnerability/" rel="tag">vulnerability</a>, <a class="tag-link-link" href="/tags/yatebts/" rel="tag">yatebts</a>
     </div>
 
 
     </div>
-    <a href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
     <br/>
     <div class="addthis_sharing_toolbox"></div>
   </header>
@@ -159,11 +173,14 @@
 <li>Osmo-TRX/Osmo-BTS &lt;= 0.1.10</li>
 <li>Other products that share the same transceiver code base.</li>
 </ul>
-<center><br><img src="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png" alt="bts"><br></center>
+<center>
+![bts](https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png)
+</center>
 
 <a id="more"></a>
+
 <p>Long story short, they bind the transceiver server process to <code>INADDR_ANY</code> instead of <code>INADDR_LOOPBACK</code>, this makes it reachable by anyone on the same network (no authentication mechanism was implemented), moreover there’s an exploitable stack buffer overflow on the control socket, if you rely on both of this issues … well, you’ve got the idea :)</p>
-<p>All details and the analysis itself <a href="https://blog.zimperium.com/analysis-of-multiple-vulnerabilities-in-different-open-source-bts-products/" target="_blank" rel="noopener">can be found here</a>.</p>
+<p>All details and the analysis itself <a target="_blank" rel="noopener" href="https://blog.zimperium.com/analysis-of-multiple-vulnerabilities-in-different-open-source-bts-products/">can be found here</a>.</p>
 
   </div>
 </article>
@@ -197,16 +214,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&text=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&is_video=false&description=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&text=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&is_video=false&description=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=DISCLOSURE - RCE Against Every Open Source BTS Software.&body=Check out this article: https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&name=DISCLOSURE - RCE Against Every Open Source BTS Software.&description=&lt;p&gt;This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&title=DISCLOSURE - RCE Against Every Open Source BTS Software."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/&name=DISCLOSURE - RCE Against Every Open Source BTS Software.&description=&lt;p&gt;This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;YateBTS &amp;lt;= 5.0.0&lt;/li&gt;
 &lt;li&gt;OpenBTS &amp;lt;= 4.0.0&lt;/li&gt;
@@ -214,7 +231,9 @@
 &lt;li&gt;Osmo-TRX/Osmo-BTS &amp;lt;= 0.1.10&lt;/li&gt;
 &lt;li&gt;Other products that share the same transceiver code base.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;center&gt;&lt;br&gt;&lt;img src=&quot;https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png&quot; alt=&quot;bts&quot;&gt;&lt;br&gt;&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;center&gt;
+![bts](https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png)
+&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -250,13 +269,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

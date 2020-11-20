@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="It’s a while I see compiled dSploit versions pop up on Google Play Store, most of the times the actual changes are just a matter of icons, other times are merely compiled versions of one of the nightl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About (Re)distributing Open Source Apps ( dSploit )">
+<meta property="og:url" content="https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="It’s a while I see compiled dSploit versions pop up on Google Play Store, most of the times the actual changes are just a matter of icons, other times are merely compiled versions of one of the nightl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-03-24T23:07:53.000Z">
+<meta property="article:modified_time" content="2014-03-24T23:12:13.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="projects">
+<meta property="article:tag" content="dsploit">
+<meta property="article:tag" content="gpl">
+<meta property="article:tag" content="license">
+<meta property="article:tag" content="gplv3">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="play store">
+<meta property="article:tag" content="store">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>About (Re)distributing Open Source Apps ( dSploit )</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/why-reinventing-the-wheel-isnt-always-wrong"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&text=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&is_video=false&description=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=About (Re)distributing Open Source Apps ( dSploit )&body=Check out this article: https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&name=About (Re)distributing Open Source Apps ( dSploit )&description=&lt;p&gt;It’s a while I see compiled dSploit versions pop up on Google Play Store, most of the times the actual changes are &lt;a href=&#34;https://play.google.com/store/apps/details?id=com.number5.netcut&#34;&gt;just a matter of icons&lt;/a&gt;, other times are merely &lt;a href=&#34;https://play.google.com/store/apps/details?id=com.anstudios.dsploit&#34;&gt;compiled versions&lt;/a&gt; of one of the nightly releases.&lt;/p&gt;
+&lt;p&gt;Altough I can not ( and really don’t want to ) avoid this, I’d like to write a few lines about this kind of conduct and the ethics behind open source software.&lt;/p&gt;
+&lt;p&gt;As most of my personal projects, dSploit was released from the beginning under the &lt;a href=&#34;http://www.gnu.org/licenses/quick-guide-gplv3.html&#34;&gt;GPL 3&lt;/a&gt; license, this means that you can modify it at your own will, distribute it for free or even as a paid software and share it with your friends.&lt;br&gt;You are &lt;strong&gt;only&lt;/strong&gt; asked to make your changes available under the same license and make references to the original authors of the software itself. That’s it, this is &lt;strong&gt;so&lt;/strong&gt; simple.&lt;/p&gt;
+&lt;p&gt;Beyond the fact I find deeply unfair not putting even the smallest link to the original repository or some credits on the description of those compiled distributions, there are a few things anyone who wants to make such thing should be aware of before blindly cloning the repository and compiling the source code.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#BugSense-Identifier"><span class="toc-number">1.</span> <span class="toc-text">BugSense Identifier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Signed-APK-Conflicts"><span class="toc-number">2.</span> <span class="toc-text">Signed APK Conflicts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bandwidth"><span class="toc-number">3.</span> <span class="toc-text">Bandwidth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reliability"><span class="toc-number">4.</span> <span class="toc-text">Reliability</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        About (Re)distributing Open Source Apps ( dSploit )
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2014-03-24T23:07:53.000Z" itemprop="datePublished">2014-03-25</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/dsploit/" rel="tag">dsploit</a>, <a class="tag-link-link" href="/tags/gpl/" rel="tag">gpl</a>, <a class="tag-link-link" href="/tags/gplv3/" rel="tag">gplv3</a>, <a class="tag-link-link" href="/tags/license/" rel="tag">license</a>, <a class="tag-link-link" href="/tags/play-store/" rel="tag">play store</a>, <a class="tag-link-link" href="/tags/projects/" rel="tag">projects</a>, <a class="tag-link-link" href="/tags/store/" rel="tag">store</a>
+    </div>
+
+
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br/>
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>It’s a while I see compiled dSploit versions pop up on Google Play Store, most of the times the actual changes are <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.number5.netcut">just a matter of icons</a>, other times are merely <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=com.anstudios.dsploit">compiled versions</a> of one of the nightly releases.</p>
+<p>Altough I can not ( and really don’t want to ) avoid this, I’d like to write a few lines about this kind of conduct and the ethics behind open source software.</p>
+<p>As most of my personal projects, dSploit was released from the beginning under the <a target="_blank" rel="noopener" href="http://www.gnu.org/licenses/quick-guide-gplv3.html">GPL 3</a> license, this means that you can modify it at your own will, distribute it for free or even as a paid software and share it with your friends.<br>You are <strong>only</strong> asked to make your changes available under the same license and make references to the original authors of the software itself. That’s it, this is <strong>so</strong> simple.</p>
+<p>Beyond the fact I find deeply unfair not putting even the smallest link to the original repository or some credits on the description of those compiled distributions, there are a few things anyone who wants to make such thing should be aware of before blindly cloning the repository and compiling the source code.</p>
+<a id="more"></a>
+
+<h4 id="BugSense-Identifier"><a href="#BugSense-Identifier" class="headerlink" title="BugSense Identifier"></a>BugSense Identifier</h4><p>Starting from one of its first versions, dSploit uses <a target="_blank" rel="noopener" href="http://bugsense.com/">BugSense</a> free service to track unexpected application exceptions (crashes). There’s a <a target="_blank" rel="noopener" href="https://github.com/evilsocket/dsploit/blob/8ae6b0f04152b86717eae6d89ea04f3f1befc865/dSploit/src/it/evilsocket/dsploit/DSploitApplication.java#L53">specific string</a> used by BS to identify the application itself and its many versions, if you just clone and compile the repo I will receive aggregated notifications both from my version and from yours, making it difficult for me to track down bugs causes … so please, <strong>fork it</strong> and <strong>modify this</strong> identifier, or remove it if you don’t want to use bugsense.</p>
+<h4 id="Signed-APK-Conflicts"><a href="#Signed-APK-Conflicts" class="headerlink" title="Signed APK Conflicts"></a>Signed APK Conflicts</h4><p>As you probably already know, dSploit has its own update mechanism based on a <a target="_blank" rel="noopener" href="https://github.com/evilsocket/update.dsploit.net">freely available</a> web application, so when a new release is available I compile the source code, <a target="_blank" rel="noopener" href="http://developer.android.com/tools/publishing/app-signing.html">sign the package</a> with my own signature key and finally I upload the signed app to the update server which distributes it to everyone.<br>You are probably (surely unless you have access to my pc, in that case please let me know :P) using <strong>your own</strong> signature key to create the final apk you uploaded to the store … you know what ? If someone installs your version and then I upload a new release, they will start the update process ( since the update server url you are using it’s the official one ) at the end of the which the user will see an error due to signature conflicts … guess who’s gonna receive dozens of emails from github notifying him of new issues being opened for that ? <strong>Me</strong>.<br>So please, at least modify the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/dsploit/blob/1404fc1ad04dcab6789a5b4bbae3b27d281731c1/dSploit/src/it/evilsocket/dsploit/core/UpdateService.java#L56">update urls</a> using your own.</p>
+<h4 id="Bandwidth"><a href="#Bandwidth" class="headerlink" title="Bandwidth"></a>Bandwidth</h4><p>Besides updates, dSploit needs to download other (big) files such as a precompiled metasploit distribution, dictionary files for the wifi cracking module and so on … <strong>I pay</strong> for the bandwidth since dsploit.net is hosted on a dedicated server, please <strong>do not abuse it</strong>, modify the update urls.</p>
+<h4 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h4><p>This being said, <strong>I strongly</strong> discourage pleople from downloading other distributions unless a specific reference to the modifications is provided, remember you are allowing the application to run with <strong>root</strong> privileges, this is not something you really want if you are not 100% sure of what it <strong>really</strong> does under the hood, or unless you have basic Android reverse reverse engineering skills and you can verify it by your own.</p>
+<p>Peace.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#BugSense-Identifier"><span class="toc-number">1.</span> <span class="toc-text">BugSense Identifier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Signed-APK-Conflicts"><span class="toc-number">2.</span> <span class="toc-text">Signed APK Conflicts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bandwidth"><span class="toc-number">3.</span> <span class="toc-text">Bandwidth</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reliability"><span class="toc-number">4.</span> <span class="toc-text">Reliability</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&text=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&is_video=false&description=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=About (Re)distributing Open Source Apps ( dSploit )&body=Check out this article: https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&title=About (Re)distributing Open Source Apps ( dSploit )"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/about-redistributing-open-source-apps-dsploit&name=About (Re)distributing Open Source Apps ( dSploit )&description=&lt;p&gt;It’s a while I see compiled dSploit versions pop up on Google Play Store, most of the times the actual changes are &lt;a href=&#34;https://play.google.com/store/apps/details?id=com.number5.netcut&#34;&gt;just a matter of icons&lt;/a&gt;, other times are merely &lt;a href=&#34;https://play.google.com/store/apps/details?id=com.anstudios.dsploit&#34;&gt;compiled versions&lt;/a&gt; of one of the nightly releases.&lt;/p&gt;
+&lt;p&gt;Altough I can not ( and really don’t want to ) avoid this, I’d like to write a few lines about this kind of conduct and the ethics behind open source software.&lt;/p&gt;
+&lt;p&gt;As most of my personal projects, dSploit was released from the beginning under the &lt;a href=&#34;http://www.gnu.org/licenses/quick-guide-gplv3.html&#34;&gt;GPL 3&lt;/a&gt; license, this means that you can modify it at your own will, distribute it for free or even as a paid software and share it with your friends.&lt;br&gt;You are &lt;strong&gt;only&lt;/strong&gt; asked to make your changes available under the same license and make references to the original authors of the software itself. That’s it, this is &lt;strong&gt;so&lt;/strong&gt; simple.&lt;/p&gt;
+&lt;p&gt;Beyond the fact I find deeply unfair not putting even the smallest link to the original repository or some credits on the description of those compiled distributions, there are a few things anyone who wants to make such thing should be aware of before blindly cloning the repository and compiling the source code.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

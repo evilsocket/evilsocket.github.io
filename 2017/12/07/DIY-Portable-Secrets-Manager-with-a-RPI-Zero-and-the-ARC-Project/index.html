@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
-<meta name="keywords" content="go,golang,oss,arc,arcd,passwords,secrets,notes,password manager,encryption,aes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC">
 <meta property="og:url" content="https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/index.html">
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/NvLlafA.png">
 <meta property="og:image" content="https://i.imgur.com/EkxdwVH.jpg">
 <meta property="og:image" content="https://i.imgur.com/swC00gX.png">
@@ -21,10 +20,21 @@
 <meta property="og:image" content="https://i.imgur.com/KCn4RGw.png">
 <meta property="og:image" content="https://i.imgur.com/nxqmRqY.png">
 <meta property="og:image" content="https://i.imgur.com/h5cpCeN.png">
-<meta property="og:updated_time" content="2020-05-26T18:30:57.517Z">
+<meta property="article:published_time" content="2017-12-07T16:42:48.000Z">
+<meta property="article:modified_time" content="2020-05-26T18:30:57.517Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="go">
+<meta property="article:tag" content="golang">
+<meta property="article:tag" content="oss">
+<meta property="article:tag" content="arc">
+<meta property="article:tag" content="arcd">
+<meta property="article:tag" content="passwords">
+<meta property="article:tag" content="secrets">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="password manager">
+<meta property="article:tag" content="encryption">
+<meta property="article:tag" content="aes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC">
-<meta name="twitter:description" content="For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:  I need to store safely (encrypted) my passwords, sensitive files, notes, etc. I need to">
 <meta name="twitter:image" content="https://i.imgur.com/NvLlafA.png">
     
     
@@ -47,19 +57,24 @@
     <!-- title -->
     <title>DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -94,16 +109,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&text=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&is_video=false&description=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&text=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&is_video=false&description=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC&body=Check out this article: https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&name=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC&description=&lt;p&gt;For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&name=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC&description=&lt;p&gt;For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;I need to store safely (encrypted) my passwords, sensitive files, notes, etc.&lt;/li&gt;
 &lt;li&gt;I need to access them from anywhere, with every possible device ( desktop, mobile, terminal ).&lt;/li&gt;
@@ -113,12 +128,12 @@
 &lt;li&gt;I don’t want to enable port forwarding and host it myself with DynDNS or alikes.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;So I wrote &lt;strong&gt;ARC&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/NvLlafA.png&quot; alt=&quot;arcd&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/NvLlafA.png&#34; alt=&#34;arcd&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hardware-Setup"><span class="toc-number">1.</span> <span class="toc-text">Hardware Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software-Setup"><span class="toc-number">2.</span> <span class="toc-text">Software Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Security-considerations"><span class="toc-number">3.</span> <span class="toc-text">Security considerations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-last-thing-…"><span class="toc-number">5.</span> <span class="toc-text">One last thing …</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hardware-Setup"><span class="toc-number">1.</span> <span class="toc-text">Hardware Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software-Setup"><span class="toc-number">2.</span> <span class="toc-text">Software Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Security-considerations"><span class="toc-number">3.</span> <span class="toc-text">Security considerations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-last-thing-%E2%80%A6"><span class="toc-number">5.</span> <span class="toc-text">One last thing …</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -145,12 +160,12 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/aes/">aes</a>, <a class="tag-link" href="/tags/arc/">arc</a>, <a class="tag-link" href="/tags/arcd/">arcd</a>, <a class="tag-link" href="/tags/encryption/">encryption</a>, <a class="tag-link" href="/tags/go/">go</a>, <a class="tag-link" href="/tags/golang/">golang</a>, <a class="tag-link" href="/tags/notes/">notes</a>, <a class="tag-link" href="/tags/oss/">oss</a>, <a class="tag-link" href="/tags/password-manager/">password manager</a>, <a class="tag-link" href="/tags/passwords/">passwords</a>, <a class="tag-link" href="/tags/secrets/">secrets</a>
+        <a class="tag-link-link" href="/tags/aes/" rel="tag">aes</a>, <a class="tag-link-link" href="/tags/arc/" rel="tag">arc</a>, <a class="tag-link-link" href="/tags/arcd/" rel="tag">arcd</a>, <a class="tag-link-link" href="/tags/encryption/" rel="tag">encryption</a>, <a class="tag-link-link" href="/tags/go/" rel="tag">go</a>, <a class="tag-link-link" href="/tags/golang/" rel="tag">golang</a>, <a class="tag-link-link" href="/tags/notes/" rel="tag">notes</a>, <a class="tag-link-link" href="/tags/oss/" rel="tag">oss</a>, <a class="tag-link-link" href="/tags/password-manager/" rel="tag">password manager</a>, <a class="tag-link-link" href="/tags/passwords/" rel="tag">passwords</a>, <a class="tag-link-link" href="/tags/secrets/" rel="tag">secrets</a>
     </div>
 
 
     </div>
-    <a href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
     <br/>
     <div class="addthis_sharing_toolbox"></div>
   </header>
@@ -171,6 +186,7 @@
 <p>So I wrote <strong>ARC</strong>.</p>
 <p><img src="https://i.imgur.com/NvLlafA.png" alt="arcd"></p>
 <a id="more"></a>
+
 <p>Of course there are <strong>plenty</strong> of solutions already that mostly involve the use of <code>pass</code>, <code>ssh</code>, <code>git</code> and various synchronizations hacks, but:</p>
 <ol>
 <li>Either you’ll host that stuff on github ( “the cloud” ), or you’ll need a server.</li>
@@ -192,40 +208,50 @@
 <li>A password field with <strong>password strength estimation</strong> and a <strong>random password generator</strong>. </li>
 </ul>
 <p>Elements can be created (with optional expiration dates), arranged and edited using <code>arc</code> and are stored on <code>arcd</code> safely.</p>
-<ul style="margin:0; padding:0; list-style-type:none;"><br><li style="float: left; margin-right:15px; width:45%;"><br>    <img src="https://i.imgur.com/KCn4RGw.png"><br>    <small>A client side encrypted record set to expire and self delete with a markdown area and a password widget.</small><br></li><br><li style="float: left; margin-right:15px; width:45%;"><br>    <img src="https://i.imgur.com/nxqmRqY.png"><br>    <small>Markdown and various attached files.</small><br></li><br></ul>
+<ul style="margin:0; padding:0; list-style-type:none;">
+<li style="float: left; margin-right:15px; width:45%;">
+    <img src="https://i.imgur.com/KCn4RGw.png"/>
+    <small>A client side encrypted record set to expire and self delete with a markdown area and a password widget.</small>
+</li>
+<li style="float: left; margin-right:15px; width:45%;">
+    <img src="https://i.imgur.com/nxqmRqY.png"/>
+    <small>Markdown and various attached files.</small>
+</li>
+</ul>
 
 <div style="clear:both;"></div>
 
 <p>The idea is to use <em>the Arc</em>&trade; as a single manager for your passwords, encrypted notes, files and <code>-all the secret things here-</code> while hosting <code>arcd</code> yourself on some spare hardware like a Raspberry Pi and accessing <code>arc</code> from every device with a modern browser, so let’s see how to configure it on a Raspberry Pi Zero in order to have a secure and portable setup for your secrets! :D</p>
-<h3 id="Hardware-Setup"><a href="#Hardware-Setup" class="headerlink" title="Hardware Setup"></a>Hardware Setup</h3><pre><code>The following instructions are Raspberry Pi Zero specific, but the same procedure should work on any similar hardware ( like another RPi or the USB Armory for instance ), the RPiZ is just what I found to be more convenient and cheap.
-</code></pre><p>First of all, format a micro sd card and install Raspbian on it as usual (download iso, verify, dd, mount), next we need to apply a few tweaks in order to enable ethernet connectivity over its USB port.</p>
+<h3 id="Hardware-Setup"><a href="#Hardware-Setup" class="headerlink" title="Hardware Setup"></a>Hardware Setup</h3><pre><code>The following instructions are Raspberry Pi Zero specific, but the same procedure should work on any similar hardware ( like another RPi or the USB Armory for instance ), the RPiZ is just what I found to be more convenient and cheap.</code></pre>
+<p>First of all, format a micro sd card and install Raspbian on it as usual (download iso, verify, dd, mount), next we need to apply a few tweaks in order to enable ethernet connectivity over its USB port.</p>
 <p>With the RPi <code>boot</code> partition mounted, edit the <code>/path/to/pi/boot/config.txt</code> and append:</p>
-<pre><code>dtoverlay=dwc2
-</code></pre><p>Then edit <code>/path/to/pi/boot/cmdline.txt</code> and insert between the <code>rootwait</code> and the <code>quiet</code> parameters:</p>
-<pre><code>modules-load=dwc2,g_ether
-</code></pre><p>Eventually your <code>cmdline.txt</code> file will look like this:</p>
-<pre><code>dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=abcdefab-01 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait modules-load=dwc2,g_ether 
-</code></pre><p>At last, we need to make Raspbian enable SSH on boot so we’ll be able to connect to it if needed, in order to do this just create an <code>/path/to/pi/boot/ssh</code> empty file.</p>
+<pre><code>dtoverlay=dwc2</code></pre>
+<p>Then edit <code>/path/to/pi/boot/cmdline.txt</code> and insert between the <code>rootwait</code> and the <code>quiet</code> parameters:</p>
+<pre><code>modules-load=dwc2,g_ether</code></pre>
+<p>Eventually your <code>cmdline.txt</code> file will look like this:</p>
+<pre><code>dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=abcdefab-01 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait modules-load=dwc2,g_ether </code></pre>
+<p>At last, we need to make Raspbian enable SSH on boot so we’ll be able to connect to it if needed, in order to do this just create an <code>/path/to/pi/boot/ssh</code> empty file.</p>
 <p>Unmount the micro sd, insert it into the RPiZ and plug it to the computer <strong>using the USB data port</strong> (not the charge one, we don’t need it ;)).</p>
 <p>If everything went fine, your computer should now detect a new network interface, in order to connect to it just assign it any static IP address ( on <code>Ubuntu</code> and similar, set the connection type to <code>Link-Local Only</code>), restart the interface and the RPiZ should be reachable:</p>
-<pre><code>ping raspberrypi.local
-</code></pre><p>Let’s finish the setup of the board, connect to it via SSH:</p>
-<pre><code>ssh pi@raspberrypi.local
-</code></pre><p>Expand the filesystem as usual, <strong>change the default SSH password</strong>, enable <strong>private key only SSH authentication</strong>, copy your certificate, etc … as for the hardware part, we’re ready :)</p>
-<h3 id="Software-Setup"><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h3><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage" target="_blank" rel="noopener">follow the instructions on the repository</a> to compile the server.</p>
+<pre><code>ping raspberrypi.local</code></pre>
+<p>Let’s finish the setup of the board, connect to it via SSH:</p>
+<pre><code>ssh pi@raspberrypi.local</code></pre>
+<p>Expand the filesystem as usual, <strong>change the default SSH password</strong>, enable <strong>private key only SSH authentication</strong>, copy your certificate, etc … as for the hardware part, we’re ready :)</p>
+<h3 id="Software-Setup"><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h3><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage">follow the instructions on the repository</a> to compile the server.</p>
 <p>Once you compiled it, edit the configuration file:</p>
 <pre><code>cd /path/to/arc/repo/arcd
 cp sample_config.json config.json
-vim config.json
-</code></pre><p>And change the <code>address</code> field so we’ll be able to connect to the Arc web interface:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"address"</span>: <span class="string">""</span>,</span><br><span class="line">    <span class="attr">"port"</span>: <span class="number">8080</span>,</span><br><span class="line">    <span class="attr">"username"</span>: <span class="string">"PUT_YOUR_USERNAME_HERE"</span>,</span><br><span class="line">    <span class="attr">"password"</span>: <span class="string">"PUT_YOUR_PASSWORD_HERE"</span>,</span><br><span class="line">    <span class="attr">"database"</span>: <span class="string">"~/arc.db"</span>,</span><br><span class="line">    <span class="attr">"token_duration"</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">"scheduler"</span>: &#123;</span><br><span class="line">        <span class="attr">"enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"period"</span>: <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"tls"</span>: &#123;</span><br><span class="line">        <span class="attr">"enabled"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"pem"</span>: <span class="string">"/some/file.pem"</span>,</span><br><span class="line">        <span class="attr">"key"</span>: <span class="string">"/some/file.key"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+vim config.json</code></pre>
+<p>And change the <code>address</code> field so we’ll be able to connect to the Arc web interface:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;address&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">8080</span>,</span><br><span class="line">    <span class="attr">&quot;username&quot;</span>: <span class="string">&quot;PUT_YOUR_USERNAME_HERE&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;password&quot;</span>: <span class="string">&quot;PUT_YOUR_PASSWORD_HERE&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;database&quot;</span>: <span class="string">&quot;~/arc.db&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;token_duration&quot;</span>: <span class="number">60</span>,</span><br><span class="line">    <span class="attr">&quot;scheduler&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;enabled&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;period&quot;</span>: <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;tls&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;enabled&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;pem&quot;</span>: <span class="string">&quot;/some/file.pem&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;key&quot;</span>: <span class="string">&quot;/some/file.key&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Now just copy the <code>arc</code> folder, the new <code>config.json</code> file and the ARM compiled <code>arcd</code> server to the RPiZ:</p>
-<pre><code>scp -r arc arcd_arm config.json pi@raspberrypi.local:/home/pi/
-</code></pre><p>SSH to the board and make sure that everything works:</p>
+<pre><code>scp -r arc arcd_arm config.json pi@raspberrypi.local:/home/pi/</code></pre>
+<p>SSH to the board and make sure that everything works:</p>
 <pre><code>ssh pi@raspberrypi.local
 mv arcd_arm arcd
-./arcd -config config.json -app arc
-</code></pre><p>Open the browser and go to <code>http://raspberrypi.local:8080/</code>, you should now be able to login and use ARC whenever you plug your RPi Zero to the USB port :)</p>
+./arcd -config config.json -app arc</code></pre>
+<p>Open the browser and go to <code>http://raspberrypi.local:8080/</code>, you should now be able to login and use ARC whenever you plug your RPi Zero to the USB port :)</p>
 <p>( Make sure to start <code>arcd</code> at boot by editing <code>/etc/rc.local</code> or whatever )</p>
 <h3 id="Security-considerations"><a href="#Security-considerations" class="headerlink" title="Security considerations"></a>Security considerations</h3><ul>
 <li><p>It should be obvious, but physically isolated data on dedicated hardware is safer.</p>
@@ -243,9 +269,11 @@ mv arcd_arm arcd
 <li><p>Elements can be configured with an expiration date, using it is a good way to remember how old a given password is and have some sort of reminder when it’s time to change it (or just encrypted reminders ^_^).</p>
 </li>
 </ul>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>The project is <a href="https://github.com/evilsocket/arc" target="_blank" rel="noopener">available on my github</a> as usual, there’s still <a href="https://github.com/evilsocket/arc/milestone/1" target="_blank" rel="noopener">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>The project is <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc">available on my github</a> as usual, there’s still <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc/milestone/1">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
 <p>Stay safe, have fun and …</p>
-<p align="center"><br>    <img src="https://i.imgur.com/h5cpCeN.png" alt="Encrypt all the things!"><br></p>
+<p align="center">
+    <img src="https://i.imgur.com/h5cpCeN.png" alt="Encrypt all the things!"/>
+</p>
 
 <h3 id="One-last-thing-…"><a href="#One-last-thing-…" class="headerlink" title="One last thing …"></a>One last thing …</h3><p>Yes, it works with smartphones and tablets in OTG mode :)</p>
 
@@ -276,21 +304,21 @@ mv arcd_arm arcd
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hardware-Setup"><span class="toc-number">1.</span> <span class="toc-text">Hardware Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software-Setup"><span class="toc-number">2.</span> <span class="toc-text">Software Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Security-considerations"><span class="toc-number">3.</span> <span class="toc-text">Security considerations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-last-thing-…"><span class="toc-number">5.</span> <span class="toc-text">One last thing …</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hardware-Setup"><span class="toc-number">1.</span> <span class="toc-text">Hardware Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Software-Setup"><span class="toc-number">2.</span> <span class="toc-text">Software Setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Security-considerations"><span class="toc-number">3.</span> <span class="toc-text">Security considerations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#One-last-thing-%E2%80%A6"><span class="toc-number">5.</span> <span class="toc-text">One last thing …</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&text=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&is_video=false&description=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&text=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&is_video=false&description=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC&body=Check out this article: https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&name=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC&description=&lt;p&gt;For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&title=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/&name=DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC&description=&lt;p&gt;For the last few days I’ve been working on a new project which I developed for very specific needs and reasons:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;I need to store safely (encrypted) my passwords, sensitive files, notes, etc.&lt;/li&gt;
 &lt;li&gt;I need to access them from anywhere, with every possible device ( desktop, mobile, terminal ).&lt;/li&gt;
@@ -300,7 +328,7 @@ mv arcd_arm arcd
 &lt;li&gt;I don’t want to enable port forwarding and host it myself with DynDNS or alikes.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;So I wrote &lt;strong&gt;ARC&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/NvLlafA.png&quot; alt=&quot;arcd&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/NvLlafA.png&#34; alt=&#34;arcd&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -336,13 +364,23 @@ mv arcd_arm arcd
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

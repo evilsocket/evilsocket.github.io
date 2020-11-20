@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="The next release of bettercap will include a new spoofer module as an alternative to the default ARP spoofer.The new module performs a fully automated and full duplex ICMP Redirect MITM attack, what m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BetterCap and the First REAL DoubleDirect ICMP Redirect Attack">
+<meta property="og:url" content="https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="The next release of bettercap will include a new spoofer module as an alternative to the default ARP spoofer.The new module performs a fully automated and full duplex ICMP Redirect MITM attack, what m">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/01/photo.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/01/Meme-derp.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/01/papel-de-parede-meme-freddie-mercury-136608662.jpg">
+<meta property="article:published_time" content="2016-01-10T12:56:22.000Z">
+<meta property="article:modified_time" content="2016-01-10T13:11:34.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="bettercap">
+<meta property="article:tag" content="icmp">
+<meta property="article:tag" content="icmp redirect">
+<meta property="article:tag" content="double direct">
+<meta property="article:tag" content="doubledirect">
+<meta property="article:tag" content="zimperium">
+<meta property="article:tag" content="spoofing">
+<meta property="article:tag" content="spoofer">
+<meta property="article:tag" content="icmp spoofing">
+<meta property="article:tag" content="routing">
+<meta property="article:tag" content="routing table">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2016/01/photo.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>BetterCap and the First REAL DoubleDirect ICMP Redirect Attack</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/autopwn-every-android-device-on-your-network-using-bettercap-the-and-addjavascriptinterface-vulnerability"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/past-present-and-future-of-bettercap"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&text=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&is_video=false&description=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack&body=Check out this article: https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&name=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack&description=&lt;p&gt;The next release of &lt;a href=&#34;http://www.bettercap.org/&#34;&gt;bettercap&lt;/a&gt; will include a &lt;a href=&#34;https://github.com/evilsocket/bettercap/blob/8d1467987935762a890871c7e792c32b7390df53/lib/bettercap/spoofers/icmp.rb&#34;&gt;new spoofer module&lt;/a&gt; as an alternative to the default ARP spoofer.&lt;br&gt;The new module performs a &lt;strong&gt;fully automated&lt;/strong&gt; and full duplex &lt;strong&gt;ICMP Redirect&lt;/strong&gt; MITM attack, what my collegues at Zimperium discovered and &lt;a href=&#34;https://blog.zimperium.com/doubledirect-zimperium-discovers-full-duplex-icmp-redirect-attacks-in-the-wild/&#34;&gt;called a&lt;/a&gt; &lt;strong&gt;DoubleDirect&lt;/strong&gt; attack.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BetterCap will be the very first MITM framework to have this feature 100% working without any additional spoofers.&lt;/strong&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        BetterCap and the First REAL DoubleDirect ICMP Redirect Attack
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2016-01-10T12:56:22.000Z" itemprop="datePublished">2016-01-10</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/bettercap/" rel="tag">bettercap</a>, <a class="tag-link-link" href="/tags/double-direct/" rel="tag">double direct</a>, <a class="tag-link-link" href="/tags/doubledirect/" rel="tag">doubledirect</a>, <a class="tag-link-link" href="/tags/icmp/" rel="tag">icmp</a>, <a class="tag-link-link" href="/tags/icmp-redirect/" rel="tag">icmp redirect</a>, <a class="tag-link-link" href="/tags/icmp-spoofing/" rel="tag">icmp spoofing</a>, <a class="tag-link-link" href="/tags/routing/" rel="tag">routing</a>, <a class="tag-link-link" href="/tags/routing-table/" rel="tag">routing table</a>, <a class="tag-link-link" href="/tags/spoofer/" rel="tag">spoofer</a>, <a class="tag-link-link" href="/tags/spoofing/" rel="tag">spoofing</a>, <a class="tag-link-link" href="/tags/zimperium/" rel="tag">zimperium</a>
+    </div>
+
+
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br/>
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>The next release of <a target="_blank" rel="noopener" href="http://www.bettercap.org/">bettercap</a> will include a <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bettercap/blob/8d1467987935762a890871c7e792c32b7390df53/lib/bettercap/spoofers/icmp.rb">new spoofer module</a> as an alternative to the default ARP spoofer.<br>The new module performs a <strong>fully automated</strong> and full duplex <strong>ICMP Redirect</strong> MITM attack, what my collegues at Zimperium discovered and <a target="_blank" rel="noopener" href="https://blog.zimperium.com/doubledirect-zimperium-discovers-full-duplex-icmp-redirect-attacks-in-the-wild/">called a</a> <strong>DoubleDirect</strong> attack.</p>
+<p><strong>BetterCap will be the very first MITM framework to have this feature 100% working without any additional spoofers.</strong></p>
+<a id="more"></a>
+
+<p>If you’re thinking about ettercap ICMP spoofer which was released (I think) years ago, let me remind you what its <a target="_blank" rel="noopener" href="http://www.irongeek.com/i.php?page=backtrack-3-man/ettercap">documentation</a> says about it:</p>
+<pre><code>Obviously you have to be able to sniff all the traffic. If you are on a switch you have
+to use a different mitm attack such as arp poisoning.</code></pre>
+<p>So yeah, unless you’re <strong>already</strong> able to sniff network traffic ( in which case, why would you even need to do a MITM attack?!?!?! ), <strong>ettercap’s ICMP module is completely useless</strong>.</p>
+<p><img src="/images/2016/01/photo.jpg" alt="lulz"></p>
+<p>On the other hand, <a target="_blank" rel="noopener" href="https://github.com/byt3bl33d3r/MITMf/">MITMf</a> is not that much better, if you look closely at <a target="_blank" rel="noopener" href="https://github.com/byt3bl33d3r/MITMf/blob/d0b4fd66fafe9b3197e66b71dcc24e5e64f10eb3/core/poisoners/ICMP.py">its code</a>, you will find that the ICMP spoofer only does this:</p>
+<pre><code>def build_icmp(self):
+   pkt = IP(src=self.gateway, dst=self.target)/ICMP(type=5,code=1, gw=self.ip_address) /\
+              IP(src=self.target, dst=self.gateway)/UDP()
+
+   return pkt</code></pre>
+<p>Which basically will only reroute traffic to the gateway.</p>
+<p><img src="/images/2016/01/Meme-derp.jpg" alt="derp"></p>
+<p>In order to have a <strong>real</strong> and <strong>full duplex</strong> MITM using ICMP Redirect packets, you have to reroute the gateway and every other address that the target/victim is requesting, which is why I used<br>a <strong>DNS</strong> watcher thread just like described on Zimperium’s blog post.</p>
+<p><img src="/images/2016/01/papel-de-parede-meme-freddie-mercury-136608662.jpg" alt="imsexy"></p>
+<p>So stay tuned guys, the next release is close!</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&text=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&is_video=false&description=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack&body=Check out this article: https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&title=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/bettercap-and-the-first-real-icmp-redirect-attack&name=BetterCap and the First REAL DoubleDirect ICMP Redirect Attack&description=&lt;p&gt;The next release of &lt;a href=&#34;http://www.bettercap.org/&#34;&gt;bettercap&lt;/a&gt; will include a &lt;a href=&#34;https://github.com/evilsocket/bettercap/blob/8d1467987935762a890871c7e792c32b7390df53/lib/bettercap/spoofers/icmp.rb&#34;&gt;new spoofer module&lt;/a&gt; as an alternative to the default ARP spoofer.&lt;br&gt;The new module performs a &lt;strong&gt;fully automated&lt;/strong&gt; and full duplex &lt;strong&gt;ICMP Redirect&lt;/strong&gt; MITM attack, what my collegues at Zimperium discovered and &lt;a href=&#34;https://blog.zimperium.com/doubledirect-zimperium-discovers-full-duplex-icmp-redirect-attacks-in-the-wild/&#34;&gt;called a&lt;/a&gt; &lt;strong&gt;DoubleDirect&lt;/strong&gt; attack.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BetterCap will be the very first MITM framework to have this feature 100% working without any additional spoofers.&lt;/strong&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

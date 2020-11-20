@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I’ve just published on github libpe, a C&#x2F;C++ library to parse Windows portable executables ( both PE32 and PE32+ ) written with speed and stability in mind, released under the GPL 3 license.Currently">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Libpe - a Fast PE32&#x2F;PE32+ Parsing Library.">
+<meta property="og:url" content="https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="I’ve just published on github libpe, a C&#x2F;C++ library to parse Windows portable executables ( both PE32 and PE32+ ) written with speed and stability in mind, released under the GPL 3 license.Currently">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-02-21T17:19:57.000Z">
+<meta property="article:modified_time" content="2014-02-21T23:54:43.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="projects">
+<meta property="article:tag" content="library">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="open source">
+<meta property="article:tag" content="libpe">
+<meta property="article:tag" content="pe32">
+<meta property="article:tag" content="portable executable">
+<meta property="article:tag" content="parsing">
+<meta property="article:tag" content="pe32+">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Libpe - a Fast PE32/PE32+ Parsing Library.</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/programmatically-identifying-and-isolating-functions-inside-executables-like-ida-does"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/on-windows-syscall-mechanism-and-syscall-numbers-extraction-methods"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&text=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&is_video=false&description=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Libpe - a Fast PE32/PE32+ Parsing Library.&body=Check out this article: https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&name=Libpe - a Fast PE32/PE32+ Parsing Library.&description=&lt;p&gt;I’ve just published on &lt;a href=&#34;https://github.com/evilsocket/libpe&#34;&gt;github&lt;/a&gt; &lt;strong&gt;libpe&lt;/strong&gt;, a C/C++ library to parse Windows portable executables ( both PE32 and PE32+ ) written with &lt;strong&gt;speed&lt;/strong&gt; and &lt;strong&gt;stability&lt;/strong&gt; in mind, released under the GPL 3 license.&lt;br&gt;Currently the library is released as a Microsoft Visual Studio solution containing the library itself and an &lt;a href=&#34;https://github.com/evilsocket/libpe/blob/master/peview/peview.cpp&#34;&gt;example project&lt;/a&gt;, I will make it cross platform in future releases.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Libpe - a Fast PE32/PE32+ Parsing Library.
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2014-02-21T17:19:57.000Z" itemprop="datePublished">2014-02-21</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/c/" rel="tag">c</a>, <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/libpe/" rel="tag">libpe</a>, <a class="tag-link-link" href="/tags/library/" rel="tag">library</a>, <a class="tag-link-link" href="/tags/open-source/" rel="tag">open source</a>, <a class="tag-link-link" href="/tags/parsing/" rel="tag">parsing</a>, <a class="tag-link-link" href="/tags/pe32/" rel="tag">pe32</a>, <a class="tag-link-link" href="/tags/pe32/" rel="tag">pe32+</a>, <a class="tag-link-link" href="/tags/portable-executable/" rel="tag">portable executable</a>, <a class="tag-link-link" href="/tags/projects/" rel="tag">projects</a>
+    </div>
+
+
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br/>
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>I’ve just published on <a target="_blank" rel="noopener" href="https://github.com/evilsocket/libpe">github</a> <strong>libpe</strong>, a C/C++ library to parse Windows portable executables ( both PE32 and PE32+ ) written with <strong>speed</strong> and <strong>stability</strong> in mind, released under the GPL 3 license.<br>Currently the library is released as a Microsoft Visual Studio solution containing the library itself and an <a target="_blank" rel="noopener" href="https://github.com/evilsocket/libpe/blob/master/peview/peview.cpp">example project</a>, I will make it cross platform in future releases.</p>
+<a id="more"></a>
+
+<p>The output of the example program dumping itself is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">TYPE        : PE32</span><br><span class="line">IMAGE BASE  : 00400000</span><br><span class="line">ENTRY POINT : 004111FE ( 000005FE )</span><br><span class="line"></span><br><span class="line">SECTIONS ( 7 ):</span><br><span class="line">  .textbss        00401000 - 00401000 ( rsize&#x3D;0, vsize&#x3D;65536 )</span><br><span class="line">  .text           00411000 - 0041A200 ( rsize&#x3D;37376, vsize&#x3D;36879 )</span><br><span class="line">  .rdata          0041B000 - 0041D400 ( rsize&#x3D;9216, vsize&#x3D;9002 )</span><br><span class="line">  .data           0041E000 - 0041E200 ( rsize&#x3D;512, vsize&#x3D;1417 )</span><br><span class="line">  .idata          0041F000 - 0041FC00 ( rsize&#x3D;3072, vsize&#x3D;2913 )</span><br><span class="line">  .rsrc           00420000 - 00420600 ( rsize&#x3D;1536, vsize&#x3D;1084 )</span><br><span class="line">  .reloc          00421000 - 00421800 ( rsize&#x3D;2048, vsize&#x3D;1684 )</span><br><span class="line"></span><br><span class="line">IMPORT TABLE ( 3 ) [0041F000]:</span><br><span class="line">  MSVCR110D.dll ( 48 )</span><br><span class="line">    [0041F328] __crtUnhandledException</span><br><span class="line">    [0041F32C] __crtTerminateProcess</span><br><span class="line">    [0041F330] ?terminate@@YAXXZ</span><br><span class="line">    [0041F334] __crtSetUnhandledExceptionFilter</span><br><span class="line">    [0041F338] _lock</span><br><span class="line">    [0041F33C] _unlock</span><br><span class="line">    [0041F340] _crt_debugger_hook</span><br><span class="line">    [0041F344] __dllonexit</span><br><span class="line">    [0041F348] _onexit</span><br><span class="line">    [0041F34C] _invoke_watson</span><br><span class="line">    [0041F350] _controlfp_s</span><br><span class="line">    [0041F354] wcscpy_s</span><br><span class="line">    [0041F358] _wmakepath_s</span><br><span class="line">    [0041F35C] _wsplitpath_s</span><br><span class="line">    [0041F360] _except_handler4_common</span><br><span class="line">    [0041F364] _commode</span><br><span class="line">    [0041F368] _fmode</span><br><span class="line">    [0041F36C] __initenv</span><br><span class="line">    [0041F370] _initterm</span><br><span class="line">    [0041F374] _initterm_e</span><br><span class="line">    [0041F378] __setusermatherr</span><br><span class="line">    [0041F37C] _configthreadlocale</span><br><span class="line">    [0041F380] _cexit</span><br><span class="line">    [0041F384] _exit</span><br><span class="line">    [0041F388] _CrtSetCheckCount</span><br><span class="line">    [0041F38C] _CrtDbgReportW</span><br><span class="line">    [0041F390] __set_app_type</span><br><span class="line">    [0041F394] __getmainargs</span><br><span class="line">    [0041F398] _amsg_exit</span><br><span class="line">    [0041F39C] _XcptFilter</span><br><span class="line">    [0041F3A0] _CRT_RTC_INITW</span><br><span class="line">    [0041F3A4] tolower</span><br><span class="line">    [0041F3A8] strlen</span><br><span class="line">    [0041F3AC] malloc</span><br><span class="line">    [0041F3B0] vsprintf_s</span><br><span class="line">    [0041F3B4] free</span><br><span class="line">    [0041F3B8] calloc</span><br><span class="line">    [0041F3BC] _dupenv_s</span><br><span class="line">    [0041F3C0] strrchr</span><br><span class="line">    [0041F3C4] strncpy_s</span><br><span class="line">    [0041F3C8] _stricmp</span><br><span class="line">    [0041F3CC] strchr</span><br><span class="line">    [0041F3D0] strcmp</span><br><span class="line">    [0041F3D4] isprint</span><br><span class="line">    [0041F3D8] memset</span><br><span class="line">    [0041F3DC] printf</span><br><span class="line">    [0041F3E0] _calloc_dbg</span><br><span class="line">    [0041F3E4] exit</span><br><span class="line">  dbghelp.dll ( 1 )</span><br><span class="line">    [0041F438] UnDecorateSymbolName</span><br><span class="line">  KERNEL32.dll ( 34 )</span><br><span class="line">    [0041F25C] VirtualQuery</span><br><span class="line">    [0041F260] GetProcessHeap</span><br><span class="line">    [0041F264] HeapFree</span><br><span class="line">    [0041F268] HeapAlloc</span><br><span class="line">    [0041F26C] DecodePointer</span><br><span class="line">    [0041F270] GetSystemTimeAsFileTime</span><br><span class="line">    [0041F274] GetCurrentThreadId</span><br><span class="line">    [0041F278] GetCurrentProcessId</span><br><span class="line">    [0041F27C] QueryPerformanceCounter</span><br><span class="line">    [0041F280] IsProcessorFeaturePresent</span><br><span class="line">    [0041F284] WideCharToMultiByte</span><br><span class="line">    [0041F288] MultiByteToWideChar</span><br><span class="line">    [0041F28C] LoadLibraryW</span><br><span class="line">    [0041F290] lstrlenA</span><br><span class="line">    [0041F294] LoadLibraryExW</span><br><span class="line">    [0041F298] GetProcAddress</span><br><span class="line">    [0041F29C] RaiseException</span><br><span class="line">    [0041F2A0] IsDebuggerPresent</span><br><span class="line">    [0041F2A4] EncodePointer</span><br><span class="line">    [0041F2A8] IsBadReadPtr</span><br><span class="line">    [0041F2AC] CreateFileMappingA</span><br><span class="line">    [0041F2B0] UnmapViewOfFile</span><br><span class="line">    [0041F2B4] MapViewOfFile</span><br><span class="line">    [0041F2B8] GetWindowsDirectoryA</span><br><span class="line">    [0041F2BC] GetSystemDirectoryA</span><br><span class="line">    [0041F2C0] GetLastError</span><br><span class="line">    [0041F2C4] CloseHandle</span><br><span class="line">    [0041F2C8] GetFullPathNameA</span><br><span class="line">    [0041F2CC] GetFileSize</span><br><span class="line">    [0041F2D0] GetFileAttributesA</span><br><span class="line">    [0041F2D4] CreateFileA</span><br><span class="line">    [0041F2D8] GetModuleFileNameW</span><br><span class="line">    [0041F2DC] GetModuleHandleW</span><br><span class="line">    [0041F2E0] FreeLibrary</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&text=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&is_video=false&description=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Libpe - a Fast PE32/PE32+ Parsing Library.&body=Check out this article: https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&title=Libpe - a Fast PE32/PE32+ Parsing Library."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/libpe-a-fast-pe32pe32-parsing-library&name=Libpe - a Fast PE32/PE32+ Parsing Library.&description=&lt;p&gt;I’ve just published on &lt;a href=&#34;https://github.com/evilsocket/libpe&#34;&gt;github&lt;/a&gt; &lt;strong&gt;libpe&lt;/strong&gt;, a C/C++ library to parse Windows portable executables ( both PE32 and PE32+ ) written with &lt;strong&gt;speed&lt;/strong&gt; and &lt;strong&gt;stability&lt;/strong&gt; in mind, released under the GPL 3 license.&lt;br&gt;Currently the library is released as a Microsoft Visual Studio solution containing the library itself and an &lt;a href=&#34;https://github.com/evilsocket/libpe/blob/master/peview/peview.cpp&#34;&gt;example project&lt;/a&gt;, I will make it cross platform in future releases.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

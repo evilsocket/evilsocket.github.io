@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can">
-<meta name="keywords" content="android,dalvik,reversing,apk,dex,re,IDA,Hopper,JADX,apktool,JD-GUI,Dex2Jar,Frida,XPosed,XPosed Framework">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Applications Reversing 101">
 <meta property="og:url" content="https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/index.html">
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.evilsocket.net/images/2017/04/head.jpeg">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/bettercap.png">
-<meta property="og:image" content="https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67">
-<meta property="og:image" content="https://raw.githubusercontent.com/skylot/jadx/master/jadx-gui/src/main/resources/icons-16/wand.png">
-<meta property="og:image" content="http://jd.benow.ca/img/screenshot17.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/jeb.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/ida.gif">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/hopper.jpg">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/cuckoo.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/joe.jpg">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/androidstudio.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2017/04/idadbg.gif">
-<meta property="og:updated_time" content="2020-05-26T18:30:57.516Z">
+<meta property="article:published_time" content="2017-04-27T17:09:48.000Z">
+<meta property="article:modified_time" content="2020-05-26T18:30:57.516Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="dalvik">
+<meta property="article:tag" content="reversing">
+<meta property="article:tag" content="apk">
+<meta property="article:tag" content="dex">
+<meta property="article:tag" content="re">
+<meta property="article:tag" content="IDA">
+<meta property="article:tag" content="Hopper">
+<meta property="article:tag" content="JADX">
+<meta property="article:tag" content="apktool">
+<meta property="article:tag" content="JD-GUI">
+<meta property="article:tag" content="Dex2Jar">
+<meta property="article:tag" content="Frida">
+<meta property="article:tag" content="XPosed">
+<meta property="article:tag" content="XPosed Framework">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Applications Reversing 101">
-<meta name="twitter:description" content="Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can">
 <meta name="twitter:image" content="https://www.evilsocket.net/images/2017/04/head.jpeg">
     
     
@@ -52,19 +55,24 @@
     <!-- title -->
     <title>Android Applications Reversing 101</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -99,25 +107,25 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&text=Android Applications Reversing 101"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&is_video=false&description=Android Applications Reversing 101"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&text=Android Applications Reversing 101"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&is_video=false&description=Android Applications Reversing 101"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Android Applications Reversing 101&body=Check out this article: https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&name=Android Applications Reversing 101&description=&lt;p&gt;Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, &lt;a href=&quot;https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/&quot;&gt;smart fitness devices&lt;/a&gt; and &lt;a href=&quot;https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&quot;&gt;smart coffee machines&lt;/a&gt; … but is this stuff just smart or is it &lt;strong&gt;secure&lt;/strong&gt; as well? :)&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&name=Android Applications Reversing 101&description=&lt;p&gt;Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, &lt;a href=&#34;https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/&#34;&gt;smart fitness devices&lt;/a&gt; and &lt;a href=&#34;https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&#34;&gt;smart coffee machines&lt;/a&gt; … but is this stuff just smart or is it &lt;strong&gt;secure&lt;/strong&gt; as well? :)&lt;/p&gt;
 &lt;p&gt;Reversing an Android application can be a (relatively) easy and fun way to answer this question, that’s why I decided to write this blog post where I’ll try to explain the basics and give you some of my “tricks” to reverse this stuff faster and more effectively.&lt;/p&gt;
 &lt;p&gt;I’m not going to go very deep into technical details, you can learn yourself how Android works, how the Dalvik VM works and so forth, this is gonna be a &lt;strong&gt;very basic practical guide&lt;/strong&gt; instead of a post full of theoretical stuff but no really useful contents.&lt;/p&gt;
 &lt;p&gt;Let’s start! :)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2017/04/head.jpeg&quot; alt=&quot;start&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;/images/2017/04/head.jpeg&#34; alt=&#34;start&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prerequisites"><span class="toc-number">1.</span> <span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-an-APK"><span class="toc-number">2.</span> <span class="toc-text">What is an APK?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-do-I-get-the-APK-of-an-app"><span class="toc-number">3.</span> <span class="toc-text">How do I get the APK of an app?</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Pulling-an-app-with-ADB"><span class="toc-number">3.0.1.</span> <span class="toc-text">Pulling an app with ADB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Using-an-Online-Service"><span class="toc-number">3.0.2.</span> <span class="toc-text">Using an Online Service</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-Analysis"><span class="toc-number">4.</span> <span class="toc-text">Network Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-Analysis"><span class="toc-number">5.</span> <span class="toc-text">Static Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#apktool"><span class="toc-number">5.1.</span> <span class="toc-text">apktool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jADX"><span class="toc-number">5.2.</span> <span class="toc-text">jADX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dex2Jar-and-JD-Gui"><span class="toc-number">5.3.</span> <span class="toc-text">Dex2Jar and JD-Gui</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JEB"><span class="toc-number">5.4.</span> <span class="toc-text">JEB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Static-Analysis-of-Native-Binaries"><span class="toc-number">5.5.</span> <span class="toc-text">Static Analysis of Native Binaries</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IDA"><span class="toc-number">5.5.1.</span> <span class="toc-text">IDA</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Hopper"><span class="toc-number">5.5.2.</span> <span class="toc-text">Hopper</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Analysis"><span class="toc-number">6.</span> <span class="toc-text">Dynamic Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sandboxing"><span class="toc-number">6.1.</span> <span class="toc-text">Sandboxing</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Cuckoo-Droid"><span class="toc-number">6.1.1.</span> <span class="toc-text">Cuckoo-Droid</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Joe-Sandbox"><span class="toc-number">6.1.2.</span> <span class="toc-text">Joe Sandbox</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debugging"><span class="toc-number">6.2.</span> <span class="toc-text">Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Enabling-Debug-Mode"><span class="toc-number">6.2.1.</span> <span class="toc-text">Enabling Debug Mode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Android-Studio"><span class="toc-number">6.2.2.</span> <span class="toc-text">Android Studio</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IDA-1"><span class="toc-number">6.2.3.</span> <span class="toc-text">IDA</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Instrumentation"><span class="toc-number">6.3.</span> <span class="toc-text">Dynamic Instrumentation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Frida"><span class="toc-number">6.3.1.</span> <span class="toc-text">Frida</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#XPosed"><span class="toc-number">6.3.2.</span> <span class="toc-text">XPosed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prerequisites"><span class="toc-number">1.</span> <span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-an-APK"><span class="toc-number">2.</span> <span class="toc-text">What is an APK?</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -144,12 +152,12 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Dex2Jar/">Dex2Jar</a>, <a class="tag-link" href="/tags/Frida/">Frida</a>, <a class="tag-link" href="/tags/Hopper/">Hopper</a>, <a class="tag-link" href="/tags/IDA/">IDA</a>, <a class="tag-link" href="/tags/JADX/">JADX</a>, <a class="tag-link" href="/tags/JD-GUI/">JD-GUI</a>, <a class="tag-link" href="/tags/XPosed/">XPosed</a>, <a class="tag-link" href="/tags/XPosed-Framework/">XPosed Framework</a>, <a class="tag-link" href="/tags/android/">android</a>, <a class="tag-link" href="/tags/apk/">apk</a>, <a class="tag-link" href="/tags/apktool/">apktool</a>, <a class="tag-link" href="/tags/dalvik/">dalvik</a>, <a class="tag-link" href="/tags/dex/">dex</a>, <a class="tag-link" href="/tags/re/">re</a>, <a class="tag-link" href="/tags/reversing/">reversing</a>
+        <a class="tag-link-link" href="/tags/Dex2Jar/" rel="tag">Dex2Jar</a>, <a class="tag-link-link" href="/tags/Frida/" rel="tag">Frida</a>, <a class="tag-link-link" href="/tags/Hopper/" rel="tag">Hopper</a>, <a class="tag-link-link" href="/tags/IDA/" rel="tag">IDA</a>, <a class="tag-link-link" href="/tags/JADX/" rel="tag">JADX</a>, <a class="tag-link-link" href="/tags/JD-GUI/" rel="tag">JD-GUI</a>, <a class="tag-link-link" href="/tags/XPosed/" rel="tag">XPosed</a>, <a class="tag-link-link" href="/tags/XPosed-Framework/" rel="tag">XPosed Framework</a>, <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/apk/" rel="tag">apk</a>, <a class="tag-link-link" href="/tags/apktool/" rel="tag">apktool</a>, <a class="tag-link-link" href="/tags/dalvik/" rel="tag">dalvik</a>, <a class="tag-link-link" href="/tags/dex/" rel="tag">dex</a>, <a class="tag-link-link" href="/tags/re/" rel="tag">re</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>
     </div>
 
 
     </div>
-    <a href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
     <br/>
     <div class="addthis_sharing_toolbox"></div>
   </header>
@@ -164,182 +172,445 @@
 <p>Let’s start! :)</p>
 <p><img src="/images/2017/04/head.jpeg" alt="start"></p>
 <a id="more"></a>
+
 <h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>In order to follow this introduction to APK reversing there’re a few prerequisites:</p>
 <ul>
 <li>A working brain ( I don’t give this for granted anymore … ).</li>
 <li>An Android smartphone ( doh! ).</li>
-<li>You have a basic knowledge of the <a href="https://en.wikipedia.org/wiki/Java_(programming_language" target="_blank" rel="noopener">Java programming language</a> (you understand it if you read it).</li>
-<li>You have the <a href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html" target="_blank" rel="noopener">JRE</a> installed on your computer.</li>
-<li>You have <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> installed.</li>
+<li>You have a basic knowledge of the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Java_(programming_language">Java programming language</a> (you understand it if you read it).</li>
+<li>You have the <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">JRE</a> installed on your computer.</li>
+<li>You have <a target="_blank" rel="noopener" href="https://developer.android.com/studio/command-line/adb.html">adb</a> installed.</li>
 <li>You have the <code>Developer Options</code> and <code>USB Debugging</code> enabled on your smartphone.</li>
 </ul>
 <h3 id="What-is-an-APK"><a href="#What-is-an-APK" class="headerlink" title="What is an APK?"></a>What is an APK?</h3><p>An Android application is packaged as an <strong>APK</strong> ( <em>Android Package</em> ) file, which is essentially a ZIP file containing the compiled code, the resources, signature, manifest and every other file the software needs in order to run. Being it a ZIP file, we can start looking at its contents using the <code>unzip</code> command line utility ( or any other unarchiver you use ):</p>
-<pre><code>unzip application.apk -d application
-</code></pre><p>Here’s what you will find inside an APK.</p>
-<pre><code>/AndroidManifest.xml (file)
-</code></pre><p>This is the binary representation of the XML manifest file describing what permissions the application will request (keep in mind that some of the permissions might be requested at runtime by the app and not declared here), what activities ( GUIs ) are in there, what services ( stuff running in the background with no UI ) and what receivers ( classes that can receive and handle system events such as the device boot or an incoming SMS ). </p>
+<pre><code>unzip application.apk -d application</code></pre>
+<p>Here’s what you will find inside an APK.</p>
+<pre><code>/AndroidManifest.xml (file)</code></pre>
+<p>This is the binary representation of the XML manifest file describing what permissions the application will request (keep in mind that some of the permissions might be requested at runtime by the app and not declared here), what activities ( GUIs ) are in there, what services ( stuff running in the background with no UI ) and what receivers ( classes that can receive and handle system events such as the device boot or an incoming SMS ). </p>
 <p>Once decompiled (more on this later), it’ll look like this:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> <span class="attr">package</span>=<span class="string">"com.company.appname"</span> </span></span><br><span class="line"><span class="tag">                                                                     <span class="attr">platformBuildVersionCode</span>=<span class="string">"24"</span> </span></span><br><span class="line"><span class="tag">                                                                     <span class="attr">platformBuildVersionName</span>=<span class="string">"7.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span> <span class="attr">android:allowBackup</span>=<span class="string">"true"</span> <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span> <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"com.company.appname.MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Keep in mind that this is the perfect starting point to isolate the application “entry points”, namely the classes you’ll reverse first in order to understand the logic of the whole software. In this case for instance, we would start inspecting the <code>com.company.appname.MainActivity</code> class being it declared as the main UI for the application.</p>
-<pre><code>/assets/* ( folder )
-</code></pre><p>This folder will contain application specific files, like wav files the app might need to play, custom fonts and so on. Reversing-wise it’s usually not very important, unless of course you find inside the software functional references to such files.</p>
-<pre><code>/res/* ( folder )
-</code></pre><p>All the resources, like the activities xml files, images and custom styles are stored here.</p>
-<pre><code>/resources.arsc ( file )
-</code></pre><p>This is the “index” of all the resources, long story short, at each resource file is assigned a numeric identifier that the app will use in order to identify that specific entry and the <code>resources.arsc</code> file maps these files to their identifiers … nothing very interesting about it.</p>
-<pre><code>/classes.dex ( file )
-</code></pre><p>This file contains the Dalvik ( the virtual machine running Android applications ) bytecode of the app, let me explain it better. An Android application is (most of the times) developed using the Java programming language. The java source files are then compiled into this bytecode which the Dalvik VM eventually will execute … pretty much what happens to normal Java programs when they’re compiled to <code>.class</code> files.</p>
-<p>Long story short, this file contains the logic, that’s what we’re interested into.</p>
-<p>Sometimes you’ll also find a <code>classes2.dex</code> file, this is due to the DEX format which has a limit to the number of classes you can declare inside a single dex file, at some point in history Android apps became bigger and bigger and so Google had to adapt this format, supporting a secondary <code>.dex</code> file where other classes can be declared.</p>
-<p>From our perspective it doesn’t matter, the tools we’re going to use are able to detect it and append it to the decompilation pipeline.</p>
-<pre><code>/libs/ ( folder )
-</code></pre><p>Sometimes an app needs to execute native code, it can be an image processing library, a game engine or whatever. In such case, those <code>.so</code> ELF libraries will be found inside the <code>libs</code> folder, divided into architecture specific subfolders ( so the app will run on ARM, ARM64, x86, etc ).</p>
-<pre><code>/META-INF/ ( folder )
-</code></pre><p>Every Android application needs to be signed with a developer certificate in order to run on a device, even debug builds are signed by a debug certificate, the <code>META-INF</code> folder contains information about the files inside the APK and about the developer.</p>
-<p>Inside this folder, you’ll usually find:</p>
-<ul>
-<li>A <code>MANIFEST.MF</code> file with the SHA-1 or SHA-256 hashes of <strong>all</strong> the files inside the APK.</li>
-<li>A <code>CERT.SF</code> file, pretty much like the MANIFEST.MF, but signed with the <code>RSA</code> key.</li>
-<li>A <code>CERT.RSA</code> file which contains the developer public key used to sign the <code>CERT.SF</code> file and digests.</li>
-</ul>
-<p>Those files are very important in order to guarantee the APK integrity and the ownership of the code. Sometimes inspecting such signature can be very handy to determine who really developed a given APK. If you want to get information about the developer, you can use the <code>openssl</code> command line utility:</p>
-<pre><code>openssl pkcs7 -in /path/to/extracted/apk/META-INF/CERT.RSA -inform DER -print
-</code></pre><p>This will print an output like:</p>
-<pre><code>PKCS7: 
-  type: pkcs7-signedData (1.2.840.113549.1.7.2)
-  d.sign: 
-    version: 1
-    md_algs:
-        algorithm: sha1 (1.3.14.3.2.26)
-        parameter: NULL
-    contents: 
-      type: pkcs7-data (1.2.840.113549.1.7.1)
-      d.data: &lt;ABSENT&gt;
-    cert:
-        cert_info: 
-          version: 2
-          serialNumber: 10394279457707717180
-          signature: 
-            algorithm: sha1WithRSAEncryption (1.2.840.113549.1.1.5)
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; package=&quot;com.company.appname&quot; 
+                                                                     platformBuildVersionCode=&quot;24&quot; 
+                                                                     platformBuildVersionName=&quot;7.0&quot;&gt;
+    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+    &lt;application android:allowBackup=&quot;true&quot; android:icon=&quot;@mipmap/ic_launcher&quot; 
+        android:label=&quot;@string/app_name&quot; 
+        android:supportsRtl=&quot;true&quot; android:theme=&quot;@style/AppTheme&quot;&gt;
+        &lt;activity android:name=&quot;com.company.appname.MainActivity&quot;&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;```
+
+Keep in mind that this is the perfect starting point to isolate the application &quot;entry points&quot;, namely the classes you&#39;ll reverse first in order to understand the logic of the whole software. In this case for instance, we would start inspecting the `com.company.appname.MainActivity` class being it declared as the main UI for the application.
+
+    /assets/* ( folder )
+
+This folder will contain application specific files, like wav files the app might need to play, custom fonts and so on. Reversing-wise it&#39;s usually not very important, unless of course you find inside the software functional references to such files.
+
+    /res/* ( folder )
+
+All the resources, like the activities xml files, images and custom styles are stored here.
+
+    /resources.arsc ( file )
+
+This is the &quot;index&quot; of all the resources, long story short, at each resource file is assigned a numeric identifier that the app will use in order to identify that specific entry and the `resources.arsc` file maps these files to their identifiers ... nothing very interesting about it.
+
+    /classes.dex ( file )
+
+This file contains the Dalvik ( the virtual machine running Android applications ) bytecode of the app, let me explain it better. An Android application is (most of the times) developed using the Java programming language. The java source files are then compiled into this bytecode which the Dalvik VM eventually will execute ... pretty much what happens to normal Java programs when they&#39;re compiled to `.class` files.
+
+Long story short, this file contains the logic, that&#39;s what we&#39;re interested into.
+
+Sometimes you&#39;ll also find a `classes2.dex` file, this is due to the DEX format which has a limit to the number of classes you can declare inside a single dex file, at some point in history Android apps became bigger and bigger and so Google had to adapt this format, supporting a secondary `.dex` file where other classes can be declared.
+
+From our perspective it doesn&#39;t matter, the tools we&#39;re going to use are able to detect it and append it to the decompilation pipeline.
+
+    /libs/ ( folder )
+
+Sometimes an app needs to execute native code, it can be an image processing library, a game engine or whatever. In such case, those `.so` ELF libraries will be found inside the `libs` folder, divided into architecture specific subfolders ( so the app will run on ARM, ARM64, x86, etc ).
+
+    /META-INF/ ( folder )
+
+Every Android application needs to be signed with a developer certificate in order to run on a device, even debug builds are signed by a debug certificate, the `META-INF` folder contains information about the files inside the APK and about the developer.
+
+Inside this folder, you&#39;ll usually find:
+
+* A `MANIFEST.MF` file with the SHA-1 or SHA-256 hashes of **all** the files inside the APK.
+* A `CERT.SF` file, pretty much like the MANIFEST.MF, but signed with the `RSA` key.
+* A `CERT.RSA` file which contains the developer public key used to sign the `CERT.SF` file and digests.
+
+Those files are very important in order to guarantee the APK integrity and the ownership of the code. Sometimes inspecting such signature can be very handy to determine who really developed a given APK. If you want to get information about the developer, you can use the `openssl` command line utility:
+
+    openssl pkcs7 -in /path/to/extracted/apk/META-INF/CERT.RSA -inform DER -print
+
+This will print an output like:
+
+    PKCS7: 
+      type: pkcs7-signedData (1.2.840.113549.1.7.2)
+      d.sign: 
+        version: 1
+        md_algs:
+            algorithm: sha1 (1.3.14.3.2.26)
             parameter: NULL
-          issuer: C=TW, ST=Taiwan, L=Taipei, O=ASUS, OU=PMD, CN=ASUS AMAX Key/emailAddress=admin@asus.com
-          validity: 
-            notBefore: Jul  8 11:39:39 2013 GMT
-            notAfter: Nov 23 11:39:39 2040 GMT
-          subject: C=TW, ST=Taiwan, L=Taipei, O=ASUS, OU=PMD, CN=ASUS AMAX Key/emailAddress=admin@asus.com
-          key: 
-            algor: 
-              algorithm: rsaEncryption (1.2.840.113549.1.1.1)
-              parameter: NULL
-            public_key:  (0 unused bits)
-              ...
-              ...
-              ...
-</code></pre><p>This can be gold for us, for instance we could use this information to determine if an app was really signed by (let’s say) Google or if it was resigned, therefore modified, by a third party.</p>
-<h3 id="How-do-I-get-the-APK-of-an-app"><a href="#How-do-I-get-the-APK-of-an-app" class="headerlink" title="How do I get the APK of an app?"></a>How do I get the APK of an app?</h3><p>Now that we have a basic idea of what we’re supposed to find inside an APK, we need a way to actually get the APK file of the application we’re interested into. There are two ways, either you install it on your device and use <code>adb</code> to get it, or you use an online service to download it.</p>
-<h5 id="Pulling-an-app-with-ADB"><a href="#Pulling-an-app-with-ADB" class="headerlink" title="Pulling an app with ADB"></a>Pulling an app with ADB</h5><p>First of all let’s plug our smartphone to the USB port of our computer and get a list of the installed packages and their namespaces:</p>
-<pre><code>adb shell pm list packages
-</code></pre><p>This will list all packages on your smartphone, once you’ve found the namespace of the package you want to reverse ( <code>com.android.systemui</code> in this example ), let’s see what its physical path is:</p>
-<pre><code>adb shell pm path com.android.systemui
-</code></pre><p>Finally, we have the APK path:</p>
-<pre><code>package:/system/priv-app/SystemUIGoogle/SystemUIGoogle.apk
-</code></pre><p>Let’s pull it from the device:</p>
-<pre><code>adb pull /system/priv-app/SystemUIGoogle/SystemUIGoogle.apk
-</code></pre><p>And here you go, you have the APK you want to reverse!</p>
-<h5 id="Using-an-Online-Service"><a href="#Using-an-Online-Service" class="headerlink" title="Using an Online Service"></a>Using an Online Service</h5><p>Multiple online services are available if you don’t want to install the app on your device (for instance, if you’re reversing a malware, you want to start having the file first, then installing on a clean device only afterwards), here’s a list of the ones I use:</p>
-<ul>
-<li><a href="https://apk-dl.com/" target="_blank" rel="noopener">Apk-DL</a></li>
-<li><a href="https://apps.evozi.com/apk-downloader/" target="_blank" rel="noopener">Evozi Downloader</a></li>
-<li><a href="http://apkleecher.com/" target="_blank" rel="noopener">Apk Leecher</a></li>
-</ul>
-<p>Keep in mind that once you download the APK from these services, it’s a good idea to check the developer certificate as previously shown in order to be 100% sure you downloaded the correct APK and not some repackaged and resigned stuff full of ads and possibly malware.</p>
-<h3 id="Network-Analysis"><a href="#Network-Analysis" class="headerlink" title="Network Analysis"></a>Network Analysis</h3><p>Now we start with some tests in order to understand what the app is doing while executed. My first test usually consists in inspecting the network traffic being generated by the application itself and, in order to do that, my tool of choice is <a href="https://bettercap.org/" target="_blank" rel="noopener">bettercap</a> … well, that’s why I developed it in the first place :P</p>
-<p>Make sure you have bettercap installed and that both your computer and the Android device are on the same wifi network, then you can start MITM-ing the smartphone ( <code>192.168.1.5</code> in this example ) and see its traffic in realtime from the terminal:</p>
-<pre><code>sudo bettercap -T 192.168.1.5 -X
-</code></pre><p>The <code>-X</code> option will enable the sniffer, as soon as you start the app you should see a bunch of HTTP and/or HTTPS servers being contacted, now you know who the app is sending the data to, let’s now see <strong>what</strong> data it is sending:</p>
-<pre><code>sudo bettercap -T 192.168.1.5 --proxy --proxy-https --no-sslstrip
-</code></pre><p>This will switch from passive sniffing mode, to proxying mode. All the HTTP and HTTPS traffic will be intercepted (and, if neeeded, modified) by bettercap.<br>If the app is correctly using <a href="https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning" target="_blank" rel="noopener">public key pinning</a> (<strong>as every application should</strong>) you will <strong>not</strong> be able to see its HTTPS traffic but, unfortunately, in my experience this only happens for a very small number of apps.</p>
-<p>From now on, keep triggering actions on the app while inspecting the traffic ( you can also use <code>Wireshark</code> in parallel to get a <code>PCAP</code> capture file to inspect it later ) and after a while you should have a more or less complete idea of what protocol it’s using and for what purpose.</p>
-<p><img src="/images/2017/04/bettercap.png" alt="bettercap"></p>
-<h3 id="Static-Analysis"><a href="#Static-Analysis" class="headerlink" title="Static Analysis"></a>Static Analysis</h3><p>After the network analysis, we collected a bunch of URLs and packets, we can use this information as our starting point, that’s what we will be looking for while performing static analysis on the app. “Static analysis” means that you will <strong>not</strong> execute the app now, but you’ll rather just study its code. Most of the times this is all you’ll ever need to reverse something.</p>
-<p>There’re different tools you can use for this purpose, let’s take a look at the most popular ones.</p>
-<h4 id="apktool"><a href="#apktool" class="headerlink" title="apktool"></a>apktool</h4><p><a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">APKTool</a> is the very first tool you want to use, it is capable of decompiling the <code>AndroidManifest</code> file to its original XML format, the <code>resources.arsc</code> file and it will also convert the <code>classes.dex</code> ( and <code>classes2.dex</code> if present ) file to an intermediary language called <code>SMALI</code>, an ASM-like language used to represent the Dalvik VM opcodes as a human readable language.</p>
-<p>It looks like:</p>
-<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">.super</span> <span class="class">Ljava/lang/Object;</span></span><br><span class="line"><span class="keyword">.method</span><span class="keyword"> public</span><span class="keyword"> static</span> main([<span class="class">Ljava/lang/String;</span>)V</span><br><span class="line"><span class="keyword">    .registers</span> 2</span><br><span class="line">   <span class="built_in"> sget-object </span>v0, <span class="class">Ljava/lang/System;</span>-&gt;out:<span class="class">Ljava/io/PrintStream;</span></span><br><span class="line">   <span class="built_in"> const-string	</span>v1, <span class="string">"Hello World!"</span></span><br><span class="line">   <span class="built_in"> invoke-virtual </span>&#123;v0, v1&#125;, <span class="class">Ljava/io/PrintStream;</span>-&gt;println(<span class="class">Ljava/lang/String;</span>)V</span><br><span class="line">    return-void</span><br><span class="line"><span class="keyword">.end method</span></span><br></pre></td></tr></table></figure>
-<p>But don’t worry, in most of the cases this is not the final language you’re gonna read to reverse the app ;)</p>
-<p>Given an APK, this command line will decompile it:</p>
-<pre><code>apktool d application.apk
-</code></pre><p>Once finished, the <code>application</code> folder is created and you’ll find all the output of apktool in there.</p>
-<p>You can also use <code>apktool</code> to decompile an APK, modify it and then recompile it ( like <a href="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">i did</a> with the Nike+ app in order to have more debug logs for instance ), but unless the other tools will fail the decompilation, it’s unlikely that you’ll need to read <code>smali</code> code in order to reverse the application, let’s get to the other tools now ;)</p>
-<h4 id="jADX"><a href="#jADX" class="headerlink" title="jADX"></a>jADX</h4><p>The <a href="https://github.com/skylot/jadx" target="_blank" rel="noopener">jADX</a> suite allows you to simply load an APK and look at its Java source code. What’s happening under the hood is that jADX is decompiling the APK to smali and then converting the smali back to Java. Needless to say, reading Java code is much easier than reading smali as I already mentioned :)</p>
-<p>Once the APK is loaded, you’ll see a UI like this:</p>
-<p><img src="https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67" alt="jADX"></p>
-<p>One of the best features of jADX is the string/symbol search ( the <img style="display:inline" src="https://raw.githubusercontent.com/skylot/jadx/master/jadx-gui/src/main/resources/icons-16/wand.png"> button ) that will allow you to search for URLs, strings, methods and whatever you want to find inside the codebase of the app.</p>
-<p>Also, there’s the <code>Find Usage</code> menu option, just highlight some symbol and right click on it, this feature will give you a list of every references to that symbol.</p>
-<h4 id="Dex2Jar-and-JD-Gui"><a href="#Dex2Jar-and-JD-Gui" class="headerlink" title="Dex2Jar and JD-Gui"></a>Dex2Jar and JD-Gui</h4><p>Similar to jADX are the <a href="https://sourceforge.net/projects/dex2jar/" target="_blank" rel="noopener">dex2jar</a> and <a href="http://jd.benow.ca/" target="_blank" rel="noopener">JD-GUI</a> tools, once installed, you’ll use <code>dex2jar</code> to convert an APK to a JAR file:</p>
-<pre><code>/path/to/dex2jar/d2j-dex2jar.sh application.apk
-</code></pre><p>Once you have the JAR file, simply open it with JD-GUI and you’ll see its Java code, pretty much like jADX:</p>
-<p><img src="http://jd.benow.ca/img/screenshot17.png" alt="JD-GUI"></p>
-<p>Unfortunately JD-GUI is not as features rich as jADX, but sometimes when one tool fails you have to try another one and hope to be more lucky.</p>
-<h4 id="JEB"><a href="#JEB" class="headerlink" title="JEB"></a>JEB</h4><p>As your last resort, you can try the <a href="https://www.pnfsoftware.com/jeb2/" target="_blank" rel="noopener">JEB</a> decompiler. It’s a <strong>very</strong> good software, but unfortunately it’s not free, there’s a trial version if you want to give it a shot, here’s how it looks like:</p>
-<p><img src="/images/2017/04/jeb.png" alt="JEB"></p>
-<p>JEB also features an ARM disassembler ( useful when there’re native libraries in the APK ) and a debugger ( <strong>very</strong> useful for dynamic analysis ), but again, it’s not free and it’s not cheap.</p>
-<h4 id="Static-Analysis-of-Native-Binaries"><a href="#Static-Analysis-of-Native-Binaries" class="headerlink" title="Static Analysis of Native Binaries"></a>Static Analysis of Native Binaries</h4><p>As previously mentioned, sometimes you’ll find native libraries ( <code>.so</code> shared objects ) inside the <code>lib</code> folder of the APK and, while reading the Java code, you’ll find <code>native</code> methods declarations like the following:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">stringFromJNI</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-<p>The <code>native</code> keyword means that the method implementation is not inside the <code>dex</code> file but, instead, it’s declared and executed from native code trough what is called a <code>Java Native Interface</code> or <a href="https://developer.android.com/ndk/samples/sample_hellojni.html" target="_blank" rel="noopener">JNI</a>.</p>
-<p>Close to native methods you’ll also usually find something like this:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.loadLibrary(<span class="string">"hello-jni"</span>);</span><br></pre></td></tr></table></figure>
-<p>Which will tell you in which native library the method is implemented. In such cases, you will need an ARM ( or x86 if there’s a x86 subfolder inside the <code>libs</code> folder ) disassembler in order to reverse the native object.</p>
-<h5 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h5><p>The very first disassembler and decompiler that every decent reverser should know about is <a href="https://www.hex-rays.com/products/decompiler/" target="_blank" rel="noopener">Hex-Rays IDA</a> which is the state of the art reversing tool for native code. Along with an IDA license, you can also buy a <code>decompiler</code> license, in which case IDA will also be able to rebuild pseudo C-like code from the assembly, allowing you to read an higher level representation of the library logic.</p>
-<p><img src="/images/2017/04/ida.gif" alt="IDA"></p>
-<p>Unfortunately IDA is a very expensive software and, unless you’re reversing native stuff professionaly, it’s really not worth spending all those money for a single tool … <small>warez</small> … ehm … :P</p>
-<h5 id="Hopper"><a href="#Hopper" class="headerlink" title="Hopper"></a>Hopper</h5><p>If you’re on a budget but you need to reverse native code, instead of IDA you can give <a href="https://www.hopperapp.com/" target="_blank" rel="noopener">Hopper</a> a try. It’s definitely not as good and complete as IDA, but it’s much cheaper and will be good enough for most of the cases.</p>
-<p>Hopper supports GNU/Linux and macOS ( no Windows! ) and, just like IDA, has a builtin decompiler which is quite decent considering its price:</p>
-<p><img src="/images/2017/04/hopper.jpg" alt="Hopper"></p>
-<h3 id="Dynamic-Analysis"><a href="#Dynamic-Analysis" class="headerlink" title="Dynamic Analysis"></a>Dynamic Analysis</h3><p>When static analysis is not enough, maybe because the application is <a href="https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/">obfuscated</a> or the codebase is simply too big and complex to quickly isolate the routines you’re interested into, you need to go dynamic.</p>
-<p>Dynamic analysis simply means that you’ll execute the app ( like we did while performing network analysis ) and somehow trace into its execution using different tools, strategies and methods.</p>
-<h4 id="Sandboxing"><a href="#Sandboxing" class="headerlink" title="Sandboxing"></a>Sandboxing</h4><p>Sandboxing is a black-box dynamic analysis strategy, which means you’re not going to actively trace <strong>into</strong> the application code ( like you do while debugging ), but you’ll execute the app into some container that will log the most relevant actions for you and will present a report at the end of the execution.</p>
-<h5 id="Cuckoo-Droid"><a href="#Cuckoo-Droid" class="headerlink" title="Cuckoo-Droid"></a>Cuckoo-Droid</h5><p><a href="https://github.com/idanr1986/cuckoo-droid" target="_blank" rel="noopener">Cuckoo-Droid</a> is an Android port of the famous Cuckoo sandbox, once installed and configured, it’ll give you an activity report with all the URLs the app contacted, all the DNS queries, API calls and so forth:</p>
-<p><img src="/images/2017/04/cuckoo.png" alt="Cuckoo"></p>
-<h5 id="Joe-Sandbox"><a href="#Joe-Sandbox" class="headerlink" title="Joe Sandbox"></a>Joe Sandbox</h5><p>The mobile <a href="https://www.joesecurity.org/joe-sandbox-mobile" target="_blank" rel="noopener">Joe Sandbox</a> is a great online service that allows you to upload an APK and get its activity report without the hassle of installing or configuring anything.</p>
-<p>This is a <a href="https://www.joesecurity.org/reports/report-14d9f1a92dd984d6040cc41ed06e273e.html" target="_blank" rel="noopener">sample report</a>, as you can see the kind of information is pretty much the same as Cuckoo-Droid, plus there’re a bunch of heuristics being executed in order to behaviourally correlate the sample to other known applications.</p>
-<p><img src="/images/2017/04/joe.jpg" alt="Joe Sandbox"></p>
-<h4 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h4><p>If sandboxing is not enough and you need to get deeper insights of the application behaviour, you’ll need to debug it. Debugging an app, in case you don’t know, means attaching to the running process with a <code>debugger</code> software, putting <code>breakpoints</code> that will allow you to stop the execution and inspect the memory state and <code>step</code> into code lines one by one in order to follow the execution graph very closely.</p>
-<h5 id="Enabling-Debug-Mode"><a href="#Enabling-Debug-Mode" class="headerlink" title="Enabling Debug Mode"></a>Enabling Debug Mode</h5><p>When an application is compiled and eventually published to the Google Play Store, it’s usually its <code>release</code> build you’re looking at, meaning debugging has been disabled by the developer and you can’t attach to it directly. In order to enable debugging again, we’ll need to use <code>apktool</code> to decompile the app:</p>
-<pre><code>apktool d application.apk
-</code></pre><p>Then you’ll need to edit the <code>AndroidManifest.xml</code> generated file, adding the <code>android:debuggable=&quot;true&quot;</code> attribute to its <code>application</code> XML node:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span> <span class="attr">package</span>=<span class="string">"com.company.appname"</span> </span></span><br><span class="line"><span class="tag">                                                                     <span class="attr">platformBuildVersionCode</span>=<span class="string">"24"</span> </span></span><br><span class="line"><span class="tag">                                                                     <span class="attr">platformBuildVersionName</span>=<span class="string">"7.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span> <span class="attr">android:allowBackup</span>=<span class="string">"true"</span> <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:debuggable</span>=<span class="string">"true"</span>&gt;</span> <span class="tag">&lt;<span class="name">--</span> !!! <span class="attr">NOTICE</span> <span class="attr">ME</span> !!! <span class="attr">--</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">"com.company.appname.MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Once you updated the manifest, let’s rebuild the app:</p>
-<pre><code>apktool b -d application_path output.apk
-</code></pre><p>Now let’s resign it:</p>
-<pre><code>git clone https://github.com/appium/sign
-java -jar sign/dist/signapk.jar sign/testkey.x509.pem sign/testkey.pk8 output.apk signed.apk
-</code></pre><p>And reinstall it on the device (make sure you unistalled the original version first):</p>
-<pre><code>adb install signed.apk
-</code></pre><p>Now you can proceed debugging the app ^_^</p>
-<h5 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h5><p><a href="https://developer.android.com/studio/debug/index.html" target="_blank" rel="noopener">Android Studio</a> is the official Android IDE, once you have debug mode enabled for your app, you can directly attach to it using this IDE and start debugging:</p>
-<p><img src="/images/2017/04/androidstudio.png" alt="Android Studio Debugger"></p>
-<h5 id="IDA-1"><a href="#IDA-1" class="headerlink" title="IDA"></a>IDA</h5><p>If you have an IDA license that supports Dalvik debugging, you can attach to a running process and step trough the smali code, <a href="https://www.hex-rays.com/products/ida/support/tutorials/debugging_dalvik.pdf" target="_blank" rel="noopener">this document</a> describes how to do it, but basically the idea is that you upload the ARM debugging server ( a native ARM binary ) on your device, you start it using <code>adb</code> and eventually you start your debugging session from IDA.</p>
-<p><img src="/images/2017/04/idadbg.gif" alt="IDA Dalvik Debugger"></p>
-<h4 id="Dynamic-Instrumentation"><a href="#Dynamic-Instrumentation" class="headerlink" title="Dynamic Instrumentation"></a>Dynamic Instrumentation</h4><p>Dynamic instrumentation means that you want to modify the application behaviour at runtime and in order to do so you inject some “agent” into the app that you’ll eventually use to instrument it.</p>
-<p>You might want to do this in order to make the app bypass some checks ( for instance, if public key pinning is enforced, you might want to disable it with dynamic instrumentation in order to easily inspect the HTTPS traffic ), make it show you information it’s not supposed to show ( unlock “Pro” features, or debug/admin activities ), etc.</p>
-<h5 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h5><p><a href="https://www.frida.re/" target="_blank" rel="noopener">Frida</a> is a great and free tool you can use to inject a whole Javascript engine into a running process on Android, iOS and many other platforms … but why Javascript?</p>
-<p>Because once the engine is injected, you can instrument the app in very cool and easy ways like this:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function</span><br><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment"># let's attach to the 'hello process</span></span><br><span class="line">session = frida.attach(<span class="string">"hello"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># now let's create the Javascript we want to inject</span></span><br><span class="line">script = session.create_script(<span class="string">"""</span></span><br><span class="line"><span class="string">Interceptor.attach(ptr("%s"), &#123;</span></span><br><span class="line"><span class="string">    onEnter: function(args) &#123;</span></span><br><span class="line"><span class="string">        send(args[0].toInt32());</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">"""</span> % int(sys.argv[<span class="number">1</span>], <span class="number">16</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># this function will receive events from the js</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(message, data)</span>:</span></span><br><span class="line">    print(message)</span><br><span class="line"></span><br><span class="line"><span class="comment"># let's start!</span></span><br><span class="line">script.on(<span class="string">'message'</span>, on_message)</span><br><span class="line">script.load()</span><br><span class="line">sys.stdin.read()</span><br></pre></td></tr></table></figure>
-<p>In this example, we’re just inspecting some function argument, but there’re hundreds of things you can do with Frida, just <a href="https://www.frida.re/docs/home/" target="_blank" rel="noopener">RTFM!</a> and use your imagination :D</p>
-<p><a href="https://github.com/dweinstein/awesome-frida" target="_blank" rel="noopener">Here</a>‘s a list of cool Frida resources, enjoy!</p>
-<h5 id="XPosed"><a href="#XPosed" class="headerlink" title="XPosed"></a>XPosed</h5><p>Another option we have for instrumenting our app is using the <a href="http://repo.xposed.info/" target="_blank" rel="noopener">XPosed Framework</a>. XPosed is basically an instrumentation layer for the whole Dalvik VM which <a href="http://repo.xposed.info/module/de.robv.android.xposed.installer" target="_blank" rel="noopener">requires</a> you to to have a rooted phone in order to install it.</p>
-<p>From XPosed <a href="https://github.com/rovo89/XposedBridge/wiki/Development-tutorial" target="_blank" rel="noopener">wiki</a>:</p>
-<pre><code>There is a process that is called &quot;Zygote&quot;. This is the heart of the Android runtime. Every application is started as a copy (&quot;fork&quot;) of it. This process is started by an /init.rc script when the phone is booted. The process start is done with /system/bin/app_process, which loads the needed classes and invokes the initialization methods.
+        contents: 
+          type: pkcs7-data (1.2.840.113549.1.7.1)
+          d.data: &lt;ABSENT&gt;
+        cert:
+            cert_info: 
+              version: 2
+              serialNumber: 10394279457707717180
+              signature: 
+                algorithm: sha1WithRSAEncryption (1.2.840.113549.1.1.5)
+                parameter: NULL
+              issuer: C=TW, ST=Taiwan, L=Taipei, O=ASUS, OU=PMD, CN=ASUS AMAX Key/emailAddress=admin@asus.com
+              validity: 
+                notBefore: Jul  8 11:39:39 2013 GMT
+                notAfter: Nov 23 11:39:39 2040 GMT
+              subject: C=TW, ST=Taiwan, L=Taipei, O=ASUS, OU=PMD, CN=ASUS AMAX Key/emailAddress=admin@asus.com
+              key: 
+                algor: 
+                  algorithm: rsaEncryption (1.2.840.113549.1.1.1)
+                  parameter: NULL
+                public_key:  (0 unused bits)
+                  ...
+                  ...
+                  ...
 
-This is where Xposed comes into play. When you install the framework, an extended app_process executable is copied to /system/bin. This extended startup process adds an additional jar to the classpath and calls methods from there at certain places. For instance, just after the VM has been created, even before the main method of Zygote has been called. And inside that method, we are part of Zygote and can act in its context.
+This can be gold for us, for instance we could use this information to determine if an app was really signed by (let&#39;s say) Google or if it was resigned, therefore modified, by a third party.
 
-The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBridge.jar and its source code can be found here. Looking at the class XposedBridge, you can see the main method. This is what I wrote about above, this gets called in the very beginning of the process. Some initializations are done there and also the modules are loaded (I will come back to module loading later).
-</code></pre><p>Once you’ve installed XPosed on your smartphone, you can start developing your own module (again, follow the <a href="https://github.com/rovo89/XposedBridge/wiki/Development-tutorial" target="_blank" rel="noopener">project wiki</a>), for instance, here’s an example of how you would hook the <code>updateClock</code> method of the SystemUI application in order to instrument it:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> de.robv.android.xposed.mods.tutorial;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> de.robv.android.xposed.XposedHelpers.findAndHookMethod;</span><br><span class="line"><span class="keyword">import</span> de.robv.android.xposed.IXposedHookLoadPackage;</span><br><span class="line"><span class="keyword">import</span> de.robv.android.xposed.XC_MethodHook;</span><br><span class="line"><span class="keyword">import</span> de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tutorial</span> <span class="keyword">implements</span> <span class="title">IXposedHookLoadPackage</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(<span class="keyword">final</span> LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!lpparam.packageName.equals(<span class="string">"com.android.systemui"</span>))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        findAndHookMethod(<span class="string">"com.android.systemui.statusbar.policy.Clock"</span>, lpparam.classLoader, <span class="string">"updateClock"</span>, </span><br><span class="line">            <span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                <span class="comment">// this will be called before the clock was updated by the original method</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">afterHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                <span class="comment">// this will be called after the clock was updated by the original method</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>There’re already a lot of <a href="http://repo.xposed.info/module-overview" target="_blank" rel="noopener">user contributed modules</a> you can use, study and modify for your own needs.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I hope you’ll find this reference guide useful for your Android reversing adventures, keep in mind that the most important thing while reversing is not the tool you’re using, but how you use it, so you’ll have to learn how to choose the appropriate tool for your scenario and this is something you can only learn with experience, so enough reading and start reversing! :D</p>
-<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/I1188GO4p1E?ecver=2" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>
+### How do I get the APK of an app?
+
+Now that we have a basic idea of what we&#39;re supposed to find inside an APK, we need a way to actually get the APK file of the application we&#39;re interested into. There are two ways, either you install it on your device and use `adb` to get it, or you use an online service to download it.
+
+##### Pulling an app with ADB
+
+First of all let&#39;s plug our smartphone to the USB port of our computer and get a list of the installed packages and their namespaces:
+
+    adb shell pm list packages
+
+This will list all packages on your smartphone, once you&#39;ve found the namespace of the package you want to reverse ( `com.android.systemui` in this example ), let&#39;s see what its physical path is:
+
+    adb shell pm path com.android.systemui
+
+Finally, we have the APK path:
+
+    package:/system/priv-app/SystemUIGoogle/SystemUIGoogle.apk
+
+Let&#39;s pull it from the device:
+
+    adb pull /system/priv-app/SystemUIGoogle/SystemUIGoogle.apk
+
+And here you go, you have the APK you want to reverse!
+
+##### Using an Online Service
+
+Multiple online services are available if you don&#39;t want to install the app on your device (for instance, if you&#39;re reversing a malware, you want to start having the file first, then installing on a clean device only afterwards), here&#39;s a list of the ones I use:
+
+* [Apk-DL](https://apk-dl.com/)
+* [Evozi Downloader](https://apps.evozi.com/apk-downloader/)
+* [Apk Leecher](http://apkleecher.com/)
+
+Keep in mind that once you download the APK from these services, it&#39;s a good idea to check the developer certificate as previously shown in order to be 100% sure you downloaded the correct APK and not some repackaged and resigned stuff full of ads and possibly malware.
+
+### Network Analysis
+
+Now we start with some tests in order to understand what the app is doing while executed. My first test usually consists in inspecting the network traffic being generated by the application itself and, in order to do that, my tool of choice is [bettercap](https://bettercap.org/) ... well, that&#39;s why I developed it in the first place :P
+
+Make sure you have bettercap installed and that both your computer and the Android device are on the same wifi network, then you can start MITM-ing the smartphone ( `192.168.1.5` in this example ) and see its traffic in realtime from the terminal:
+
+    sudo bettercap -T 192.168.1.5 -X
+
+The `-X` option will enable the sniffer, as soon as you start the app you should see a bunch of HTTP and/or HTTPS servers being contacted, now you know who the app is sending the data to, let&#39;s now see **what** data it is sending:
+
+    sudo bettercap -T 192.168.1.5 --proxy --proxy-https --no-sslstrip
+
+This will switch from passive sniffing mode, to proxying mode. All the HTTP and HTTPS traffic will be intercepted (and, if neeeded, modified) by bettercap.
+If the app is correctly using [public key pinning](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning) (**as every application should**) you will **not** be able to see its HTTPS traffic but, unfortunately, in my experience this only happens for a very small number of apps.
+
+From now on, keep triggering actions on the app while inspecting the traffic ( you can also use `Wireshark` in parallel to get a `PCAP` capture file to inspect it later ) and after a while you should have a more or less complete idea of what protocol it&#39;s using and for what purpose.
+
+![bettercap](/images/2017/04/bettercap.png)
+
+### Static Analysis
+
+After the network analysis, we collected a bunch of URLs and packets, we can use this information as our starting point, that&#39;s what we will be looking for while performing static analysis on the app. &quot;Static analysis&quot; means that you will **not** execute the app now, but you&#39;ll rather just study its code. Most of the times this is all you&#39;ll ever need to reverse something.
+
+There&#39;re different tools you can use for this purpose, let&#39;s take a look at the most popular ones.
+
+#### apktool
+
+[APKTool](https://ibotpeaches.github.io/Apktool/) is the very first tool you want to use, it is capable of decompiling the `AndroidManifest` file to its original XML format, the `resources.arsc` file and it will also convert the `classes.dex` ( and `classes2.dex` if present ) file to an intermediary language called `SMALI`, an ASM-like language used to represent the Dalvik VM opcodes as a human readable language.
+
+It looks like:
+
+```smali
+.super Ljava/lang/Object;
+.method public static main([Ljava/lang/String;)V
+    .registers 2
+    sget-object v0, Ljava/lang/System;-&gt;out:Ljava/io/PrintStream;
+    const-string    v1, &quot;Hello World!&quot;
+    invoke-virtual &#123;v0, v1&#125;, Ljava/io/PrintStream;-&gt;println(Ljava/lang/String;)V
+    return-void
+.end method```
+
+But don&#39;t worry, in most of the cases this is not the final language you&#39;re gonna read to reverse the app ;)
+
+Given an APK, this command line will decompile it:
+
+    apktool d application.apk
+
+Once finished, the `application` folder is created and you&#39;ll find all the output of apktool in there.
+
+You can also use `apktool` to decompile an APK, modify it and then recompile it ( like [i did](https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/) with the Nike+ app in order to have more debug logs for instance ), but unless the other tools will fail the decompilation, it&#39;s unlikely that you&#39;ll need to read `smali` code in order to reverse the application, let&#39;s get to the other tools now ;)
+
+#### jADX
+
+The [jADX](https://github.com/skylot/jadx) suite allows you to simply load an APK and look at its Java source code. What&#39;s happening under the hood is that jADX is decompiling the APK to smali and then converting the smali back to Java. Needless to say, reading Java code is much easier than reading smali as I already mentioned :)
+
+Once the APK is loaded, you&#39;ll see a UI like this:
+
+![jADX](https://camo.githubusercontent.com/bd3c0ea851c23c4535e43590a86c940a0786faa6/687474703a2f2f736b796c6f742e6769746875622e696f2f6a6164782f6a6164782d6775692e706e67)
+
+One of the best features of jADX is the string/symbol search ( the &lt;img style=&quot;display:inline&quot; src=&quot;https://raw.githubusercontent.com/skylot/jadx/master/jadx-gui/src/main/resources/icons-16/wand.png&quot;/&gt; button ) that will allow you to search for URLs, strings, methods and whatever you want to find inside the codebase of the app.
+
+Also, there&#39;s the `Find Usage` menu option, just highlight some symbol and right click on it, this feature will give you a list of every references to that symbol.
+
+#### Dex2Jar and JD-Gui
+
+Similar to jADX are the [dex2jar](https://sourceforge.net/projects/dex2jar/) and [JD-GUI](http://jd.benow.ca/) tools, once installed, you&#39;ll use `dex2jar` to convert an APK to a JAR file:
+
+    /path/to/dex2jar/d2j-dex2jar.sh application.apk
+
+Once you have the JAR file, simply open it with JD-GUI and you&#39;ll see its Java code, pretty much like jADX:
+
+![JD-GUI](http://jd.benow.ca/img/screenshot17.png)
+
+Unfortunately JD-GUI is not as features rich as jADX, but sometimes when one tool fails you have to try another one and hope to be more lucky.
+
+#### JEB
+
+As your last resort, you can try the [JEB](https://www.pnfsoftware.com/jeb2/) decompiler. It&#39;s a **very** good software, but unfortunately it&#39;s not free, there&#39;s a trial version if you want to give it a shot, here&#39;s how it looks like:
+
+![JEB](/images/2017/04/jeb.png)
+
+JEB also features an ARM disassembler ( useful when there&#39;re native libraries in the APK ) and a debugger ( **very** useful for dynamic analysis ), but again, it&#39;s not free and it&#39;s not cheap.
+
+#### Static Analysis of Native Binaries
+
+As previously mentioned, sometimes you&#39;ll find native libraries ( `.so` shared objects ) inside the `lib` folder of the APK and, while reading the Java code, you&#39;ll find `native` methods declarations like the following:
+
+```java
+public native String stringFromJNI();```
+
+The `native` keyword means that the method implementation is not inside the `dex` file but, instead, it&#39;s declared and executed from native code trough what is called a `Java Native Interface` or [JNI](https://developer.android.com/ndk/samples/sample_hellojni.html).
+
+Close to native methods you&#39;ll also usually find something like this:
+
+```java
+System.loadLibrary(&quot;hello-jni&quot;);```
+
+Which will tell you in which native library the method is implemented. In such cases, you will need an ARM ( or x86 if there&#39;s a x86 subfolder inside the `libs` folder ) disassembler in order to reverse the native object.
+
+##### IDA
+
+The very first disassembler and decompiler that every decent reverser should know about is [Hex-Rays IDA](https://www.hex-rays.com/products/decompiler/) which is the state of the art reversing tool for native code. Along with an IDA license, you can also buy a `decompiler` license, in which case IDA will also be able to rebuild pseudo C-like code from the assembly, allowing you to read an higher level representation of the library logic.
+
+![IDA](/images/2017/04/ida.gif)
+
+Unfortunately IDA is a very expensive software and, unless you&#39;re reversing native stuff professionaly, it&#39;s really not worth spending all those money for a single tool ... &lt;small&gt;warez&lt;/small&gt; ... ehm ... :P
+
+##### Hopper
+
+If you&#39;re on a budget but you need to reverse native code, instead of IDA you can give [Hopper](https://www.hopperapp.com/) a try. It&#39;s definitely not as good and complete as IDA, but it&#39;s much cheaper and will be good enough for most of the cases.
+
+Hopper supports GNU/Linux and macOS ( no Windows! ) and, just like IDA, has a builtin decompiler which is quite decent considering its price:
+
+![Hopper](/images/2017/04/hopper.jpg)
+
+### Dynamic Analysis
+
+When static analysis is not enough, maybe because the application is [obfuscated](https://www.evilsocket.net/2016/04/18/how-i-defeated-an-obfuscated-and-anti-tamper-apk-with-some-python-and-a-home-made-smali-emulator/) or the codebase is simply too big and complex to quickly isolate the routines you&#39;re interested into, you need to go dynamic.
+
+Dynamic analysis simply means that you&#39;ll execute the app ( like we did while performing network analysis ) and somehow trace into its execution using different tools, strategies and methods.
+
+#### Sandboxing
+
+Sandboxing is a black-box dynamic analysis strategy, which means you&#39;re not going to actively trace **into** the application code ( like you do while debugging ), but you&#39;ll execute the app into some container that will log the most relevant actions for you and will present a report at the end of the execution.
+
+##### Cuckoo-Droid
+
+[Cuckoo-Droid](https://github.com/idanr1986/cuckoo-droid) is an Android port of the famous Cuckoo sandbox, once installed and configured, it&#39;ll give you an activity report with all the URLs the app contacted, all the DNS queries, API calls and so forth:
+
+![Cuckoo](/images/2017/04/cuckoo.png)
+
+##### Joe Sandbox
+
+The mobile [Joe Sandbox](https://www.joesecurity.org/joe-sandbox-mobile) is a great online service that allows you to upload an APK and get its activity report without the hassle of installing or configuring anything.
+
+This is a [sample report](https://www.joesecurity.org/reports/report-14d9f1a92dd984d6040cc41ed06e273e.html), as you can see the kind of information is pretty much the same as Cuckoo-Droid, plus there&#39;re a bunch of heuristics being executed in order to behaviourally correlate the sample to other known applications.
+
+![Joe Sandbox](/images/2017/04/joe.jpg)
+
+#### Debugging
+
+If sandboxing is not enough and you need to get deeper insights of the application behaviour, you&#39;ll need to debug it. Debugging an app, in case you don&#39;t know, means attaching to the running process with a `debugger` software, putting `breakpoints` that will allow you to stop the execution and inspect the memory state and `step` into code lines one by one in order to follow the execution graph very closely.
+
+##### Enabling Debug Mode
+
+When an application is compiled and eventually published to the Google Play Store, it&#39;s usually its `release` build you&#39;re looking at, meaning debugging has been disabled by the developer and you can&#39;t attach to it directly. In order to enable debugging again, we&#39;ll need to use `apktool` to decompile the app:
+
+    apktool d application.apk
+
+Then you&#39;ll need to edit the `AndroidManifest.xml` generated file, adding the `android:debuggable=&quot;true&quot;` attribute to its `application` XML node:
+
+```xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; package=&quot;com.company.appname&quot; 
+                                                                     platformBuildVersionCode=&quot;24&quot; 
+                                                                     platformBuildVersionName=&quot;7.0&quot;&gt;
+    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+    &lt;application android:allowBackup=&quot;true&quot; android:icon=&quot;@mipmap/ic_launcher&quot; 
+        android:label=&quot;@string/app_name&quot; 
+        android:supportsRtl=&quot;true&quot; 
+        android:theme=&quot;@style/AppTheme&quot;
+        android:debuggable=&quot;true&quot;&gt; &lt;-- !!! NOTICE ME !!! --&gt;
+
+        &lt;activity android:name=&quot;com.company.appname.MainActivity&quot;&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;```
+
+Once you updated the manifest, let&#39;s rebuild the app:
+
+    apktool b -d application_path output.apk
+
+Now let&#39;s resign it:
+
+    git clone https://github.com/appium/sign
+    java -jar sign/dist/signapk.jar sign/testkey.x509.pem sign/testkey.pk8 output.apk signed.apk
+
+And reinstall it on the device (make sure you unistalled the original version first):
+
+    adb install signed.apk
+
+Now you can proceed debugging the app ^_^
+
+##### Android Studio
+
+[Android Studio](https://developer.android.com/studio/debug/index.html) is the official Android IDE, once you have debug mode enabled for your app, you can directly attach to it using this IDE and start debugging:
+
+![Android Studio Debugger](/images/2017/04/androidstudio.png)
+
+##### IDA 
+
+If you have an IDA license that supports Dalvik debugging, you can attach to a running process and step trough the smali code, [this document](https://www.hex-rays.com/products/ida/support/tutorials/debugging_dalvik.pdf) describes how to do it, but basically the idea is that you upload the ARM debugging server ( a native ARM binary ) on your device, you start it using `adb` and eventually you start your debugging session from IDA.
+
+![IDA Dalvik Debugger](/images/2017/04/idadbg.gif)
+
+#### Dynamic Instrumentation
+
+Dynamic instrumentation means that you want to modify the application behaviour at runtime and in order to do so you inject some &quot;agent&quot; into the app that you&#39;ll eventually use to instrument it.
+
+You might want to do this in order to make the app bypass some checks ( for instance, if public key pinning is enforced, you might want to disable it with dynamic instrumentation in order to easily inspect the HTTPS traffic ), make it show you information it&#39;s not supposed to show ( unlock &quot;Pro&quot; features, or debug/admin activities ), etc.
+
+##### Frida
+
+[Frida](https://www.frida.re/) is a great and free tool you can use to inject a whole Javascript engine into a running process on Android, iOS and many other platforms ... but why Javascript?
+
+Because once the engine is injected, you can instrument the app in very cool and easy ways like this:
+
+```python
+from __future__ import print_function
+import frida
+import sys
+
+# let&#39;s attach to the &#39;hello process
+session = frida.attach(&quot;hello&quot;)
+
+# now let&#39;s create the Javascript we want to inject
+script = session.create_script(&quot;&quot;&quot;
+Interceptor.attach(ptr(&quot;%s&quot;), &#123;
+    onEnter: function(args) &#123;
+        send(args[0].toInt32());
+    &#125;
+&#125;);
+&quot;&quot;&quot; % int(sys.argv[1], 16))
+
+# this function will receive events from the js
+def on_message(message, data):
+    print(message)
+
+# let&#39;s start!
+script.on(&#39;message&#39;, on_message)
+script.load()
+sys.stdin.read()```
+
+In this example, we&#39;re just inspecting some function argument, but there&#39;re hundreds of things you can do with Frida, just [RTFM!](https://www.frida.re/docs/home/) and use your imagination :D
+
+[Here](https://github.com/dweinstein/awesome-frida)&#39;s a list of cool Frida resources, enjoy!
+
+##### XPosed
+
+Another option we have for instrumenting our app is using the [XPosed Framework](http://repo.xposed.info/). XPosed is basically an instrumentation layer for the whole Dalvik VM which [requires](http://repo.xposed.info/module/de.robv.android.xposed.installer) you to to have a rooted phone in order to install it.
+
+From XPosed [wiki](https://github.com/rovo89/XposedBridge/wiki/Development-tutorial):
+
+    There is a process that is called &quot;Zygote&quot;. This is the heart of the Android runtime. Every application is started as a copy (&quot;fork&quot;) of it. This process is started by an /init.rc script when the phone is booted. The process start is done with /system/bin/app_process, which loads the needed classes and invokes the initialization methods.
+
+    This is where Xposed comes into play. When you install the framework, an extended app_process executable is copied to /system/bin. This extended startup process adds an additional jar to the classpath and calls methods from there at certain places. For instance, just after the VM has been created, even before the main method of Zygote has been called. And inside that method, we are part of Zygote and can act in its context.
+
+    The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBridge.jar and its source code can be found here. Looking at the class XposedBridge, you can see the main method. This is what I wrote about above, this gets called in the very beginning of the process. Some initializations are done there and also the modules are loaded (I will come back to module loading later).
+
+Once you&#39;ve installed XPosed on your smartphone, you can start developing your own module (again, follow the [project wiki](https://github.com/rovo89/XposedBridge/wiki/Development-tutorial)), for instance, here&#39;s an example of how you would hook the `updateClock` method of the SystemUI application in order to instrument it:
+
+```java
+package de.robv.android.xposed.mods.tutorial;
+
+import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
+import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
+
+public class Tutorial implements IXposedHookLoadPackage &#123;
+    public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable &#123;
+        if (!lpparam.packageName.equals(&quot;com.android.systemui&quot;))
+            return;
+
+        findAndHookMethod(&quot;com.android.systemui.statusbar.policy.Clock&quot;, lpparam.classLoader, &quot;updateClock&quot;, 
+            new XC_MethodHook() &#123;
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable &#123;
+                // this will be called before the clock was updated by the original method
+            &#125;
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable &#123;
+                // this will be called after the clock was updated by the original method
+            &#125;
+    &#125;);
+    &#125;
+&#125;```
+
+There&#39;re already a lot of [user contributed modules](http://repo.xposed.info/module-overview) you can use, study and modify for your own needs.
+
+### Conclusion
+
+I hope you&#39;ll find this reference guide useful for your Android reversing adventures, keep in mind that the most important thing while reversing is not the tool you&#39;re using, but how you use it, so you&#39;ll have to learn how to choose the appropriate tool for your scenario and this is something you can only learn with experience, so enough reading and start reversing! :D
+
+&lt;div style=&quot;position:relative;height:0;padding-bottom:56.25%&quot;&gt;&lt;iframe src=&quot;https://www.youtube.com/embed/I1188GO4p1E?ecver=2&quot; width=&quot;640&quot; height=&quot;360&quot; frameborder=&quot;0&quot; style=&quot;position:absolute;width:100%;height:100%;left:0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;</code></pre>
 
   </div>
 </article>
@@ -368,25 +639,25 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prerequisites"><span class="toc-number">1.</span> <span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-an-APK"><span class="toc-number">2.</span> <span class="toc-text">What is an APK?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-do-I-get-the-APK-of-an-app"><span class="toc-number">3.</span> <span class="toc-text">How do I get the APK of an app?</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Pulling-an-app-with-ADB"><span class="toc-number">3.0.1.</span> <span class="toc-text">Pulling an app with ADB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Using-an-Online-Service"><span class="toc-number">3.0.2.</span> <span class="toc-text">Using an Online Service</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-Analysis"><span class="toc-number">4.</span> <span class="toc-text">Network Analysis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-Analysis"><span class="toc-number">5.</span> <span class="toc-text">Static Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#apktool"><span class="toc-number">5.1.</span> <span class="toc-text">apktool</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jADX"><span class="toc-number">5.2.</span> <span class="toc-text">jADX</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dex2Jar-and-JD-Gui"><span class="toc-number">5.3.</span> <span class="toc-text">Dex2Jar and JD-Gui</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JEB"><span class="toc-number">5.4.</span> <span class="toc-text">JEB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Static-Analysis-of-Native-Binaries"><span class="toc-number">5.5.</span> <span class="toc-text">Static Analysis of Native Binaries</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IDA"><span class="toc-number">5.5.1.</span> <span class="toc-text">IDA</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Hopper"><span class="toc-number">5.5.2.</span> <span class="toc-text">Hopper</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Analysis"><span class="toc-number">6.</span> <span class="toc-text">Dynamic Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sandboxing"><span class="toc-number">6.1.</span> <span class="toc-text">Sandboxing</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Cuckoo-Droid"><span class="toc-number">6.1.1.</span> <span class="toc-text">Cuckoo-Droid</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Joe-Sandbox"><span class="toc-number">6.1.2.</span> <span class="toc-text">Joe Sandbox</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Debugging"><span class="toc-number">6.2.</span> <span class="toc-text">Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Enabling-Debug-Mode"><span class="toc-number">6.2.1.</span> <span class="toc-text">Enabling Debug Mode</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Android-Studio"><span class="toc-number">6.2.2.</span> <span class="toc-text">Android Studio</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#IDA-1"><span class="toc-number">6.2.3.</span> <span class="toc-text">IDA</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dynamic-Instrumentation"><span class="toc-number">6.3.</span> <span class="toc-text">Dynamic Instrumentation</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Frida"><span class="toc-number">6.3.1.</span> <span class="toc-text">Frida</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#XPosed"><span class="toc-number">6.3.2.</span> <span class="toc-text">XPosed</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prerequisites"><span class="toc-number">1.</span> <span class="toc-text">Prerequisites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-an-APK"><span class="toc-number">2.</span> <span class="toc-text">What is an APK?</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&text=Android Applications Reversing 101"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&is_video=false&description=Android Applications Reversing 101"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&text=Android Applications Reversing 101"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&is_video=false&description=Android Applications Reversing 101"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Android Applications Reversing 101&body=Check out this article: https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&name=Android Applications Reversing 101&description=&lt;p&gt;Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, &lt;a href=&quot;https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/&quot;&gt;smart fitness devices&lt;/a&gt; and &lt;a href=&quot;https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&quot;&gt;smart coffee machines&lt;/a&gt; … but is this stuff just smart or is it &lt;strong&gt;secure&lt;/strong&gt; as well? :)&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&title=Android Applications Reversing 101"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/&name=Android Applications Reversing 101&description=&lt;p&gt;Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, &lt;a href=&#34;https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/&#34;&gt;smart fitness devices&lt;/a&gt; and &lt;a href=&#34;https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/&#34;&gt;smart coffee machines&lt;/a&gt; … but is this stuff just smart or is it &lt;strong&gt;secure&lt;/strong&gt; as well? :)&lt;/p&gt;
 &lt;p&gt;Reversing an Android application can be a (relatively) easy and fun way to answer this question, that’s why I decided to write this blog post where I’ll try to explain the basics and give you some of my “tricks” to reverse this stuff faster and more effectively.&lt;/p&gt;
 &lt;p&gt;I’m not going to go very deep into technical details, you can learn yourself how Android works, how the Dalvik VM works and so forth, this is gonna be a &lt;strong&gt;very basic practical guide&lt;/strong&gt; instead of a post full of theoretical stuff but no really useful contents.&lt;/p&gt;
 &lt;p&gt;Let’s start! :)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2017/04/head.jpeg&quot; alt=&quot;start&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;/images/2017/04/head.jpeg&#34; alt=&#34;start&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -422,13 +693,23 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

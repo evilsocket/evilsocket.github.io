@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="It’s been a while that i’ve been quite intensively playing with Deep Learning both for work related research and personal projects. More specifically, I’ve been using the Keras framework on top of a T">
-<meta name="keywords" content="ergo,keras,tensorflow,tf,deep learning,dnn,machine learning,neural networks,deep neural networks,cuda,nvidia,convolutional neural networks,cnn,cudnn,planes detector,planes,planesnet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning">
 <meta property="og:url" content="https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/index.html">
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="It’s been a while that i’ve been quite intensively playing with Deep Learning both for work related research and personal projects. More specifically, I’ve been using the Keras framework on top of a T">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.imgur.com/EO9PdNp.jpg">
 <meta property="og:image" content="https://i.imgur.com/sFfGMcS.png">
 <meta property="og:image" content="https://i.imgur.com/blcaser.png">
 <meta property="og:image" content="https://i.imgur.com/foFQrba.png">
 <meta property="og:image" content="https://i.imgur.com/rUQ1Het.png">
-<meta property="og:updated_time" content="2020-05-26T18:30:57.526Z">
+<meta property="article:published_time" content="2018-11-22T17:15:50.000Z">
+<meta property="article:modified_time" content="2020-05-26T18:30:57.526Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="ergo">
+<meta property="article:tag" content="keras">
+<meta property="article:tag" content="tensorflow">
+<meta property="article:tag" content="tf">
+<meta property="article:tag" content="deep learning">
+<meta property="article:tag" content="dnn">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="neural networks">
+<meta property="article:tag" content="deep neural networks">
+<meta property="article:tag" content="convolutional neural networks">
+<meta property="article:tag" content="cnn">
+<meta property="article:tag" content="cuda">
+<meta property="article:tag" content="cudnn">
+<meta property="article:tag" content="nvidia">
+<meta property="article:tag" content="planes detector">
+<meta property="article:tag" content="planes">
+<meta property="article:tag" content="planesnet">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning">
-<meta name="twitter:description" content="It’s been a while that i’ve been quite intensively playing with Deep Learning both for work related research and personal projects. More specifically, I’ve been using the Keras framework on top of a T">
 <meta name="twitter:image" content="https://i.imgur.com/EO9PdNp.jpg">
     
     
@@ -45,19 +61,24 @@
     <!-- title -->
     <title>Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -92,21 +113,25 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&text=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&is_video=false&description=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&text=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&is_video=false&description=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning&body=Check out this article: https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&name=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning&description=&lt;p&gt;It’s been a while that i’ve been quite intensively playing with &lt;a href=&quot;https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Deep Learning&lt;/a&gt; both for work related research and personal projects. More specifically, I’ve been using the &lt;a href=&quot;https://keras.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Keras framework&lt;/a&gt; on top of a &lt;a href=&quot;https://www.tensorflow.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;TensorFlow&lt;/a&gt; backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. &lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&name=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning&description=&lt;p&gt;It’s been a while that i’ve been quite intensively playing with &lt;a href=&#34;https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/&#34;&gt;Deep Learning&lt;/a&gt; both for work related research and personal projects. More specifically, I’ve been using the &lt;a href=&#34;https://keras.io/&#34;&gt;Keras framework&lt;/a&gt; on top of a &lt;a href=&#34;https://www.tensorflow.org/&#34;&gt;TensorFlow&lt;/a&gt; backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. &lt;/p&gt;
 &lt;p&gt;So a few days ago I started writing what it was initially meant to be just a simple wrapper for the main commands of my training pipelines but quickly became a full-fledged framework and manager for all my Keras based projects.&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;&lt;br&gt;  &lt;img alt=&quot;ergo&quot; src=&quot;https://i.imgur.com/EO9PdNp.jpg&quot;&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img alt=&#34;ergo&#34; src=&#34;https://i.imgur.com/EO9PdNp.jpg&#34;/&gt;
+&lt;/p&gt;
 
-&lt;p&gt;Today I’m pleased to open source and present &lt;a href=&quot;https://github.com/evilsocket/ergo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;project Ergo&lt;/a&gt; by showcasing an example use-case: we’ll prototype, train and test a &lt;a href=&quot;https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050?gi=bf04ca9f8061&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Convolutional Neural Network&lt;/a&gt; on top of the &lt;a href=&quot;https://www.kaggle.com/rhammell/planesnet&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PlanesNet&lt;/a&gt; raw dataset in order to build an airplane detector for satellite imagery.&lt;/p&gt;
-&lt;center&gt;&lt;br&gt;    &lt;img src=&quot;https://i.imgur.com/sFfGMcS.png&quot;&gt;&lt;br&gt;&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;p&gt;Today I’m pleased to open source and present &lt;a href=&#34;https://github.com/evilsocket/ergo&#34;&gt;project Ergo&lt;/a&gt; by showcasing an example use-case: we’ll prototype, train and test a &lt;a href=&#34;https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050?gi=bf04ca9f8061&#34;&gt;Convolutional Neural Network&lt;/a&gt; on top of the &lt;a href=&#34;https://www.kaggle.com/rhammell/planesnet&#34;&gt;PlanesNet&lt;/a&gt; raw dataset in order to build an airplane detector for satellite imagery.&lt;/p&gt;
+&lt;center&gt;
+    &lt;img src=&#34;https://i.imgur.com/sFfGMcS.png&#34;&gt;
+&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -138,12 +163,12 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/cnn/">cnn</a>, <a class="tag-link" href="/tags/convolutional-neural-networks/">convolutional neural networks</a>, <a class="tag-link" href="/tags/cuda/">cuda</a>, <a class="tag-link" href="/tags/cudnn/">cudnn</a>, <a class="tag-link" href="/tags/deep-learning/">deep learning</a>, <a class="tag-link" href="/tags/deep-neural-networks/">deep neural networks</a>, <a class="tag-link" href="/tags/dnn/">dnn</a>, <a class="tag-link" href="/tags/ergo/">ergo</a>, <a class="tag-link" href="/tags/keras/">keras</a>, <a class="tag-link" href="/tags/machine-learning/">machine learning</a>, <a class="tag-link" href="/tags/neural-networks/">neural networks</a>, <a class="tag-link" href="/tags/nvidia/">nvidia</a>, <a class="tag-link" href="/tags/planes/">planes</a>, <a class="tag-link" href="/tags/planes-detector/">planes detector</a>, <a class="tag-link" href="/tags/planesnet/">planesnet</a>, <a class="tag-link" href="/tags/tensorflow/">tensorflow</a>, <a class="tag-link" href="/tags/tf/">tf</a>
+        <a class="tag-link-link" href="/tags/cnn/" rel="tag">cnn</a>, <a class="tag-link-link" href="/tags/convolutional-neural-networks/" rel="tag">convolutional neural networks</a>, <a class="tag-link-link" href="/tags/cuda/" rel="tag">cuda</a>, <a class="tag-link-link" href="/tags/cudnn/" rel="tag">cudnn</a>, <a class="tag-link-link" href="/tags/deep-learning/" rel="tag">deep learning</a>, <a class="tag-link-link" href="/tags/deep-neural-networks/" rel="tag">deep neural networks</a>, <a class="tag-link-link" href="/tags/dnn/" rel="tag">dnn</a>, <a class="tag-link-link" href="/tags/ergo/" rel="tag">ergo</a>, <a class="tag-link-link" href="/tags/keras/" rel="tag">keras</a>, <a class="tag-link-link" href="/tags/machine-learning/" rel="tag">machine learning</a>, <a class="tag-link-link" href="/tags/neural-networks/" rel="tag">neural networks</a>, <a class="tag-link-link" href="/tags/nvidia/" rel="tag">nvidia</a>, <a class="tag-link-link" href="/tags/planes/" rel="tag">planes</a>, <a class="tag-link-link" href="/tags/planes-detector/" rel="tag">planes detector</a>, <a class="tag-link-link" href="/tags/planesnet/" rel="tag">planesnet</a>, <a class="tag-link-link" href="/tags/tensorflow/" rel="tag">tensorflow</a>, <a class="tag-link-link" href="/tags/tf/" rel="tag">tf</a>
     </div>
 
 
     </div>
-    <a href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
     <br/>
     <div class="addthis_sharing_toolbox"></div>
   </header>
@@ -152,29 +177,36 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>It’s been a while that i’ve been quite intensively playing with <a href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/" target="_blank" rel="noopener">Deep Learning</a> both for work related research and personal projects. More specifically, I’ve been using the <a href="https://keras.io/" target="_blank" rel="noopener">Keras framework</a> on top of a <a href="https://www.tensorflow.org/" target="_blank" rel="noopener">TensorFlow</a> backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. </p>
+    <p>It’s been a while that i’ve been quite intensively playing with <a target="_blank" rel="noopener" href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">Deep Learning</a> both for work related research and personal projects. More specifically, I’ve been using the <a target="_blank" rel="noopener" href="https://keras.io/">Keras framework</a> on top of a <a target="_blank" rel="noopener" href="https://www.tensorflow.org/">TensorFlow</a> backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. </p>
 <p>So a few days ago I started writing what it was initially meant to be just a simple wrapper for the main commands of my training pipelines but quickly became a full-fledged framework and manager for all my Keras based projects.</p>
-<p align="center"><br>  <img alt="ergo" src="https://i.imgur.com/EO9PdNp.jpg"><br></p>
+<p align="center">
+  <img alt="ergo" src="https://i.imgur.com/EO9PdNp.jpg"/>
+</p>
 
-<p>Today I’m pleased to open source and present <a href="https://github.com/evilsocket/ergo" target="_blank" rel="noopener">project Ergo</a> by showcasing an example use-case: we’ll prototype, train and test a <a href="https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050?gi=bf04ca9f8061" target="_blank" rel="noopener">Convolutional Neural Network</a> on top of the <a href="https://www.kaggle.com/rhammell/planesnet" target="_blank" rel="noopener">PlanesNet</a> raw dataset in order to build an airplane detector for satellite imagery.</p>
-<center><br>    <img src="https://i.imgur.com/sFfGMcS.png"><br></center>
+<p>Today I’m pleased to open source and present <a target="_blank" rel="noopener" href="https://github.com/evilsocket/ergo">project Ergo</a> by showcasing an example use-case: we’ll prototype, train and test a <a target="_blank" rel="noopener" href="https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050?gi=bf04ca9f8061">Convolutional Neural Network</a> on top of the <a target="_blank" rel="noopener" href="https://www.kaggle.com/rhammell/planesnet">PlanesNet</a> raw dataset in order to build an airplane detector for satellite imagery.</p>
+<center>
+    <img src="https://i.imgur.com/sFfGMcS.png">
+</center>
 
 <a id="more"></a>
-<p><em>This image and the general idea were taken from <a href="https://github.com/rhammell/planesnet-detector" target="_blank" rel="noopener">this project</a>, however the model structure, training algorithm and data preprocessing are different … the point of this post is, as i said, to showcase Ergo with something which is less of a clichè than the handwritten digits recognition problem with the <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="noopener">MNIST database</a>.</em></p>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>First thing first, you’ll need <code>python3</code> and <code>pip3</code>, download Ergo’s <a href="https://github.com/evilsocket/ergo/releases" target="_blank" rel="noopener">latest stable release from GitHub</a>, extract it somewhere on your disk and:</p>
+
+<p><em>This image and the general idea were taken from <a target="_blank" rel="noopener" href="https://github.com/rhammell/planesnet-detector">this project</a>, however the model structure, training algorithm and data preprocessing are different … the point of this post is, as i said, to showcase Ergo with something which is less of a clichè than the handwritten digits recognition problem with the <a target="_blank" rel="noopener" href="http://yann.lecun.com/exdb/mnist/">MNIST database</a>.</em></p>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>First thing first, you’ll need <code>python3</code> and <code>pip3</code>, download Ergo’s <a target="_blank" rel="noopener" href="https://github.com/evilsocket/ergo/releases">latest stable release from GitHub</a>, extract it somewhere on your disk and:</p>
 <pre><code>cd /path/to/ergo
 sudo pip3 install -r requirements.txt
 python3 setup.py build
-sudo python3 setup.py install
-</code></pre><p>If you’re interested in visualizing the model and training metrics, you’ll also need to:</p>
-<pre><code>sudo apt-get install graphviz python3-tk
-</code></pre><p>This way you’ll have installed all the dependencies, including the default version of TensorFlow which runs on CPU. Since our training dataset will be relatively big and our model moderately complex, we might want to use GPUs instead. In order to do so, make sure you have <a href="https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e" target="_blank" rel="noopener">CUDA 9.0 and cuDNN 7.0</a> installed and then:</p>
+sudo python3 setup.py install</code></pre>
+<p>If you’re interested in visualizing the model and training metrics, you’ll also need to:</p>
+<pre><code>sudo apt-get install graphviz python3-tk</code></pre>
+<p>This way you’ll have installed all the dependencies, including the default version of TensorFlow which runs on CPU. Since our training dataset will be relatively big and our model moderately complex, we might want to use GPUs instead. In order to do so, make sure you have <a target="_blank" rel="noopener" href="https://medium.com/@zhanwenchen/install-cuda-and-cudnn-for-tensorflow-gpu-on-ubuntu-79306e4ac04e">CUDA 9.0 and cuDNN 7.0</a> installed and then:</p>
 <pre><code>sudo pip3 uninstall tensorflow
-sudo pip3 install tensorflow-gpu
-</code></pre><p>If everything worked correctly, you’ll be able test your GPU setup, the software versions and what hardware is available with the <code>nvidia-smi</code> and <code>ergo info</code> commands. For example, on my home training server this is the output:</p>
-<center><br>    <img alt="ergo info" src="https://i.imgur.com/blcaser.png"><br></center>
+sudo pip3 install tensorflow-gpu</code></pre>
+<p>If everything worked correctly, you’ll be able test your GPU setup, the software versions and what hardware is available with the <code>nvidia-smi</code> and <code>ergo info</code> commands. For example, on my home training server this is the output:</p>
+<center>
+    <img alt="ergo info" src="https://i.imgur.com/blcaser.png"/>
+</center>
 
-<h2 id="Airplanes-and-Satellites"><a href="#Airplanes-and-Satellites" class="headerlink" title="Airplanes and Satellites"></a>Airplanes and Satellites</h2><p>Now it’s time to grab our dataset, download the <a href="https://www.kaggle.com/rhammell/planesnet#planesnet.zip" target="_blank" rel="noopener">planesnet.zip file from Kaggle</a> and extract it somewhere on your disk, we will only need the folder filled with PNG files, each one named as <code>1__20160714_165520_0c59__-118.4316008_33.937964191.png</code>, where the first <code>1__</code> or <code>0__</code> tells us the labeling (0=no plane, 1=there’s a plane).</p>
+<h2 id="Airplanes-and-Satellites"><a href="#Airplanes-and-Satellites" class="headerlink" title="Airplanes and Satellites"></a>Airplanes and Satellites</h2><p>Now it’s time to grab our dataset, download the <a target="_blank" rel="noopener" href="https://www.kaggle.com/rhammell/planesnet#planesnet.zip">planesnet.zip file from Kaggle</a> and extract it somewhere on your disk, we will only need the folder filled with PNG files, each one named as <code>1__20160714_165520_0c59__-118.4316008_33.937964191.png</code>, where the first <code>1__</code> or <code>0__</code> tells us the labeling (0=no plane, 1=there’s a plane).</p>
 <p>We’ll feed our system with the raw images, preprocess them and train a CNN on top of those labeled vectors next.</p>
 <h2 id="Data-Preprocessing"><a href="#Data-Preprocessing" class="headerlink" title="Data Preprocessing"></a>Data Preprocessing</h2><p>Normally we would start a new Ergo project by issuing the <code>ergo create planes-detector</code> command, this would create a new folder named <code>planes-detector</code> with three files in it:</p>
 <ol>
@@ -182,7 +214,7 @@ sudo pip3 install tensorflow-gpu
 <li><code>model.py</code>, where we will customize the model.</li>
 <li><code>train.py</code>, for the training algorithm.</li>
 </ol>
-<p>These files would be filled with some default code and only a minimum amount of changes would be needed in order to implement our experiment, changes that I already made available on <a href="https://github.com/evilsocket/ergo-planes-detector" target="_blank" rel="noopener">the planes-detector repo on GitHub</a>.</p>
+<p>These files would be filled with some default code and only a minimum amount of changes would be needed in order to implement our experiment, changes that I already made available on <a target="_blank" rel="noopener" href="https://github.com/evilsocket/ergo-planes-detector">the planes-detector repo on GitHub</a>.</p>
 <p>The format that by default Ergo expects the dataset to be is a CSV file, where each row is composed as <code>y,x0,x1,x2,....</code> (<code>y</code> being the label and <code>xn</code> the scalars in the input vector), but our inputs are images, which have a width, a height and a RGB depth. In order to transform these 3-dimensional tensors into a flat vector that Ergo understands, we need to customize the <code>prepare.py</code> script to do some data preprocessing.</p>
 <script src="https://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/prepare.py"></script>
 
@@ -191,29 +223,33 @@ sudo pip3 install tensorflow-gpu
 <p>This is how our <code>model.py</code> looks like:</p>
 <script src="https://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/model.py"></script>
 
-<p>Other than <code>reshaping</code> the flat input back to the 3-dimensional shape that our convolutional layers understand, two <a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D" target="_blank" rel="noopener">convolutional layers</a> with respectively 32 and 64 filters with a 3x3 kernel are present, plus the usual suspects that help us getting more accurate results after training (<code>MaxPooling2D</code> to pick the best visual features and a couple of <code>Dropout</code> filter layers to avoid <a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank" rel="noopener">overfitting</a>) and the <code>Dense</code> hidden and output layers. Pretty standard model for simple image recognition problems.</p>
-<h2 id="The-Training"><a href="#The-Training" class="headerlink" title="The Training"></a>The Training</h2><p>We can finally start talking about training. The <code>train.py</code> file was almost left unchanged and I only added a few lines to integrate it with <a href="https://www.tensorflow.org/guide/summaries_and_tensorboard" target="_blank" rel="noopener">TensorBoard</a>.</p>
+<p>Other than <code>reshaping</code> the flat input back to the 3-dimensional shape that our convolutional layers understand, two <a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D">convolutional layers</a> with respectively 32 and 64 filters with a 3x3 kernel are present, plus the usual suspects that help us getting more accurate results after training (<code>MaxPooling2D</code> to pick the best visual features and a couple of <code>Dropout</code> filter layers to avoid <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Overfitting">overfitting</a>) and the <code>Dense</code> hidden and output layers. Pretty standard model for simple image recognition problems.</p>
+<h2 id="The-Training"><a href="#The-Training" class="headerlink" title="The Training"></a>The Training</h2><p>We can finally start talking about training. The <code>train.py</code> file was almost left unchanged and I only added a few lines to integrate it with <a target="_blank" rel="noopener" href="https://www.tensorflow.org/guide/summaries_and_tensorboard">TensorBoard</a>.</p>
 <script src="https://gist-it.appspot.com/https://github.com/evilsocket/ergo-planes-detector/blob/master/train.py"></script>
 
 <p>The data preprocessing, import and training process can now be started with:</p>
-<pre><code>ergo train /path/to/planes-detector-project --dataset /path/to/planesnet-pictures
-</code></pre><p>If running on multiple GPUs, you can use the <code>--gpus N</code> optional argument to detemine how many to use, while the <code>--test N</code> and <code>--validation N</code> arguments can be used to partition the dataset (by default both test and validation sets will be 15% of the global one, while the rest will be used for training).</p>
+<pre><code>ergo train /path/to/planes-detector-project --dataset /path/to/planesnet-pictures</code></pre>
+<p>If running on multiple GPUs, you can use the <code>--gpus N</code> optional argument to detemine how many to use, while the <code>--test N</code> and <code>--validation N</code> arguments can be used to partition the dataset (by default both test and validation sets will be 15% of the global one, while the rest will be used for training).</p>
 <p>Depending on your hardware configuration this process can take from a few minutes, up to even hours (remember you can monitor it with <code>tensorboard --log_dir=/path/to/planes-detector-project/logs</code>), but eventually you will see something like:</p>
-<center><br>    <img alt="training" src="https://i.imgur.com/foFQrba.png"><br></center>
+<center>
+    <img alt="training" src="https://i.imgur.com/foFQrba.png"/>
+</center>
 
 <p>Other than manually inspecting the model yaml file, and some <code>model.stats</code>, you can now:</p>
-<pre><code>ergo view /path/to/planes-detector-project
-</code></pre><p>to see the model structure, the <code>accuracy</code> and <code>loss</code> metrics during training and validation:</p>
-<center><br>    <img alt="ergo view" src="https://i.imgur.com/rUQ1Het.png"><br></center>
+<pre><code>ergo view /path/to/planes-detector-project</code></pre>
+<p>to see the model structure, the <code>accuracy</code> and <code>loss</code> metrics during training and validation:</p>
+<center>
+    <img alt="ergo view" src="https://i.imgur.com/rUQ1Het.png"/>
+</center>
 
 <p><strong>Not bad!</strong> Over 98% accuracy on a dataset of thousands of images! </p>
 <p>We can now clean the project from the temporary train, validation and test datasets:</p>
-<pre><code>ergo clean /path/to/planes-detector-project
-</code></pre><h2 id="Using-the-Model"><a href="#Using-the-Model" class="headerlink" title="Using the Model"></a>Using the Model</h2><p>It is possible now to load the trained weights <code>model.h5</code> file in your own project and use it as you like, for instance you might use a sliding window of 20x20 pixels on a bigger image and mark the areas that this NN detected as planes. Another option is to use Ergo itself and expose the model as a REST API:</p>
-<pre><code>ergo serve /path/to/planes-detector-project
-</code></pre><p>You’ll be able to access and test the model predictions via a simple:</p>
-<pre><code>curl http://127.0.0.1:8080/?x=0.345,1.0,0.9,....
-</code></pre><p>__<br>As usual, <strong>enjoy</strong> &lt;3</p>
+<pre><code>ergo clean /path/to/planes-detector-project</code></pre>
+<h2 id="Using-the-Model"><a href="#Using-the-Model" class="headerlink" title="Using the Model"></a>Using the Model</h2><p>It is possible now to load the trained weights <code>model.h5</code> file in your own project and use it as you like, for instance you might use a sliding window of 20x20 pixels on a bigger image and mark the areas that this NN detected as planes. Another option is to use Ergo itself and expose the model as a REST API:</p>
+<pre><code>ergo serve /path/to/planes-detector-project</code></pre>
+<p>You’ll be able to access and test the model predictions via a simple:</p>
+<pre><code>curl http://127.0.0.1:8080/?x=0.345,1.0,0.9,....</code></pre>
+<p>__<br>As usual, <strong>enjoy</strong> &lt;3</p>
 
   </div>
 </article>
@@ -247,21 +283,25 @@ sudo pip3 install tensorflow-gpu
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&text=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&is_video=false&description=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&text=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&is_video=false&description=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning&body=Check out this article: https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&name=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning&description=&lt;p&gt;It’s been a while that i’ve been quite intensively playing with &lt;a href=&quot;https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Deep Learning&lt;/a&gt; both for work related research and personal projects. More specifically, I’ve been using the &lt;a href=&quot;https://keras.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Keras framework&lt;/a&gt; on top of a &lt;a href=&quot;https://www.tensorflow.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;TensorFlow&lt;/a&gt; backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. &lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&title=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/&name=Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning&description=&lt;p&gt;It’s been a while that i’ve been quite intensively playing with &lt;a href=&#34;https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/&#34;&gt;Deep Learning&lt;/a&gt; both for work related research and personal projects. More specifically, I’ve been using the &lt;a href=&#34;https://keras.io/&#34;&gt;Keras framework&lt;/a&gt; on top of a &lt;a href=&#34;https://www.tensorflow.org/&#34;&gt;TensorFlow&lt;/a&gt; backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. &lt;/p&gt;
 &lt;p&gt;So a few days ago I started writing what it was initially meant to be just a simple wrapper for the main commands of my training pipelines but quickly became a full-fledged framework and manager for all my Keras based projects.&lt;/p&gt;
-&lt;p align=&quot;center&quot;&gt;&lt;br&gt;  &lt;img alt=&quot;ergo&quot; src=&quot;https://i.imgur.com/EO9PdNp.jpg&quot;&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img alt=&#34;ergo&#34; src=&#34;https://i.imgur.com/EO9PdNp.jpg&#34;/&gt;
+&lt;/p&gt;
 
-&lt;p&gt;Today I’m pleased to open source and present &lt;a href=&quot;https://github.com/evilsocket/ergo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;project Ergo&lt;/a&gt; by showcasing an example use-case: we’ll prototype, train and test a &lt;a href=&quot;https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050?gi=bf04ca9f8061&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Convolutional Neural Network&lt;/a&gt; on top of the &lt;a href=&quot;https://www.kaggle.com/rhammell/planesnet&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;PlanesNet&lt;/a&gt; raw dataset in order to build an airplane detector for satellite imagery.&lt;/p&gt;
-&lt;center&gt;&lt;br&gt;    &lt;img src=&quot;https://i.imgur.com/sFfGMcS.png&quot;&gt;&lt;br&gt;&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;p&gt;Today I’m pleased to open source and present &lt;a href=&#34;https://github.com/evilsocket/ergo&#34;&gt;project Ergo&lt;/a&gt; by showcasing an example use-case: we’ll prototype, train and test a &lt;a href=&#34;https://medium.freecodecamp.org/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050?gi=bf04ca9f8061&#34;&gt;Convolutional Neural Network&lt;/a&gt; on top of the &lt;a href=&#34;https://www.kaggle.com/rhammell/planesnet&#34;&gt;PlanesNet&lt;/a&gt; raw dataset in order to build an airplane detector for satellite imagery.&lt;/p&gt;
+&lt;center&gt;
+    &lt;img src=&#34;https://i.imgur.com/sFfGMcS.png&#34;&gt;
+&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -297,13 +337,23 @@ sudo pip3 install tensorflow-gpu
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

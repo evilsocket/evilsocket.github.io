@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android&#x2F;ARM“ and a proof of concept of the same, namely what can be done with">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Native API Hooking With Library Injection and ELF Introspection.">
+<meta property="og:url" content="https://www.evilsocket.net/android-native-api-hooking-with-library-injecto">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android&#x2F;ARM“ and a proof of concept of the same, namely what can be done with">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-05-04T17:15:24.000Z">
+<meta property="article:modified_time" content="2015-05-04T17:35:13.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="hooking">
+<meta property="article:tag" content="api hooking">
+<meta property="article:tag" content="library">
+<meta property="article:tag" content="injection">
+<meta property="article:tag" content="elf relocation">
+<meta property="article:tag" content="arm">
+<meta property="article:tag" content="elf">
+<meta property="article:tag" content="open">
+<meta property="article:tag" content="dalvik">
+<meta property="article:tag" content="plt">
+<meta property="article:tag" content="relocation">
+<meta property="article:tag" content="relocation table">
+<meta property="article:tag" content="symtab">
+<meta property="article:tag" content="strtab">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Android Native API Hooking With Library Injection and ELF Introspection.</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/introducing-fido-a-minimalistic-cc-project-generator-supporting-templates"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/using-inline-assembly-and-naked-functions-to-fool-disassemblers"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&text=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&is_video=false&description=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Android Native API Hooking With Library Injection and ELF Introspection.&body=Check out this article: https://www.evilsocket.net/android-native-api-hooking-with-library-injecto"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&name=Android Native API Hooking With Library Injection and ELF Introspection.&description=&lt;p&gt;This post can be considered both the part 2 of the previous “&lt;a href=&#34;http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/&#34;&gt;Dynamically inject a shared library into a running process on Android/ARM&lt;/a&gt;“ and a proof of concept of the same, namely what can be done with library injection on Android.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TL-DR"><span class="toc-number">1.</span> <span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hooking-System-Functions"><span class="toc-number">2.</span> <span class="toc-text">Hooking System Functions</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Android Native API Hooking With Library Injection and ELF Introspection.
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2015-05-04T17:15:24.000Z" itemprop="datePublished">2015-05-04</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/api-hooking/" rel="tag">api hooking</a>, <a class="tag-link-link" href="/tags/arm/" rel="tag">arm</a>, <a class="tag-link-link" href="/tags/dalvik/" rel="tag">dalvik</a>, <a class="tag-link-link" href="/tags/elf/" rel="tag">elf</a>, <a class="tag-link-link" href="/tags/elf-relocation/" rel="tag">elf relocation</a>, <a class="tag-link-link" href="/tags/hooking/" rel="tag">hooking</a>, <a class="tag-link-link" href="/tags/injection/" rel="tag">injection</a>, <a class="tag-link-link" href="/tags/library/" rel="tag">library</a>, <a class="tag-link-link" href="/tags/open/" rel="tag">open</a>, <a class="tag-link-link" href="/tags/plt/" rel="tag">plt</a>, <a class="tag-link-link" href="/tags/relocation/" rel="tag">relocation</a>, <a class="tag-link-link" href="/tags/relocation-table/" rel="tag">relocation table</a>, <a class="tag-link-link" href="/tags/strtab/" rel="tag">strtab</a>, <a class="tag-link-link" href="/tags/symtab/" rel="tag">symtab</a>
+    </div>
+
+
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br/>
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>This post can be considered both the part 2 of the previous “<a href="http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically inject a shared library into a running process on Android/ARM</a>“ and a proof of concept of the same, namely what can be done with library injection on Android.</p>
+<a id="more"></a>
+
+<h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><p>I’ve updated the source code of the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arminject">arminject</a> project on github adding a library that once injected into a process will hook its <strong>open</strong> API and print some logs to the logcat, the <strong>make test</strong> command will basically start a new <strong>Chrome</strong> browser process, use the <strong>injector</strong> discussed in the previous post to inject <strong>libhook.so</strong> into it and wait for its logs to appear, an example output could be like:</p>
+<pre><code>@ Attaching to process com.android.chrome ...
+@ Injecting library /data/local/tmp/libhook.so into process 8511.
+@ Calling dlopen in target process ...
+@ dlopen returned 0xb5202dc4
+
+I/LIBHOOK ( 8511): [8511] open(&#39;/data/data/com.android.chrome/app_chrome/.com.google.Chrome.gJY5h4&#39;, 194)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/data/data/com.android.chrome/shared_prefs/com.android.chrome_preferences.xml&#39;, 577)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/data/data/com.android.chrome/files/android_ticl_service_state.bin&#39;, 0)
+I/LIBHOOK ( 8511): [8511] open(&#39;/data/data/com.android.chrome/files/ticl_storage.bin&#39;, 0)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/data/data/com.android.chrome/files/android_ticl_service_state.bin&#39;, 577)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
+...
+...</code></pre>
+<h1 id="Hooking-System-Functions"><a href="#Hooking-System-Functions" class="headerlink" title="Hooking System Functions"></a>Hooking System Functions</h1><p>As I basically wrote everywhere in the source to avoid any kind of misunderstanding, the libhook.so code is almost totally based on <strong>Andrey Petrov</strong>‘s blog post “<a target="_blank" rel="noopener" href="http://shadowwhowalks.blogspot.it/2013/01/android-hacking-hooking-system.html">Android hacking: hooking system functions used by Dalvik</a>“, although I had to modify and fix its original version since it didn’t work ( page align errors, memory protection faults and so forth ).</p>
+<p>The main concept is quite simple yet neat, once the library is injected inside the target process, its <strong>constructor</strong> will be executed.<br>A constructor function is declared like this:</p>
+<figure class="highlight plain"><figcaption><span>lang-c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__attribute__((constructor)) somefunction() &#123;</span><br><span class="line">    &#x2F;&#x2F; something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This means that “somefunction” will be executed as soon as the library is loaded.</p>
+<p>This allowed me to exploit Petrov’s code at runtime and patch the process relocation table, an <strong>ELF</strong> structure that holds the addressess of system functions used by the program.<br>The logic steps to do this are:</p>
+<ul>
+<li>Get the base pointer of the module using <strong>dlopen</strong>.</li>
+<li>Given its pointer, lookup the symbol ( <strong>open</strong> in our case ) inside its (sym|str)tab.</li>
+<li>Search the symbol inside the <strong>reloc</strong> table by index.</li>
+<li>Backup its original address and finally patch it with our own hook function address.</li>
+</ul>
+<p>Once the hook function is called, it will log its parameters and then call the original function we previously backupped:</p>
+<figure class="highlight plain"><figcaption><span>lang-c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int hook_open(const char *pathname, int flags) &#123;</span><br><span class="line">    HOOKLOG( &quot;[%d] open(&#39;%s&#39;, %d)&quot;, getpid(), pathname, flags );</span><br><span class="line"></span><br><span class="line">    return __open( pathname, flags );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Obviously this method can be applied to any kind of function, even Dalvik high level native API.</p>
+<p>Enjoy :)</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TL-DR"><span class="toc-number">1.</span> <span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hooking-System-Functions"><span class="toc-number">2.</span> <span class="toc-text">Hooking System Functions</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&text=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&is_video=false&description=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Android Native API Hooking With Library Injection and ELF Introspection.&body=Check out this article: https://www.evilsocket.net/android-native-api-hooking-with-library-injecto"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&title=Android Native API Hooking With Library Injection and ELF Introspection."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/android-native-api-hooking-with-library-injecto&name=Android Native API Hooking With Library Injection and ELF Introspection.&description=&lt;p&gt;This post can be considered both the part 2 of the previous “&lt;a href=&#34;http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/&#34;&gt;Dynamically inject a shared library into a running process on Android/ARM&lt;/a&gt;“ and a proof of concept of the same, namely what can be done with library injection on Android.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

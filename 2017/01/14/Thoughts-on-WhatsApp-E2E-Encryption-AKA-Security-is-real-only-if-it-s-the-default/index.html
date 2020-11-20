@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang=en>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Yesterday Tobias Boelter posted on his blog this article which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s k">
-<meta name="keywords" content="privacy,whatsapp,end to end encryption,the guardian,backdoor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.">
 <meta property="og:url" content="https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/index.html">
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="Yesterday Tobias Boelter posted on his blog this article which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s k">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://whispersystems.org/blog/images/whatsapp-keychange.png">
-<meta property="og:updated_time" content="2020-05-26T18:30:57.528Z">
+<meta property="article:published_time" content="2017-01-14T19:10:02.000Z">
+<meta property="article:modified_time" content="2020-05-26T18:30:57.528Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="privacy">
+<meta property="article:tag" content="whatsapp">
+<meta property="article:tag" content="end to end encryption">
+<meta property="article:tag" content="the guardian">
+<meta property="article:tag" content="backdoor">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.">
-<meta name="twitter:description" content="Yesterday Tobias Boelter posted on his blog this article which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s k">
 <meta name="twitter:image" content="https://whispersystems.org/blog/images/whatsapp-keychange.png">
     
     
@@ -41,19 +45,24 @@
     <!-- title -->
     <title>Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.</title>
     <!-- styles -->
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
+
     <!-- persian styles -->
     
-      <link rel="stylesheet" href="/css/rtl.css">
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
     
     <!-- rss -->
     
     
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-</head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -88,23 +97,23 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&text=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&is_video=false&description=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&text=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&is_video=false&description=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.&body=Check out this article: https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&name=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.&description=&lt;p&gt;Yesterday &lt;a href=&quot;https://twitter.com/tobiasboelter&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tobias Boelter&lt;/a&gt; posted on his blog &lt;a href=&quot;https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;this article&lt;/a&gt; which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user &lt;strong&gt;after&lt;/strong&gt; the message has been sent.&lt;br&gt;The Guardian has then picked up the info and posted the article “&lt;a href=&quot;https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WhatsApp vulnerability allows snooping on encrypted messages&lt;/a&gt;“. &lt;/p&gt;
-&lt;p&gt;In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are &lt;strong&gt;not&lt;/strong&gt; experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made &lt;strong&gt;Signal&lt;/strong&gt;, the only really secure messaging app we’re aware of &lt;strong&gt;and&lt;/strong&gt; the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “&lt;a href=&quot;https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;There is no WhatsApp ‘backdoor’&lt;/a&gt;“, which &lt;strong&gt;seemed&lt;/strong&gt; to have put the word END to this conversation.&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&name=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.&description=&lt;p&gt;Yesterday &lt;a href=&#34;https://twitter.com/tobiasboelter&#34;&gt;Tobias Boelter&lt;/a&gt; posted on his blog &lt;a href=&#34;https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/&#34;&gt;this article&lt;/a&gt; which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user &lt;strong&gt;after&lt;/strong&gt; the message has been sent.&lt;br&gt;The Guardian has then picked up the info and posted the article “&lt;a href=&#34;https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages&#34;&gt;WhatsApp vulnerability allows snooping on encrypted messages&lt;/a&gt;“. &lt;/p&gt;
+&lt;p&gt;In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are &lt;strong&gt;not&lt;/strong&gt; experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made &lt;strong&gt;Signal&lt;/strong&gt;, the only really secure messaging app we’re aware of &lt;strong&gt;and&lt;/strong&gt; the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “&lt;a href=&#34;https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/&#34;&gt;There is no WhatsApp ‘backdoor’&lt;/a&gt;“, which &lt;strong&gt;seemed&lt;/strong&gt; to have put the word END to this conversation.&lt;/p&gt;
 &lt;p&gt;I do not agree and, since a lot of &lt;strong&gt;ego&lt;/strong&gt; is going on here, I’d like to share my thoughts as well.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#But-it’s-just-a-matter-of-settings"><span class="toc-number">1.</span> <span class="toc-text">But it’s just a matter of settings!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Usability-Really"><span class="toc-number">2.</span> <span class="toc-text">Usability? Really?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#But-it%E2%80%99s-just-a-matter-of-settings"><span class="toc-number">1.</span> <span class="toc-text">But it’s just a matter of settings!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Usability-Really"><span class="toc-number">2.</span> <span class="toc-text">Usability? Really?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -131,12 +140,12 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/backdoor/">backdoor</a>, <a class="tag-link" href="/tags/end-to-end-encryption/">end to end encryption</a>, <a class="tag-link" href="/tags/privacy/">privacy</a>, <a class="tag-link" href="/tags/the-guardian/">the guardian</a>, <a class="tag-link" href="/tags/whatsapp/">whatsapp</a>
+        <a class="tag-link-link" href="/tags/backdoor/" rel="tag">backdoor</a>, <a class="tag-link-link" href="/tags/end-to-end-encryption/" rel="tag">end to end encryption</a>, <a class="tag-link-link" href="/tags/privacy/" rel="tag">privacy</a>, <a class="tag-link-link" href="/tags/the-guardian/" rel="tag">the guardian</a>, <a class="tag-link-link" href="/tags/whatsapp/" rel="tag">whatsapp</a>
     </div>
 
 
     </div>
-    <a href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
     <br/>
     <div class="addthis_sharing_toolbox"></div>
   </header>
@@ -145,28 +154,42 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>Yesterday <a href="https://twitter.com/tobiasboelter" target="_blank" rel="noopener">Tobias Boelter</a> posted on his blog <a href="https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/" target="_blank" rel="noopener">this article</a> which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user <strong>after</strong> the message has been sent.<br>The Guardian has then picked up the info and posted the article “<a href="https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages" target="_blank" rel="noopener">WhatsApp vulnerability allows snooping on encrypted messages</a>“. </p>
-<p>In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are <strong>not</strong> experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made <strong>Signal</strong>, the only really secure messaging app we’re aware of <strong>and</strong> the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “<a href="https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/" target="_blank" rel="noopener">There is no WhatsApp ‘backdoor’</a>“, which <strong>seemed</strong> to have put the word END to this conversation.</p>
+    <p>Yesterday <a target="_blank" rel="noopener" href="https://twitter.com/tobiasboelter">Tobias Boelter</a> posted on his blog <a target="_blank" rel="noopener" href="https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/">this article</a> which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user <strong>after</strong> the message has been sent.<br>The Guardian has then picked up the info and posted the article “<a target="_blank" rel="noopener" href="https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages">WhatsApp vulnerability allows snooping on encrypted messages</a>“. </p>
+<p>In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are <strong>not</strong> experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made <strong>Signal</strong>, the only really secure messaging app we’re aware of <strong>and</strong> the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “<a target="_blank" rel="noopener" href="https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/">There is no WhatsApp ‘backdoor’</a>“, which <strong>seemed</strong> to have put the word END to this conversation.</p>
 <p>I do not agree and, since a lot of <strong>ego</strong> is going on here, I’d like to share my thoughts as well.</p>
 <a id="more"></a>
-<center><br><blockquote class="twitter-tweet" data-lang="it"><p lang="en" dir="ltr">.<a href="https://twitter.com/guardian" target="_blank" rel="noopener">@guardian</a> Pathetically, everyone who jumped to trumpet my tweets of a Telegram weakness will ignore this because WhatsApp staff stroked the right egos</p>&mdash; Nadim Kobeissi (@kaepora) <a href="https://twitter.com/kaepora/status/819893937934434304" target="_blank" rel="noopener">13 gennaio 2017</a></blockquote><br><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
+
+<center>
+<blockquote class="twitter-tweet" data-lang="it"><p lang="en" dir="ltr">.<a target="_blank" rel="noopener" href="https://twitter.com/guardian">@guardian</a> Pathetically, everyone who jumped to trumpet my tweets of a Telegram weakness will ignore this because WhatsApp staff stroked the right egos</p>&mdash; Nadim Kobeissi (@kaepora) <a target="_blank" rel="noopener" href="https://twitter.com/kaepora/status/819893937934434304">13 gennaio 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 <p>First thing first, following the <strong>PoC||GTFO</strong> sacrosanct principle, let’s take a look at the video that Tobias recently uploaded.</p>
-<center><br>    <iframe width="100%" height="315" src="https://www.youtube.com/embed/we-pJE5JjAs" frameborder="0" allowfullscreen></iframe><br></center>
+<center>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/we-pJE5JjAs" frameborder="0" allowfullscreen></iframe>
+</center>
 
-<p>In the video Tobias just swapped the SIM card to the other phone to prove his point, but it’s quite clear that from a state sponsored attacker perspective, physical access to the sim card or the victim’s phone is not needed at all, there are plenty of easier ways for them to do that ( pretty much like <a href="https://lists.cpunks.org/pipermail/cypherpunks/2016-April/012958.html" target="_blank" rel="noopener">Russia did with SS7 &amp; Telegram users</a> ).</p>
+<p>In the video Tobias just swapped the SIM card to the other phone to prove his point, but it’s quite clear that from a state sponsored attacker perspective, physical access to the sim card or the victim’s phone is not needed at all, there are plenty of easier ways for them to do that ( pretty much like <a target="_blank" rel="noopener" href="https://lists.cpunks.org/pipermail/cypherpunks/2016-April/012958.html">Russia did with SS7 &amp; Telegram users</a> ).</p>
 <p>Long story short, if WhatsApp technicians manage to replace your recipient E2E encryption key on the server side and impersonate him (or manage to clone his sim on the TELCO side), <strong>your sensitive message will be sent anyway</strong>, the client will show you just a warning about the key change, but nevertheless, let’s say it again, <strong>your sensitive message will be sent anyway</strong> … and they’ll be able to read it, <strong>period</strong>.</p>
-<center><br>    <img width="250" src="https://whispersystems.org/blog/images/whatsapp-keychange.png"><br></center>
+<center>
+    <img width="250" src="https://whispersystems.org/blog/images/whatsapp-keychange.png"/>
+</center>
 
-<p>On the other hand, <a href="https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms" target="_blank" rel="noopener">Signal</a> prevents this from happening, once it’ll detect the key being changed, it will <strong>block</strong> the conversation and warn the user about it, it’ll be the user then to decide if trusting the new key or not, regardless, <strong>the sensitive contents won’t be rentransmitted without the user allowing it</strong>, this is a subtle but very important detail.</p>
-<h3 id="But-it’s-just-a-matter-of-settings"><a href="#But-it’s-just-a-matter-of-settings" class="headerlink" title="But it’s just a matter of settings!"></a>But it’s just a matter of settings!</h3><center><br><blockquote class="twitter-tweet" data-lang="it"><p lang="en" dir="ltr">quoting mr <a href="https://twitter.com/csoghoian" target="_blank" rel="noopener">@csoghoian</a>, this sentence quite fits in this whole WhatsApp / Guardian / <a href="https://twitter.com/whispersystems" target="_blank" rel="noopener">@whispersystems</a> discussion <a href="https://t.co/DHEnmYqRrw" target="_blank" rel="noopener">pic.twitter.com/DHEnmYqRrw</a></p>&mdash; Simone Margaritelli (@evilsocket) <a href="https://twitter.com/evilsocket/status/820100621898547201" target="_blank" rel="noopener">14 gennaio 2017</a></blockquote><br><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
+<p>On the other hand, <a target="_blank" rel="noopener" href="https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms">Signal</a> prevents this from happening, once it’ll detect the key being changed, it will <strong>block</strong> the conversation and warn the user about it, it’ll be the user then to decide if trusting the new key or not, regardless, <strong>the sensitive contents won’t be rentransmitted without the user allowing it</strong>, this is a subtle but very important detail.</p>
+<h3 id="But-it’s-just-a-matter-of-settings"><a href="#But-it’s-just-a-matter-of-settings" class="headerlink" title="But it’s just a matter of settings!"></a>But it’s just a matter of settings!</h3><center>
+<blockquote class="twitter-tweet" data-lang="it"><p lang="en" dir="ltr">quoting mr <a target="_blank" rel="noopener" href="https://twitter.com/csoghoian">@csoghoian</a>, this sentence quite fits in this whole WhatsApp / Guardian / <a target="_blank" rel="noopener" href="https://twitter.com/whispersystems">@whispersystems</a> discussion <a target="_blank" rel="noopener" href="https://t.co/DHEnmYqRrw">pic.twitter.com/DHEnmYqRrw</a></p>&mdash; Simone Margaritelli (@evilsocket) <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/820100621898547201">14 gennaio 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 <p>Yes, they <strong>do</strong> implement the same protocol and <strong>no</strong>, we don’t have any real evidence that Facebook messed with it, <strong>still</strong> they created (either intentionally or not) a very serious security vulnerability for their users.</p>
 <p>And it’s exactly about <strong>intentionality</strong> we’re talking about, if it was intentionally implelemented to spy on users <strong>it’s a backdoor</strong>, otherwise <strong>it’s not a backdoor</strong> … but <strong>we don’t know</strong>, we never will and honestly it’s just a stupid and pointless waste of time discussing about it further.</p>
 <h3 id="Usability-Really"><a href="#Usability-Really" class="headerlink" title="Usability? Really?"></a>Usability? Really?</h3><p>But the point is, <strong>why implementing e2e encryption in the first place if when keys do not match what expected, the client transmits the message anyway?</strong> Usability? <strong>The usability of what</strong>? Because E2E encryption is <strong>not</strong> usable that way, the client itself might be, but definitely not the underlying protocol which should guarantee the users privacy <strong>on top of everything else</strong>.</p>
 <p>Moreover, do you really expect the average whatsapp user to understand what that yellow baloon means if you don’t clearly block the conversation and warn him about what happened? Is this usability? COME ON!</p>
 <p>I think Moxie just missed the point, which is <strong>not</strong> they key being changed, but the client retransmitting the message regardless!<br>I used to respect him for his life-long battle for privacy, but reading his post it’s quite clear how his opinion is biased towards Facebook.</p>
-<center><br><blockquote class="twitter-tweet" data-conversation="none" data-lang="it"><p lang="en" dir="ltr">.<a href="https://twitter.com/guardian" target="_blank" rel="noopener">@guardian</a> Whisper Systems comes to Facebook/WhatsApp&#39;s defense on its own blog honestly not understanding the problem. Wow. <a href="https://t.co/6EZ0K9Xcle" target="_blank" rel="noopener">https://t.co/6EZ0K9Xcle</a></p>&mdash; Nadim Kobeissi (@kaepora) <a href="https://twitter.com/kaepora/status/820028708803088385" target="_blank" rel="noopener">13 gennaio 2017</a></blockquote><br><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script><br></center>
+<center>
+<blockquote class="twitter-tweet" data-conversation="none" data-lang="it"><p lang="en" dir="ltr">.<a target="_blank" rel="noopener" href="https://twitter.com/guardian">@guardian</a> Whisper Systems comes to Facebook/WhatsApp&#39;s defense on its own blog honestly not understanding the problem. Wow. <a target="_blank" rel="noopener" href="https://t.co/6EZ0K9Xcle">https://t.co/6EZ0K9Xcle</a></p>&mdash; Nadim Kobeissi (@kaepora) <a target="_blank" rel="noopener" href="https://twitter.com/kaepora/status/820028708803088385">13 gennaio 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I’m not a cryptographer of a crypto expert of any kind, but I’ve spent quite a few years working on MITM attacks and tools, I’m well aware how easy it is for <strong>anyone</strong> to exploit the information you leak on a network, and I’m well aware that state sponsored attackers have trillions of other ways to do that more easily and transparently (for the user of course) … we should just stop the drama about it being a backdoor or not and focus on what really matters:</p>
 <p><strong>It is definitely a serious security issue for the users privacy and Facebook refused to fix it</strong>.</p>
@@ -199,22 +222,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#But-it’s-just-a-matter-of-settings"><span class="toc-number">1.</span> <span class="toc-text">But it’s just a matter of settings!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Usability-Really"><span class="toc-number">2.</span> <span class="toc-text">Usability? Really?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#But-it%E2%80%99s-just-a-matter-of-settings"><span class="toc-number">1.</span> <span class="toc-text">But it’s just a matter of settings!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Usability-Really"><span class="toc-number">2.</span> <span class="toc-text">Usability? Really?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&text=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&is_video=false&description=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&text=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&is_video=false&description=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.&body=Check out this article: https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&name=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.&description=&lt;p&gt;Yesterday &lt;a href=&quot;https://twitter.com/tobiasboelter&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tobias Boelter&lt;/a&gt; posted on his blog &lt;a href=&quot;https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;this article&lt;/a&gt; which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user &lt;strong&gt;after&lt;/strong&gt; the message has been sent.&lt;br&gt;The Guardian has then picked up the info and posted the article “&lt;a href=&quot;https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WhatsApp vulnerability allows snooping on encrypted messages&lt;/a&gt;“. &lt;/p&gt;
-&lt;p&gt;In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are &lt;strong&gt;not&lt;/strong&gt; experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made &lt;strong&gt;Signal&lt;/strong&gt;, the only really secure messaging app we’re aware of &lt;strong&gt;and&lt;/strong&gt; the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “&lt;a href=&quot;https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;There is no WhatsApp ‘backdoor’&lt;/a&gt;“, which &lt;strong&gt;seemed&lt;/strong&gt; to have put the word END to this conversation.&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&title=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/&name=Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.&description=&lt;p&gt;Yesterday &lt;a href=&#34;https://twitter.com/tobiasboelter&#34;&gt;Tobias Boelter&lt;/a&gt; posted on his blog &lt;a href=&#34;https://tobi.rocks/2017/01/whatsapp-vulnerability-bug-or-backdoor/&#34;&gt;this article&lt;/a&gt; which essentially highlights a message rentransmission vulnerability on WhatsApp which makes it leak sensitive information if the recipient’s key changed, only alerting the user &lt;strong&gt;after&lt;/strong&gt; the message has been sent.&lt;br&gt;The Guardian has then picked up the info and posted the article “&lt;a href=&#34;https://www.theguardian.com/technology/2017/jan/13/whatsapp-backdoor-allows-snooping-on-encrypted-messages&#34;&gt;WhatsApp vulnerability allows snooping on encrypted messages&lt;/a&gt;“. &lt;/p&gt;
+&lt;p&gt;In a matter of hours, a shit load of experts (and unfortunately also lot of ppl who are &lt;strong&gt;not&lt;/strong&gt; experts at all) pointed their fingers at The Guardian, arguing that it’s not a backdoor and all other kind of sterile polemics. At some point, Moxie from Open Whisper Systems, the noprofit organization who made &lt;strong&gt;Signal&lt;/strong&gt;, the only really secure messaging app we’re aware of &lt;strong&gt;and&lt;/strong&gt; the library that WhatsApp recently integrated in order to give E2E encrypted messaging to all of their users, published on the blog this: “&lt;a href=&#34;https://whispersystems.org/blog/there-is-no-whatsapp-backdoor/&#34;&gt;There is no WhatsApp ‘backdoor’&lt;/a&gt;“, which &lt;strong&gt;seemed&lt;/strong&gt; to have put the word END to this conversation.&lt;/p&gt;
 &lt;p&gt;I do not agree and, since a lot of &lt;strong&gt;ego&lt;/strong&gt; is going on here, I’d like to share my thoughts as well.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
@@ -251,13 +274,23 @@
 </body>
 </html>
 <!-- styles -->
+
 <link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
 
+
 <!-- jquery -->
+
 <script src="/lib/jquery/jquery.min.js"></script>
+
+
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
 <script src="/js/main.js"></script>
+
 <!-- search -->
 
 <!-- Google Analytics -->
