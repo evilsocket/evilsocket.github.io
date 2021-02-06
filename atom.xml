@@ -277,6 +277,8 @@
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
+    <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
+    
     <category term="raspberry" scheme="https://www.evilsocket.net/tags/raspberry/"/>
     
     <category term="rpi" scheme="https://www.evilsocket.net/tags/rpi/"/>
@@ -286,8 +288,6 @@
     <category term="rpi0w" scheme="https://www.evilsocket.net/tags/rpi0w/"/>
     
     <category term="kali" scheme="https://www.evilsocket.net/tags/kali/"/>
-    
-    <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
     
     <category term="btnap" scheme="https://www.evilsocket.net/tags/btnap/"/>
     
@@ -396,8 +396,6 @@
     
     <category term="golang" scheme="https://www.evilsocket.net/tags/golang/"/>
     
-    <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
-    
     <category term="arc" scheme="https://www.evilsocket.net/tags/arc/"/>
     
     <category term="arcd" scheme="https://www.evilsocket.net/tags/arcd/"/>
@@ -413,6 +411,8 @@
     <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
     
     <category term="aes" scheme="https://www.evilsocket.net/tags/aes/"/>
+    
+    <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
     
   </entry>
   
@@ -435,11 +435,11 @@
     
     <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
-    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
     <category term="bleah" scheme="https://www.evilsocket.net/tags/bleah/"/>
     
@@ -467,11 +467,11 @@
     
     <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
-    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
     <category term="low energy" scheme="https://www.evilsocket.net/tags/low-energy/"/>
     
