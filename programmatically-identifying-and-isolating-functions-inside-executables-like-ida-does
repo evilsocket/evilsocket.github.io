@@ -145,8 +145,7 @@
 
 
     </div>
-    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-    <br/>
+
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
@@ -186,6 +185,8 @@
 <p>I’ve implemented this algorithm as the new <a target="_blank" rel="noopener" href="https://github.com/evilsocket/libpe/tree/master/pefunctions">pefunctions</a> project sample inside <strong>libpe</strong> repository, enjoy :)</p>
 
   </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
 </article>
 
     <div class="blog-post-comments">

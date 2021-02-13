@@ -146,8 +146,7 @@
 
 
     </div>
-    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-    <br/>
+
     <div class="addthis_sharing_toolbox"></div>
   </header>
 
@@ -181,6 +180,8 @@
 </ol>
 
   </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
 </article>
 
     <div class="blog-post-comments">

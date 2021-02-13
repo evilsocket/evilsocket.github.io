@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Long time no see friends! Despite this break period ended up not being as long as I hoped for &#x2F; needed, it’s been nevertheless refreshing both from a personal standpoint (i can read and write music no">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hide Your Servers in Plain Sight, Presenting ShieldWall">
+<meta property="og:url" content="https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="Long time no see friends! Despite this break period ended up not being as long as I hoped for &#x2F; needed, it’s been nevertheless refreshing both from a personal standpoint (i can read and write music no">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.evilsocket.net/images/2021/shieldwall_gophers_vikings.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2021/paranoia.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2021/smart.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2021/shieldwall1.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2021/shieldwall2.png">
+<meta property="article:published_time" content="2021-02-13T14:34:28.000Z">
+<meta property="article:modified_time" content="2021-02-13T16:50:25.929Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="golang">
+<meta property="article:tag" content="firewall">
+<meta property="article:tag" content="server">
+<meta property="article:tag" content="servers">
+<meta property="article:tag" content="secret">
+<meta property="article:tag" content="iptables">
+<meta property="article:tag" content="shieldwall">
+<meta property="article:tag" content="remote firewall instrumentation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2021/shieldwall_gophers_vikings.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Hide Your Servers in Plain Sight, Presenting ShieldWall</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/05/26/Just-taking-a-break/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&text=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&is_video=false&description=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hide Your Servers in Plain Sight, Presenting ShieldWall&body=Check out this article: https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&name=Hide Your Servers in Plain Sight, Presenting ShieldWall&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Where-do-I-host-%E2%80%9CThat-Thing%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">Where do I host “That Thing”?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Possible-Solutions"><span class="toc-number">2.</span> <span class="toc-text">Possible Solutions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Do-you-even-iptables-Bro"><span class="toc-number">3.</span> <span class="toc-text">Do you even iptables Bro?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Final-considerations-and-new-features"><span class="toc-number">4.</span> <span class="toc-text">Final considerations and new features</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Hide Your Servers in Plain Sight, Presenting ShieldWall
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2021-02-13T14:34:28.000Z" itemprop="datePublished">2021-02-13</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/firewall/" rel="tag">firewall</a>, <a class="tag-link-link" href="/tags/golang/" rel="tag">golang</a>, <a class="tag-link-link" href="/tags/iptables/" rel="tag">iptables</a>, <a class="tag-link-link" href="/tags/remote-firewall-instrumentation/" rel="tag">remote firewall instrumentation</a>, <a class="tag-link-link" href="/tags/secret/" rel="tag">secret</a>, <a class="tag-link-link" href="/tags/server/" rel="tag">server</a>, <a class="tag-link-link" href="/tags/servers/" rel="tag">servers</a>, <a class="tag-link-link" href="/tags/shieldwall/" rel="tag">shieldwall</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><a href="/2020/05/26/Just-taking-a-break/">Long time no see</a> friends! Despite this break period ended up not being as long as I hoped for / needed, it’s been nevertheless refreshing both from a personal standpoint (i can read and write music now!!!!! that’s so freaking awesomeeeeee … anyways) and from a creative one. I’ve been back to coding and publishing a <a target="_blank" rel="noopener" href="https://github.com/evilsocket/uroboros">couple</a> <a target="_blank" rel="noopener" href="https://github.com/evilsocket/ditto">of new tools</a>, but it’s of the third and simplest of them all I want to blog about today :D</p>
+<p><em>(sound of viking horns) introducing … project <a target="_blank" rel="noopener" href="https://shieldwall.me/">ShieldWall</a>!</em></p>
+<center>
+<img src="/images/2021/shieldwall_gophers_vikings.jpg"/>
+<small>Credits: <a href="https://www.pinterest.it/pin/584905070337190852/" target="_blank">i have no idea how this works</a></small>
+</center>
+
+<p>Say that you need to host some personal / sensitive service of yours, in such a way that it is always easily accessible by any of your devices (including mobile) without configuration (no VPN, SSH tunnel, etc), and <strong>to those devices only</strong> (at the packet level, so that shodan &amp;&amp; friends can’t index the port(s)) as they change their IP addresses? (The last part is clearly what adds complexity to the task.) </p>
+<p>While you think about how you would do it (or maybe how you do it already), let me provide some more context with my usecase.</p>
+<h3 id="Where-do-I-host-“That-Thing”"><a href="#Where-do-I-host-“That-Thing”" class="headerlink" title="Where do I host “That Thing”?"></a>Where do I host “That Thing”?</h3><p>You might be familiar with my other project, <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc">Arc</a>, if not go check it out now because it’s pretty useful and it replaces all you password managers, evernotes and todos. Me and the early adopters started using Arc to store all sorts of things. We have instances with passwords, other for 2FA, for documents, notes, reminders, video, audio, and the list keeps going. Since its first version it has improved a lot and now both the API and the frontend live in one single binary compiled for any OS (Golang FTW), but it always had and still has one major usability issue: <em>where do I host that thing</em>? </p>
+<p>I mean, as long as you run it and use it just on your laptop, it’s done. And while you’re at home you only need a raspberry pi (or to open the port on your laptop) for other devices like your smartphone to use it. But what how do you do when you’re away from home? Sure the data is end-to-end encrypted so even if you host it on a public server and somebody somehow hacks into it, they just get AES256 enrypted crap. But what if they inject some javascript in the UI that grabs your access and encryption keys next time you use it? Yeah … i am <em>that</em> paranoid … bear with me.</p>
+<center>
+<img src="/images/2021/paranoia.jpg"/>
+</center>
+
+<p>This can be generalized to other usecases. For instance, red team operators might want to keep hidden their infrastructure while still being able to connect for setup and mainteinance. Or really any type of service that needs to be on the public internet for ease of access but that contains data that’s for your eyes only.</p>
+<h3 id="Possible-Solutions"><a href="#Possible-Solutions" class="headerlink" title="Possible Solutions"></a>Possible Solutions</h3><p><a href="/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/">My first terrible attempt</a> to make that stuff usable wherever I go was based on Bluetooth (of course this approach doesn’t apply to anything other than my Arc usecase). The idea was to host Arc on a small Raspberry Pi 0 with a battery pack and have the service responding via BTNAP assigned IP address. Not only it was as complex to configure as it sounds, but it was also unstable as f. </p>
+<p><del>Bluetooth based solution</del></p>
+<p>The second approach was slightly better in terms of usability. Arc was running on a Raspberry Pi at home and published as a Tor hidden service that I started only when leaving home and then accessed with Tor browser using the .onion url I saved each time on some cloud note. That is sloooooooooooow, unreliable as it depends on your home internet connectivity and it still exposes the service to whoever is crawling and indexing hidden services. Not to mention that Tor traffic is blocked in many networks.</p>
+<p><del>Tor based solution</del></p>
+<p>As <a target="_blank" rel="noopener" href="https://twitter.com/acor3/status/1360501389491916800">Marco Acorte suggested</a> SSH tunneling is a partial solution. You can make the service bind to localhost on the server, then authenticate to it via SSH from the device you need to use, starting an authenticated and encrypted tunnel to the server bound to localhost. It works, but it exposes the ssh port of the server (with its fingerprint, <a target="_blank" rel="noopener" href="https://www.reddit.com/r/onions/comments/2t3bm6/shodan_search_can_use_ssh_fingerprinting_to/">that can be used in many ways</a>) and it’s not the simplest solution when you are on a rush and need to authenticate to something from your mobile device.</p>
+<p><del>SSH tunnel based solution</del></p>
+<p>VPN is another option but additionally to having the same limitations of the SSH tunnel approach, it also adds setup&amp;configuration complexity. As <a target="_blank" rel="noopener" href="https://twitter.com/NGiollaEaspaig/status/1360599683916324865">@NGiollaEaspaig suggested</a> there are several cloud specific options for this. But not everybody wants to or knows how to setup Azure Conditional Access Policies :D There’s the <a target="_blank" rel="noopener" href="https://twitter.com/acor3/status/1359540384750309376">ngrok based solution</a> too, but it works proxying the traffic to your app, meaning it’s their servers that will receive it and route it to the real server, similarly to what also CloudFlare offers. Both cases you’d be handing over control of your most sensitive traffic to another entity. You see where I am going with this … I’m quite difficult to satisty! :’D</p>
+<p><del>CLOUD &amp; Other Paid Friends</del></p>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/CakqPuwFAIc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="Do-you-even-iptables-Bro"><a href="#Do-you-even-iptables-Bro" class="headerlink" title="Do you even iptables Bro?"></a>Do you even iptables Bro?</h3><p>I do believe that the simpler solution is always the best one, and I like the idea of controlling this access mechanism myself via iptables. <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/11851/iptables-allow-certain-ips-and-block-all-other-connection">It is trivial</a> to block all traffic and only allow certain IP addresses on certain ports. Another reason why IMO it’s the best tool for this job is that it works at the packet level, meaning it is protocol agnostic and it doesn’t only work for HTTP based applications. The only (usability) issue in this case is that freaking IP address that changes. You can’t whitelist beforehand something you don’t know yet.</p>
+<center>
+<img src="/images/2021/smart.png"/>
+</center>
+
+<p>So I thought, woudln’t it be so nice and clean having a stupid-simple agent running on this server (normal server on the <em>dangerous public internet</em>), using iptables to <strong>block everything by default</strong> and periodically polling a public API (<a target="_blank" rel="noopener" href="https://shieldwall.me/">hosted elsewhere</a>) that’ll return the list of IP addresses to whitelist. I could then just log in to this public service with my device with a normal browser and just push a rule with my IP. <em>I KNOW RIGHT?!</em></p>
+<p>So yeah I coded this thing.</p>
+<center>
+<img src="/images/2021/shieldwall1.png" width="800px"/>
+<br>
+<img src="/images/2021/shieldwall2.png" width="800px"/>
+</center>
+
+<p>The service is free and <a target="_blank" rel="noopener" href="https://shieldwall.me/#/register">you’re welcome to sign up</a>, use it and <a target="_blank" rel="noopener" href="https://github.com/evilsocket/shieldwall">report any bugs</a> :D Alternatively you can host the API and frontend yourself and have your own infrastructure.</p>
+<p>The installation process once you registered an account is pretty simple (Golang FTW again):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/sw</span><br><span class="line"><span class="built_in">cd</span> /tmp/sw</span><br><span class="line">wget https://github.com/evilsocket/shieldwall/releases/download/v1.0.0/shieldwall-agent_1.0.0_linux_arm64.tar.gz</span><br><span class="line">tar xvf shieldwall-agent_1.0.0_linux_arm64.tar.gz</span><br><span class="line">sudo ./install.sh</span><br></pre></td></tr></table></figure>
+
+<p>The agent is now installed as a systemd service, but it is not yet started nor enabled for autostart. You will first need to register an account on <a target="_blank" rel="noopener" href="https://shieldwall.me/">https://shieldwall.me/</a> and then edit the /etc/shieldwall/config.yaml configuration file, making sure it matches what you see on the agent page.</p>
+<p><strong>It is very important that you double check the configuration before the next step, if the agent can’t authenticate because of a wrong token, you will be locked out by the firewall and unable to log back.</strong></p>
+<p>You can now enable the service and start it. If configured so, it will automatically download and install its updates from github:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> shieldwall-agent</span><br><span class="line">sudo service shieldwall-agent start</span><br></pre></td></tr></table></figure>
+
+<p>That’s it … now you can use your shieldwall.me account to instrument this agent and only open ports to your IP from a given amount of time (or permantently, but i stronlgy suggest you always set an expire time for the rules so that the agent will block everything again after a while … just in case).</p>
+<h3 id="Final-considerations-and-new-features"><a href="#Final-considerations-and-new-features" class="headerlink" title="Final considerations and new features"></a>Final considerations and new features</h3><p>ShieldWall is a very simple concept that can nevertheless offer a strong layer of security. But that’s what it is, just one layer. It is not intended to replace a proper authentication mechanism in your service, or strong passwords or generally speaking good practices in security. But damn if it works well in what it does :D</p>
+<p>Right now it only supports iptables and even tho it’s relatively trivial to implement the support for other firewalls I’m not planning to do it unless I’ll see some major interest in the project. Other ideas include the use of an intermediary S3 bucket, let me explain this.</p>
+<p>Your agents will be talking to the shieldwall.me server, meaning that I (or whoever is controlling the infrastructure if you hosted it elsewhere) can potentially know the IP addresses of your servers. I really don’t care to be honest, but in order to add an additional level of privacy what I could do is giving you the option to specify the connection details to an S3 bucket in your control in your shieldwall.me profile page. If configured so, the server would be only pushing the JSON of the rules to that bucket for your agents to consume. That way my server and the agents would never see each other and there wouldn’t be any way for the server administrator to even know their IP addresses.</p>
+<p>In this case as well, not planning on implementing it any time soon unless I see registrations going up, as the tool already works great as it is for my usecase :D</p>
+<p>I hope you enjoyed the post and most importantly that you’ll find the service useful, cheers! ^_^</p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Where-do-I-host-%E2%80%9CThat-Thing%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">Where do I host “That Thing”?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Possible-Solutions"><span class="toc-number">2.</span> <span class="toc-text">Possible Solutions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Do-you-even-iptables-Bro"><span class="toc-number">3.</span> <span class="toc-text">Do you even iptables Bro?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Final-considerations-and-new-features"><span class="toc-number">4.</span> <span class="toc-text">Final considerations and new features</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&text=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&is_video=false&description=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hide Your Servers in Plain Sight, Presenting ShieldWall&body=Check out this article: https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&title=Hide Your Servers in Plain Sight, Presenting ShieldWall"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/&name=Hide Your Servers in Plain Sight, Presenting ShieldWall&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
