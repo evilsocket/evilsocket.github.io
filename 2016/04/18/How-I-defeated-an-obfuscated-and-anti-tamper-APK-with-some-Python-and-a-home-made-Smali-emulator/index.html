@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="During this Saturday afternoon I was chatting with a friend of mine ( Matteo ) and he asked for some help to fix a Python script he was working on. He was trying to deobfuscate an APK in order to unde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.">
+<meta property="og:url" content="https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="During this Saturday afternoon I was chatting with a friend of mine ( Matteo ) and he asked for some help to fix a Python script he was working on. He was trying to deobfuscate an APK in order to unde">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/apktool.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/wtf.jpeg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/phase1.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/Okay-Meme-Gif-05.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/challengeaccepted.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/pwned.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/04/victory.jpg">
+<meta property="article:published_time" content="2016-04-18T03:31:02.000Z">
+<meta property="article:modified_time" content="2016-04-18T05:56:48.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="android">
+<meta property="article:tag" content="dalvik">
+<meta property="article:tag" content="encryption">
+<meta property="article:tag" content="emulator">
+<meta property="article:tag" content="reversing">
+<meta property="article:tag" content="apk">
+<meta property="article:tag" content="mobile">
+<meta property="article:tag" content="obfuscation">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="emulation">
+<meta property="article:tag" content="smali">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2016/04/apktool.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/03/31/How-To-Build-Your-Own-Rogue-GSM-BTS-For-Fun-And-Profit/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&text=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&is_video=false&description=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&body=Check out this article: https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&name=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&description=&lt;p&gt;During this Saturday afternoon I was chatting with a friend of mine ( &lt;a href=&#34;https://twitter.com/fvrmatteo&#34;&gt;Matteo&lt;/a&gt; ) and he asked for some help to fix a Python script he was working on.&lt;/p&gt;
+&lt;p&gt;He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.&lt;/p&gt;
+&lt;p&gt;This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&amp;gt; jd-gui -&amp;gt; &lt;strong&gt;done&lt;/strong&gt; ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.&lt;/p&gt;
+&lt;p&gt;I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Weird-Characters-Are-Weird"><span class="toc-number">1.</span> <span class="toc-text">Weird Characters Are Weird</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anti-Tampering"><span class="toc-number">2.</span> <span class="toc-text">Anti Tampering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Encrypted-Strings"><span class="toc-number">3.</span> <span class="toc-text">Encrypted Strings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#All-hail-the-Smali-Emulator"><span class="toc-number">4.</span> <span class="toc-text">All hail the Smali Emulator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">5.</span> <span class="toc-text">Conclusions</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2016-04-18T03:31:02.000Z" itemprop="datePublished">2016-04-18</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/apk/" rel="tag">apk</a>, <a class="tag-link-link" href="/tags/dalvik/" rel="tag">dalvik</a>, <a class="tag-link-link" href="/tags/emulation/" rel="tag">emulation</a>, <a class="tag-link-link" href="/tags/emulator/" rel="tag">emulator</a>, <a class="tag-link-link" href="/tags/encryption/" rel="tag">encryption</a>, <a class="tag-link-link" href="/tags/mobile/" rel="tag">mobile</a>, <a class="tag-link-link" href="/tags/obfuscation/" rel="tag">obfuscation</a>, <a class="tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/smali/" rel="tag">smali</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>During this Saturday afternoon I was chatting with a friend of mine ( <a target="_blank" rel="noopener" href="https://twitter.com/fvrmatteo">Matteo</a> ) and he asked for some help to fix a Python script he was working on.</p>
+<p>He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.</p>
+<p>This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&gt; jd-gui -&gt; <strong>done</strong> ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.</p>
+<p>I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.</p>
+<a id="more"></a>
+
+<h3 id="Weird-Characters-Are-Weird"><a href="#Weird-Characters-Are-Weird" class="headerlink" title="Weird Characters Are Weird"></a>Weird Characters Are Weird</h3><p>Like every other reverser who experienced APK decompilation I’m used to Proguard messing with class and method names ( or Dexguard messing with strings, and so forth ), this is not usually a big deal to me, but what I saw when I executed <strong>apktool</strong> was definitely surprising:</p>
+<p><img src="/images/2016/04/apktool.png" alt="apktool"></p>
+<p><img src="/images/2016/04/wtf.jpeg" alt="wtf"></p>
+<p>Most of the classes and methods names were weird binary strings, this almost freezed every single tool or editor I used to inspect those files, so the very first step was to fix ( to be honest, reimplement from scratch XD ) the python script that Matteo was trying to use to rename each obfuscated entry, the script itself was quite simple:</p>
+<ul>
+<li>Loop all smali files with non printable names.</li>
+<li>Replace the obfuscated class name with <em>ClassXXX</em> ( where XXX is an incremental integer ).</li>
+<li>Rename the files.</li>
+<li>Search for every references to those classes and patch them with the new names ( regular expressions FTW! ).</li>
+<li>Repeat the process against <em>.field</em> directives ( class members, methods, etc ).</li>
+</ul>
+<p>At the end of the process, I finally had a browsable folder and readable smali files :)</p>
+<p><img src="/images/2016/04/phase1.png" alt="after basic deobfuscation"></p>
+<p>But I was definitely far from having done …</p>
+<h3 id="Anti-Tampering"><a href="#Anti-Tampering" class="headerlink" title="Anti Tampering"></a>Anti Tampering</h3><p>Before I continue, there’re two things I need to point out in order to make the reasons behind my approach clearer:</p>
+<ol>
+<li>Matteo told me that the application had some misterious anti tampering ( and most likely anti debugging ) protection, therefore rebuilding the smali to a new APK with some injected code was not possible, neither was debugging.</li>
+<li>Such protections not only prevented code injection/modification, but also uninstalled the application if such tampering was detected.</li>
+</ol>
+<p>So no code injection ( nope, XPosed neither ), no debugging, absolutely no chance to use my standard approach for reversing it :(</p>
+<p><img src="/images/2016/04/Okay-Meme-Gif-05.jpg" alt="sad"></p>
+<h3 id="Encrypted-Strings"><a href="#Encrypted-Strings" class="headerlink" title="Encrypted Strings"></a>Encrypted Strings</h3><p>As the lazy (or smart, you decide) reverser I am, instead of trying to understand the logic, at first I tried to search for meaningful strings that could give me some hints about what was going on in the app, but again I had a nasty surprise instead.</p>
+<p>Every single string was encrypted with a custom algorithm, basically every reference to a string was replaced by something like:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String decrypted = Class623::method5( <span class="keyword">new</span> <span class="keyword">int</span>[]&#123; -<span class="number">12</span>, <span class="number">44</span>, -<span class="number">35</span>, ... &#125;, <span class="number">52</span> );</span><br></pre></td></tr></table></figure>
+
+<p>Just a long array of integers and another integer as the second argument (maybe some sort of key?)</p>
+<p>What I usually do in these cases is:</p>
+<ol>
+<li>Decompile the APK to java ( with dex2jar + jd-gui or just jadx ).</li>
+<li>Take the java code of the decryption routine and paste it in a stand alone java console application.</li>
+<li>Run the decryption routine against the encrypted stuff and eventually get the clear text results.</li>
+</ol>
+<p>Guess what? Every single tool failed to correctly transform the smali code of <strong>Class623::method5</strong> into java … the output was just nonsense, not working, nada … and for the record I’m not that good in reading smali code (the routine itself was quite complicated, at least for my smali skills) … but I couldn’t just give up … no way!</p>
+<p><img src="/images/2016/04/challengeaccepted.jpg" alt="challenge accepted"></p>
+<h3 id="All-hail-the-Smali-Emulator"><a href="#All-hail-the-Smali-Emulator" class="headerlink" title="All hail the Smali Emulator"></a>All hail the Smali Emulator</h3><p>Of course I could take the smali code of <strong>Class623::method5</strong>, create a new Android app, decompile it with apktool, inject the smali code of that routine into the output, insert a smali call to that code into the app, rebuild it and launch it … but:</p>
+<ol>
+<li>Again, I’m <strong>lazy</strong>.</li>
+<li>This solution wouldn’t be <strong>elegant</strong>.</li>
+<li>A new idea was just born in my head and it was just too cool, I <strong>had</strong> to try it!</li>
+</ol>
+<p>Long story short, I said to myself:</p>
+<pre><code>Fuck this, I&#39;m gonna write a smali parser and emulator and feed it with this
+routine, eventually it will output all the cleartexts I need!</code></pre>
+<p>So I started reading <a target="_blank" rel="noopener" href="http://pallergabor.uw.hu/androidblog/dalvik_opcodes.html">Dalvik opcodes specs</a> ( tnx to <strong>Gabor Paller</strong> for this! ) and putting some code together, after a few hours I had this simple script ready for testing:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> smali.emulator <span class="keyword">import</span> Emulator</span><br><span class="line"></span><br><span class="line">emu = Emulator()</span><br><span class="line"></span><br><span class="line"><span class="comment"># The smali file to emulate.</span></span><br><span class="line">filename = <span class="string">&#x27;decryptor.smali&#x27;</span></span><br><span class="line"><span class="comment"># Arguments for the method.</span></span><br><span class="line">args = &#123;</span><br><span class="line">    <span class="string">&#x27;p0&#x27;</span>: (-<span class="number">62</span>, -<span class="number">99</span>, -<span class="number">106</span>, -<span class="number">125</span>, -<span class="number">123</span>, -<span class="number">105</span>, -<span class="number">98</span>, -<span class="number">37</span>, -<span class="number">105</span>, -<span class="number">97</span>, -<span class="number">103</span>, -<span class="number">41</span>, -<span class="number">118</span>, -<span class="number">97</span>, -<span class="number">113</span>, -<span class="number">103</span>, -<span class="number">109</span>, -<span class="number">104</span>, -<span class="number">115</span>, <span class="number">111</span>, <span class="number">98</span>, <span class="number">103</span>, <span class="number">35</span>, <span class="number">52</span>),</span><br><span class="line">    <span class="string">&#x27;p1&#x27;</span>: <span class="number">19</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ret = emu.run( filename, args )</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> emu.stats</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;RESULT:\n&quot;</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;&#x27;%s&#x27;&quot;</span> % ret</span><br></pre></td></tr></table></figure>
+
+<p>Aaaaaaand:</p>
+<p><img src="/images/2016/04/pwned.png" alt="decrypted"></p>
+<p><strong>BINGO!!!</strong></p>
+<p>I executed the script against every encrypted string and it worked like a charm, the emulator was able to correctly parse and execute the smali code of the decryption routine and decrypt every single entry I’ve extracted from the decompiled application … from that point on it was just a matter of replacing encrypted entries with their cleartexts and the reversing process became as easy as pie :)</p>
+<p><img src="/images/2016/04/victory.jpg" alt="victory"></p>
+<h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>I’ve released the code on <a target="_blank" rel="noopener" href="https://github.com/evilsocket/smali_emulator">github</a> as usual, it still lacks the support for a lot of Dalvik opcodes, I’ve just implemented the ones I needed in order to emulate that routine ( which you can find in the repo as well ), but it’s quite easy to improve it and probably I’ll complete it in the next few days :)</p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Weird-Characters-Are-Weird"><span class="toc-number">1.</span> <span class="toc-text">Weird Characters Are Weird</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anti-Tampering"><span class="toc-number">2.</span> <span class="toc-text">Anti Tampering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Encrypted-Strings"><span class="toc-number">3.</span> <span class="toc-text">Encrypted Strings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#All-hail-the-Smali-Emulator"><span class="toc-number">4.</span> <span class="toc-text">All hail the Smali Emulator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusions"><span class="toc-number">5.</span> <span class="toc-text">Conclusions</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&text=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&is_video=false&description=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&body=Check out this article: https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&title=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/&name=How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.&description=&lt;p&gt;During this Saturday afternoon I was chatting with a friend of mine ( &lt;a href=&#34;https://twitter.com/fvrmatteo&#34;&gt;Matteo&lt;/a&gt; ) and he asked for some help to fix a Python script he was working on.&lt;/p&gt;
+&lt;p&gt;He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.&lt;/p&gt;
+&lt;p&gt;This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&amp;gt; jd-gui -&amp;gt; &lt;strong&gt;done&lt;/strong&gt; ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.&lt;/p&gt;
+&lt;p&gt;I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

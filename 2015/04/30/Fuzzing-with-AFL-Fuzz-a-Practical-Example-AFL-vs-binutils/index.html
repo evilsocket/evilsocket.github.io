@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="It’s been a few weeks I’ve been playing with afl-fuzz ( american fuzzy lop ), a great tool from lcamtuf which uses binary instrumentation to create edge-cases for a given software, the description on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )">
+<meta property="og:url" content="https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="It’s been a few weeks I’ve been playing with afl-fuzz ( american fuzzy lop ), a great tool from lcamtuf which uses binary instrumentation to create edge-cases for a given software, the description on">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.evilsocket.net/images/2015/04/lop.png">
+<meta property="article:published_time" content="2015-04-30T16:51:04.000Z">
+<meta property="article:modified_time" content="2015-04-30T17:31:23.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="exploit">
+<meta property="article:tag" content="afl">
+<meta property="article:tag" content="fuzzing">
+<meta property="article:tag" content="lcamtuf">
+<meta property="article:tag" content="fuzzer">
+<meta property="article:tag" content="binary instrumentation">
+<meta property="article:tag" content="gcc">
+<meta property="article:tag" content="clang">
+<meta property="article:tag" content="qemu">
+<meta property="article:tag" content="llvm">
+<meta property="article:tag" content="crash">
+<meta property="article:tag" content="american fuzzy lop">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2015/04/lop.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/05/01/Dynamically-inject-a-shared-library-into-a-running-process-on-Android-ARM/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/02/20/SuperFish-AdWare-found-inside-X-Notifier-browser-extension-code/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&text=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&is_video=false&description=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&body=Check out this article: https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&name=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&description=&lt;p&gt;It’s been a few weeks I’ve been playing with &lt;a href=&#34;http://lcamtuf.coredump.cx/afl/&#34;&gt;afl-fuzz&lt;/a&gt; ( &lt;em&gt;american fuzzy lop&lt;/em&gt; ), a great tool from &lt;a href=&#34;http://lcamtuf.coredump.cx/&#34;&gt;lcamtuf&lt;/a&gt; which uses binary instrumentation to create edge-cases for a given software, the description on the website is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
+instrumentation and genetic algorithms to automatically discover clean, interesting test cases
+that trigger new internal states in the targeted binary.
+This substantially improves the functional coverage for the fuzzed code. The compact synthesized
+corpora produced by the tool are also useful for seeding other, more labor- or resource-intensive
+testing regimes down the road.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok nice … but what does this actually mean?&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Binary-Instrumentation"><span class="toc-number">1.</span> <span class="toc-text">Binary Instrumentation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Installation"><span class="toc-number">2.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#A-practical-example"><span class="toc-number">3.</span> <span class="toc-text">A practical example</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2015-04-30T16:51:04.000Z" itemprop="datePublished">2015-04-30</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/afl/" rel="tag">afl</a>, <a class="tag-link-link" href="/tags/american-fuzzy-lop/" rel="tag">american fuzzy lop</a>, <a class="tag-link-link" href="/tags/binary-instrumentation/" rel="tag">binary instrumentation</a>, <a class="tag-link-link" href="/tags/clang/" rel="tag">clang</a>, <a class="tag-link-link" href="/tags/crash/" rel="tag">crash</a>, <a class="tag-link-link" href="/tags/exploit/" rel="tag">exploit</a>, <a class="tag-link-link" href="/tags/fuzzer/" rel="tag">fuzzer</a>, <a class="tag-link-link" href="/tags/fuzzing/" rel="tag">fuzzing</a>, <a class="tag-link-link" href="/tags/gcc/" rel="tag">gcc</a>, <a class="tag-link-link" href="/tags/lcamtuf/" rel="tag">lcamtuf</a>, <a class="tag-link-link" href="/tags/llvm/" rel="tag">llvm</a>, <a class="tag-link-link" href="/tags/qemu/" rel="tag">qemu</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>It’s been a few weeks I’ve been playing with <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/afl/">afl-fuzz</a> ( <em>american fuzzy lop</em> ), a great tool from <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/">lcamtuf</a> which uses binary instrumentation to create edge-cases for a given software, the description on the website is:</p>
+<pre><code>American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
+instrumentation and genetic algorithms to automatically discover clean, interesting test cases
+that trigger new internal states in the targeted binary.
+This substantially improves the functional coverage for the fuzzed code. The compact synthesized
+corpora produced by the tool are also useful for seeding other, more labor- or resource-intensive
+testing regimes down the road.</code></pre>
+<p>Ok nice … but what does this actually mean?</p>
+<a id="more"></a>
+
+<h1 id="Binary-Instrumentation"><a href="#Binary-Instrumentation" class="headerlink" title="Binary Instrumentation"></a>Binary Instrumentation</h1><p>The first component of AFL is a wrapper for GCC/CLang compilers that will inject during compilation its own assembly code into the target software.<br>The fuzzer will use this code to trace execution paths while feeding the system with new inputs and to determine if a new mutation of the input is able to trigger known or unkown ( new ) execution paths.</p>
+<p>If you can’t/don’t want to recompile the source code of the target program, AFL also supports a QEMU mode, an extension that leverages the QEMU “user emulation” mode and allows callers to obtain instrumentation output for black-box, closed-source binaries. This mechanism can be then used by afl-fuzz to stress-test targets that couldn’t be built with afl-gcc.</p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>The installation of AFL is trivial, just download the <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz">latest version</a> of the source code, extract it and do the usual:</p>
+<pre><code>make
+sudo make install</code></pre>
+<h1 id="A-practical-example"><a href="#A-practical-example" class="headerlink" title="A practical example"></a>A practical example</h1><p>Being AFL particularly well suited for programs that accept a file as input, I thought about trying it against the <strong>binutils</strong> and specifically against the <strong>readelf</strong> binary … AFL found eight distinct crashes cases ( potentially exploitable ) in the first five minutes of elaboration, and more than 30 after less than one hour!</p>
+<p>First of all, you need to download a copy of the target program source code and extract it, once you’re inside the extracted folder, you will need to override the <strong>CC</strong> ( or <strong>CXX</strong> if it’s a C++ software being compiled with g++ instead of gcc ) environment variable before triggering the <strong>configure</strong> script and finally proceed with the compilation as usual.</p>
+<pre><code>cd ~/binutils-2.25
+CC=afl-gcc ./configure
+make</code></pre>
+<p><strong>NOTE</strong>: If you want to use clang instead of gcc, you need to set CC to <strong>afl-clang</strong>.</p>
+<p>During the compilation, you will notice a few messages from AFL informing you that it’s correctly injecting its instrumentations.</p>
+<p>Once finished, you want to tune up your configuration, the following command will instruct the system to output coredumps as files instead of sending them to a specific crash handler app.</p>
+<pre><code># echo core &gt; /proc/sys/kernel/core_pattern</code></pre>
+<p>Now, we need to create an <strong>input</strong> folder where we will put our legit ELF file, in our case the <strong>/bin/ps</strong> command, ( AFL will use it as a base template ) and an <strong>output</strong> folder where the fuzzer will store its state but more important all the generated samples that make the application crash or hang.</p>
+<pre><code>cd ~/binutils-2.25
+mkdir afl_in afl_out
+cp /bin/ps afl_in/</code></pre>
+<p>And finally, let’s run the fuzzer:</p>
+<pre><code>cd ~/binutils-2.25
+afl-fuzz -i afl_in -o afl_out ./binutils/readelf -a @@</code></pre>
+<p>Eventually, we will start to see something like the following:</p>
+<p><img src="/images/2015/04/lop.png" alt="lop"></p>
+<p>As you can see, the red number <strong>8</strong> on the top right is the total number of <strong>unique</strong> crashes the system was able to trigger so far.<br>In the <strong>afl_out/crashes</strong> folder you will find the files that made readelf crash, for instance if I try to execute readelf against the first crashing sample ( inside GDB ), I get the following:</p>
+<pre><code>*** buffer overflow detected ***: /home/evilsocket/binutils-2.25/binutils/readelf terminated
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x78c4e)[0x7ffff786cc4e]
+/lib/x86_64-linux-gnu/libc.so.6(__fortify_fail+0x5c)[0x7ffff790ce8c]
+/lib/x86_64-linux-gnu/libc.so.6(+0x116e80)[0x7ffff790ae80]
+/lib/x86_64-linux-gnu/libc.so.6(__strcat_chk+0x5d)[0x7ffff790a05d]
+/home/evilsocket/binutils-2.25/binutils/readelf[0x41349b]
+/home/evilsocket/binutils-2.25/binutils/readelf[0x490b67]
+/home/evilsocket/binutils-2.25/binutils/readelf[0x4c0b44]
+/home/evilsocket/binutils-2.25/binutils/readelf[0x403b0d]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0)[0x7ffff7814a40]
+/home/evilsocket/binutils-2.25/binutils/readelf[0x404169]
+======= Memory map: ========
+00400000-0058b000 r-xp 00000000 08:05 6179323                            /home/evilsocket/binutils-2.25/binutils/readelf
+0078a000-0078b000 r--p 0018a000 08:05 6179323                            /home/evilsocket/binutils-2.25/binutils/readelf
+0078b000-0078d000 rw-p 0018b000 08:05 6179323                            /home/evilsocket/binutils-2.25/binutils/readelf
+0078d000-007b1000 rw-p 00000000 00:00 0                                  [heap]
+7ffff7313000-7ffff7329000 r-xp 00000000 08:05 262358                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ffff7329000-7ffff7528000 ---p 00016000 08:05 262358                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ffff7528000-7ffff7529000 rw-p 00015000 08:05 262358                     /lib/x86_64-linux-gnu/libgcc_s.so.1
+7ffff7529000-7ffff77f4000 r--p 00000000 08:05 6553617                    /usr/lib/locale/locale-archive
+7ffff77f4000-7ffff79b4000 r-xp 00000000 08:05 262349                     /lib/x86_64-linux-gnu/libc-2.21.so
+7ffff79b4000-7ffff7bb4000 ---p 001c0000 08:05 262349                     /lib/x86_64-linux-gnu/libc-2.21.so
+7ffff7bb4000-7ffff7bb8000 r--p 001c0000 08:05 262349                     /lib/x86_64-linux-gnu/libc-2.21.so
+7ffff7bb8000-7ffff7bba000 rw-p 001c4000 08:05 262349                     /lib/x86_64-linux-gnu/libc-2.21.so
+7ffff7bba000-7ffff7bbe000 rw-p 00000000 00:00 0
+7ffff7bbe000-7ffff7bd7000 r-xp 00000000 08:05 262234                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7ffff7bd7000-7ffff7dd7000 ---p 00019000 08:05 262234                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7ffff7dd7000-7ffff7dd8000 r--p 00019000 08:05 262234                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7ffff7dd8000-7ffff7dd9000 rw-p 0001a000 08:05 262234                     /lib/x86_64-linux-gnu/libz.so.1.2.8
+7ffff7dd9000-7ffff7dfd000 r-xp 00000000 08:05 262335                     /lib/x86_64-linux-gnu/ld-2.21.so
+7ffff7fa7000-7ffff7fce000 r--p 00000000 08:05 7605558                    /usr/share/locale-langpack/it/LC_MESSAGES/binutils.mo
+7ffff7fce000-7ffff7fd1000 rw-p 00000000 00:00 0
+7ffff7fec000-7ffff7fee000 rw-p 00000000 00:00 0
+7ffff7fee000-7ffff7ff5000 r--s 00000000 08:05 6824223                    /usr/lib/x86_64-linux-gnu/gconv/gconv-modules.cache
+7ffff7ff5000-7ffff7ff8000 rw-p 00000000 00:00 0
+7ffff7ff8000-7ffff7ffa000 r--p 00000000 00:00 0                          [vvar]
+7ffff7ffa000-7ffff7ffc000 r-xp 00000000 00:00 0                          [vdso]
+7ffff7ffc000-7ffff7ffd000 r--p 00023000 08:05 262335                     /lib/x86_64-linux-gnu/ld-2.21.so
+7ffff7ffd000-7ffff7ffe000 rw-p 00024000 08:05 262335                     /lib/x86_64-linux-gnu/ld-2.21.so
+7ffff7ffe000-7ffff7fff000 rw-p 00000000 00:00 0
+7ffffffde000-7ffffffff000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+  0x0010:   nome: GCC_3.0
+Program received signal SIGABRT, Aborted.
+0x00007ffff7829267 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:55
+55    ../sysdeps/unix/sysv/linux/raise.c: File o directory non esistente.</code></pre>
+<p>Let AFL run for a while and it will find all sort of edge cases and potentially exploitable vulnerabilities :)</p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Binary-Instrumentation"><span class="toc-number">1.</span> <span class="toc-text">Binary Instrumentation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Installation"><span class="toc-number">2.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#A-practical-example"><span class="toc-number">3.</span> <span class="toc-text">A practical example</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&text=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&is_video=false&description=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&body=Check out this article: https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&title=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/04/30/Fuzzing-with-AFL-Fuzz-a-Practical-Example-AFL-vs-binutils/&name=Fuzzing With AFL-Fuzz, a Practical Example ( AFL vs Binutils )&description=&lt;p&gt;It’s been a few weeks I’ve been playing with &lt;a href=&#34;http://lcamtuf.coredump.cx/afl/&#34;&gt;afl-fuzz&lt;/a&gt; ( &lt;em&gt;american fuzzy lop&lt;/em&gt; ), a great tool from &lt;a href=&#34;http://lcamtuf.coredump.cx/&#34;&gt;lcamtuf&lt;/a&gt; which uses binary instrumentation to create edge-cases for a given software, the description on the website is:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
+instrumentation and genetic algorithms to automatically discover clean, interesting test cases
+that trigger new internal states in the targeted binary.
+This substantially improves the functional coverage for the fuzzed code. The compact synthesized
+corpora produced by the tool are also useful for seeding other, more labor- or resource-intensive
+testing regimes down the road.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok nice … but what does this actually mean?&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

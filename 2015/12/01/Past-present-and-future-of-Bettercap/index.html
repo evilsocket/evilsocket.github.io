@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Four months passed since my first blog post about bettercap, a lot of fixes have been released and a lot of new features have been implemented.In this post I’d like to talk about some of these new fea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Past, Present and Future of Bettercap">
+<meta property="og:url" content="https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="Four months passed since my first blog post about bettercap, a lot of fixes have been released and a lot of new features have been implemented.In this post I’d like to talk about some of these new fea">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2015-12-01T16:30:23.000Z">
+<meta property="article:modified_time" content="2015-12-01T17:04:02.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="bettercap">
+<meta property="article:tag" content="mitm">
+<meta property="article:tag" content="hacking">
+<meta property="article:tag" content="project">
+<meta property="article:tag" content="oss">
+<meta property="article:tag" content="open source">
+<meta property="article:tag" content="changelog">
+<meta property="article:tag" content="progress">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Past, Present and Future of Bettercap</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2016/01/10/BetterCap-and-the-first-REAL-DoubleDirect-ICMP-Redirect-Attack/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/10/27/Karma-How-Open-Source-changed-my-life/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&text=Past, Present and Future of Bettercap"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&is_video=false&description=Past, Present and Future of Bettercap"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Past, Present and Future of Bettercap&body=Check out this article: https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&name=Past, Present and Future of Bettercap&description=&lt;p&gt;Four months passed since &lt;a href=&#34;http://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&#34;&gt;my first blog post&lt;/a&gt; about &lt;a href=&#34;http://www.bettercap.org/&#34;&gt;bettercap&lt;/a&gt;, a lot of fixes have been released and a lot of new features have been implemented.&lt;br&gt;In this post I’d like to talk about some of these new features and describe them a little bit, this is basically a big changelog since the very first version, for a complete list of code changes you can read the &lt;a href=&#34;https://github.com/evilsocket/bettercap/releases&#34;&gt;releases&lt;/a&gt; github page.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Major-Changes"><span class="toc-number">1.</span> <span class="toc-text">Major Changes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Future"><span class="toc-number">2.</span> <span class="toc-text">The Future</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Past, Present and Future of Bettercap
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2015-12-01T16:30:23.000Z" itemprop="datePublished">2015-12-01</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/bettercap/" rel="tag">bettercap</a>, <a class="tag-link-link" href="/tags/changelog/" rel="tag">changelog</a>, <a class="tag-link-link" href="/tags/hacking/" rel="tag">hacking</a>, <a class="tag-link-link" href="/tags/mitm/" rel="tag">mitm</a>, <a class="tag-link-link" href="/tags/open-source/" rel="tag">open source</a>, <a class="tag-link-link" href="/tags/oss/" rel="tag">oss</a>, <a class="tag-link-link" href="/tags/progress/" rel="tag">progress</a>, <a class="tag-link-link" href="/tags/project/" rel="tag">project</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Four months passed since <a href="http://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/">my first blog post</a> about <a target="_blank" rel="noopener" href="http://www.bettercap.org/">bettercap</a>, a lot of fixes have been released and a lot of new features have been implemented.<br>In this post I’d like to talk about some of these new features and describe them a little bit, this is basically a big changelog since the very first version, for a complete list of code changes you can read the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bettercap/releases">releases</a> github page.</p>
+<a id="more"></a>
+
+<h3 id="Major-Changes"><a href="#Major-Changes" class="headerlink" title="Major Changes"></a>Major Changes</h3><p><strong>Added <code>--no-discovery</code> argument to skip active host discovery.</strong> ( since v.1.1.0 )</p>
+<p>Sometimes you already have the hosts you want to target in the arp cache of your computer, maybe because you already used bettercap against them or just because you already established some communication with them, you can now use the <code>--no-discovery</code> argument to use the static ARP cache instead of spawning the discovery agents and make the whole process faster.</p>
+<p><strong>Dynamic discovery, new hosts are added to the targets list while running.</strong> ( since v1.1.0 )</p>
+<p>Once bettercap is started, it will keep searching for new hosts and add them to the targets list even if an attack is already running. You can basically just launch bettercap once and it will take care of new computers connecting to your internal network.</p>
+<p><strong>Implemented HTTP transparent proxy with modules support.</strong> ( since v1.1.0 )</p>
+<p>No need for explanations here, you can find the complete documentation of the transparent proxy and its modules <a target="_blank" rel="noopener" href="http://www.bettercap.org/features/#modulartransparentproxy">here</a>.</p>
+<p><strong>Added builtin HTTP server.</strong> ( since v1.1.1 )</p>
+<p>There’s now a simple builtin HTTP server available, you can use it to serve static assets such as images or js files that you might need in your custom proxy module.</p>
+<p><strong>New feature to save all packets to a pcap file ( <code>--sniffer-pcap</code> option ).</strong> ( since v1.1.2 )</p>
+<p>You don’t have time to manually inspect everything you’re sniffing from the network? No problems! You can use the <code>--sniffer-pcap</code> argument to save every sniffed packet to a PCAP file and inspect it later.</p>
+<p><strong>New <code>--sniffer-filter</code> argument to pass custom BPF filters to the sniffer.</strong> ( since v1.1.2 )</p>
+<p>Of course, you can use a custom BPF filter in order to save only the packets you’re really interested into :)</p>
+<p><strong>Added <code>--no-spoofing</code> argument ( alias for <code>--spoofer NONE</code> ).</strong> ( since v1.1.2 )</p>
+<p>If you want to use bettercap as a local proxy/sniffer to debug or reverse engineer some application, you can easily disable the spoofing using the <code>--no-spoofing</code> argument.</p>
+<p><strong>New <code>--check-updates</code> option will check if a new version of bettercap is available.</strong> ( since v1.1.3 )</p>
+<p>You can now check if a new version is available directly from bettercap.</p>
+<p><strong>First prototype of HTTPS transparent proxy with realtime crafted certificate and/or custom .pem file.</strong> ( since v1.1.4 )</p>
+<p>Yep, since v1.1.4 bettercap is also able to intercept and proxy HTTPS traffic using <strong>certificate pinning</strong>, both using a realtime built certificate or a custom PEM file.</p>
+<p><strong>Added dynamic ARP agent/sniffer that will reply to ARP who-has requests when needed.</strong> ( since v1.1.4 )</p>
+<p>As new <strong>legit</strong> ARP requests are intercepted on the network, the program will take care of generating a proper ( spoofed of course :P ) response.</p>
+<p><strong>Implemented half-duplex mode for weird routers that whenever receive an <code>ARP_OPREPLY</code> suddenly sends an <code>ARP_OPREQUEST</code> to the real ip, screwing up MITM</strong> ( since v1.1.4 )</p>
+<p>This was a new feature I implemented in order to fix a weird behaviour me and some users experienced with particular routers, a full description of this new mode can be found <a target="_blank" rel="noopener" href="http://www.bettercap.org/about-the-new-half-duplex-option/">here</a>.</p>
+<p><strong>Now the user can target more than one address at once</strong> ( since v1.1.4, tnx to <strong>@mvrilo</strong> )</p>
+<p>The <code>--target</code> argument now supports a comma separated list of targets.</p>
+<p><strong>Now the user can load more than one spoofer at once</strong> ( since v1.1.4, tnx to <strong>@minotaur-0</strong> )</p>
+<p>The <code>--spoofer</code> argument now supports a comma separated list of spoofing modules.</p>
+<p><strong>New argument to manually specify the gateway address</strong> ( since v1.1.5, tnx to <strong>@misterade</strong> )</p>
+<p>The gateway address can now be manually specified on the command line, this is an optional argument which is needed only when you already know the gw address and don’t want bettercap to search for it.</p>
+<p><strong>New <code>--sniffer-source</code> argument to read a pcap file instead of sniffing from the network interface.</strong> ( since v1.1.5 )</p>
+<p>If you’re running bettercap as a simple sniffer/cretendials harvester, you can “replay” an already captured pcap file and feed it to the program instead of capturing real time traffic.</p>
+<p><strong>Updated hw-prefixes file with latest version from nmap repository.</strong> ( since v1.1.6 )</p>
+<p>This made the “mac-address to vendor” lookup more accurate.</p>
+<p><strong>Implemented custom upstream proxy options ( <code>--custom-proxy</code>, <code>--custom-https-proxy</code> ) both for HTTP and HTTPS.</strong> ( since v1.1.6 )</p>
+<p>A new set of arguments is available in order to specify a custom HTTP/HTTPS upstream proxy address.</p>
+<h3 id="The-Future"><a href="#The-Future" class="headerlink" title="The Future"></a>The Future</h3><p>If you’re interested in upcoming features, there’s a “TODO” list available <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bettercap/blob/master/TODO.md">here</a>, some of these items are done and the code has already been pushed to the dev branch, others are still to be done and I’m still not sure about some, these are the major upcoming features.</p>
+<p><strong>Implement <code>--ignore ADDR,ADDR,ADDR</code> option to filter out specific addresses from the targets list.</strong> ( READY in the developer branch )</p>
+<p>If there’re one or multiple ip addresses that are causing a lot of traffic and that you’re not interested to, you can use this argument to completely ignore them.</p>
+<p><strong>Rewrite proxy class using em-proxy library.</strong></p>
+<p>I’m currently working on a complete rewriting of the <strong>Proxy</strong> class that will dramatically increase its performances thanks to the great <a target="_blank" rel="noopener" href="https://github.com/igrigorik/em-proxy">em-proxy</a> gem by <strong>Ilya Grigorik</strong>.</p>
+<p><strong>Active packet filtering/injection/etc</strong></p>
+<p>This still needs to be started, but in the future there will be a modular packet injector/filter ( pretty much like the modular HTTP(S) transparent proxy but for raw packets ^_^ ), probably powered by the <a target="_blank" rel="noopener" href="https://github.com/gdelugre/ruby-nfqueue">nfqueue</a> Ruby gem by <strong>Guillaume Delugré</strong>.</p>
+<p><strong>BSD Support.</strong> ( !!!Help wanted here!!! )</p>
+<p>Bettercap is already compatible with Mac OS X and basically every distribution of GNU/Linux, I’d like some BSD guru to help me to make it compatible with *BSD systems as well.</p>
+<p><strong>HTTP/2 Support.</strong></p>
+<p>Self explanatory, still in TODO.</p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Major-Changes"><span class="toc-number">1.</span> <span class="toc-text">Major Changes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Future"><span class="toc-number">2.</span> <span class="toc-text">The Future</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&text=Past, Present and Future of Bettercap"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&is_video=false&description=Past, Present and Future of Bettercap"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Past, Present and Future of Bettercap&body=Check out this article: https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&title=Past, Present and Future of Bettercap"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/&name=Past, Present and Future of Bettercap&description=&lt;p&gt;Four months passed since &lt;a href=&#34;http://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/&#34;&gt;my first blog post&lt;/a&gt; about &lt;a href=&#34;http://www.bettercap.org/&#34;&gt;bettercap&lt;/a&gt;, a lot of fixes have been released and a lot of new features have been implemented.&lt;br&gt;In this post I’d like to talk about some of these new features and describe them a little bit, this is basically a big changelog since the very first version, for a complete list of code changes you can read the &lt;a href=&#34;https://github.com/evilsocket/bettercap/releases&#34;&gt;releases&lt;/a&gt; github page.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.">
+<meta property="og:url" content="https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-03-11T22:50:48.000Z">
+<meta property="article:modified_time" content="2014-03-13T00:47:02.000Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="reversing">
+<meta property="article:tag" content="libpe">
+<meta property="article:tag" content="ida">
+<meta property="article:tag" content="distorm">
+<meta property="article:tag" content="subroutines">
+<meta property="article:tag" content="routines">
+<meta property="article:tag" content="functions">
+<meta property="article:tag" content="static analysis">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2014/03/25/About-re-distributing-open-source-apps-dSploit/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2014/02/21/libpe-A-fast-PE32-PE32-parsing-library/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&text=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&is_video=false&description=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&body=Check out this article: https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&name=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&description=&lt;p&gt;Even though it’s one of the tools I use on a daily basis, Hex-Rays &lt;strong&gt;&lt;a href=&#34;https://www.hex-rays.com/products/ida/&#34;&gt;IDA&lt;/a&gt;&lt;/strong&gt; always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a &lt;em&gt;“make yourself the tools you need”&lt;/em&gt; guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.&lt;/p&gt;
+&lt;p&gt;I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with &lt;strong&gt;and&lt;/strong&gt; because I came accross &lt;a href=&#34;http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html&#34;&gt;this blog post&lt;/a&gt; that shows how great IDA python libraries are.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2014-03-11T22:50:48.000Z" itemprop="datePublished">2014-03-11</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/distorm/" rel="tag">distorm</a>, <a class="tag-link-link" href="/tags/functions/" rel="tag">functions</a>, <a class="tag-link-link" href="/tags/ida/" rel="tag">ida</a>, <a class="tag-link-link" href="/tags/libpe/" rel="tag">libpe</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/routines/" rel="tag">routines</a>, <a class="tag-link-link" href="/tags/static-analysis/" rel="tag">static analysis</a>, <a class="tag-link-link" href="/tags/subroutines/" rel="tag">subroutines</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Even though it’s one of the tools I use on a daily basis, Hex-Rays <strong><a target="_blank" rel="noopener" href="https://www.hex-rays.com/products/ida/">IDA</a></strong> always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a <em>“make yourself the tools you need”</em> guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.</p>
+<p>I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with <strong>and</strong> because I came accross <a target="_blank" rel="noopener" href="http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html">this blog post</a> that shows how great IDA python libraries are.</p>
+<a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for all function offsets</span></span><br><span class="line"><span class="keyword">for</span> fn_ea <span class="keyword">in</span> Functions():</span><br><span class="line">  <span class="keyword">if</span> fn_ea == <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function from offset</span></span><br><span class="line">  f = idaapi.get_func(fn_ea)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function bytes</span></span><br><span class="line">  start = f.startEA</span><br><span class="line">  size = f.endEA - start</span><br><span class="line">  <span class="built_in">bytes</span> = GetManyBytes(start, size)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+
+<p>Wouldn’t be cool to have such features without the whole Python and IDA SDK distribution ? :)</p>
+<p>Actually this showed to be way much a simpler task than I’ve initially imagined, you only need a <a href="/2014/02/21/libpe-a-fast-pe32pe32-parsing-library/">good portable executable parsing library</a> and a fast disassembler library, for this purpose I’ve used <a target="_blank" rel="noopener" href="https://code.google.com/p/distorm/">Distorm</a> which is fast and easy to integrate.</p>
+<p><strong>NOTE</strong></p>
+<p>A few smart people <a target="_blank" rel="noopener" href="http://www.reddit.com/r/ReverseEngineering/comments/206gs5/programmatically_identifying_and_isolating/">pointed out</a> that the following system is prone to false positives. <strong>This is totally true</strong>, I never claimed it to be a perfect approach, but just a proof of concept of what can be achieved using a couple of well written libraries and a few lines of C code.</p>
+<p>The main algorithm is very simple.</p>
+<ul>
+<li>Search for every code/executable section in the PE.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">PE_FOREACH_SECTION( &amp;pe, pSection )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// skip empty sections</span></span><br><span class="line">    <span class="keyword">if</span>( pSection-&gt;SizeOfRawData == <span class="number">0</span> )</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="comment">// skip non executable or non code sections</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>( !( pSection-&gt;Characteristics &amp; IMAGE_SCN_CNT_CODE ) &amp;&amp; !( pSection-&gt;Characteristics &amp; IMAGE_SCN_MEM_EXECUTE ) )</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Analyze each section and search for <strong>CALL</strong> branch instructions to a relative address, save that address as a function start.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Is this instruction a suitable call ?</span></span><br><span class="line"><span class="keyword">if</span>( ( inst-&gt;opcode == I_CALL || inst-&gt;opcode == I_CALL_FAR ) &amp;&amp; inst-&gt;ops[<span class="number">0</span>].type == O_PC )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">uint32_t</span> dwFunctionAddress = inst-&gt;addr + inst-&gt;imm.sdword + inst-&gt;size;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Analyze the function start searching for the first <strong>RET</strong> instruction, that will be the function end.</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( inst-&gt;opcode == I_RET || inst-&gt;opcode == I_RETF )</span><br><span class="line">&#123;</span><br><span class="line">    pFunction-&gt;Address.Size = inst-&gt;addr - pFunction-&gt;Address.VA;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Easy isn’t it ? ^_^</p>
+<p>I’ve implemented this algorithm as the new <a target="_blank" rel="noopener" href="https://github.com/evilsocket/libpe/tree/master/pefunctions">pefunctions</a> project sample inside <strong>libpe</strong> repository, enjoy :)</p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&text=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&is_video=false&description=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&body=Check out this article: https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&title=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does."><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/&name=Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.&description=&lt;p&gt;Even though it’s one of the tools I use on a daily basis, Hex-Rays &lt;strong&gt;&lt;a href=&#34;https://www.hex-rays.com/products/ida/&#34;&gt;IDA&lt;/a&gt;&lt;/strong&gt; always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a &lt;em&gt;“make yourself the tools you need”&lt;/em&gt; guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.&lt;/p&gt;
+&lt;p&gt;I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with &lt;strong&gt;and&lt;/strong&gt; because I came accross &lt;a href=&#34;http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html&#34;&gt;this blog post&lt;/a&gt; that shows how great IDA python libraries are.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
