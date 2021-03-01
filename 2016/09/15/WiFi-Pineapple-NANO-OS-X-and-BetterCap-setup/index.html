@@ -13,8 +13,14 @@
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.Since different people from different forum">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/nano.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ics.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ip.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/ics_working.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/pineap.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2016/09/setup.jpg">
 <meta property="article:published_time" content="2016-09-15T12:48:23.000Z">
-<meta property="article:modified_time" content="2020-05-26T18:30:57.529Z">
+<meta property="article:modified_time" content="2021-03-01T16:05:26.385Z">
 <meta property="article:author" content="Simone Margaritelli">
 <meta property="article:tag" content="bettercap">
 <meta property="article:tag" content="mitm">
@@ -26,6 +32,7 @@
 <meta property="article:tag" content="pineapple nano">
 <meta property="article:tag" content="setup">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2016/09/nano.jpg">
     
     
         
@@ -109,9 +116,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/&title=WiFi Pentesting With a Pineapple NANO, OS X and BetterCap"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/&title=WiFi Pentesting With a Pineapple NANO, OS X and BetterCap"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/&name=WiFi Pentesting With a Pineapple NANO, OS X and BetterCap&description=&lt;p&gt;After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.&lt;br&gt;Since different people from different forums had issues making this work ( mostly due to the difficulties of internet connection sharing between OSX and the Pineapple ) I’ve decided to share my setup today ^_^&lt;/p&gt;
-&lt;center&gt;
-![nano](/images/2016/09/nano.jpg)
-&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;/images/2016/09/nano.jpg&#34; alt=&#34;nano&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -157,10 +162,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.<br>Since different people from different forums had issues making this work ( mostly due to the difficulties of internet connection sharing between OSX and the Pineapple ) I’ve decided to share my setup today ^_^</p>
-<center>
-![nano](/images/2016/09/nano.jpg)
-</center>
-
+<p><img src="/images/2016/09/nano.jpg" alt="nano"></p>
 <a id="more"></a>
 
 <h3 id="WiFi-Pineapple-AKA-KARMA-attack-for-the-masses"><a href="#WiFi-Pineapple-AKA-KARMA-attack-for-the-masses" class="headerlink" title="WiFi Pineapple AKA KARMA attack for the masses"></a>WiFi Pineapple AKA KARMA attack for the masses</h3><p>First of all, let’s talk a little bit about the KARMA attack in case you have no idea what I’m talking about. <a target="_blank" rel="noopener" href="https://digi.ninja/karma/">DigiNinja</a> page on karma says:</p>
@@ -175,15 +177,9 @@ uci set network.lan.ipaddr=&#39;192.168.2.10&#39;
 uci set network.lan.gateway=&#39;192.168.2.1&#39;
 uci commit &amp;&amp; reboot</code></pre>
 <p>You’ll then enable internet connection sharing from your Mac WiFi adapter to the NANO USB-Eth adapter:</p>
-<center>
-![ics](/images/2016/09/ics.png)
-</center>
-
+<p><img src="/images/2016/09/ics.png" alt="ics"></p>
 <p>And eventually you’ll need to configure a static ip address for the interface:</p>
-<center>
-![ip](/images/2016/09/ip.png)
-</center>
-
+<p><img src="/images/2016/09/ip.png" alt="ip"></p>
 <p>Almost done, you need to apply the correct firewall rules on your Mac to make everything work between the two interfaces, this is a bash script I’ve made ( in my case the NANO ethernet interface is <strong>en4</strong>, change it to your needs ):</p>
 <pre><code>#!/bin/bash
 
@@ -196,15 +192,9 @@ sysctl -w net.inet.ip.forwarding=1
 pfctl -e
 echo &quot;nat on en0 from en4:network to any -&gt; (en0)&quot; | pfctl -f -</code></pre>
 <p>Once you’ve launched it, you can ssh again into your NANO and verify that the connection sharing is actually working.</p>
-<center>
-![ics working](/images/2016/09/ics_working.png)
-</center>
-
+<p><img src="/images/2016/09/ics_working.png" alt="ics working"></p>
 <p>Last step, just configure and start <strong>PineAP</strong> as you normally would:</p>
-<center>
-![pineap](/images/2016/09/pineap.png)
-</center>
-
+<p><img src="/images/2016/09/pineap.png" alt="pineap"></p>
 <p>You now have your KARMA attack running and nearby WiFi enabled devices should start connecting to your evil AP very soon :)</p>
 <h3 id="Port-Redirection-and-BetterCap"><a href="#Port-Redirection-and-BetterCap" class="headerlink" title="Port Redirection and BetterCap"></a>Port Redirection and BetterCap</h3><p>Unfortunately making bettercap run on the NANO is a <strong>pain in the ass</strong> and, even if you manage to do it, its hardware is simply not powerful enough to properly running it while handling multiple connections, so I’ve decided to run it on the laptop and have the NANO redirect all HTTP (and optionally HTTPS) traffic to it.</p>
 <p>Here’s a simple bash script that you need to copy to your NANO, it will enable or disable port redirection to your bettercap instance running on the laptop:</p>
@@ -232,10 +222,7 @@ case $action in
     ;;
 esac</code></pre>
 <p>Once you’ve enabled port redirection, you can simply start bettercap on your laptop with your preferred command line and start intercepting the traffic of the target clients that have been forced to connect to your evil access point :D</p>
-<center>
-![final setup](/images/2016/09/setup.jpg)
-</center>
-
+<p><img src="/images/2016/09/setup.jpg" alt="final setup"></p>
 <p><strong>DONE! :D</strong> You won’t even need to MITM something, with this attack the targets will connect to you … enjoy! :)</p>
 
   </div>
@@ -282,9 +269,7 @@ esac</code></pre>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/&title=WiFi Pentesting With a Pineapple NANO, OS X and BetterCap"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/&title=WiFi Pentesting With a Pineapple NANO, OS X and BetterCap"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2016/09/15/WiFi-Pineapple-NANO-OS-X-and-BetterCap-setup/&name=WiFi Pentesting With a Pineapple NANO, OS X and BetterCap&description=&lt;p&gt;After a few weeks of testing on the field, I’ve found the perfect configuration for WiFi pentesting using a WiFi Pineapple NANO, an OSX laptop and BetterCap.&lt;br&gt;Since different people from different forums had issues making this work ( mostly due to the difficulties of internet connection sharing between OSX and the Pineapple ) I’ve decided to share my setup today ^_^&lt;/p&gt;
-&lt;center&gt;
-![nano](/images/2016/09/nano.jpg)
-&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;/images/2016/09/nano.jpg&#34; alt=&#34;nano&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -13,8 +13,9 @@
 <meta property="og:site_name" content="evilsocket">
 <meta property="og:description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png">
 <meta property="article:published_time" content="2016-08-24T18:43:14.000Z">
-<meta property="article:modified_time" content="2020-05-26T18:30:57.527Z">
+<meta property="article:modified_time" content="2021-03-01T16:10:40.793Z">
 <meta property="article:author" content="Simone Margaritelli">
 <meta property="article:tag" content="vulnerability">
 <meta property="article:tag" content="exploit">
@@ -27,6 +28,7 @@
 <meta property="article:tag" content="osmobts">
 <meta property="article:tag" content="disclosure">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png">
     
     
         
@@ -117,9 +119,7 @@
 &lt;li&gt;Osmo-TRX/Osmo-BTS &amp;lt;= 0.1.10&lt;/li&gt;
 &lt;li&gt;Other products that share the same transceiver code base.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;center&gt;
-![bts](https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png)
-&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png&#34; alt=&#34;bts&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -172,10 +172,7 @@
 <li>Osmo-TRX/Osmo-BTS &lt;= 0.1.10</li>
 <li>Other products that share the same transceiver code base.</li>
 </ul>
-<center>
-![bts](https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png)
-</center>
-
+<p><img src="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png" alt="bts"></p>
 <a id="more"></a>
 
 <p>Long story short, they bind the transceiver server process to <code>INADDR_ANY</code> instead of <code>INADDR_LOOPBACK</code>, this makes it reachable by anyone on the same network (no authentication mechanism was implemented), moreover there’s an exploitable stack buffer overflow on the control socket, if you rely on both of this issues … well, you’ve got the idea :)</p>
@@ -232,9 +229,7 @@
 &lt;li&gt;Osmo-TRX/Osmo-BTS &amp;lt;= 0.1.10&lt;/li&gt;
 &lt;li&gt;Other products that share the same transceiver code base.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;center&gt;
-![bts](https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png)
-&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+&lt;p&gt;&lt;img src=&#34;https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png&#34; alt=&#34;bts&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

@@ -20,18 +20,18 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2018/07/victim.png">
 <meta property="og:image" content="https://abs.twimg.com/emoji/v2/72x72/1f984.png">
 <meta property="article:published_time" content="2018-07-28T17:01:56.000Z">
-<meta property="article:modified_time" content="2020-05-26T18:30:57.527Z">
+<meta property="article:modified_time" content="2021-03-01T16:07:13.695Z">
 <meta property="article:author" content="Simone Margaritelli">
 <meta property="article:tag" content="bettercap">
 <meta property="article:tag" content="wifi">
 <meta property="article:tag" content="ble">
 <meta property="article:tag" content="bluetooth">
+<meta property="article:tag" content="deauth">
 <meta property="article:tag" content="raspberry">
 <meta property="article:tag" content="rpi">
 <meta property="article:tag" content="rpi zero w">
 <meta property="article:tag" content="rpi0w">
 <meta property="article:tag" content="kali">
-<meta property="article:tag" content="deauth">
 <meta property="article:tag" content="btnap">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.evilsocket.net/images/2018/07/deauth.png">
@@ -180,14 +180,17 @@
 <p>BECAUSE. The point of this post is not just the hardware, but mostly how to use bettercap to attack wifi.</p>
 <h3 id="0x01-Kali-image-and-initial-headless-configuration"><a href="#0x01-Kali-image-and-initial-headless-configuration" class="headerlink" title="[0x01] Kali image and initial headless configuration."></a>[0x01] Kali image and initial headless configuration.</h3><p>First thing first, you’ll need to download the <strong>Kali Linux Rpi0w Nexmon</strong> image from <a target="_blank" rel="noopener" href="https://www.offensive-security.com/kali-linux-arm-images/">this page</a> and burn it to the uSD card you’re going to use for the rpi using the usual <code>dd</code> method, but before unmounting it, we need to enable SSH at boot and configure it to connect to our home WiFi network for the initial configuration, keep in mind this is just temporary and the main wifi interface will be used for packet injection later, while we will be able to connect via bluetooth to the board.</p>
 <p>From the computer you used to burn the image on your micro sd, mount it again if needed and then:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this will enable ssh at boot</span></span><br><span class="line">touch /sd-mount-point/boot/ssh</span><br><span class="line"><span class="comment"># let&#x27;s setup wlan0</span></span><br><span class="line">nano /sd-mount-point/etc/network/interfaces```</span><br><span class="line"></span><br><span class="line">Fill this file with the following contents:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>auto lo</p>
-<p>iface lo inet loopback</p>
-<p>allow-hotplug wlan0<br>iface wlan0 inet dhcp<br>wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf<br>iface default inet dhcp```</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this will enable ssh at boot</span></span><br><span class="line">touch /sd-mount-point/boot/ssh</span><br><span class="line"><span class="comment"># let&#x27;s setup wlan0</span></span><br><span class="line">nano /sd-mount-point/etc/network/interfaces</span><br></pre></td></tr></table></figure>
+
+<p>Fill this file with the following contents:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">auto lo</span><br><span class="line"></span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line">allow-hotplug wlan0</span><br><span class="line">iface wlan0 inet dhcp</span><br><span class="line">wpa-conf &#x2F;etc&#x2F;wpa_supplicant&#x2F;wpa_supplicant.conf</span><br><span class="line">iface default inet dhcp</span><br></pre></td></tr></table></figure>
+
 <p>Now we’ll add the details of the WiFi network we want the rpi to connect automatically for configuration:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nano /sd-mount-point/etc/wpa_supplicant/wpa_supplicant.conf```</span><br><span class="line"></span><br><span class="line">And add this:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>country=GB<br>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev<br>update_config=1</p>
-<p>network={<br>        ssid=”YourWiFiName”<br>        psk=”y0urw1f!p455w0rd”<br>        key_mgmt=WPA-PSK<br>}```</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /sd-mount-point/etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+
+<p>And add this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">country&#x3D;GB</span><br><span class="line">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev</span><br><span class="line">update_config&#x3D;1</span><br><span class="line"></span><br><span class="line">network&#x3D;&#123;</span><br><span class="line">        ssid&#x3D;&quot;YourWiFiName&quot;</span><br><span class="line">        psk&#x3D;&quot;y0urw1f!p455w0rd&quot;</span><br><span class="line">        key_mgmt&#x3D;WPA-PSK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Reboot the RPI and it should connect to your WiFi, search for its IP address (either by broadcast ping, or using bettercap itself, i usually use the <a target="_blank" rel="noopener" href="https://github.com/bettercap/caplets/blob/master/netmon.cap">netmon</a> caplet to see what’s going on on my network) and finally SSH to it using the default Kali credentials:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># this will allow you to login with your SSH key instead of a password</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@pita-ip</span><br><span class="line">ssh root@pita-ip</span><br></pre></td></tr></table></figure>
 
