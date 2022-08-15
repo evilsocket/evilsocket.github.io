@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hello everybody, I hope you’ve been enjoying this summer after two years of Covid and lockdowns :D In this post I’m going to describe how to use eBPF syscall tracing in a creative way in order to dete">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders">
+<meta property="og:url" content="https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="Hello everybody, I hope you’ve been enjoying this summer after two years of Covid and lockdowns :D In this post I’m going to describe how to use eBPF syscall tracing in a creative way in order to dete">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.imgur.com/QEmpeDl.jpg">
+<meta property="og:image" content="https://i.imgur.com/8yG0Nyr.png">
+<meta property="og:image" content="https://i.imgur.com/vuHfl1n.jpg">
+<meta property="og:image" content="https://i.imgur.com/jsWJbIx.png">
+<meta property="og:image" content="https://i.imgur.com/sW1gUJ5.jpg">
+<meta property="og:image" content="https://i.imgur.com/TNrJE1N.jpg">
+<meta property="article:published_time" content="2022-08-15T14:06:05.000Z">
+<meta property="article:modified_time" content="2022-08-15T15:46:37.909Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="tensorflow">
+<meta property="article:tag" content="deep learning">
+<meta property="article:tag" content="dnn">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="neural networks">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="deep neural networks">
+<meta property="article:tag" content="artificial intelligence">
+<meta property="article:tag" content="ebpf">
+<meta property="article:tag" content="sys_enter">
+<meta property="article:tag" content="raw_syscalls">
+<meta property="article:tag" content="tracepoint">
+<meta property="article:tag" content="kprobe">
+<meta property="article:tag" content="kretprobe">
+<meta property="article:tag" content="bcc">
+<meta property="article:tag" content="unsupervised learning">
+<meta property="article:tag" content="autoencoder">
+<meta property="article:tag" content="process behaviour">
+<meta property="article:tag" content="anomaly detection">
+<meta property="article:tag" content="process anomaly detection">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/QEmpeDl.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&text=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&is_video=false&description=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders&body=Check out this article: https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&name=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-eBPF"><span class="toc-number">1.</span> <span class="toc-text">What is eBPF?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#System-call-Tracing-with-eBPF"><span class="toc-number">1.1.</span> <span class="toc-text">System call Tracing with eBPF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Poor-man%E2%80%99s-Approach"><span class="toc-number">1.2.</span> <span class="toc-text">Poor man’s Approach</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Anomaly-detection-with-Autoencoders"><span class="toc-number">2.</span> <span class="toc-text">Anomaly detection with Autoencoders</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example"><span class="toc-number">3.</span> <span class="toc-text">Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Learning-from-a-live-process"><span class="toc-number">3.1.</span> <span class="toc-text">Learning from a live process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Training-the-model"><span class="toc-number">3.2.</span> <span class="toc-text">Training the model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Detecting-anomalies"><span class="toc-number">3.3.</span> <span class="toc-text">Detecting anomalies</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusions"><span class="toc-number">4.</span> <span class="toc-text">Conclusions</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2022-08-15T14:06:05.000Z" itemprop="datePublished">2022-08-15</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/ai/" rel="tag">ai</a>, <a class="tag-link-link" href="/tags/anomaly-detection/" rel="tag">anomaly detection</a>, <a class="tag-link-link" href="/tags/artificial-intelligence/" rel="tag">artificial intelligence</a>, <a class="tag-link-link" href="/tags/autoencoder/" rel="tag">autoencoder</a>, <a class="tag-link-link" href="/tags/bcc/" rel="tag">bcc</a>, <a class="tag-link-link" href="/tags/deep-learning/" rel="tag">deep learning</a>, <a class="tag-link-link" href="/tags/deep-neural-networks/" rel="tag">deep neural networks</a>, <a class="tag-link-link" href="/tags/dnn/" rel="tag">dnn</a>, <a class="tag-link-link" href="/tags/ebpf/" rel="tag">ebpf</a>, <a class="tag-link-link" href="/tags/kprobe/" rel="tag">kprobe</a>, <a class="tag-link-link" href="/tags/kretprobe/" rel="tag">kretprobe</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/machine-learning/" rel="tag">machine learning</a>, <a class="tag-link-link" href="/tags/neural-networks/" rel="tag">neural networks</a>, <a class="tag-link-link" href="/tags/process-anomaly-detection/" rel="tag">process anomaly detection</a>, <a class="tag-link-link" href="/tags/process-behaviour/" rel="tag">process behaviour</a>, <a class="tag-link-link" href="/tags/raw-syscalls/" rel="tag">raw_syscalls</a>, <a class="tag-link-link" href="/tags/sys-enter/" rel="tag">sys_enter</a>, <a class="tag-link-link" href="/tags/tensorflow/" rel="tag">tensorflow</a>, <a class="tag-link-link" href="/tags/tracepoint/" rel="tag">tracepoint</a>, <a class="tag-link-link" href="/tags/unsupervised-learning/" rel="tag">unsupervised learning</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Hello everybody, I hope you’ve been enjoying this summer after two years of Covid and lockdowns :D In this post I’m going to describe how to use eBPF syscall tracing in a creative way in order to detect process behaviour anomalies at runtime using an unsupervised learning model called autoencoder. </p>
+<p><img src="https://i.imgur.com/QEmpeDl.jpg" alt="anomalies"></p>
+<p>While many projects approach this problem by building a list of allowed system calls and checking at runtime if the process is using anything outside of this list, we’ll use a methodology that will not only save us from explicitly compiling this list, but will also take into account how fast the process is using system calls that would normally be allowed but only within a certain range of usage per second. This techique can potentially detect process exploitation, denial-of-service and several other types of attacks.</p>
+<p><strong>You’ll find the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/ebpf-process-anomaly-detection">complete source code on my Github</a> as usual.</strong></p>
+<h2 id="What-is-eBPF"><a href="#What-is-eBPF" class="headerlink" title="What is eBPF?"></a>What is eBPF?</h2><p><a target="_blank" rel="noopener" href="https://ebpf.io/">eBPF</a> is a technology that allows to intercept several aspect of the Linux kernel runtime without using a kernel module. At its core eBPF is a virtual machine running inside the kernel that performs sanity checks on an eBPF program opcodes before loading it in order to ensure runtime safety.</p>
+<p>From the <a target="_blank" rel="noopener" href="https://ebpf.io/what-is-ebpf">eBPF.io</a> page:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eBPF (which is no longer an acronym for anything) is a revolutionary technology with origins in the Linux kernel that can run sandboxed programs in a privileged context such as the operating system kernel. It is used to safely and efficiently extend the capabilities of the kernel without requiring to change kernel source code or load kernel modules.  </span><br><span class="line"></span><br><span class="line">Historically, the operating system has always been an ideal place to implement observability, security, and networking functionality due to the kernel’s privileged ability to oversee and control the entire system. At the same time, an operating system kernel is hard to evolve due to its central role and high requirement towards stability and security. The rate of innovation at the operating system level has thus traditionally been lower compared to functionality implemented outside of the operating system.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/8yG0Nyr.png" alt="ebpf"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">eBPF changes this formula fundamentally. By allowing to run sandboxed programs within the operating system, application developers can run eBPF programs to add additional capabilities to the operating system at runtime. The operating system then guarantees safety and execution efficiency as if natively compiled with the aid of a Just-In-Time (JIT) compiler and verification engine. This has led to a wave of eBPF-based projects covering a wide array of use cases, including next-generation networking, observability, and security functionality.</span><br></pre></td></tr></table></figure>
+
+<p>There are several options to compile into bytecode and then run eBPF programs, such as <a target="_blank" rel="noopener" href="https://github.com/cilium/ebpf">Cilium Golang eBPF package</a>, <a target="_blank" rel="noopener" href="https://github.com/aya-rs/aya">Aya Rust crate</a> and <a target="_blank" rel="noopener" href="https://github.com/iovisor/bcc">IOVisor Python BCC package</a> and many more. BCC being the simplest is the one we’re going to use for this post. Keep in mind that the same exact things can be done with all these libraries and only runtime dependencies and performance would change.</p>
+<h3 id="System-call-Tracing-with-eBPF"><a href="#System-call-Tracing-with-eBPF" class="headerlink" title="System call Tracing with eBPF"></a>System call Tracing with eBPF</h3><p>The usual approach to trace system calls with eBPF consists in creating a <a target="_blank" rel="noopener" href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#3-tracepoints">tracepoint</a> or a <a target="_blank" rel="noopener" href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#1-kprobes">kprobe</a> on each system call we want to intercept, somehow fetch the arguments of the call and then report each one individually to user space using either a <a target="_blank" rel="noopener" href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#2-bpf_perf_output">perf buffer</a> or a <a target="_blank" rel="noopener" href="https://github.com/iovisor/bcc/blob/master/docs/reference_guide.md#5-bpf_ringbuf_output">ring buffer</a>. While this method is great to track each system call individually and check their arguments (for instance, checking which files are being accessed or which hosts the program is connecting to), it has a couple of issues. </p>
+<p>First, reading the arguments for each syscall is quite tricky depending on the system architecture and kernel compilation flags. For instance in some cases it’s not possible to read the arguments while entering the syscall, but only once the syscall has been executed, by saving pointers from a kprobe and then reading them from a kretprobe. Another important issue is the eBPF buffers throughput: when the target process is executing a lot of system calls in a short period of time (think about an HTTP server under heavy stress, or a process performing a lot of I/O), <a target="_blank" rel="noopener" href="http://blog.itaysk.com/2020/04/20/ebpf-lost-events">events can be lost</a> making this approach less than ideal.</p>
+<h3 id="Poor-man’s-Approach"><a href="#Poor-man’s-Approach" class="headerlink" title="Poor man’s Approach"></a>Poor man’s Approach</h3><p><img src="https://i.imgur.com/vuHfl1n.jpg" alt="kiss"></p>
+<p>Since we’re not interested in the system calls arguments, we’re going to use an alternative approach that doesn’t have the aforementioned issues. The main idea is very very simple: we’re going to have a single tracepoint on the <code>sys_enter</code> event, triggered every time <strong>any</strong> system call is executed. Instead of immediately reporting the call to userspace via a buffer, we’re only going to increment the relative integer slot in an array, creating an histogram.</p>
+<p>This array is 512 integers long (512 set as a constant maximum number of system calls), so that after (for instance) system call <code>read</code> (number 0) is executed twice and <code>mprotect</code> (number 10) once, we’ll have a vector/histogram that’ll look like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2,0,0,0,0,0,0,0,0,0,1,0,0,0,..........</span><br></pre></td></tr></table></figure>
+
+<p>The relative eBPF is very simple and looks like this:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// defines a per-cpu array in order to avoid race coinditions while updating the histogram</span></span><br><span class="line">BPF_PERCPU_ARRAY(histogram, u32, MAX_SYSCALLS);</span><br><span class="line"></span><br><span class="line"><span class="comment">// here&#x27;s our tracepoint on sys_enter</span></span><br><span class="line">TRACEPOINT_PROBE(raw_syscalls, sys_enter)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// filter by target pid and return if this activity belongs to a process we&#x27;re not interested in</span></span><br><span class="line">    u64 pid = bpf_get_current_pid_tgid() &gt;&gt; <span class="number">32</span>;</span><br><span class="line">    <span class="keyword">if</span>(pid != TARGET_PID) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// populate the histogram, args-&gt;id contains the system call number</span></span><br><span class="line">    u32 key = (u32)args-&gt;id;</span><br><span class="line">    u32 value = <span class="number">0</span>, *pval = <span class="literal">NULL</span>;</span><br><span class="line">    pval = histogram.lookup_or_try_init(&amp;key, &amp;value);</span><br><span class="line">    <span class="keyword">if</span>(pval) &#123;</span><br><span class="line">        *pval += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>So far no transfer of data to user space is performed, so no system call invocation is lost and everything is accounted for in this histogram. </p>
+<p>We’ll then perform a simple polling of this vector from userspace every 100 milliseconds and, by comparing the vector to its previous state, we’ll calculate the rate of change for every system call:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># polling loop</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">    <span class="comment"># get single histogram from per-cpu arrays</span></span><br><span class="line">    histogram = [histo_map[s] <span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, MAX_SYSCALLS)]</span><br><span class="line">    <span class="comment"># if any change happened</span></span><br><span class="line">    <span class="keyword">if</span> histogram != prev:</span><br><span class="line">        <span class="comment"># compute the rate of change for every syscall</span></span><br><span class="line">        deltas = [ <span class="number">1.0</span> - (prev[s] / histogram[s]) <span class="keyword">if</span> histogram[s] != <span class="number">0.0</span> <span class="keyword">else</span> <span class="number">0.0</span> <span class="keyword">for</span> s <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, MAX_SYSCALLS)]</span><br><span class="line">        prev = histogram</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ... SNIPPET ...</span></span><br><span class="line"></span><br><span class="line">    time.sleep(args.time / <span class="number">1000.0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>This will not only take into account which system calls are executed (and the ones that are not executed, thus having counter always to 0), but also how fast they are executed during normal activity in a given amount of time.</p>
+<p>Once we have this data saved to a CSV file, we can then train a model that’ll be able to detect anomalies at runtime.</p>
+<h2 id="Anomaly-detection-with-Autoencoders"><a href="#Anomaly-detection-with-Autoencoders" class="headerlink" title="Anomaly detection with Autoencoders"></a>Anomaly detection with Autoencoders</h2><p>An <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Autoencoder">autoencoder</a> is an artificial neural network used in unsupervised learning tasks, able to create an internal representation of unlabeled data (therefore the “unsupervised”) and produce an output of the same size. This approach can be used for data compression (as the internal encoding layer is usually smaller than the input) and of course anomaly detection like in our case.</p>
+<p><img src="https://i.imgur.com/jsWJbIx.png" alt="autoencoder"></p>
+<center><small>Source: https://lilianweng.github.io/posts/2018-08-12-vae/</small></center>
+
+<p>The main idea is to train the model and using our CSV dataset both as the input to the network and as its desired output. This way the ANN will learn what is “normal” in the dataset by correctly reconstructing each vector. When the output vector is substantially different from the input vector, we will know this is an anomaly because the ANN was not trained to reconstruct this specific one, meaning it was outside of what we consider normal activity.</p>
+<p>Our autoencoder has 512 inputs (defined as the <code>MAX_SYSCALLS</code> constant) and the same number of outputs, while the internal representation layer is half that size:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">n_inputs = MAX_SYSCALLS</span><br><span class="line"></span><br><span class="line"><span class="comment"># input layer</span></span><br><span class="line">inp = Input(shape=(n_inputs,))</span><br><span class="line"><span class="comment"># encoder layer</span></span><br><span class="line">encoder = Dense(n_inputs)(inp)</span><br><span class="line">encoder = ReLU()(encoder)</span><br><span class="line"><span class="comment"># internal representation layer</span></span><br><span class="line">middle = Dense(<span class="built_in">int</span>(n_inputs / <span class="number">2</span>))(encoder)</span><br><span class="line"><span class="comment"># decoder layer</span></span><br><span class="line">decoder = Dense(n_inputs)(middle)</span><br><span class="line">decoder = ReLU()(decoder)</span><br><span class="line">decoder = Dense(n_inputs, activation=<span class="string">&#x27;linear&#x27;</span>)(decoder)</span><br><span class="line">m = Model(inp, decoder)</span><br><span class="line"></span><br><span class="line"><span class="comment"># we use mean square error as the loss function as we&#x27;re interested in the reconstruction error</span></span><br><span class="line">m.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;mse&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>For training our CSV dataset is split in training data and testing/validation data. After training the latter is used to compute the maximum reconstruction error the model presents for “normal” data:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test the model on test data to calculate the error threshold</span></span><br><span class="line">y_test = model.predict(test)</span><br><span class="line">test_err = []</span><br><span class="line"><span class="comment"># for each vector</span></span><br><span class="line"><span class="keyword">for</span> ind <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(test)):</span><br><span class="line">    <span class="comment"># get the absolute error as a difference of the input and reconstructed output</span></span><br><span class="line">    abs_err = np.<span class="built_in">abs</span>(test[ind, :]-y_test[ind, :])</span><br><span class="line">    <span class="comment"># append the sum of each individual error</span></span><br><span class="line">    test_err.append(abs_err.<span class="built_in">sum</span>())</span><br><span class="line"><span class="comment"># the threshold will be the maximum cumulative error we&#x27;ve found</span></span><br><span class="line">threshold = <span class="built_in">max</span>(test_err)</span><br></pre></td></tr></table></figure>
+
+<p>We now have an autoencoder and its reference error threshold that we can use to perform live anomaly detection.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Let’s see the program in action. For this example I decided to monitor the <code>Spotify</code> process on Linux. Due to its high I/O intensity Spotify represents a nice candidate for a demo of this approach. I captured training data while streaming some music and clicking around playlists and settings. One thing I did <strong>not</strong> do during the learning stage is clicking on the <code>Connect with Facebook</code> button, this will be our test. Since this action triggers system calls that are not usually executed by Spotify, we can use it to check if our model is actually detecting anomalies at runtime.</p>
+<h3 id="Learning-from-a-live-process"><a href="#Learning-from-a-live-process" class="headerlink" title="Learning from a live process"></a>Learning from a live process</h3><p>Let’s say that Spotify has process id 1234, we’ll start by capturing some live data while using it:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./main.py --pid 1234 --data spotify.csv --learn</span><br></pre></td></tr></table></figure>
+
+<p>Keep this running for as much as you can, having the biggest amount of samples possible is key in order for our model to be accurate in detecting anomalies. Once you’re happy with the amount of samples, you can stop the learning step by pressing Ctrl+C. </p>
+<p>Your  <code>spotify.csv</code> dataset is now ready to be used for training.</p>
+<h3 id="Training-the-model"><a href="#Training-the-model" class="headerlink" title="Training the model"></a>Training the model</h3><p>We’ll now train the model for 200 epochs, you will see the validation loss (the mean square error of the reconstructed vector) decreasing at each step, indicating that the model is indeed learning from the data:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./main.py --data spotify.csv --epochs 200 --model spotify.h5 --train</span><br></pre></td></tr></table></figure>
+
+<p>After the training is completed, the model will be saved to the <code>spotify.h5</code> file and the reference error threshold will be printed on screen:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">Epoch 195&#x2F;200</span><br><span class="line">60&#x2F;60 [&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;] - 0s 2ms&#x2F;step - loss: 1.3071e-05 - val_loss: 6.3671e-05</span><br><span class="line">Epoch 196&#x2F;200</span><br><span class="line">60&#x2F;60 [&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;] - 0s 2ms&#x2F;step - loss: 1.8221e-05 - val_loss: 5.2383e-05</span><br><span class="line">Epoch 197&#x2F;200</span><br><span class="line">60&#x2F;60 [&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;] - 0s 2ms&#x2F;step - loss: 9.2132e-06 - val_loss: 5.3354e-05</span><br><span class="line">Epoch 198&#x2F;200</span><br><span class="line">60&#x2F;60 [&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;] - 0s 2ms&#x2F;step - loss: 9.2722e-06 - val_loss: 4.9380e-05</span><br><span class="line">Epoch 199&#x2F;200</span><br><span class="line">60&#x2F;60 [&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;] - 0s 2ms&#x2F;step - loss: 8.0692e-06 - val_loss: 5.1954e-05</span><br><span class="line">Epoch 200&#x2F;200</span><br><span class="line">60&#x2F;60 [&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;] - 0s 2ms&#x2F;step - loss: 8.3448e-06 - val_loss: 5.0102e-05</span><br><span class="line">model saved to spotify.h5, getting error threshold for 106 samples ...</span><br><span class="line"></span><br><span class="line">error threshold&#x3D;9.969912</span><br></pre></td></tr></table></figure>
+
+<h3 id="Detecting-anomalies"><a href="#Detecting-anomalies" class="headerlink" title="Detecting anomalies"></a>Detecting anomalies</h3><p>Once the model has been trained it can be used on the live target process to detect anomalies, in this case we’re using a 10.0 error threshold:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./main.py --pid 1234 --model spotify.h5 --max-error 10.0 --run</span><br></pre></td></tr></table></figure>
+
+<p>When an anomaly is detected the cumulative error will be printed along wiht the top 3 anomalous system calls and their respective error. </p>
+<p>In this example, I’m clicking on the <code>Connect with Facebook</code> button that will use system calls such as <code>getpriority</code> that were previsouly unseen in training data. </p>
+<p>We can see from the output that the model is indeed detecting anomalies:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">error &#x3D; 30.605255 - max &#x3D; 10.000000 - top 3:</span><br><span class="line">  b&#39;getpriority&#39; &#x3D; 0.994272</span><br><span class="line">  b&#39;writev&#39; &#x3D; 0.987554</span><br><span class="line">  b&#39;creat&#39; &#x3D; 0.969955</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/sW1gUJ5.jpg" alt="success"></p>
+<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>This post shows how by using a relatively simple approach and giving up some of the system call speficics (the arguments) we can overcome performance issues and still be able to capture enough information to perform anomaly detection. As previously said this approach works for several scenarios, from simple anomalous behaviour due to bugs, to denial of service attacks, bruteforcing and exploitation of the target process. </p>
+<p>The overall performance of the system could be improved by using native libraries such as <a target="_blank" rel="noopener" href="https://github.com/aya-rs/aya">Aya</a> and its accuracy with some hyper parameters tuning of the model along with more granular per-feature error thresholds. </p>
+<p>All these things are left as an exercise to the reader :D</p>
+<p><img src="https://i.imgur.com/TNrJE1N.jpg" alt="lol"></p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-eBPF"><span class="toc-number">1.</span> <span class="toc-text">What is eBPF?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#System-call-Tracing-with-eBPF"><span class="toc-number">1.1.</span> <span class="toc-text">System call Tracing with eBPF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Poor-man%E2%80%99s-Approach"><span class="toc-number">1.2.</span> <span class="toc-text">Poor man’s Approach</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Anomaly-detection-with-Autoencoders"><span class="toc-number">2.</span> <span class="toc-text">Anomaly detection with Autoencoders</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example"><span class="toc-number">3.</span> <span class="toc-text">Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Learning-from-a-live-process"><span class="toc-number">3.1.</span> <span class="toc-text">Learning from a live process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Training-the-model"><span class="toc-number">3.2.</span> <span class="toc-text">Training the model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Detecting-anomalies"><span class="toc-number">3.3.</span> <span class="toc-text">Detecting anomalies</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusions"><span class="toc-number">4.</span> <span class="toc-text">Conclusions</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&text=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&is_video=false&description=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders&body=Check out this article: https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&title=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/&name=Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2022 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
