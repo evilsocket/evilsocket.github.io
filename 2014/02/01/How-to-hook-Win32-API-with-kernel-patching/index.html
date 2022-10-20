@@ -62,7 +62,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -153,7 +153,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>This post is about <strong>SSDT</strong> patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.<br>SSDT hooking is as far as I know the lowest level technique to replace/hook/intercept/whatever API and for this reason has been used for years both by malwares writers and AV vendors.<br>I’m using the past tence due to the fact that on 2005 Microsoft introduced a Kernel Patching Protection ( also known as “PatchGuard” ) for 64 bit systems, making this technique uneffective in the worst case or quite harder to perform in the average case.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>If you open the file <strong>ntoskrnl.exe</strong> ( located in the System32/SysWOW64 folder ) with your preferred disassembler, you will noticed a <strong>KeServiceDescriptorTable</strong> symbol being exported:</p>
 <p><img src="/images/2014/Feb/KeServiceDescriptorTable_export.png" alt="KeServiceDescriptorTable"></p>

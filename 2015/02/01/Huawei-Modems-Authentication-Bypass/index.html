@@ -20,7 +20,6 @@
 <meta property="article:author" content="Simone Margaritelli">
 <meta property="article:tag" content="hack">
 <meta property="article:tag" content="router">
-<meta property="article:tag" content="sms">
 <meta property="article:tag" content="authentication">
 <meta property="article:tag" content="huawei">
 <meta property="article:tag" content="modem">
@@ -28,6 +27,7 @@
 <meta property="article:tag" content="e355">
 <meta property="article:tag" content="e587">
 <meta property="article:tag" content="bypass">
+<meta property="article:tag" content="sms">
 <meta property="article:tag" content="reboot">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.evilsocket.net/images/2015/02/Huawei-Logo1422524173.jpg">
@@ -66,7 +66,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -163,7 +163,7 @@
     <p><img src="/images/2015/02/Huawei-Logo1422524173.jpg" alt="huawei logo"></p>
 <p>I own a couple of Huawei USB modems, a <strong>Huawei E587</strong> and a <strong>Huawei E355</strong>, while the first one is great for high speed mobile connections due to its dual channel feature, the E355 is a good choice for a small, easy to use and connect ( <strong>cdc_ether</strong> baby! ) mobile device.</p>
 <p>But are they safe? … <strong>of course NOT</strong> :D</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>Many other researchers reported a <a target="_blank" rel="noopener" href="http://www.huawei.com/en/security/psirt/security-bulletins/security-advisories/hw-275474.htm">few vulnerabilities</a> on some <a target="_blank" rel="noopener" href="http://www.exploit-db.com/exploits/19185/">specific devices</a>, but actually the same vulnerability, the authentication bypass, applies for every device having the Huawei <strong>WebUI</strong> if you use their API url instead of the specific html form of the device model itself.</p>
 <p>Most of the html forms inside the web ui, which are “protected” by a username and passsword ( default admin:admin, change it! ), just perform an AJAX request to the <strong>real</strong> API url, for instance:</p>

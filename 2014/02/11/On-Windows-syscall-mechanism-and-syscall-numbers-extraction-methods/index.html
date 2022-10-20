@@ -68,7 +68,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -161,7 +161,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a <strong>system call</strong> i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>Those system calls are usually described as putting some value ( the syscall number ) in a CPU register and then call an OS dependant interrupt, for instance ( the syscall number here was totally invented, just showing you an example )</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov eax, 0x1234</span><br><span class="line">lea edx, [esp+4]</span><br><span class="line">int 0x2E</span><br></pre></td></tr></table></figure>

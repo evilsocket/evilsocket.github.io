@@ -60,7 +60,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -155,7 +155,7 @@
   <div class="content" itemprop="articleBody">
     <p>Even though it’s one of the tools I use on a daily basis, Hex-Rays <strong><a target="_blank" rel="noopener" href="https://www.hex-rays.com/products/ida/">IDA</a></strong> always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a <em>“make yourself the tools you need”</em> guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.</p>
 <p>I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with <strong>and</strong> because I came accross <a target="_blank" rel="noopener" href="http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html">this blog post</a> that shows how great IDA python libraries are.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for all function offsets</span></span><br><span class="line"><span class="keyword">for</span> fn_ea <span class="keyword">in</span> Functions():</span><br><span class="line">  <span class="keyword">if</span> fn_ea == <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function from offset</span></span><br><span class="line">  f = idaapi.get_func(fn_ea)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function bytes</span></span><br><span class="line">  start = f.startEA</span><br><span class="line">  size = f.endEA - start</span><br><span class="line">  <span class="built_in">bytes</span> = GetManyBytes(start, size)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 

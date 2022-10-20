@@ -64,7 +64,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -161,7 +161,7 @@
     <p>In the last few months I’ve been playing with Android’s low level GSM API, a few years ago the (in)famous <strong>sendRawPdu</strong> API was available, allowing a developer to manually encode a SMS message at a very low level before sending it to the GSM baseband itself and quite a few applications sending all kind of weird SMS ( flash sms, silent sms, etc ) were born ( for a brief overview of PDU encoding refer to <a target="_blank" rel="noopener" href="http://www.smartposition.nl/resources/sms_pdu.html">this page</a> ).</p>
 <p>(Un)fortunately Google decided to remove that API, it’s still not sure if they did it for security related purposes or during some refactoring of their IPC IBinder mechanism, but nowadays it’s no more available unless you use some very old phones/firmwares ( on most devices they removed the ttyUSB serial interfaces to send AT commands to the GSM modem as well ).</p>
 <p>Until a couple of months ago, when I found the <strong>SmsManager.sendDataMessage</strong> API which, apparently, it’s not used anywhere ( if you search for it you’ll find only a few examples, but nothing regarding how to use it with manually encoded PDUs ).<br>Using this API we’re able to manually encode our SMS, moreover we can specific a “port” as one of its arguments which will identify what kind of sms we’re gonna send, in this post I’ll talk about port 2948, namely the port used to send <strong>WAP PUSH notifications</strong>.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>WAP PUSH messages were an old mechanism to basically force a remote device to visit a URL encoded in the SMS payload itself ( I know, security wise it was very dumb, but we’re talking about the 90s ), this specific request is called a “<strong>Service Load</strong>” (SL) request, where an XML payload like the following was encoded in a binary form and sent along the PDU to the device.</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">sl</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//WAPFORUM//DTD SL 1.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">                    <span class="meta-string">&quot;www.wapforum.org/DTD/sl.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">sl</span> <span class="attr">href</span>=<span class="string">&quot;http://some-evil-site.com/evil-content.html&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>

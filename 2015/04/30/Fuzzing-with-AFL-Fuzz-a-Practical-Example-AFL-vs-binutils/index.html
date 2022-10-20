@@ -66,7 +66,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -173,7 +173,7 @@ This substantially improves the functional coverage for the fuzzed code. The com
 corpora produced by the tool are also useful for seeding other, more labor- or resource-intensive
 testing regimes down the road.</code></pre>
 <p>Ok nice … but what does this actually mean?</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h1 id="Binary-Instrumentation"><a href="#Binary-Instrumentation" class="headerlink" title="Binary Instrumentation"></a>Binary Instrumentation</h1><p>The first component of AFL is a wrapper for GCC/CLang compilers that will inject during compilation its own assembly code into the target software.<br>The fuzzer will use this code to trace execution paths while feeding the system with new inputs and to determine if a new mutation of the input is able to trigger known or unkown ( new ) execution paths.</p>
 <p>If you can’t/don’t want to recompile the source code of the target program, AFL also supports a QEMU mode, an extension that leverages the QEMU “user emulation” mode and allows callers to obtain instrumentation output for black-box, closed-source binaries. This mechanism can be then used by afl-fuzz to stress-test targets that couldn’t be built with afl-gcc.</p>

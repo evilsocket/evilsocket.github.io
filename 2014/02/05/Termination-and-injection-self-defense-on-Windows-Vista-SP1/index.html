@@ -62,7 +62,7 @@
     
       <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
     
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -155,7 +155,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>On a <a href="/2014/02/01/keservicedescriptortable-patching-aka-how-to-hook-win32-api-patching-the-kernel/">previous post</a> I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.<br>Today I’m gonna talk about <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557759(v=vs.85).aspx">OBR and callbacks</a>, mainly to show how to achieve the same result on 64bit systems starting from Vista SP1 and later.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h4 id="Why-should-I-prevent-a-process-from-being-killed"><a href="#Why-should-I-prevent-a-process-from-being-killed" class="headerlink" title="Why should I prevent a process from being killed?"></a>Why should I prevent a process from being killed?</h4><p>If you try to search for some code samples or documentation about this topic, you will find that almost anyone will say that denying a computer administrator to terminate a process is wrong, so process self-protection should be avoided.<br>This is true 99% of the cases, the remaining 1% are those cases when a process is vital for the system infrastructure security such as anti malwares, IPS and IDS. Those kind of softwares have to protect themself from malicious software trying to terminate their services and processes or inject arbitrary code into their executable address space, so that’s when an appropriate protection is vital.</p>
 <h4 id="The-user-mode-curse"><a href="#The-user-mode-curse" class="headerlink" title="The user mode curse"></a>The user mode curse</h4><p>No matter how hard you try, there’s really no 100% safe way to do this in user mode … you could try API hooking, passive monitoring, process sandboxing, whatever, there’s always a way to bypass a user mode protection. API hooks can be overwritten, monitoring can be eluded with straight calls to ntdll and obfuscation, sandboxing can be detected.<br>That’s why kernel patching was the most used technique on pre Vista systems, once you are in the kernel you have full power and the lowest level possible vision of what is happening on a computer, moreover you don’t need to handle all the abstractions a user mode environment implies.</p>
