@@ -6,7 +6,7 @@
   <link href="https://www.evilsocket.net/atom.xml" rel="self"/>
   
   <link href="https://www.evilsocket.net/"/>
-  <updated>2022-10-22T16:24:11.125Z</updated>
+  <updated>2023-11-02T17:55:18.872Z</updated>
   <id>https://www.evilsocket.net/</id>
   
   <author>
@@ -15,6 +15,100 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Enumerate/Bruteforce/Attack All the Things! Presenting Legba</title>
+    <link href="https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/"/>
+    <id>https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/</id>
+    <published>2023-11-02T16:46:32.000Z</published>
+    <updated>2023-11-02T17:55:18.872Z</updated>
+    
+    <content type="html"><![CDATA[<p>During the last few weeks I’ve been working on a new tool that started as a way for me to become more familiar with Rust and its <a href="https://tokio.rs/">tokio asynchronous runtime</a> and then quickly turned into quite a comprehensive and efficient replacement for similar tools (thc-hydra, medusa, patator, etc). In this blog post I’m going to briefly present <a href="https://github.com/evilsocket/legba">project Legba</a>, the reasons behind its implementation and a few of the many possible use cases.</p><a href="https://en.wikipedia.org/wiki/Papa_Legba" target="_blank"><img width="350px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/VeveLegba.svg/800px-VeveLegba.svg.png"/></a><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it evilsocket/legba:latest -h </span><br></pre></td></tr></table></figure><p>Don’t forget to <a href="https://github.com/evilsocket/legba/wiki">RTFM</a>.</p><h2 id="Rust-Async-FTW"><a href="#Rust-Async-FTW" class="headerlink" title="Rust + Async FTW"></a>Rust + Async FTW</h2><p>When searching for authentication bruteforcing and wordlist attack tools, most of the times <a href="https://github.com/vanhauser-thc/thc-hydra">THC Hydra</a> is presented as the de facto standard, with some minor alternatives that are either 1-to-1 copies of it, much slower Python implementations, or protocol specific implementations.</p><p>While studying Hydra source code, three main factors caught my attention:</p><ol><li>It’s using <a href="https://github.com/vanhauser-thc/thc-hydra/blob/master/hydra-mod.c">blocking sockets</a>, meaning suboptimal scaling of I/O concurrent operations.</li><li>It’s implemented in a non memory safe language.</li><li>It does not support modern features such as CSRF token grabbing for HTTP requests, Kerberos Pre-Auth and more.</li></ol><p>For these reasons (and because I was a bit bored after months of not coding anything) I decided to work on Legba, with the following objectives in mind:</p><ol><li>Use Rust which would not only make the tool blazing fast, but memory safe and efficient.</li><li>Use an asynchronous runtime in order to get the best possible performance.</li><li>Implement it as a generic framework that supports highly modular plugins in order to easily add new features without touching the core.</li></ol><p>After some hours of coding, refactoring and optimizing I’ve come up with something that’s (in my opinion) pretty great. With an average runtime memory usage of less than 15MB, Legba beats Hydra in terms of efficiency by several orders of magnitude. </p><p>Here’s a benchmark of the two running some common plugins, both targeting the same test servers on localhost. The benchmark has been executed on a macOS laptop with an M1 Max CPU, using a wordlist of 1000 passwords with the correct one being on the last line. Legba was compiled in release mode, Hydra compiled and installed via <a href="https://formulae.brew.sh/formula/hydra">brew formula</a>.</p><p>Far from being an exhaustive benchmark, this table still gives a clear idea of how using an asynchronous runtime can drastically improve performances.</p><table><thead><tr><th>Test Name</th><th>Hydra Tasks</th><th>Hydra Time</th><th>Legba Tasks</th><th>Legba Time</th></tr></thead><tbody><tr><td>HTTP basic auth</td><td>16</td><td>7.100s</td><td>10</td><td>1.560s <strong>(🚀 4.5x faster)</strong></td></tr><tr><td>HTTP POST login (wordpress)</td><td>16</td><td>14.854s</td><td>10</td><td>5.045s <strong>(🚀 2.9x faster)</strong></td></tr><tr><td>SSH</td><td>16</td><td>7m29.85s *</td><td>10</td><td>8.150s <strong>(🚀 55.1x faster)</strong></td></tr><tr><td>MySQL</td><td>4 **</td><td>9.819s</td><td>4 **</td><td>2.542s <strong>(🚀 3.8x faster)</strong></td></tr><tr><td>Microsoft SQL</td><td>16</td><td>7.609s</td><td>10</td><td>4.789s <strong>(🚀 1.5x faster)</strong></td></tr></tbody></table><p><sup>* While this result would suggest a default delay between connection attempts used by Hydra. I’ve tried to study the source code to find such delay but to my knowledge there’s none. For some reason it’s simply very slow.</sup><br><sup>** For MySQL hydra automatically reduces the amount of tasks to 4, therefore legba’s concurrency level has been adjusted to 4 as well.</sup></p><p>Note how, while using less concurrent tasks, Legba is faster and in most cases more memory efficient.</p><h2 id="A-Framework-For-Everything"><a href="#A-Framework-For-Everything" class="headerlink" title="A Framework For Everything"></a>A Framework For Everything</h2><p>After implementing the core framework and the first protocol plugins, I realized that the tool functionalities went beyond just attacking authentication mechanisms via bruteforcing and wordlist attacks. Any type of enumeration task that requires an efficient parallelism and network I/O would be a good fit for it. This resulted in an extensive list of modules covering both authentication and enumeration of resources. I’ll add here just a few use cases, I highly recommend you guys to check <a href="https://github.com/evilsocket/legba/wiki">the project wiki</a> for the documentation and a full list of features.</p><h3 id="All-the-HTTP-Things"><a href="#All-the-HTTP-Things" class="headerlink" title="All the HTTP Things"></a>All the HTTP Things</h3><p>The very first module I developed, of course, was the HTTP module, which quickly became a set of different submodules supporting all sorts of things, such as:</p><p><strong>HTTP Basic Authentication</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba http.basic \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/</span><br></pre></td></tr></table></figure><p><strong>HTTP Requests with NTLMv1 and NTLMv2 Authentication</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">legba http.ntlm2 \ <span class="comment"># use http.ntlm1 for v1.0</span></span><br><span class="line">    --domain example.org \</span><br><span class="line">    --workstation client \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target https://localhost:8888/</span><br></pre></td></tr></table></figure><p><strong>HTTP Pages Enumeration</strong></p><p>This was implemented to replace <a href="https://github.com/evilsocket/dirsearch">dirsearch</a>.</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/pages.txt \</span><br><span class="line">    --target http://localhost:8888/ \</span><br><span class="line">    --http-enum-ext php \ <span class="comment"># php is the default value for file extensions</span></span><br><span class="line">    --http-success-codes 200 </span><br></pre></td></tr></table></figure><p>Wordpress plugin discovery using interpolation syntax:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/wordpress-plugins.txt \</span><br><span class="line">    --target http://localhost:8888/wp-content/plugins/&#123;PAYLOAD&#125;/readme.txt \</span><br><span class="line">    --http-success-codes 200 </span><br></pre></td></tr></table></figure><p>LFI vulnerability fuzzing:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/lfi.txt \</span><br><span class="line">    --target http://localhost:8888/ \</span><br><span class="line">    --http-success-string <span class="string">&quot;root:&quot;</span></span><br></pre></td></tr></table></figure><p>The <code>data/lfi.txt</code> would be something like:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?page&#x3D;..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd</span><br><span class="line">file?filename&#x3D;..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5cetc&#x2F;passwd</span><br><span class="line">...</span><br><span class="line">... and so on ...</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>Google Suite / GMail valid accounts enumeration (this is a pretty neat trick that <a href="https://twitter.com/evilsocket/status/1720063591007543775">I’ve recently found out about</a>):</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/employees-names.txt \</span><br><span class="line">    --http-success-string <span class="string">&quot;COMPASS&quot;</span> \</span><br><span class="line">    --http-success-codes 204 \</span><br><span class="line">    --quiet \</span><br><span class="line">    --target <span class="string">&quot;https://mail.google.com/mail/gxlu?email=&#123;PAYLOAD&#125;@broadcom.com&quot;</span> </span><br></pre></td></tr></table></figure><p><strong>Various web login pages</strong></p><p>HTTP Post Request (Wordpress wp-login.php page):</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/wp-login.php \</span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-success-codes 302 \ <span class="comment"># wordpress redirects on successful login</span></span><br><span class="line">    --http-payload <span class="string">&#x27;log=&#123;USERNAME&#125;&amp;pwd=&#123;PASSWORD&#125;&#x27;</span></span><br></pre></td></tr></table></figure><p>HTTP Post Request (Wordpress xmlrpc.php)</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/xmlrpc.php \</span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-payload <span class="string">&#x27;&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;&lt;methodCall&gt;&lt;methodName&gt;wp.getUsersBlogs&lt;/methodName&gt;&lt;params&gt;&lt;param&gt;&lt;value&gt;&lt;string&gt;&#123;USERNAME&#125;&lt;/string&gt;&lt;/value&gt;&lt;/param&gt;&lt;param&gt;&lt;value&gt;&lt;string&gt;&#123;PASSWORD&#125;&lt;/string&gt;&lt;/value&gt;&lt;/param&gt;&lt;/params&gt;&lt;/methodCall&gt;&#x27;</span> \</span><br><span class="line">    --http-success-string <span class="string">&#x27;isAdmin&#x27;</span> <span class="comment"># what string successful response will contain</span></span><br></pre></td></tr></table></figure><p>Or using the @ syntax to load the payload from a file:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/xmlrpc.php \</span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-payload @xmlrpc-payload.xml \</span><br><span class="line">    --http-success-string <span class="string">&#x27;isAdmin&#x27;</span></span><br></pre></td></tr></table></figure><p>HTTP Post Request with CSRF Token grabbing:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/ \</span><br><span class="line">    --http-csrf-page http://localhost:8888/ \ <span class="comment"># where to grab the CSRF token from, or empty if it&#x27;s the same as --target</span></span><br><span class="line">    --http-csrf-regexp <span class="string">&#x27;&lt;input type=&quot;hidden&quot; name=&quot;(token)&quot; value=&quot;([^\&quot;]+)&quot;&#x27;</span> \ <span class="comment"># regular expression to extract it</span></span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-payload <span class="string">&#x27;user=&#123;USERNAME&#125;&amp;pass=&#123;PASSWORD&#125;&#x27;</span></span><br></pre></td></tr></table></figure><h3 id="DNS-Subdomain-Enumeration"><a href="#DNS-Subdomain-Enumeration" class="headerlink" title="DNS Subdomain Enumeration"></a>DNS Subdomain Enumeration</h3><p>I wanted to write something faster and simpler than my <a href="https://github.com/evilsocket/xray">XRay</a>, therefore:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba dns \</span><br><span class="line">    --payloads data/200k-dns.txt \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --dns-resolvers <span class="string">&quot;1.1.1.1&quot;</span> <span class="comment"># comma separated list of DNS resolvers, do not pass to use the system resolver</span></span><br></pre></td></tr></table></figure><h3 id="TCP-Port-Scanning"><a href="#TCP-Port-Scanning" class="headerlink" title="TCP Port Scanning"></a>TCP Port Scanning</h3><p>Because why the hell not?! :D</p><p>Scan all TCP ports with a 300ms timeout:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">legba tcp.ports \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --timeout 300 </span><br></pre></td></tr></table></figure><p>Scan a custom range of ports with a 300ms timeout:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba tcp.ports \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --tcp-ports <span class="string">&#x27;80-10000&#x27;</span> \</span><br><span class="line">    --timeout 300 </span><br></pre></td></tr></table></figure><p>Scan a custom list of ports with a 300ms timeout:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba tcp.ports \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --tcp-ports <span class="string">&#x27;21, 22, 80, 443, 8080&#x27;</span> \</span><br><span class="line">    --timeout 300 </span><br></pre></td></tr></table></figure><h3 id="Other-Protocols"><a href="#Other-Protocols" class="headerlink" title="Other Protocols"></a>Other Protocols</h3><p><strong>Kerberos 5 Pre-Auth (users enumeration and password authentication).</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">legba kerberos \</span><br><span class="line">    --target dc.example.org \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --kerberos-realm example.org</span><br></pre></td></tr></table></figure><p><strong>Microsoft Remote Desktop</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba rdp \</span><br><span class="line">    --target localhost:3389 \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password data/passwords.txt</span><br></pre></td></tr></table></figure><p>The list goes on and on, at the time of writing (<a href="https://github.com/evilsocket/legba/wiki">check the wiki for updates!</a>) the list of supported features and protocols is: AMQP (ActiveMQ, RabbitMQ, Qpid, JORAM and Solace), Cassandra/ScyllaDB, DNS subdomain enumeration, FTP, HTTP (basic authentication, NTLMv1, NTLMv2, multipart form, custom requests with CSRF support and files/folders enumeration), IMAP, Kerberos pre-authentication and user enumeration, LDAP, MongoDB, Microsoft SQL, MySQL, Oracle, PostgreSQL, POP3, RDP, Redis, SSH / SFTP, SMTP, STOMP (ActiveMQ, RabbitMQ, HornetQ and OpenMQ), TCP port scanning, Telnet, VNC.</p><h2 id="Fin"><a href="#Fin" class="headerlink" title="Fin"></a>Fin</h2><p>As usual, the tool is released under the GPL3 license and all contributions are more than welcome. Enjoy ^_^</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;During the last few weeks I’ve been working on a new tool that started as a way for me to become more familiar with Rust and its &lt;a href=</summary>
+      
+    
+    
+    
+    
+    <category term="rust" scheme="https://www.evilsocket.net/tags/rust/"/>
+    
+    <category term="tokio" scheme="https://www.evilsocket.net/tags/tokio/"/>
+    
+    <category term="async" scheme="https://www.evilsocket.net/tags/async/"/>
+    
+    <category term="bruteforce" scheme="https://www.evilsocket.net/tags/bruteforce/"/>
+    
+    <category term="wordlist" scheme="https://www.evilsocket.net/tags/wordlist/"/>
+    
+    <category term="dns subdomain enumeration" scheme="https://www.evilsocket.net/tags/dns-subdomain-enumeration/"/>
+    
+    <category term="password" scheme="https://www.evilsocket.net/tags/password/"/>
+    
+    <category term="authentication" scheme="https://www.evilsocket.net/tags/authentication/"/>
+    
+    <category term="red team" scheme="https://www.evilsocket.net/tags/red-team/"/>
+    
+    <category term="multi protocol" scheme="https://www.evilsocket.net/tags/multi-protocol/"/>
+    
+    <category term="legba" scheme="https://www.evilsocket.net/tags/legba/"/>
+    
+    <category term="hydra" scheme="https://www.evilsocket.net/tags/hydra/"/>
+    
+    <category term="amqp" scheme="https://www.evilsocket.net/tags/amqp/"/>
+    
+    <category term="http" scheme="https://www.evilsocket.net/tags/http/"/>
+    
+    <category term="csrf token" scheme="https://www.evilsocket.net/tags/csrf-token/"/>
+    
+    <category term="ntlm" scheme="https://www.evilsocket.net/tags/ntlm/"/>
+    
+    <category term="kerberos" scheme="https://www.evilsocket.net/tags/kerberos/"/>
+    
+    <category term="kerberos pre-authentication" scheme="https://www.evilsocket.net/tags/kerberos-pre-authentication/"/>
+    
+    <category term="imap" scheme="https://www.evilsocket.net/tags/imap/"/>
+    
+    <category term="ldap" scheme="https://www.evilsocket.net/tags/ldap/"/>
+    
+    <category term="mongodb" scheme="https://www.evilsocket.net/tags/mongodb/"/>
+    
+    <category term="oracle" scheme="https://www.evilsocket.net/tags/oracle/"/>
+    
+    <category term="mssql" scheme="https://www.evilsocket.net/tags/mssql/"/>
+    
+    <category term="mysql" scheme="https://www.evilsocket.net/tags/mysql/"/>
+    
+    <category term="cassandra" scheme="https://www.evilsocket.net/tags/cassandra/"/>
+    
+    <category term="pgsql" scheme="https://www.evilsocket.net/tags/pgsql/"/>
+    
+    <category term="pop3" scheme="https://www.evilsocket.net/tags/pop3/"/>
+    
+    <category term="rdp" scheme="https://www.evilsocket.net/tags/rdp/"/>
+    
+    <category term="redis" scheme="https://www.evilsocket.net/tags/redis/"/>
+    
+    <category term="scylladb" scheme="https://www.evilsocket.net/tags/scylladb/"/>
+    
+    <category term="sftp" scheme="https://www.evilsocket.net/tags/sftp/"/>
+    
+    <category term="smtp" scheme="https://www.evilsocket.net/tags/smtp/"/>
+    
+    <category term="ssh" scheme="https://www.evilsocket.net/tags/ssh/"/>
+    
+    <category term="stomp" scheme="https://www.evilsocket.net/tags/stomp/"/>
+    
+    <category term="port scanner" scheme="https://www.evilsocket.net/tags/port-scanner/"/>
+    
+    <category term="telnet" scheme="https://www.evilsocket.net/tags/telnet/"/>
+    
+    <category term="vnc" scheme="https://www.evilsocket.net/tags/vnc/"/>
+    
+  </entry>
   
   <entry>
     <title>Reverse Engineering the Apple MultiPeer Connectivity Framework</title>
@@ -438,8 +532,6 @@
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
-    
     <category term="raspberry" scheme="https://www.evilsocket.net/tags/raspberry/"/>
     
     <category term="rpi" scheme="https://www.evilsocket.net/tags/rpi/"/>
@@ -449,6 +541,8 @@
     <category term="rpi0w" scheme="https://www.evilsocket.net/tags/rpi0w/"/>
     
     <category term="kali" scheme="https://www.evilsocket.net/tags/kali/"/>
+    
+    <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
     
     <category term="btnap" scheme="https://www.evilsocket.net/tags/btnap/"/>
     
@@ -557,8 +651,6 @@
     
     <category term="golang" scheme="https://www.evilsocket.net/tags/golang/"/>
     
-    <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
-    
     <category term="arc" scheme="https://www.evilsocket.net/tags/arc/"/>
     
     <category term="arcd" scheme="https://www.evilsocket.net/tags/arcd/"/>
@@ -574,6 +666,8 @@
     <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
     
     <category term="aes" scheme="https://www.evilsocket.net/tags/aes/"/>
+    
+    <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
     
   </entry>
   
@@ -596,11 +690,11 @@
     
     <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
-    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
     <category term="bleah" scheme="https://www.evilsocket.net/tags/bleah/"/>
     
@@ -624,15 +718,15 @@
     
     <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
-    <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
     <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
-    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
+    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
     <category term="low energy" scheme="https://www.evilsocket.net/tags/low-energy/"/>
     
@@ -779,11 +873,11 @@
     
     <category term="android" scheme="https://www.evilsocket.net/tags/android/"/>
     
-    <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
     <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
     <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+    <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
     <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
@@ -835,42 +929,6 @@
     <category term="the guardian" scheme="https://www.evilsocket.net/tags/the-guardian/"/>
     
     <category term="backdoor" scheme="https://www.evilsocket.net/tags/backdoor/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.</title>
-    <link href="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/"/>
-    <id>https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/</id>
-    <published>2016-10-09T13:09:11.000Z</published>
-    <updated>2021-03-01T16:10:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a <a href="http://smarter.am/coffee/">Smarter Coffee</a> machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).<br>The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.</p><p>Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D</p><p>Yep, i can make coffee using the terminal now :D</p><p><img src="/images/2016/10/terminal.png" alt="terminal"></p><span id="more"></span><h3 id="Reversing-the-Protocol"><a href="#Reversing-the-Protocol" class="headerlink" title="Reversing the Protocol"></a>Reversing the Protocol</h3><p>I decided to reverse the <a href="https://play.google.com/store/apps/details?id=am.smarter.smarterandroid">Android application</a> since it’s usualy way easier than reversing iOS ones ( java vs assembly :D ), once I downloaded the APK I started studying the various classes and methods.</p><p>So I fired up <a href="https://github.com/skylot/jadx">JADX</a> ( with the <code>--show-bad-code</code> argument ), I launched CTAGS inside the exported source code folder and VIM to navigate it.<br>A few hours later, I found the interesting part in the <code>am.smarter.smarterandroid.models.a</code> class and noticed a few methods like the following:</p><p><img src="/images/2016/10/methods.png" alt="methods"></p><p>Each of these “packets” is sent to tcp port <code>2081</code> of the machine, the protocol is <strong>very</strong> simple.</p><ul><li>First byte: the command number.</li><li>Second byte to N: optional data ( depending on the command code ).</li><li>Last byte: always <code>0x7e</code> which indicates the end of the packet.</li></ul><p>Responses can vary, but for most of the commands they are:</p><ul><li>First byte: response size</li><li>Second byte: status ( 0 = success otherwise error code )</li><li>Last byte: always <code>0x7e</code>.</li></ul><p>An example command and response, the one to keep the coffee warm for 5 minutes for instance, would be:</p><p>COMMAND  : <code>0x3e 0x05 0x7e</code><br>RESPONSE : <code>0x03 0x00 0x7e</code></p><p>So I’ve mapped all the commands I needed in order to write a minimal console client and tested it … this is the result, it works like a charm! :D</p><iframe width="100%" height="400" src="https://www.youtube.com/embed/9PeR9d18E14" frameborder="0" allowfullscreen></iframe><p>You can <a href="https://github.com/evilsocket/coffee">download the client code here</a>, you’ll need to specify the machine ip address the first time, then it will be saved in the <code>~/.smartercoffee</code> file and won’t be needed anymore.</p><pre><code>coffee make -A 192.168.1.50</code></pre><p><strong>A few examples:</strong></p><p>Just make one cup of coffee:</p><pre><code>coffee make</code></pre><p>Make two cups using the filter instead of the beans in the grinder:</p><pre><code>coffee make --filter</code></pre><p>Keep coffee warm for ten minutes:</p><pre><code>coffee warm --keep-warm=10</code></pre><p><strong>Full usage</strong></p><pre><code>☕ ☕ ☕  SmarterCoffee Client ☕ ☕ ☕by Simone &#39;evilsocket&#39; MargaritelliUsage: coffee [options] (make|warm)Options:  -h, --help            show this help message and exit  -A ADDRESS, --address=ADDRESS                        IP address of the Smarter coffee machine.  -M, --make            Make coffee.  -W, --warm            Warm coffee.  -C CUPS, --cups=CUPS  Set number of cups.  -S STRENGTH, --strength=STRENGTH                        Set coffee strength ( 0-2 ).  -G, --grind           Use grind.  -F, --filter          Use filter.  -K TIME, --keep-warm=TIME                        Keep the coffee warm for TIME minutes.</code></pre><h3 id="Security-Considerations"><a href="#Security-Considerations" class="headerlink" title="Security Considerations"></a>Security Considerations</h3><p>Even if the mobile app requires you to register an account, <strong>access to port 2081 is completely unauthenticated</strong> ( in fact, I’ve found that the user account is only used for statistics using the Firebase API ), anyone on your network could access it and <strong>even flash a new firmware</strong> with no authentication required ( I reversed the <code>UPDATE_FIRMWARE</code> packet as well but you won’t find it on the repo :P )</p><p><img src="/images/2016/10/firmware.jpg" alt="flashing the firmware"></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a &lt;a href=&quot;http://smarter.am/coffee/&quot;&gt;Smarter Coffee&lt;/a&gt; machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).&lt;br&gt;The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.&lt;/p&gt;
-&lt;p&gt;Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D&lt;/p&gt;
-&lt;p&gt;Yep, i can make coffee using the terminal now :D&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2016/10/terminal.png&quot; alt=&quot;terminal&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
-    
-    <category term="hack" scheme="https://www.evilsocket.net/tags/hack/"/>
-    
-    <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
-    
-    <category term="coffee" scheme="https://www.evilsocket.net/tags/coffee/"/>
-    
-    <category term="nerd" scheme="https://www.evilsocket.net/tags/nerd/"/>
-    
-    <category term="smarter coffee" scheme="https://www.evilsocket.net/tags/smarter-coffee/"/>
-    
-    <category term="binary protocol" scheme="https://www.evilsocket.net/tags/binary-protocol/"/>
-    
-    <category term="reversed" scheme="https://www.evilsocket.net/tags/reversed/"/>
     
   </entry>
   

