@@ -34,10 +34,6 @@
     
     
     
-    <category term="authentication" scheme="https://www.evilsocket.net/tags/authentication/"/>
-    
-    <category term="http" scheme="https://www.evilsocket.net/tags/http/"/>
-    
     <category term="rust" scheme="https://www.evilsocket.net/tags/rust/"/>
     
     <category term="tokio" scheme="https://www.evilsocket.net/tags/tokio/"/>
@@ -52,6 +48,8 @@
     
     <category term="password" scheme="https://www.evilsocket.net/tags/password/"/>
     
+    <category term="authentication" scheme="https://www.evilsocket.net/tags/authentication/"/>
+    
     <category term="red team" scheme="https://www.evilsocket.net/tags/red-team/"/>
     
     <category term="multi protocol" scheme="https://www.evilsocket.net/tags/multi-protocol/"/>
@@ -61,6 +59,8 @@
     <category term="hydra" scheme="https://www.evilsocket.net/tags/hydra/"/>
     
     <category term="amqp" scheme="https://www.evilsocket.net/tags/amqp/"/>
+    
+    <category term="http" scheme="https://www.evilsocket.net/tags/http/"/>
     
     <category term="csrf token" scheme="https://www.evilsocket.net/tags/csrf-token/"/>
     
@@ -289,8 +289,6 @@
     
     
     
-    <category term="life" scheme="https://www.evilsocket.net/tags/life/"/>
-    
     <category term="personal life" scheme="https://www.evilsocket.net/tags/personal-life/"/>
     
     <category term="mental health" scheme="https://www.evilsocket.net/tags/mental-health/"/>
@@ -300,6 +298,8 @@
     <category term="music" scheme="https://www.evilsocket.net/tags/music/"/>
     
     <category term="time" scheme="https://www.evilsocket.net/tags/time/"/>
+    
+    <category term="life" scheme="https://www.evilsocket.net/tags/life/"/>
     
   </entry>
   
@@ -651,6 +651,8 @@
     
     <category term="golang" scheme="https://www.evilsocket.net/tags/golang/"/>
     
+    <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
+    
     <category term="arc" scheme="https://www.evilsocket.net/tags/arc/"/>
     
     <category term="arcd" scheme="https://www.evilsocket.net/tags/arcd/"/>
@@ -666,8 +668,6 @@
     <category term="encryption" scheme="https://www.evilsocket.net/tags/encryption/"/>
     
     <category term="aes" scheme="https://www.evilsocket.net/tags/aes/"/>
-    
-    <category term="oss" scheme="https://www.evilsocket.net/tags/oss/"/>
     
   </entry>
   
@@ -690,11 +690,11 @@
     
     <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
-    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
     <category term="bleah" scheme="https://www.evilsocket.net/tags/bleah/"/>
     
@@ -718,15 +718,15 @@
     
     <category term="ble" scheme="https://www.evilsocket.net/tags/ble/"/>
     
-    <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
-    
     <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
     
-    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
+    <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
+    
+    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
-    <category term="btle" scheme="https://www.evilsocket.net/tags/btle/"/>
+    <category term="bluetooth low energy" scheme="https://www.evilsocket.net/tags/bluetooth-low-energy/"/>
     
     <category term="low energy" scheme="https://www.evilsocket.net/tags/low-energy/"/>
     
@@ -762,6 +762,8 @@
     
     <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
+    <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
+    
     <category term="gpd pocket 7" scheme="https://www.evilsocket.net/tags/gpd-pocket-7/"/>
     
     <category term="gpd" scheme="https://www.evilsocket.net/tags/gpd/"/>
@@ -775,8 +777,6 @@
     <category term="rogue ap" scheme="https://www.evilsocket.net/tags/rogue-ap/"/>
     
     <category term="mana" scheme="https://www.evilsocket.net/tags/mana/"/>
-    
-    <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
     <category term="pentest" scheme="https://www.evilsocket.net/tags/pentest/"/>
     
@@ -875,9 +875,9 @@
     
     <category term="reversing" scheme="https://www.evilsocket.net/tags/reversing/"/>
     
-    <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
-    
     <category term="apk" scheme="https://www.evilsocket.net/tags/apk/"/>
+    
+    <category term="dalvik" scheme="https://www.evilsocket.net/tags/dalvik/"/>
     
     <category term="dex" scheme="https://www.evilsocket.net/tags/dex/"/>
     
