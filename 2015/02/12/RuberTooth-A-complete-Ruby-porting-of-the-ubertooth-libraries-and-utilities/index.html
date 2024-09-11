@@ -144,30 +144,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2015-02-12T19:29:13.000Z" itemprop="datePublished">2015-02-12</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/BLE/" rel="tag">BLE</a>, <a class="tag-link-link" href="/tags/bluetooth/" rel="tag">bluetooth</a>, <a class="tag-link-link" href="/tags/bluetooth-low-energy/" rel="tag">bluetooth low energy</a>, <a class="tag-link-link" href="/tags/gem/" rel="tag">gem</a>, <a class="tag-link-link" href="/tags/hack/" rel="tag">hack</a>, <a class="tag-link-link" href="/tags/library/" rel="tag">library</a>, <a class="tag-link-link" href="/tags/porting/" rel="tag">porting</a>, <a class="tag-link-link" href="/tags/rubertooth/" rel="tag">rubertooth</a>, <a class="tag-link-link" href="/tags/ruby/" rel="tag">ruby</a>, <a class="tag-link-link" href="/tags/ubertooth/" rel="tag">ubertooth</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Today, finally my <strong>ubertooth</strong> arrived and I immediately started hacking with it.</p>
+    <div class="content" itemprop="articleBody">
+      <p>Today, finally my <strong>ubertooth</strong> arrived and I immediately started hacking with it.</p>
 <p><img src="/images/2015/02/ubertooth.jpg" alt="ubertooth"></p>
 <p>I installed its libraries and tools both on OS X and on my Linux virtual machine, and after a while I noticed a few things:</p>
 <ul>
@@ -185,9 +200,11 @@
 <p>Here’s an example BLE packet sniffer ( which is the equivalent of the <strong>ubertooth-btle</strong> native tool ).</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$LOAD_PATH</span>.unshift File.expand_path(<span class="string">&quot;../../lib&quot;</span>, <span class="keyword">__FILE__</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;ubertooth&#x27;</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;usbpktrx&#x27;</span></span><br><span class="line"><span class="keyword">require</span> <span class="string">&#x27;lepacket&#x27;</span></span><br><span class="line"></span><br><span class="line">MODES = &#123; <span class="symbol">:follow</span> =&gt; <span class="number">0</span>, <span class="symbol">:promisc</span> =&gt; <span class="number">1</span> &#125;</span><br><span class="line"></span><br><span class="line">mode = MODES[<span class="symbol">:follow</span>]</span><br><span class="line">uber = RUbertooth::Ubertooth.new</span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;Found device: &#x27;<span class="subst">#&#123;uber.device.inspect&#125;</span>&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line">uber.set_modulation RUbertooth::Ubertooth::MODULATIONS[<span class="symbol">:MOD_BT_LOW_ENERGY</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> mode == MODES[<span class="symbol">:follow</span>]</span><br><span class="line">    uber.set_channel <span class="number">2402</span></span><br><span class="line">    uber.btle_sniffing <span class="number">2</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    uber.btle_promisc</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">prev_ts = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">puts <span class="string">&quot;Starting polling loop ...&quot;</span></span><br><span class="line"></span><br><span class="line">uber.keep_polling <span class="number">0.5</span> <span class="keyword">do</span> <span class="params">|pkt|</span></span><br><span class="line">    ts_diff = pkt.clk100ns - prev_ts</span><br><span class="line">    prev_ts = pkt.clk100ns</span><br><span class="line"></span><br><span class="line">    printf <span class="string">&quot;\nfreq=%d addr=%08x delta_t=%.03f ms\n&quot;</span>, pkt.frequency, pkt.access_address, ts_diff / <span class="number">10000.0</span></span><br><span class="line"></span><br><span class="line">    (<span class="number">4</span>..pkt.data_length - <span class="number">1</span>).each <span class="keyword">do</span> <span class="params">|i|</span></span><br><span class="line">        printf <span class="string">&quot; %02x&quot;</span>, pkt.data[i]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    puts</span><br><span class="line"></span><br><span class="line">    lepkt = RUbertooth::BlueTooth::LePacket.decode pkt.data, pkt.frequency, pkt.clk100ns</span><br><span class="line"></span><br><span class="line">    lepkt.dump</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -195,7 +212,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -320,6 +336,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

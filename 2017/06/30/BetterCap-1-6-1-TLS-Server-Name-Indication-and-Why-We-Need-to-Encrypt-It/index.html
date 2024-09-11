@@ -134,30 +134,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2017-06-30T10:28:18.000Z" itemprop="datePublished">2017-06-30</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/bettercap/" rel="tag">bettercap</a>, <a class="tag-link-link" href="/tags/mitm/" rel="tag">mitm</a>, <a class="tag-link-link" href="/tags/privacy/" rel="tag">privacy</a>, <a class="tag-link-link" href="/tags/server-name-indication/" rel="tag">server name indication</a>, <a class="tag-link-link" href="/tags/sni/" rel="tag">sni</a>, <a class="tag-link-link" href="/tags/tls/" rel="tag">tls</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Yesterday I released version 1.6.1 of <a target="_blank" rel="noopener" href="https://bettercap.org/">bettercap</a> and among other things, you can read in the changelog:</p>
+    <div class="content" itemprop="articleBody">
+      <p>Yesterday I released version 1.6.1 of <a target="_blank" rel="noopener" href="https://bettercap.org/">bettercap</a> and among other things, you can read in the changelog:</p>
 <pre><code>* Huge improvement on HTTPS parser, now it parses TLS Client Hello messages with SNI extension in order to extract the real hostname.
 ...</code></pre>
 <p>But what does this actually mean? And how can we protect ourselves from it? (Hint: <strong>we can’t, yet</strong>)</p>
@@ -178,9 +193,11 @@ Connection: close</code></pre>
 <p>Seriously, there’s not much we can do about it right now, which means <strong>even if you’re using HTTPS only, the domains you’re browsing are leaked on the network anyway … adios privacy!</strong> The only logical thing would be to <a target="_blank" rel="noopener" href="https://www.ietf.org/proceedings/94/slides/slides-94-tls-8.pdf">encrypt the SNI payload</a> as suggested in this document ( tnx to <a target="_blank" rel="noopener" href="https://twitter.com/fpietrosanti">Fabio</a> for the link! ), but I guess we’ll have to wait some time :)</p>
 <h1 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h1><p><strong>USE A VPN, ESPECIALLY ON PUBLIC NETWORKS FOR F°°°’S SAKE!!!</strong></p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -188,7 +205,6 @@ Connection: close</code></pre>
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -307,6 +323,4 @@ Connection: close</code></pre>
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

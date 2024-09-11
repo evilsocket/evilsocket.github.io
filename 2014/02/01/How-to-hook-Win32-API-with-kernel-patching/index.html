@@ -129,30 +129,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2014-02-01T18:59:55.000Z" itemprop="datePublished">2014-02-01</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/cr0/" rel="tag">cr0</a>, <a class="tag-link-link" href="/tags/hack/" rel="tag">hack</a>, <a class="tag-link-link" href="/tags/hooking/" rel="tag">hooking</a>, <a class="tag-link-link" href="/tags/kernel/" rel="tag">kernel</a>, <a class="tag-link-link" href="/tags/ntoskrnl/" rel="tag">ntoskrnl</a>, <a class="tag-link-link" href="/tags/obcallbacks/" rel="tag">obcallbacks</a>, <a class="tag-link-link" href="/tags/ssdt/" rel="tag">ssdt</a>, <a class="tag-link-link" href="/tags/win32/" rel="tag">win32</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>This post is about <strong>SSDT</strong> patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.<br>SSDT hooking is as far as I know the lowest level technique to replace/hook/intercept/whatever API and for this reason has been used for years both by malwares writers and AV vendors.<br>I’m using the past tence due to the fact that on 2005 Microsoft introduced a Kernel Patching Protection ( also known as “PatchGuard” ) for 64 bit systems, making this technique uneffective in the worst case or quite harder to perform in the average case.</p>
+    <div class="content" itemprop="articleBody">
+      <p>This post is about <strong>SSDT</strong> patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.<br>SSDT hooking is as far as I know the lowest level technique to replace/hook/intercept/whatever API and for this reason has been used for years both by malwares writers and AV vendors.<br>I’m using the past tence due to the fact that on 2005 Microsoft introduced a Kernel Patching Protection ( also known as “PatchGuard” ) for 64 bit systems, making this technique uneffective in the worst case or quite harder to perform in the average case.</p>
 <span id="more"></span>
 
 <p>If you open the file <strong>ntoskrnl.exe</strong> ( located in the System32/SysWOW64 folder ) with your preferred disassembler, you will noticed a <strong>KeServiceDescriptorTable</strong> symbol being exported:</p>
@@ -176,9 +191,11 @@
 <p>This is a short overview of this old but effective technique, which was used to protect processes from being killed hooking <strong>NtTerminateProcess</strong> for instance and filtering by PID.<br>Since PatchGuard has been introduced, SSDT hooking became hard to perform therefore Microsoft released a whole new set of <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff558692(v=vs.85).aspx">kernel callbacks</a> for newer systems, I will talk about this on another post.</p>
 <p>The full source code for SSDT patching can be found <a target="_blank" rel="noopener" href="http://www.emoticode.net/c/ssdt-hook-driver-with-process-protection.html">here</a>, tnx to <strong>zwclose7</strong> from rohitab for the source code.</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -186,7 +203,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -301,6 +317,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

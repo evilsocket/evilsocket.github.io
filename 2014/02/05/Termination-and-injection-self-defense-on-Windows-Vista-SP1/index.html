@@ -131,30 +131,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2014-02-05T21:08:04.000Z" itemprop="datePublished">2014-02-05</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/ObRegisterCallbacks/" rel="tag">ObRegisterCallbacks</a>, <a class="tag-link-link" href="/tags/Windows/" rel="tag">Windows</a>, <a class="tag-link-link" href="/tags/api-hooking/" rel="tag">api hooking</a>, <a class="tag-link-link" href="/tags/driver/" rel="tag">driver</a>, <a class="tag-link-link" href="/tags/kernel/" rel="tag">kernel</a>, <a class="tag-link-link" href="/tags/memory-injection/" rel="tag">memory injection</a>, <a class="tag-link-link" href="/tags/obcallbacks/" rel="tag">obcallbacks</a>, <a class="tag-link-link" href="/tags/process-protection/" rel="tag">process protection</a>, <a class="tag-link-link" href="/tags/security/" rel="tag">security</a>, <a class="tag-link-link" href="/tags/self-protection/" rel="tag">self protection</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>On a <a href="/2014/02/01/keservicedescriptortable-patching-aka-how-to-hook-win32-api-patching-the-kernel/">previous post</a> I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.<br>Today I’m gonna talk about <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557759(v=vs.85).aspx">OBR and callbacks</a>, mainly to show how to achieve the same result on 64bit systems starting from Vista SP1 and later.</p>
+    <div class="content" itemprop="articleBody">
+      <p>On a <a href="/2014/02/01/keservicedescriptortable-patching-aka-how-to-hook-win32-api-patching-the-kernel/">previous post</a> I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.<br>Today I’m gonna talk about <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff557759(v=vs.85).aspx">OBR and callbacks</a>, mainly to show how to achieve the same result on 64bit systems starting from Vista SP1 and later.</p>
 <span id="more"></span>
 
 <h4 id="Why-should-I-prevent-a-process-from-being-killed"><a href="#Why-should-I-prevent-a-process-from-being-killed" class="headerlink" title="Why should I prevent a process from being killed?"></a>Why should I prevent a process from being killed?</h4><p>If you try to search for some code samples or documentation about this topic, you will find that almost anyone will say that denying a computer administrator to terminate a process is wrong, so process self-protection should be avoided.<br>This is true 99% of the cases, the remaining 1% are those cases when a process is vital for the system infrastructure security such as anti malwares, IPS and IDS. Those kind of softwares have to protect themself from malicious software trying to terminate their services and processes or inject arbitrary code into their executable address space, so that’s when an appropriate protection is vital.</p>
@@ -179,9 +194,11 @@
 <p>When your driver unloads, don’t forget to call <strong>ObUnRegisterCallbacks</strong> on the RegistrationHandle you’ve previously saved on a global object to correctly inform the kernel that you are not going to intercept those operations anymore.</p>
 <p>Well, easy peasy, this is how AV and security softwares are being protected nowdays on 64bit systems from malicious termination, code injection, credential theft from memory (well you are just an idiot if you keep sensible data as clear text in memory -.-) and any kind of manipulation which could lead to the system damages.</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -189,7 +206,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -304,6 +320,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

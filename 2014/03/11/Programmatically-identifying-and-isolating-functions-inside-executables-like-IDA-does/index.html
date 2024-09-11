@@ -130,30 +130,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2014-03-11T22:50:48.000Z" itemprop="datePublished">2014-03-11</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/distorm/" rel="tag">distorm</a>, <a class="tag-link-link" href="/tags/functions/" rel="tag">functions</a>, <a class="tag-link-link" href="/tags/ida/" rel="tag">ida</a>, <a class="tag-link-link" href="/tags/libpe/" rel="tag">libpe</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/routines/" rel="tag">routines</a>, <a class="tag-link-link" href="/tags/static-analysis/" rel="tag">static analysis</a>, <a class="tag-link-link" href="/tags/subroutines/" rel="tag">subroutines</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Even though it’s one of the tools I use on a daily basis, Hex-Rays <strong><a target="_blank" rel="noopener" href="https://www.hex-rays.com/products/ida/">IDA</a></strong> always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a <em>“make yourself the tools you need”</em> guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.</p>
+    <div class="content" itemprop="articleBody">
+      <p>Even though it’s one of the tools I use on a daily basis, Hex-Rays <strong><a target="_blank" rel="noopener" href="https://www.hex-rays.com/products/ida/">IDA</a></strong> always fascinates me for its completeness and the huge amount of informations it is able to extract using just a “simple” static analysis approach and being myself a <em>“make yourself the tools you need”</em> guy a couple of weeks ago I’ve started to study it, trying to understand its internal mechanisms, algorithms and tricks.</p>
 <p>I’ve focused on the identification and isolation of subroutines inside an executable due to the fact that this seemed to me the simplest thing to start with <strong>and</strong> because I came accross <a target="_blank" rel="noopener" href="http://blog.clamav.net/2014/02/generating-clamav-signatures-with.html">this blog post</a> that shows how great IDA python libraries are.</p>
 <span id="more"></span>
 
@@ -182,9 +197,11 @@
 <p>Easy isn’t it ? ^_^</p>
 <p>I’ve implemented this algorithm as the new <a target="_blank" rel="noopener" href="https://github.com/evilsocket/libpe/tree/master/pefunctions">pefunctions</a> project sample inside <strong>libpe</strong> repository, enjoy :)</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -192,7 +209,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -308,6 +324,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

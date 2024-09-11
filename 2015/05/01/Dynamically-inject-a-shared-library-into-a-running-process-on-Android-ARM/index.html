@@ -138,30 +138,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2015-05-01T18:56:31.000Z" itemprop="datePublished">2015-05-01</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/api-hooking/" rel="tag">api hooking</a>, <a class="tag-link-link" href="/tags/arm/" rel="tag">arm</a>, <a class="tag-link-link" href="/tags/elf/" rel="tag">elf</a>, <a class="tag-link-link" href="/tags/hooking/" rel="tag">hooking</a>, <a class="tag-link-link" href="/tags/injection/" rel="tag">injection</a>, <a class="tag-link-link" href="/tags/library/" rel="tag">library</a>, <a class="tag-link-link" href="/tags/library-injection/" rel="tag">library injection</a>, <a class="tag-link-link" href="/tags/ptrace/" rel="tag">ptrace</a>, <a class="tag-link-link" href="/tags/registers/" rel="tag">registers</a>, <a class="tag-link-link" href="/tags/remote-injection/" rel="tag">remote injection</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>If you’re familiar with Windows runtime code injection you probably know the great API <strong>CreateRemoteThread</strong> which lets us force an arbitrary running process to call <strong>LoadLibrary</strong> and load a DLL into its address space, this technique called <strong>DLL Injection</strong> is often used to perform user space API hooking, you can find a good post about it on <a target="_blank" rel="noopener" href="http://www.tuxmealux.net/2015/03/10/code-injection/">Gianluca Braga’s blog</a>.</p>
+    <div class="content" itemprop="articleBody">
+      <p>If you’re familiar with Windows runtime code injection you probably know the great API <strong>CreateRemoteThread</strong> which lets us force an arbitrary running process to call <strong>LoadLibrary</strong> and load a DLL into its address space, this technique called <strong>DLL Injection</strong> is often used to perform user space API hooking, you can find a good post about it on <a target="_blank" rel="noopener" href="http://www.tuxmealux.net/2015/03/10/code-injection/">Gianluca Braga’s blog</a>.</p>
 <p>Unfortunately there’s no CreateRemoteThread equivalent on Linux system, therefore we can only rely on <strong>ptrace</strong> and our brain :D<br>In this post I’ll explain how to perform DLL Injection on Linux systems and more specifically on <strong>Android/ARM</strong>.</p>
 <p><strong>Part 2 of this post on <a href="http://www.evilsocket.net/2015/05/04/android-native-api-hooking-with-library-injecto/">“Android Native API Hooking with Library Injection and ELF Introspection.”</a></strong></p>
 <span id="more"></span>
@@ -214,9 +229,11 @@
 <p>Once you have your library injected, you can do quite a few things, like dynamic API hooking/tracing/patching ( libandroid_runtime.so anyone ? :D ), process introspection, runtime memory patching and generally speaking …</p>
 <p><img src="/images/2015/05/download.jpg" alt="insanity wolf"></p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -224,7 +241,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -341,6 +357,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

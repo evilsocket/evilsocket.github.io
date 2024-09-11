@@ -22,10 +22,10 @@
 <meta property="article:tag" content="gsm">
 <meta property="article:tag" content="bts">
 <meta property="article:tag" content="yatebts">
+<meta property="article:tag" content="rce">
 <meta property="article:tag" content="openbts">
 <meta property="article:tag" content="osmobb">
 <meta property="article:tag" content="osmobts">
-<meta property="article:tag" content="rce">
 <meta property="article:tag" content="disclosure">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png">
@@ -141,30 +141,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2016-08-24T18:43:14.000Z" itemprop="datePublished">2016-08-24</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/bts/" rel="tag">bts</a>, <a class="tag-link-link" href="/tags/disclosure/" rel="tag">disclosure</a>, <a class="tag-link-link" href="/tags/exploit/" rel="tag">exploit</a>, <a class="tag-link-link" href="/tags/gsm/" rel="tag">gsm</a>, <a class="tag-link-link" href="/tags/openbts/" rel="tag">openbts</a>, <a class="tag-link-link" href="/tags/osmobb/" rel="tag">osmobb</a>, <a class="tag-link-link" href="/tags/osmobts/" rel="tag">osmobts</a>, <a class="tag-link-link" href="/tags/rce/" rel="tag">rce</a>, <a class="tag-link-link" href="/tags/vulnerability/" rel="tag">vulnerability</a>, <a class="tag-link-link" href="/tags/yatebts/" rel="tag">yatebts</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:</p>
+    <div class="content" itemprop="articleBody">
+      <p>This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:</p>
 <ul>
 <li>YateBTS &lt;= 5.0.0</li>
 <li>OpenBTS &lt;= 4.0.0</li>
@@ -178,9 +193,11 @@
 <p>Long story short, they bind the transceiver server process to <code>INADDR_ANY</code> instead of <code>INADDR_LOOPBACK</code>, this makes it reachable by anyone on the same network (no authentication mechanism was implemented), moreover there’s an exploitable stack buffer overflow on the control socket, if you rely on both of this issues … well, you’ve got the idea :)</p>
 <p>All details and the analysis itself <a target="_blank" rel="noopener" href="https://blog.zimperium.com/analysis-of-multiple-vulnerabilities-in-different-open-source-bts-products/">can be found here</a>.</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -188,7 +205,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -311,6 +327,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

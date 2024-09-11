@@ -137,30 +137,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2015-05-02T14:37:19.000Z" itemprop="datePublished">2015-05-02</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/arm/" rel="tag">arm</a>, <a class="tag-link-link" href="/tags/assembly/" rel="tag">assembly</a>, <a class="tag-link-link" href="/tags/disassembler/" rel="tag">disassembler</a>, <a class="tag-link-link" href="/tags/hack/" rel="tag">hack</a>, <a class="tag-link-link" href="/tags/hopper/" rel="tag">hopper</a>, <a class="tag-link-link" href="/tags/ida/" rel="tag">ida</a>, <a class="tag-link-link" href="/tags/inline/" rel="tag">inline</a>, <a class="tag-link-link" href="/tags/inline-assembly/" rel="tag">inline assembly</a>, <a class="tag-link-link" href="/tags/naked-functions/" rel="tag">naked functions</a>, <a class="tag-link-link" href="/tags/objdump/" rel="tag">objdump</a>, <a class="tag-link-link" href="/tags/trick/" rel="tag">trick</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>On this post I want to share a simple trick I learned a while ago, it’s nothing special but if you think about it, it’s quite nice :)</p>
+    <div class="content" itemprop="articleBody">
+      <p>On this post I want to share a simple trick I learned a while ago, it’s nothing special but if you think about it, it’s quite nice :)</p>
 <p>Sometimes we want to obfuscate/hide strings in our program to make reversing more difficult and the more common approach is to encrypt them somehow and put them inside binary buffers instead of plain ASCII strings.<br>One downside of this naive approach is of course, once decompiled, the access to these binary buffers will easily be noticed by a seasoned reverser, he would assume some sort of obfuscation/encryption/whatever and start reversing the algorithm to unobfuscate the strings in a matter of minutes.</p>
 <p>One thing you can do to make his/her life harder ( but not impossible ) is embedding your encrypted data as code … how?</p>
 <span id="more"></span>
@@ -222,9 +237,11 @@ the compiler to construct the requisite function declaration for the assembler.<
 <p>Now try to imagine, instead of a simple “Hello World”, to put some strongly encrypted data or even strongly encrypted code that you can decrypt and execute at runtime.<br>In my experiments, this trick not only is able to fool every decompiler I tried, but in some cases it’s even able to screw all the code that follows the naked function and/or make the decompiler crash!</p>
 <p>Enjoy :)</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -232,7 +249,6 @@ the compiler to construct the requisite function declaration for the assembler.<
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -349,6 +365,4 @@ the compiler to construct the requisite function declaration for the assembler.<
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

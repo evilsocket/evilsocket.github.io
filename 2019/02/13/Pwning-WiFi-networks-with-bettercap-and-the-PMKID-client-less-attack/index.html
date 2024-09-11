@@ -140,30 +140,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2019-02-13T15:53:31.000Z" itemprop="datePublished">2019-02-13</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/bettercap/" rel="tag">bettercap</a>, <a class="tag-link-link" href="/tags/deauth/" rel="tag">deauth</a>, <a class="tag-link-link" href="/tags/handshake/" rel="tag">handshake</a>, <a class="tag-link-link" href="/tags/hashcat/" rel="tag">hashcat</a>, <a class="tag-link-link" href="/tags/pmkid/" rel="tag">pmkid</a>, <a class="tag-link-link" href="/tags/rsn/" rel="tag">rsn</a>, <a class="tag-link-link" href="/tags/rsn-pmkid/" rel="tag">rsn pmkid</a>, <a class="tag-link-link" href="/tags/wpa/" rel="tag">wpa</a>, <a class="tag-link-link" href="/tags/wpa2/" rel="tag">wpa2</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>In this post, I’ll talk about the new WiFi related features that have been recently implemented into bettercap, starting from how the EAPOL <a target="_blank" rel="noopener" href="https://wlan1nde.wordpress.com/2014/10/27/4-way-handshake/">4-way handshake</a> capturing has been automated, to a whole new type of attack that will allow us to recover WPA PSK passwords of an AP without clients.</p>
+    <div class="content" itemprop="articleBody">
+      <p>In this post, I’ll talk about the new WiFi related features that have been recently implemented into bettercap, starting from how the EAPOL <a target="_blank" rel="noopener" href="https://wlan1nde.wordpress.com/2014/10/27/4-way-handshake/">4-way handshake</a> capturing has been automated, to a whole new type of attack that will allow us to recover WPA PSK passwords of an AP without clients.</p>
 <p><img src="https://raw.githubusercontent.com/bettercap/media/master/logo.png" alt="logo"></p>
 <p>We’ll start with the assumption that your WiFi card supports monitor mode and packet injection (I use an <code>AWUS1900</code> with <a target="_blank" rel="noopener" href="https://github.com/aircrack-ng/rtl8812au">this driver</a>), that you have a working <a target="_blank" rel="noopener" href="https://hashcat.net/">hashcat</a> (v4.2.0 or higher is required) installation (ideally with GPU support enabled) for cracking and that you know how to use it properly either for dictionary or brute-force attacks, as no tips on how to tune the masks and/or generate proper dictionaries will be given :)</p>
 <div class="note">On newer macOS laptops, the builtin WiFi interface `en0` already supports monitor mode, meaning you won't need a Linux VM in order to run this :)</div>
@@ -220,9 +235,11 @@
 <p>Enjoy :)</p>
 <p><img src="/images/2019/02/lulz.png" alt="lulz"></p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -230,7 +247,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -348,6 +364,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

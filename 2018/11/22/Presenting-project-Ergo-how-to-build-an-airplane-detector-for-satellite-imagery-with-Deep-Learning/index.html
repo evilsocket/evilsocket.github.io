@@ -153,30 +153,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2018-11-22T17:15:50.000Z" itemprop="datePublished">2018-11-22</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/cnn/" rel="tag">cnn</a>, <a class="tag-link-link" href="/tags/convolutional-neural-networks/" rel="tag">convolutional neural networks</a>, <a class="tag-link-link" href="/tags/cuda/" rel="tag">cuda</a>, <a class="tag-link-link" href="/tags/cudnn/" rel="tag">cudnn</a>, <a class="tag-link-link" href="/tags/deep-learning/" rel="tag">deep learning</a>, <a class="tag-link-link" href="/tags/deep-neural-networks/" rel="tag">deep neural networks</a>, <a class="tag-link-link" href="/tags/dnn/" rel="tag">dnn</a>, <a class="tag-link-link" href="/tags/ergo/" rel="tag">ergo</a>, <a class="tag-link-link" href="/tags/keras/" rel="tag">keras</a>, <a class="tag-link-link" href="/tags/machine-learning/" rel="tag">machine learning</a>, <a class="tag-link-link" href="/tags/neural-networks/" rel="tag">neural networks</a>, <a class="tag-link-link" href="/tags/nvidia/" rel="tag">nvidia</a>, <a class="tag-link-link" href="/tags/planes/" rel="tag">planes</a>, <a class="tag-link-link" href="/tags/planes-detector/" rel="tag">planes detector</a>, <a class="tag-link-link" href="/tags/planesnet/" rel="tag">planesnet</a>, <a class="tag-link-link" href="/tags/tensorflow/" rel="tag">tensorflow</a>, <a class="tag-link-link" href="/tags/tf/" rel="tag">tf</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>It’s been a while that i’ve been quite intensively playing with <a target="_blank" rel="noopener" href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">Deep Learning</a> both for work related research and personal projects. More specifically, I’ve been using the <a target="_blank" rel="noopener" href="https://keras.io/">Keras framework</a> on top of a <a target="_blank" rel="noopener" href="https://www.tensorflow.org/">TensorFlow</a> backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. </p>
+    <div class="content" itemprop="articleBody">
+      <p>It’s been a while that i’ve been quite intensively playing with <a target="_blank" rel="noopener" href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">Deep Learning</a> both for work related research and personal projects. More specifically, I’ve been using the <a target="_blank" rel="noopener" href="https://keras.io/">Keras framework</a> on top of a <a target="_blank" rel="noopener" href="https://www.tensorflow.org/">TensorFlow</a> backend for all sorts of stuff. From big and complex projects for malware detection, to smaller and simpler experiments about ideas i just wanted to quickly implement and test - it didn’t really matter the scope of the project, I always found myself struggling with the same issues: code reuse over tens of crap python and shell scripts, datasets and models that are spread all over my dev and prod servers, no real standard for versioning them, no order, no structure. </p>
 <p>So a few days ago I started writing what it was initially meant to be just a simple wrapper for the main commands of my training pipelines but quickly became a full-fledged framework and manager for all my Keras based projects.</p>
 <p align="center">
   <img alt="ergo" src="https://i.imgur.com/EO9PdNp.jpg"/>
@@ -250,9 +265,11 @@ sudo pip3 install tensorflow-gpu</code></pre>
 <pre><code>curl http://127.0.0.1:8080/?x=0.345,1.0,0.9,....</code></pre>
 <p>__<br>As usual, <strong>enjoy</strong> &lt;3</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -260,7 +277,6 @@ sudo pip3 install tensorflow-gpu</code></pre>
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -384,6 +400,4 @@ sudo pip3 install tensorflow-gpu</code></pre>
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

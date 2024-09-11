@@ -159,30 +159,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2022-10-20T11:05:13.000Z" itemprop="datePublished">2022-10-20</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/apple/" rel="tag">apple</a>, <a class="tag-link-link" href="/tags/facetime/" rel="tag">facetime</a>, <a class="tag-link-link" href="/tags/framework/" rel="tag">framework</a>, <a class="tag-link-link" href="/tags/ice/" rel="tag">ice</a>, <a class="tag-link-link" href="/tags/mcpeer/" rel="tag">mcpeer</a>, <a class="tag-link-link" href="/tags/mcpeerid/" rel="tag">mcpeerid</a>, <a class="tag-link-link" href="/tags/mdns/" rel="tag">mdns</a>, <a class="tag-link-link" href="/tags/mpc-framework/" rel="tag">mpc framework</a>, <a class="tag-link-link" href="/tags/multipeer/" rel="tag">multipeer</a>, <a class="tag-link-link" href="/tags/multipeerconnectivity/" rel="tag">multipeerconnectivity</a>, <a class="tag-link-link" href="/tags/network/" rel="tag">network</a>, <a class="tag-link-link" href="/tags/network-packets/" rel="tag">network packets</a>, <a class="tag-link-link" href="/tags/network-protocol/" rel="tag">network protocol</a>, <a class="tag-link-link" href="/tags/ospf/" rel="tag">ospf</a>, <a class="tag-link-link" href="/tags/re/" rel="tag">re</a>, <a class="tag-link-link" href="/tags/reverse-engineering/" rel="tag">reverse engineering</a>, <a class="tag-link-link" href="/tags/stun/" rel="tag">stun</a>, <a class="tag-link-link" href="/tags/tcp/" rel="tag">tcp</a>, <a class="tag-link-link" href="/tags/wireshark/" rel="tag">wireshark</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Some time ago I was using <a target="_blank" rel="noopener" href="https://www.apple.com/it/logic-pro/">Logic Pro</a> to record some of my music and I needed a way to start and stop the recording from an iPhone, so I found about <a target="_blank" rel="noopener" href="https://apps.apple.com/it/app/logic-remote/id638394624">Logic Remote</a> and was quite happy with it.<br>After the session, the hacker in me became curious about how the tools were communicating with each other, so I quickly started Wireshark while establishing a connection and saw something that tickled my curiosity even more: some of the data, such as the client and server names, were transmitted in cleartext on what it seemed a custom (and as typical of Apple, undocumented) TCP protocol (<strong>“stevie”</strong> being the hostname of my Mac):</p>
+    <div class="content" itemprop="articleBody">
+      <p>Some time ago I was using <a target="_blank" rel="noopener" href="https://www.apple.com/it/logic-pro/">Logic Pro</a> to record some of my music and I needed a way to start and stop the recording from an iPhone, so I found about <a target="_blank" rel="noopener" href="https://apps.apple.com/it/app/logic-remote/id638394624">Logic Remote</a> and was quite happy with it.<br>After the session, the hacker in me became curious about how the tools were communicating with each other, so I quickly started Wireshark while establishing a connection and saw something that tickled my curiosity even more: some of the data, such as the client and server names, were transmitted in cleartext on what it seemed a custom (and as typical of Apple, undocumented) TCP protocol (<strong>“stevie”</strong> being the hostname of my Mac):</p>
 <p><img src="/images/2022/cleartext.png" alt="cleartext packets"></p>
 <p>Using <a target="_blank" rel="noopener" href="https://ss64.com/osx/lsof.html">lsof</a> confirmed that this was indeed the communication between the client phone and Logic listening on port 56076:</p>
 <p><img src="/images/2022/lsof.png" alt="lsof"></p>
@@ -330,9 +345,11 @@
 <p>Well, my highly respected and recognized dude, I can tell you it is <strong>not</strong> a dumb idea, <strong>at all</strong>, there’s <strong>a lot</strong> of unexplored attack surface there. What was dumb, very close-minded and ignorant, is your take about it.</p>
 <p>Anyways … <a target="_blank" rel="noopener" href="https://github.com/evilsocket/mpcfw">you can find the project on my github</a> as usual, enjoy!</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -340,7 +357,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -463,6 +479,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

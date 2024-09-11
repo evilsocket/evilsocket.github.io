@@ -149,30 +149,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2022-08-15T14:06:05.000Z" itemprop="datePublished">2022-08-15</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/ai/" rel="tag">ai</a>, <a class="tag-link-link" href="/tags/anomaly-detection/" rel="tag">anomaly detection</a>, <a class="tag-link-link" href="/tags/artificial-intelligence/" rel="tag">artificial intelligence</a>, <a class="tag-link-link" href="/tags/autoencoder/" rel="tag">autoencoder</a>, <a class="tag-link-link" href="/tags/bcc/" rel="tag">bcc</a>, <a class="tag-link-link" href="/tags/deep-learning/" rel="tag">deep learning</a>, <a class="tag-link-link" href="/tags/deep-neural-networks/" rel="tag">deep neural networks</a>, <a class="tag-link-link" href="/tags/dnn/" rel="tag">dnn</a>, <a class="tag-link-link" href="/tags/ebpf/" rel="tag">ebpf</a>, <a class="tag-link-link" href="/tags/kprobe/" rel="tag">kprobe</a>, <a class="tag-link-link" href="/tags/kretprobe/" rel="tag">kretprobe</a>, <a class="tag-link-link" href="/tags/linux/" rel="tag">linux</a>, <a class="tag-link-link" href="/tags/machine-learning/" rel="tag">machine learning</a>, <a class="tag-link-link" href="/tags/neural-networks/" rel="tag">neural networks</a>, <a class="tag-link-link" href="/tags/process-anomaly-detection/" rel="tag">process anomaly detection</a>, <a class="tag-link-link" href="/tags/process-behaviour/" rel="tag">process behaviour</a>, <a class="tag-link-link" href="/tags/raw-syscalls/" rel="tag">raw_syscalls</a>, <a class="tag-link-link" href="/tags/sys-enter/" rel="tag">sys_enter</a>, <a class="tag-link-link" href="/tags/tensorflow/" rel="tag">tensorflow</a>, <a class="tag-link-link" href="/tags/tracepoint/" rel="tag">tracepoint</a>, <a class="tag-link-link" href="/tags/unsupervised-learning/" rel="tag">unsupervised learning</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Hello everybody, I hope you’ve been enjoying this summer after two years of Covid and lockdowns :D In this post I’m going to describe how to use eBPF syscall tracing in a creative way in order to detect process behaviour anomalies at runtime using an unsupervised learning model called autoencoder. </p>
+    <div class="content" itemprop="articleBody">
+      <p>Hello everybody, I hope you’ve been enjoying this summer after two years of Covid and lockdowns :D In this post I’m going to describe how to use eBPF syscall tracing in a creative way in order to detect process behaviour anomalies at runtime using an unsupervised learning model called autoencoder. </p>
 <p><img src="https://i.imgur.com/QEmpeDl.jpg" alt="anomalies"></p>
 <p>While many projects approach this problem by building a list of allowed system calls and checking at runtime if the process is using anything outside of this list, we’ll use a methodology that will not only save us from explicitly compiling this list, but will also take into account how fast the process is using system calls that would normally be allowed but only within a certain range of usage per second. This techique can potentially detect process exploitation, denial-of-service and several other types of attacks.</p>
 <p><strong>You’ll find the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/ebpf-process-anomaly-detection">complete source code on my Github</a> as usual.</strong></p>
@@ -238,9 +253,11 @@
 <p>All these things are left as an exercise for the reader :D</p>
 <p><img src="https://i.imgur.com/TNrJE1N.jpg" alt="lol"></p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -248,7 +265,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -363,6 +379,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

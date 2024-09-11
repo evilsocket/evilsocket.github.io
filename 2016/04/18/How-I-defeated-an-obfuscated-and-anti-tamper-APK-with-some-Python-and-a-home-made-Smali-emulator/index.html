@@ -143,30 +143,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2016-04-18T03:31:02.000Z" itemprop="datePublished">2016-04-18</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/apk/" rel="tag">apk</a>, <a class="tag-link-link" href="/tags/dalvik/" rel="tag">dalvik</a>, <a class="tag-link-link" href="/tags/emulation/" rel="tag">emulation</a>, <a class="tag-link-link" href="/tags/emulator/" rel="tag">emulator</a>, <a class="tag-link-link" href="/tags/encryption/" rel="tag">encryption</a>, <a class="tag-link-link" href="/tags/mobile/" rel="tag">mobile</a>, <a class="tag-link-link" href="/tags/obfuscation/" rel="tag">obfuscation</a>, <a class="tag-link-link" href="/tags/python/" rel="tag">python</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/smali/" rel="tag">smali</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>During this Saturday afternoon I was chatting with a friend of mine ( <a target="_blank" rel="noopener" href="https://twitter.com/fvrmatteo">Matteo</a> ) and he asked for some help to fix a Python script he was working on.</p>
+    <div class="content" itemprop="articleBody">
+      <p>During this Saturday afternoon I was chatting with a friend of mine ( <a target="_blank" rel="noopener" href="https://twitter.com/fvrmatteo">Matteo</a> ) and he asked for some help to fix a Python script he was working on.</p>
 <p>He was trying to deobfuscate an APK in order to understand its obfuscation and anti tampering (more on this later) protections so I started working on it as well.</p>
 <p>This was definitely way more challenging ( and fun! ) than my usual APK reversing session ( dex2jar -&gt; jd-gui -&gt; <strong>done</strong> ), moreover this required me to write a new tool which I find kinda cool and unique ( IMHO of course ), so I’m going to share the story in this post.</p>
 <p>I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.</p>
@@ -225,9 +240,11 @@ routine, eventually it will output all the cleartexts I need!</code></pre>
 <p><img src="/images/2016/04/victory.jpg" alt="victory"></p>
 <h3 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h3><p>I’ve released the code on <a target="_blank" rel="noopener" href="https://github.com/evilsocket/smali_emulator">github</a> as usual, it still lacks the support for a lot of Dalvik opcodes, I’ve just implemented the ones I needed in order to emulate that routine ( which you can find in the repo as well ), but it’s quite easy to improve it and probably I’ll complete it in the next few days :)</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -235,7 +252,6 @@ routine, eventually it will output all the cleartexts I need!</code></pre>
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -353,6 +369,4 @@ routine, eventually it will output all the cleartexts I need!</code></pre>
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

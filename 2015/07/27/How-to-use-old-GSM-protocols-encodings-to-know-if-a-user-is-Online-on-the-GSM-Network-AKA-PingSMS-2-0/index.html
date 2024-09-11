@@ -135,30 +135,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2015-07-27T19:47:03.000Z" itemprop="datePublished">2015-07-27</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/SmsManager/" rel="tag">SmsManager</a>, <a class="tag-link-link" href="/tags/SmsManager-sendDataMessage/" rel="tag">SmsManager.sendDataMessage</a>, <a class="tag-link-link" href="/tags/delivery-report/" rel="tag">delivery report</a>, <a class="tag-link-link" href="/tags/gsm/" rel="tag">gsm</a>, <a class="tag-link-link" href="/tags/mms/" rel="tag">mms</a>, <a class="tag-link-link" href="/tags/pdu/" rel="tag">pdu</a>, <a class="tag-link-link" href="/tags/ping-sms/" rel="tag">ping sms</a>, <a class="tag-link-link" href="/tags/sendDataMessage/" rel="tag">sendDataMessage</a>, <a class="tag-link-link" href="/tags/sms/" rel="tag">sms</a>, <a class="tag-link-link" href="/tags/wap/" rel="tag">wap</a>, <a class="tag-link-link" href="/tags/wap-push/" rel="tag">wap push</a>, <a class="tag-link-link" href="/tags/wap-push-notifications/" rel="tag">wap push notifications</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>In the last few months I’ve been playing with Android’s low level GSM API, a few years ago the (in)famous <strong>sendRawPdu</strong> API was available, allowing a developer to manually encode a SMS message at a very low level before sending it to the GSM baseband itself and quite a few applications sending all kind of weird SMS ( flash sms, silent sms, etc ) were born ( for a brief overview of PDU encoding refer to <a target="_blank" rel="noopener" href="http://www.smartposition.nl/resources/sms_pdu.html">this page</a> ).</p>
+    <div class="content" itemprop="articleBody">
+      <p>In the last few months I’ve been playing with Android’s low level GSM API, a few years ago the (in)famous <strong>sendRawPdu</strong> API was available, allowing a developer to manually encode a SMS message at a very low level before sending it to the GSM baseband itself and quite a few applications sending all kind of weird SMS ( flash sms, silent sms, etc ) were born ( for a brief overview of PDU encoding refer to <a target="_blank" rel="noopener" href="http://www.smartposition.nl/resources/sms_pdu.html">this page</a> ).</p>
 <p>(Un)fortunately Google decided to remove that API, it’s still not sure if they did it for security related purposes or during some refactoring of their IPC IBinder mechanism, but nowadays it’s no more available unless you use some very old phones/firmwares ( on most devices they removed the ttyUSB serial interfaces to send AT commands to the GSM modem as well ).</p>
 <p>Until a couple of months ago, when I found the <strong>SmsManager.sendDataMessage</strong> API which, apparently, it’s not used anywhere ( if you search for it you’ll find only a few examples, but nothing regarding how to use it with manually encoded PDUs ).<br>Using this API we’re able to manually encode our SMS, moreover we can specific a “port” as one of its arguments which will identify what kind of sms we’re gonna send, in this post I’ll talk about port 2948, namely the port used to send <strong>WAP PUSH notifications</strong>.</p>
 <span id="more"></span>
@@ -184,9 +199,11 @@
 <p>So, we can basically track a target user GSM network activity invisibly, knowing exactly when the target’s device is turned on without him having a single chance to notice anything.</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/evilsocket/pdusms">Here</a>‘s a very simple PoC application I’ve made to show how to use such API, the same kind of PDU can be sent using a normal GSM serial dongle and some software like Gnokii.</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -194,7 +211,6 @@
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -311,6 +327,4 @@
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

@@ -136,30 +136,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2016-10-09T13:09:11.000Z" itemprop="datePublished">2016-10-09</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/binary-protocol/" rel="tag">binary protocol</a>, <a class="tag-link-link" href="/tags/coffee/" rel="tag">coffee</a>, <a class="tag-link-link" href="/tags/hack/" rel="tag">hack</a>, <a class="tag-link-link" href="/tags/hacking/" rel="tag">hacking</a>, <a class="tag-link-link" href="/tags/nerd/" rel="tag">nerd</a>, <a class="tag-link-link" href="/tags/reversed/" rel="tag">reversed</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/smarter-coffee/" rel="tag">smarter coffee</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a <a target="_blank" rel="noopener" href="http://smarter.am/coffee/">Smarter Coffee</a> machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).<br>The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.</p>
+    <div class="content" itemprop="articleBody">
+      <p>I love coffee, that’s a fact, and I drink liters of it during the week … I also am a nerd and a hacker, so a few days ago I bought a <a target="_blank" rel="noopener" href="http://smarter.am/coffee/">Smarter Coffee</a> machine on Amazon, basically a coffee machine that you can control over your home wifi network using a mobile application ( both for Android and iOS ).<br>The app is really nice: you can set the amount of cups you want, the strength of the coffee, etc, then you only need to press a button and wait for your delicious coffee to be brewed.</p>
 <p>Since I work from home, most of the times I’m using the computer keyboard, not a smartphone, therefore I wanted/needed a console client for it, something that the vendor never released, so I started reversing the Android application in order to understand the communication protocol and write my own client implementation … guess what? :D</p>
 <p>Yep, i can make coffee using the terminal now :D</p>
 <p><img src="/images/2016/10/terminal.png" alt="terminal"></p>
@@ -216,9 +231,11 @@ Options:
 <h3 id="Security-Considerations"><a href="#Security-Considerations" class="headerlink" title="Security Considerations"></a>Security Considerations</h3><p>Even if the mobile app requires you to register an account, <strong>access to port 2081 is completely unauthenticated</strong> ( in fact, I’ve found that the user account is only used for statistics using the Firebase API ), anyone on your network could access it and <strong>even flash a new firmware</strong> with no authentication required ( I reversed the <code>UPDATE_FIRMWARE</code> packet as well but you won’t find it on the repo :P )</p>
 <p><img src="/images/2016/10/firmware.jpg" alt="flashing the firmware"></p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -226,7 +243,6 @@ Options:
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -344,6 +360,4 @@ Options:
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

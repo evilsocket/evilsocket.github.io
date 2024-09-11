@@ -137,30 +137,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2014-02-11T14:28:00.000Z" itemprop="datePublished">2014-02-11</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/int-2e/" rel="tag">int 2e</a>, <a class="tag-link-link" href="/tags/intel/" rel="tag">intel</a>, <a class="tag-link-link" href="/tags/interrupt/" rel="tag">interrupt</a>, <a class="tag-link-link" href="/tags/microsoft/" rel="tag">microsoft</a>, <a class="tag-link-link" href="/tags/ntdll/" rel="tag">ntdll</a>, <a class="tag-link-link" href="/tags/peb/" rel="tag">peb</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/syscall/" rel="tag">syscall</a>, <a class="tag-link-link" href="/tags/sysenter/" rel="tag">sysenter</a>, <a class="tag-link-link" href="/tags/tib/" rel="tag">tib</a>, <a class="tag-link-link" href="/tags/windows/" rel="tag">windows</a>, <a class="tag-link-link" href="/tags/windows-internals/" rel="tag">windows internals</a>, <a class="tag-link-link" href="/tags/wow64/" rel="tag">wow64</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a <strong>system call</strong> i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.</p>
+    <div class="content" itemprop="articleBody">
+      <p>Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a <strong>system call</strong> i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.</p>
 <span id="more"></span>
 
 <p>Those system calls are usually described as putting some value ( the syscall number ) in a CPU register and then call an OS dependant interrupt, for instance ( the syscall number here was totally invented, just showing you an example )</p>
@@ -872,9 +887,11 @@ KiFastSystemCall : 77B101D0</code></pre>
 00000037  7DE8FE14  ZwWriteVirtualMemory</code></pre>
 <p>Enjoy :)</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -882,7 +899,6 @@ KiFastSystemCall : 77B101D0</code></pre>
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -997,6 +1013,4 @@ KiFastSystemCall : 77B101D0</code></pre>
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

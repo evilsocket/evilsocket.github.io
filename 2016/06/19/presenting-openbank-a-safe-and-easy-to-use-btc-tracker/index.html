@@ -133,30 +133,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2016-06-19T17:41:04.000Z" itemprop="datePublished">2016-06-19</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/bank/" rel="tag">bank</a>, <a class="tag-link-link" href="/tags/banking/" rel="tag">banking</a>, <a class="tag-link-link" href="/tags/banks/" rel="tag">banks</a>, <a class="tag-link-link" href="/tags/bitcoin/" rel="tag">bitcoin</a>, <a class="tag-link-link" href="/tags/btc/" rel="tag">btc</a>, <a class="tag-link-link" href="/tags/openbank/" rel="tag">openbank</a>, <a class="tag-link-link" href="/tags/trezor/" rel="tag">trezor</a>, <a class="tag-link-link" href="/tags/wallet/" rel="tag">wallet</a>, <a class="tag-link-link" href="/tags/xpub/" rel="tag">xpub</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>Are you a BitCoin user and do you happen to have many wallets and have a hard time to track their whole balance like me? If your answer is <code>yes</code> then you might find useful my latest project called <strong>OpenBank</strong>!</p>
+    <div class="content" itemprop="articleBody">
+      <p>Are you a BitCoin user and do you happen to have many wallets and have a hard time to track their whole balance like me? If your answer is <code>yes</code> then you might find useful my latest project called <strong>OpenBank</strong>!</p>
 <p>OpenBank is a Laravel and Angular based web application that you can use to keep track of your BitCoin public keys, your total balance and so forth. All the data is collected in realtime and will be shown to you on its web interface.</p>
 <span id="more"></span>
 
@@ -180,9 +195,11 @@ php artisan db:seed --class=CurrenciesTableSeeder</code></pre>
 <pre><code>*/1 * * * * /usr/bin/php /var/www/openbank/www/artisan schedule:run</code></pre>
 <h5 id="7-Register"><a href="#7-Register" class="headerlink" title="7. Register."></a>7. Register.</h5><p>Open OpenBank in your browser, register your account and enjoy.</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -190,7 +207,6 @@ php artisan db:seed --class=CurrenciesTableSeeder</code></pre>
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -306,6 +322,4 @@ php artisan db:seed --class=CurrenciesTableSeeder</code></pre>
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

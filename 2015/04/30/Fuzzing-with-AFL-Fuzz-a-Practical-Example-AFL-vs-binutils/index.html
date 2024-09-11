@@ -142,30 +142,45 @@ testing regimes down the road.&lt;/code&gt;&lt;/pre&gt;
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2015-04-30T16:51:04.000Z" itemprop="datePublished">2015-04-30</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/afl/" rel="tag">afl</a>, <a class="tag-link-link" href="/tags/american-fuzzy-lop/" rel="tag">american fuzzy lop</a>, <a class="tag-link-link" href="/tags/binary-instrumentation/" rel="tag">binary instrumentation</a>, <a class="tag-link-link" href="/tags/clang/" rel="tag">clang</a>, <a class="tag-link-link" href="/tags/crash/" rel="tag">crash</a>, <a class="tag-link-link" href="/tags/exploit/" rel="tag">exploit</a>, <a class="tag-link-link" href="/tags/fuzzer/" rel="tag">fuzzer</a>, <a class="tag-link-link" href="/tags/fuzzing/" rel="tag">fuzzing</a>, <a class="tag-link-link" href="/tags/gcc/" rel="tag">gcc</a>, <a class="tag-link-link" href="/tags/lcamtuf/" rel="tag">lcamtuf</a>, <a class="tag-link-link" href="/tags/llvm/" rel="tag">llvm</a>, <a class="tag-link-link" href="/tags/qemu/" rel="tag">qemu</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>It’s been a few weeks I’ve been playing with <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/afl/">afl-fuzz</a> ( <em>american fuzzy lop</em> ), a great tool from <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/">lcamtuf</a> which uses binary instrumentation to create edge-cases for a given software, the description on the website is:</p>
+    <div class="content" itemprop="articleBody">
+      <p>It’s been a few weeks I’ve been playing with <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/afl/">afl-fuzz</a> ( <em>american fuzzy lop</em> ), a great tool from <a target="_blank" rel="noopener" href="http://lcamtuf.coredump.cx/">lcamtuf</a> which uses binary instrumentation to create edge-cases for a given software, the description on the website is:</p>
 <pre><code>American fuzzy lop is a security-oriented fuzzer that employs a novel type of compile-time
 instrumentation and genetic algorithms to automatically discover clean, interesting test cases
 that trigger new internal states in the targeted binary.
@@ -248,9 +263,11 @@ Program received signal SIGABRT, Aborted.
 55    ../sysdeps/unix/sysv/linux/raise.c: File o directory non esistente.</code></pre>
 <p>Let AFL run for a while and it will find all sort of edge cases and potentially exploitable vulnerabilities :)</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -258,7 +275,6 @@ Program received signal SIGABRT, Aborted.
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -380,6 +396,4 @@ testing regimes down the road.&lt;/code&gt;&lt;/pre&gt;
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 

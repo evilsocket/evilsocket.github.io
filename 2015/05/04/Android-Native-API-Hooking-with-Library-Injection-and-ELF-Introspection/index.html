@@ -136,30 +136,45 @@
 
 
 
-    <div class="meta">
-      
+      <div class="meta">
+        
     <div class="postdate">
         <time datetime="2015-05-04T17:15:24.000Z" itemprop="datePublished">2015-05-04</time>
     </div>
 
 
-      
+          
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/api-hooking/" rel="tag">api hooking</a>, <a class="tag-link-link" href="/tags/arm/" rel="tag">arm</a>, <a class="tag-link-link" href="/tags/dalvik/" rel="tag">dalvik</a>, <a class="tag-link-link" href="/tags/elf/" rel="tag">elf</a>, <a class="tag-link-link" href="/tags/elf-relocation/" rel="tag">elf relocation</a>, <a class="tag-link-link" href="/tags/hooking/" rel="tag">hooking</a>, <a class="tag-link-link" href="/tags/injection/" rel="tag">injection</a>, <a class="tag-link-link" href="/tags/library/" rel="tag">library</a>, <a class="tag-link-link" href="/tags/open/" rel="tag">open</a>, <a class="tag-link-link" href="/tags/plt/" rel="tag">plt</a>, <a class="tag-link-link" href="/tags/relocation/" rel="tag">relocation</a>, <a class="tag-link-link" href="/tags/relocation-table/" rel="tag">relocation table</a>, <a class="tag-link-link" href="/tags/strtab/" rel="tag">strtab</a>, <a class="tag-link-link" href="/tags/symtab/" rel="tag">symtab</a>
     </div>
 
 
-    </div>
+      </div>
 
-    <div class="addthis_sharing_toolbox"></div>
+      <!-- AddToAny BEGIN -->
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+        <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+        <a class="a2a_button_mastodon"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_button_linkedin"></a>
+        <a class="a2a_button_reddit"></a>
+        <a class="a2a_button_threads"></a>
+      </div>
+      <script>
+        var a2a_config = a2a_config || {};
+        a2a_config.num_services = 14;
+      </script>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      <!-- AddToAny END -->
+
   </header>
 
-    <br/>
+  <br />
   
 
-  <div class="content" itemprop="articleBody">
-    <p>This post can be considered both the part 2 of the previous “<a href="http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically inject a shared library into a running process on Android/ARM</a>“ and a proof of concept of the same, namely what can be done with library injection on Android.</p>
+    <div class="content" itemprop="articleBody">
+      <p>This post can be considered both the part 2 of the previous “<a href="http://www.evilsocket.net/2015/05/01/dynamically-inject-a-shared-library-into-a-running-process-on-androidarm/">Dynamically inject a shared library into a running process on Android/ARM</a>“ and a proof of concept of the same, namely what can be done with library injection on Android.</p>
 <span id="more"></span>
 
 <h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><p>I’ve updated the source code of the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arminject">arminject</a> project on github adding a library that once injected into a process will hook its <strong>open</strong> API and print some logs to the logcat, the <strong>make test</strong> command will basically start a new <strong>Chrome</strong> browser process, use the <strong>injector</strong> discussed in the previous post to inject <strong>libhook.so</strong> into it and wait for its logs to appear, an example output could be like:</p>
@@ -202,9 +217,11 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
 <p>Obviously this method can be applied to any kind of function, even Dalvik high level native API.</p>
 <p>Enjoy :)</p>
 
-  </div>
-  <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-  <br/>
+    </div>
+    <a target="_blank" rel="noopener" href="https://www.patreon.com/bePatron?u=6065463" data-patreon-widget-type="become-patron-button">Become a
+      Patron!</a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+    <br />
 </article>
 
     <div class="blog-post-comments">
@@ -212,7 +229,6 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
             <noscript>Please enable JavaScript to view the comments.</noscript>
         </div>
     </div>
-
 
 
     </div>
@@ -327,6 +343,4 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
         }());
     </script>
 
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4da572964da15ce9" async="async"></script>
 
