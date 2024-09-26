@@ -23,12 +23,11 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/mrrobot.gif">
 <meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/email.jpg">
 <meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/cvss.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/leak.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/leak.jpg">
 <meta property="article:published_time" content="2024-09-26T14:51:30.000Z">
-<meta property="article:modified_time" content="2024-09-26T22:17:19.523Z">
+<meta property="article:modified_time" content="2024-09-26T22:28:25.119Z">
 <meta property="article:author" content="Simone Margaritelli">
 <meta property="article:tag" content="hacking">
-<meta property="article:tag" content="exploit">
 <meta property="article:tag" content="cups">
 <meta property="article:tag" content="cups-browsed">
 <meta property="article:tag" content="printer">
@@ -36,6 +35,7 @@
 <meta property="article:tag" content="unix">
 <meta property="article:tag" content="rce">
 <meta property="article:tag" content="disclosure">
+<meta property="article:tag" content="exploit">
 <meta property="article:tag" content="ipp">
 <meta property="article:tag" content="zeroconf">
 <meta property="article:tag" content="udp">
@@ -319,7 +319,7 @@
 <p><img src="/images/2024/cups1/cvss.png" alt="cvss"></p>
 <p>As I said, I’m not an expert, and I think that the initial 9.9 was mostly due to the fact that the RCE is trivial to exploit and the package presence so widespread. Impact wise I wouldn’t classify it as a 9.9, but then again, what the hell do I know?</p>
 <p>By the way, <strong>CERT’s VINCE either has a backdoor, or an inside leak, or has zero vetting on who they add to a disclosure</strong>, because <a target="_blank" rel="noopener" href="https://breachforums.st/Thread-Undisclosed-Linux-Unauth-RCE-as-they-claim-Writeup-from-researcher?pid=844608#pid844608">there’s been a leak</a> of the exact markdown report that I only shared there, including the exploit.</p>
-<p><img src="/images/2024/cups1/leak.png" alt="leak"></p>
+<p><img src="/images/2024/cups1/leak.jpg" alt="leak"></p>
 <p>What a fucking circus.</p>
 <h2 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h2><p>When initially I wrote <code>exploit.py</code>, it only sent the UDP packet and created the rogue IPP server. Then with time I started adding features to it, especially zeroconf advertising, and it became a tool. So at some point I decided to rewrite it in Go and integrate this new code in <a target="_blank" rel="noopener" href="https://bettercap.org/">bettercap</a>, giving it the ability to transparently impersonate any service advertised via zeroconf / Bonjour / Avahi on a LAN and doing interesting things with the TXT records and specific service attributes, like IPP. And I discovered other interesting stuff :)</p>
 <p>In part II of this series (date TBD since there’s another disclosure in process), we’ll see how to use these new bettercap modules (not yet released) to attack Apple macOS.</p>
