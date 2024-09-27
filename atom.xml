@@ -609,6 +609,8 @@
     
     <category term="bluetooth" scheme="https://www.evilsocket.net/tags/bluetooth/"/>
     
+    <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
+    
     <category term="raspberry" scheme="https://www.evilsocket.net/tags/raspberry/"/>
     
     <category term="rpi" scheme="https://www.evilsocket.net/tags/rpi/"/>
@@ -618,8 +620,6 @@
     <category term="rpi0w" scheme="https://www.evilsocket.net/tags/rpi0w/"/>
     
     <category term="kali" scheme="https://www.evilsocket.net/tags/kali/"/>
-    
-    <category term="deauth" scheme="https://www.evilsocket.net/tags/deauth/"/>
     
     <category term="btnap" scheme="https://www.evilsocket.net/tags/btnap/"/>
     
@@ -839,6 +839,8 @@
     
     <category term="linux" scheme="https://www.evilsocket.net/tags/linux/"/>
     
+    <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
+    
     <category term="gpd pocket 7" scheme="https://www.evilsocket.net/tags/gpd-pocket-7/"/>
     
     <category term="gpd" scheme="https://www.evilsocket.net/tags/gpd/"/>
@@ -852,8 +854,6 @@
     <category term="rogue ap" scheme="https://www.evilsocket.net/tags/rogue-ap/"/>
     
     <category term="mana" scheme="https://www.evilsocket.net/tags/mana/"/>
-    
-    <category term="wifi pentesting" scheme="https://www.evilsocket.net/tags/wifi-pentesting/"/>
     
     <category term="pentest" scheme="https://www.evilsocket.net/tags/pentest/"/>
     
