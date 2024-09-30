@@ -25,14 +25,14 @@
 <meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/cvss.png">
 <meta property="og:image" content="https://www.evilsocket.net/images/2024/cups1/leak.jpg">
 <meta property="article:published_time" content="2024-09-26T14:51:30.000Z">
-<meta property="article:modified_time" content="2024-09-26T22:28:25.119Z">
+<meta property="article:modified_time" content="2024-09-30T23:40:07.167Z">
 <meta property="article:author" content="Simone Margaritelli">
-<meta property="article:tag" content="hacking">
 <meta property="article:tag" content="cups">
 <meta property="article:tag" content="cups-browsed">
 <meta property="article:tag" content="printer">
 <meta property="article:tag" content="printing">
 <meta property="article:tag" content="unix">
+<meta property="article:tag" content="hacking">
 <meta property="article:tag" content="rce">
 <meta property="article:tag" content="disclosure">
 <meta property="article:tag" content="exploit">
@@ -198,7 +198,7 @@
 <li>Oracle <a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/E23824_01/html/821-1451/cups-intro.html">Solaris</a></li>
 <li>Possibly more?</li>
 </ul>
-<p>This thing is packaged for anything, in some cases it’s enabled by default, in others it’s not, go figure 🤷. Full disclosure, I’ve been scanning the entire public internet IPv4 ranges several times a day for weeks, sending the UDP packet and logging whatever connected back. And I’ve got back connections from <strong>hundreds of thousands</strong> of devices, with <a target="_blank" rel="noopener" href="https://x.com/evilsocket/status/1833878573289025664">peaks of 200-300K concurrent devices</a>. <a target="_blank" rel="noopener" href="https://pastebin.com/7zzFzxCN">This file</a> contains a list of the unique Linux systems affected. Note that everything that is not Linux has been filtered out. That is why I was getting increasingly alarmed during the last few weeks.</p>
+<p>This thing is packaged for anything, in some cases it’s enabled by default, in others it’s not, go figure 🤷. Full disclosure, I’ve been scanning the entire public internet IPv4 ranges several times a day for weeks, sending the UDP packet and logging whatever connected back. And I’ve got back connections from <strong>hundreds of thousands</strong> of devices, with <a target="_blank" rel="noopener" href="https://x.com/evilsocket/status/1833878573289025664">peaks of 200-300K concurrent clients</a>. <a target="_blank" rel="noopener" href="https://pastebin.com/7zzFzxCN">This file</a> contains a list of the unique Linux systems affected. Note that everything that is not Linux has been filtered out. That is why I was getting increasingly alarmed during the last few weeks.</p>
 <h3 id="Remediation"><a href="#Remediation" class="headerlink" title="Remediation"></a>Remediation</h3><ul>
 <li>Disable and remove the <code>cups-browsed</code> service if you don’t need it (and probably you don’t).</li>
 <li>Update the CUPS package on your systems. </li>
