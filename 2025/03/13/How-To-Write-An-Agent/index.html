@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hello friends. This blog post was supposed to be the second part of this research, however I didn’t have enough time (or interest really) to dedicate to it, and when the 120-days disclosure window exp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Write an Agent">
+<meta property="og:url" content="https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/index.html">
+<meta property="og:site_name" content="evilsocket">
+<meta property="og:description" content="Hello friends. This blog post was supposed to be the second part of this research, however I didn’t have enough time (or interest really) to dedicate to it, and when the 120-days disclosure window exp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/loop.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/zelda.jpg">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/hack-khaby.gif">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/create.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/fail.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/tools.png">
+<meta property="og:image" content="https://www.evilsocket.net/images/2025/agent/shell.png">
+<meta property="article:published_time" content="2025-03-13T01:36:08.000Z">
+<meta property="article:modified_time" content="2025-03-13T12:37:49.717Z">
+<meta property="article:author" content="Simone Margaritelli">
+<meta property="article:tag" content="agent">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="nerve adk">
+<meta property="article:tag" content="nerve">
+<meta property="article:tag" content="adk">
+<meta property="article:tag" content="agent development kit">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="evals">
+<meta property="article:tag" content="agent evals">
+<meta property="article:tag" content="evaluations">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.evilsocket.net/images/2025/agent/loop.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+          
+        
+    
+    <!-- title -->
+    <title>How to Write an Agent</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&text=How to Write an Agent"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&is_video=false&description=How to Write an Agent"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to Write an Agent&body=Check out this article: https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&name=How to Write an Agent&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-An-Agent"><span class="toc-number">1.</span> <span class="toc-text">What Is An Agent?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-A-Tool"><span class="toc-number">2.</span> <span class="toc-text">What Is A Tool?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Nerve"><span class="toc-number">3.</span> <span class="toc-text">Why Nerve?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Can-I-Do-With-It"><span class="toc-number">4.</span> <span class="toc-text">What Can I Do With It?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-audit"><span class="toc-number">4.1.</span> <span class="toc-text">code-audit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#changelog"><span class="toc-number">4.2.</span> <span class="toc-text">changelog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webcam"><span class="toc-number">4.3.</span> <span class="toc-text">webcam</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#computer-use"><span class="toc-number">4.4.</span> <span class="toc-text">computer-use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bettercap-agent"><span class="toc-number">4.5.</span> <span class="toc-text">bettercap-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-agent"><span class="toc-number">4.6.</span> <span class="toc-text">android-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ab-problem"><span class="toc-number">4.7.</span> <span class="toc-text">ab-problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#recipe-workflow"><span class="toc-number">4.8.</span> <span class="toc-text">recipe-workflow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-an-Agent"><span class="toc-number">5.</span> <span class="toc-text">Creating an Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-Tools"><span class="toc-number">5.1.</span> <span class="toc-text">Adding Tools</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Via-YAML"><span class="toc-number">5.1.1.</span> <span class="toc-text">Via YAML</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Via-LLM%E2%80%99s-Common-Sense"><span class="toc-number">5.1.2.</span> <span class="toc-text">Via (LLM’s) Common Sense</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#In-Python"><span class="toc-number">5.1.3.</span> <span class="toc-text">In Python</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#As-an-SDK-ADK"><span class="toc-number">5.1.4.</span> <span class="toc-text">As an SDK &#x2F; ADK</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Supported-Models"><span class="toc-number">5.2.</span> <span class="toc-text">Supported Models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Features"><span class="toc-number">5.3.</span> <span class="toc-text">Other Features</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Getting-to-1-0-0"><span class="toc-number">6.</span> <span class="toc-text">Getting to 1.0.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Future"><span class="toc-number">7.</span> <span class="toc-text">Future</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
+        How to Write an Agent
+    </h1>
+    <br/>
+
+
+
+      <div class="meta">
+        
+    <div class="postdate">
+        <time datetime="2025-03-13T01:36:08.000Z" itemprop="datePublished">2025-03-13</time>
+    </div>
+
+
+          
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/adk/" rel="tag">adk</a>, <a class="tag-link-link" href="/tags/agent/" rel="tag">agent</a>, <a class="tag-link-link" href="/tags/agent-development-kit/" rel="tag">agent development kit</a>, <a class="tag-link-link" href="/tags/agent-evals/" rel="tag">agent evals</a>, <a class="tag-link-link" href="/tags/ai/" rel="tag">ai</a>, <a class="tag-link-link" href="/tags/evals/" rel="tag">evals</a>, <a class="tag-link-link" href="/tags/evaluations/" rel="tag">evaluations</a>, <a class="tag-link-link" href="/tags/howto/" rel="tag">howto</a>, <a class="tag-link-link" href="/tags/nerve/" rel="tag">nerve</a>, <a class="tag-link-link" href="/tags/nerve-adk/" rel="tag">nerve adk</a>
+    </div>
+
+
+      </div>
+  </header>
+
+  <br />
+  
+
+    <div class="content" itemprop="articleBody">
+      <p>Hello friends. This blog post was supposed to be the second part of <a href="/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/">this research</a>, however I didn’t have enough time (or interest really) to dedicate to it, and when the 120-days disclosure window expired I went <a target="_blank" rel="noopener" href="https://x.com/evilsocket/status/1879846515180511705">f**k-it mode</a> and started working on other, more interesting things. Today, we’ll talk about agents and <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve">Nerve</a>, a project I started a few months ago that makes implementing an agent simple and intuitive.</p>
+<h2 id="What-Is-An-Agent"><a href="#What-Is-An-Agent" class="headerlink" title="What Is An Agent?"></a>What Is An Agent?</h2><p>The term “agent” has been increasingly used in recent times to describe various technologies, including <a target="_blank" rel="noopener" href="https://openai.com/index/introducing-deep-research/">OpenAI DeepResearch</a>, <a target="_blank" rel="noopener" href="https://openai.com/index/introducing-operator/">Operator</a>, and <a target="_blank" rel="noopener" href="https://x.ai/news/grok-3">Grok 3</a>. According to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Intelligent_agent">Wikipedia’s definition of “intelligent agent”</a>:</p>
+<blockquote>
+<p>In artificial intelligence, an intelligent agent is an entity that perceives its environment, takes actions autonomously to achieve goals, and may improve its performance through machine learning or by acquiring knowledge.</p>
+</blockquote>
+<p>In similar terms, we can think of an agent as a model (being it an LLM or <a href="/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/#The-AI">other older algorithms</a>) that, after making an observation, decides which tool to use from its “toolbox” to complete the given task, step by step, in a loop. This reframing, in my opinion, better aligns with the chat or sequential-based experience we have nowadays with large language models and gives us a clue for how an agent might look like in software.</p>
+<!-- https://www.mermaidchart.com/app/projects/d5e75391-3875-4cbe-ba87-e13d5d02e914/diagrams/a24d625d-d992-4f72-8121-3f5851aa129e/version/v0.1/edit --> 
+<img src="/images/2025/agent/loop.png"/>
+
+<p><i>Aren’t we all living in our own loop, trying to make the best of what we have, one day at a time? Anyways …</i></p>
+<h2 id="What-Is-A-Tool"><a href="#What-Is-A-Tool" class="headerlink" title="What Is A Tool?"></a>What Is A Tool?</h2><p>In the context of LLMs and <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2502.09992">LLDMs</a>, models can be made aware of and use these tools through a mechanism called, unsurprisingly, <a target="_blank" rel="noopener" href="https://huggingface.co/docs/hugs/guides/function-calling">function calling</a>. Most of the models you ever interacted with have been trained to understand a <em>“here’s tool A that does X”</em> message (the tool definition) in their prompts.</p>
+<img width="600" src="/images/2025/agent/zelda.jpg"/>
+
+<p>For instance, <a target="_blank" rel="noopener" href="https://ollama.com/library/llama3.3/blobs/948af2743fc7">here’s how llama3.3</a> understands its toolbox as part of its system prompt: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">When you receive a tool call response, use the output to format an answer to the orginal user question.</span><br><span class="line">You are a helpful assistant with tool calling capabilities.</span><br><span class="line"></span><br><span class="line">... snip ...</span><br><span class="line"></span><br><span class="line">Given the following functions, please respond with a JSON for a function call with its proper arguments that best answers the given prompt.</span><br><span class="line"></span><br><span class="line">Respond in the format &#123;&quot;name&quot;: function name, &quot;parameters&quot;: dictionary of argument name and its value&#125;. Do not use variables.</span><br><span class="line"></span><br><span class="line">... tools definition here ...</span><br></pre></td></tr></table></figure>
+
+<p>Each tool definition is a JSON document that looks something like this:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;get_current_weather&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;Get the current weather in a given location&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;parameters&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;object&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;properties&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;location&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;string&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;The city and state, e.g. San Francisco, CA&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;required&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;location&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The model receives all of these tool definitions as part its system prompt. When it is later asked in a chat, <em>“What’s the weather in San Francisco?”</em>, it can use one or more of these tools by responding with an _”I want to use tool A with these parameters: …” response message that looks like this:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;function&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;get_current_weather&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;arguments&quot;</span>: &#123;</span><br><span class="line">            <span class="attr">&quot;location&quot;</span>: <span class="string">&quot;San Francisco&quot;</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>But how do we go from JSON to providing tools with actual functionality to the model? And how do we execute these tool calls? How do we return their output back to the model? </p>
+<p>This part of the job - that “chat -&gt; execute tools -&gt; observe state -&gt; loop or break if task done” loop from the earlier diagram - is delegated to whatever agentic framework you are going to use (and a lot of your good will).</p>
+<p>There are several of these frameworks, each taking a different approach. <a target="_blank" rel="noopener" href="https://smolagents.org/">Some provide</a> a minimal API to control predefined agent types, while others use <a href="(https://github.com/microsoft/autogen">similar concepts with different abstractions</a>. <a target="_blank" rel="noopener" href="https://github.com/nv-morpheus/Morpheus">Some</a> can feel overly intricate, making it challenging to navigate their design choices. They all come with certain limitations and, most importantly, require you to <a target="_blank" rel="noopener" href="https://github.com/huggingface/smolagents/blob/main/examples/agent_from_any_llm.py">write code</a>, learn their abstractions, and adapt your agent ideas to fit their structure.</p>
+<p>In my personal view, many of them are more complex than necessary. If <code>agent = a model executing tools in a loop</code>, we can have something better - something that abstracts away the agent’s inner mechanics and lets us focus on the actual agent logic.</p>
+<h2 id="Why-Nerve"><a href="#Why-Nerve" class="headerlink" title="Why Nerve?"></a>Why Nerve?</h2><p><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve">Nerve</a> was written (and rewritten, now twice 😬) as an ADK (<em>Agent Development Kit</em>) with the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/KISS_principle">KISS principle</a> in mind: <strong>anything that can be generalized as part of the framework should not be something the user has to handle unless they choose to.</strong> So they can focus on the actual agent logic rather than the agent loop and other abstractions.</p>
+<img src="/images/2025/agent/hack-khaby.gif"/>
+
+<p>This is what a Nerve agent looks like:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">agent:</span> <span class="string">You</span> <span class="string">are</span> <span class="string">an</span> <span class="string">helpful</span> <span class="string">assistant</span> <span class="string">using</span> <span class="string">pragmatism</span> <span class="string">and</span> <span class="string">shell</span> <span class="string">commands</span> <span class="string">to</span> <span class="string">perform</span> <span class="string">tasks.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">task:</span> <span class="string">Find</span> <span class="string">the</span> <span class="string">running</span> <span class="string">process</span> <span class="string">that</span> <span class="string">is</span> <span class="string">using</span> <span class="string">the</span> <span class="string">most</span> <span class="string">RAM.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">using:</span> [<span class="string">shell</span>]</span><br></pre></td></tr></table></figure>
+
+<p>And this is how you run it in a terminal: <code>nerve run agent.yml</code>.</p>
+<p>Nerve includes a built-in library of agent oriented tools, organized in <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/docs/namespaces.md">namespaces</a>, that can be included via the <code>using</code> directive (in this example, the <code>shell</code> namespace allows the agent to execute shell commands). You can think about this as a “<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Standard_library">standard library</a>“ for agents including functionalities that can be reused.</p>
+<p>At the time of writing, the existing namespaces are (check the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/docs/namespaces.md">documentation</a> for the list of tools in each one; in bold are my personal favorites :D):</p>
+<ul>
+<li>💻 shell - Let the agent execute shell commands.</li>
+<li>📂 filesystem - Read-only access primitives to the local filesystem.</li>
+<li>🔧 anytool - <strong>Let the agent create its own tools in Python.</strong></li>
+<li>💻 computer - <strong>Computer use primitives for mouse, keyboard, and screen.</strong></li>
+<li>🌐 browser - <strong>Browser use primitives.</strong> (very experimental but promising)</li>
+<li>💬 inquire - Let the agent interactively ask questions to the user in a structured way.</li>
+<li>🧠 reasoning - Simulates the <a target="_blank" rel="noopener" href="https://openai.com/index/learning-to-reason-with-llms/">reasoning process</a> at runtime for models that have not been trained for it.</li>
+<li>✅ task - Let the agent autonomously set the task as complete or failed.</li>
+<li>🕒 time - Tools for getting the current date and time and waiting for a given number of seconds.</li>
+</ul>
+<h2 id="What-Can-I-Do-With-It"><a href="#What-Can-I-Do-With-It" class="headerlink" title="What Can I Do With It?"></a>What Can I Do With It?</h2><p>Nerve is generic enough to be used for a variety of tasks. Before we start creating our first agent, I want to spend a few words about some of the existing examples that interest me the most and/or that I use on a daily basis and why. In the majority of the cases you’ll see that the YAML implementation is rather simple despite what these agents can do :)</p>
+<h3 id="code-audit"><a href="#code-audit" class="headerlink" title="code-audit"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/code-audit">code-audit</a></h3><p>This agent existed in Nerve’s examples folder since its first iteration and I have been using it one way or another for all sorts of things. The agent is given read-only access to a folder and the task to:</p>
+<ul>
+<li>review the source code in it</li>
+<li>append any potential vulnerability to an audit.jsonl report file</li>
+<li>keep going until all files are processed</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nerve run code-audit --target-path /path/to/src</span><br><span class="line"></span><br><span class="line">nerve run code-audit <span class="comment"># default to the current directory</span></span><br></pre></td></tr></table></figure>
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Nerve ( <a target="_blank" rel="noopener" href="https://t.co/wNopPIX7fu">https://t.co/wNopPIX7fu</a> ) and the code_auditor example tasklet ( <a target="_blank" rel="noopener" href="https://t.co/KjwSi6q2BE">https://t.co/KjwSi6q2BE</a> ) using GPT-4o to find a RCE vulnerability in the widget-options v4.0.7 Wordpress Plugin 🧠 <br><br>Zero code, fully autonomous agent as a simple YAML file. <a target="_blank" rel="noopener" href="https://t.co/SkaI7ijGPx">pic.twitter.com/SkaI7ijGPx</a></p>&mdash; Simone Margaritelli (@evilsocket) <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/1863587859376038263?ref_src=twsrc%5Etfw">December 2, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<h3 id="changelog"><a href="#changelog" class="headerlink" title="changelog"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/changelog">changelog</a></h3><p>This little utility is a lifesaver for generating an high-level, nicely formatted changelog <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/releases/tag/v1.1.0">like this one</a> from a list of commits <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/compare/v1.0.0...v1.1.0">like these ones</a>.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -q is the quiet mode, logs are disabled and only the changelog markdown (and fatal errors) will be printed to stdout</span></span><br><span class="line">nerve run changelog -q &gt; CHANGELOG.md</span><br></pre></td></tr></table></figure>
+
+<h3 id="webcam"><a href="#webcam" class="headerlink" title="webcam"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/webcam">webcam</a></h3><p>There are four pets in my apartment and several security cameras: I’ve always wanted a “bot” that could check the video feed, detect custom events I can describe with languange such as: “the doggo being cute” or “the kitten breaking something” (or “my son is taking their first steps” for another use-case :D) and alert me via Telegram or whatever. When <a target="_blank" rel="noopener" href="https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct">good open source vision models</a> started being a thing, I could not <em>not</em> write this one :D</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set the webcam rtsp url</span></span><br><span class="line"><span class="built_in">export</span> NERVE_WEBCAM_URL=<span class="string">&quot;rtsp://192.168.1.10:554/stream1&quot;</span></span><br><span class="line"><span class="comment"># recommended: conversation window of size 5</span></span><br><span class="line">nerve run examples/webcam -c 5</span><br></pre></td></tr></table></figure>
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">i always wanted a system that could check my ipcams and inform me when my pets are being cute ... <a target="_blank" rel="noopener" href="https://t.co/qvd52SrUdq">pic.twitter.com/qvd52SrUdq</a></p>&mdash; Simone Margaritelli (@evilsocket) <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/1887507466201514357?ref_src=twsrc%5Etfw">February 6, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<h3 id="computer-use"><a href="#computer-use" class="headerlink" title="computer-use"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/examples/computer-use/agent.yml">computer-use</a></h3><p>An experimental agent that can be used with vision models to use your computer to perform tasks:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run computer-use --task <span class="string">&#x27;open the browser and check the news on cnn.com&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="bettercap-agent"><a href="#bettercap-agent" class="headerlink" title="bettercap-agent"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/bettercap-agent">bettercap-agent</a></h3><p>This is an example of how the API of a service can be used as a tool. The agent <a target="_blank" rel="noopener" href="https://x.com/evilsocket/status/1899298142190797001">can interact with a running bettercap instance</a> via its REST API and perform tasks like ‘find the most vulnerable WiFi access point’ or:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run bettercap-agent --task <span class="string">&#x27;deauth all the apple devices&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<center>
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">nerve run bettercap-agent --task &#39;find the oldest wifi access point&#39;<br><br>What gets me every time is how the model uses the help menu to determine the best commands to execute ... AI can RTFM ❤️ <a target="_blank" rel="noopener" href="https://t.co/b2YbFyzuyK">pic.twitter.com/b2YbFyzuyK</a></p>&mdash; Simone Margaritelli (@evilsocket) <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/1899298142190797001?ref_src=twsrc%5Etfw">March 11, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<h3 id="android-agent"><a href="#android-agent" class="headerlink" title="android-agent"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/android-agent">android-agent</a></h3><p>Very experimental but promising Android automation agent. An ADB shell <a target="_blank" rel="noopener" href="https://x.com/evilsocket/status/1897313928407081157/video/1">is all an agent needs</a>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run android-agent --task <span class="string">&#x27;take a selfie and send it to jessica&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">"open YouTube and search for ‘cats’” 🧠 <a target="_blank" rel="noopener" href="https://t.co/PfApM2zKqk">pic.twitter.com/PfApM2zKqk</a></p>&mdash; Simone Margaritelli (@evilsocket) <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/1897313928407081157?ref_src=twsrc%5Etfw">March 5, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<h3 id="ab-problem"><a href="#ab-problem" class="headerlink" title="ab-problem"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/ab-problem">ab-problem</a></h3><p>The agent is given <a target="_blank" rel="noopener" href="https://x.com/VictorTaelin/status/1776096481704804789">a logic puzzle</a> and its answer is evaluated at runtime. This example shows how a tool can alter the runtime state and <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/examples/ab-problem/tools.py#L73">set the task as complete</a> or let the agent loop continue. This is a foundational feature for agent evaluations.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run ab-problem --program <span class="string">&#x27;A# A# #A #A B# #B #B #A&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="recipe-workflow"><a href="#recipe-workflow" class="headerlink" title="recipe-workflow"></a><a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/recipe-workflow">recipe-workflow</a></h3><p>Used to showcase the concept of <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/docs/workflows.md">workflows</a>. Pick any food and use multiple agents to write a tasty and nicely formatted recipe for you:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run recipe-workflow --food <span class="string">&#x27;spaghetti alla carbonara (con guanciale, non pancetta!)&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Creating-an-Agent"><a href="#Creating-an-Agent" class="headerlink" title="Creating an Agent"></a>Creating an Agent</h2><p>Let’s start with the fun stuff! First, to install and use Nerve, you’ll need Python 3.10 or newer. </p>
+<p>Use PIP to install (or upgrade) Nerve:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade nerve-adk    </span><br></pre></td></tr></table></figure>
+
+<p>Then, if you don’t feel like creating the agent YAML file from scratch, you can use the guided procedure for agent creation.</p>
+<p>Start creating an agent by executing the command <code>nerve create weather.yml</code> and when prompted, use these values:</p>
+<ul>
+<li>Path: leave default</li>
+<li>System prompt: leave the default for now (however, <strong>it is important to define the “persona” of your agent as accurately as possible</strong>. For examples of simple system prompts you can reuse, check the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples">agents in the examples folder</a>).</li>
+<li>Task: <code>What&#39;s the weather in &#123;&#123; place &#125;&#125;?</code> (the <code>&#123;&#123; place &#125;&#125;</code> jinja2 syntax allows us to create parametric agents)</li>
+<li>Tools: select <code>task</code> and <code>time</code>; deselect (for now) <code>shell</code>.</li>
+</ul>
+<img src="/images/2025/agent/create.png"/>
+
+<p>At the end of the procedure, the <code>weather.yml</code> file that Nerve generated will look like this (except for the comments and formatting I added here for clarity):</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">agent:</span> <span class="string">You</span> <span class="string">are</span> <span class="string">an</span> <span class="string">helpful</span> <span class="string">assistant.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">task:</span> <span class="string">What&#x27;s</span> <span class="string">the</span> <span class="string">weather</span> <span class="string">in</span> &#123;&#123; <span class="string">place</span> &#125;&#125;<span class="string">?</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># we use the &#x27;task&#x27; namespace so the agent can set the task as complete autonomously</span></span><br><span class="line"><span class="comment"># and &#x27;time&#x27; because why the hell not</span></span><br><span class="line"><span class="attr">using:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">task</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="string">time</span></span><br></pre></td></tr></table></figure>
+
+<p>Since we are referencing the <code>place</code> variable in the prompt, we’ll need to provide it as a command line argument, otherwise the agent will exit with the message:</p>
+<blockquote>
+<p>Command line argument –place is required in non interactive mode.</p>
+</blockquote>
+<p>Moreover, our agent doesn’t have weather forecast related tools (yet), therefore if we run it with <code>nerve run weather.yml --place rome</code> we’ll likely see it “giving up” like this:</p>
+<img src="/images/2025/agent/fail.png"/>
+
+<h3 id="Adding-Tools"><a href="#Adding-Tools" class="headerlink" title="Adding Tools"></a>Adding Tools</h3><h4 id="Via-YAML"><a href="#Via-YAML" class="headerlink" title="Via YAML"></a>Via YAML</h4><p>We could easily extend the agent tooling by adding a <code>tools</code> section, with a <code>get_current_weather</code> tool that will use curl to read <a target="_blank" rel="noopener" href="https://wttr.in/">wttr.in</a> and return the forecast information to the model:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># we added the second part to let the agent use the task namespace effectively</span></span><br><span class="line"><span class="attr">agent:</span> <span class="string">You</span> <span class="string">are</span> <span class="string">an</span> <span class="string">helpful</span> <span class="string">assistant.</span> <span class="string">Set</span> <span class="string">your</span> <span class="string">task</span> <span class="string">as</span> <span class="string">complete</span> <span class="string">after</span> <span class="string">you</span> <span class="string">have</span> <span class="string">reported</span> <span class="string">the</span> <span class="string">weather</span> <span class="string">to</span> <span class="string">the</span> <span class="string">user.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">task:</span> <span class="string">What&#x27;s</span> <span class="string">the</span> <span class="string">weather</span> <span class="string">in</span> &#123;&#123; <span class="string">place</span> &#125;&#125;<span class="string">?</span></span><br><span class="line"></span><br><span class="line"><span class="attr">using:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">task</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="string">time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the agent extended toolbox ^_^</span></span><br><span class="line"><span class="attr">tools:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">get_current_weather</span></span><br><span class="line">      <span class="attr">description:</span> <span class="string">Get</span> <span class="string">the</span> <span class="string">current</span> <span class="string">weather</span> <span class="string">in</span> <span class="string">a</span> <span class="string">given</span> <span class="string">location</span></span><br><span class="line">      <span class="attr">arguments:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">location</span></span><br><span class="line">          <span class="attr">description:</span> <span class="string">The</span> <span class="string">city</span> <span class="string">and</span> <span class="string">state,</span> <span class="string">e.g.</span> <span class="string">San</span> <span class="string">Francisco,</span> <span class="string">CA</span></span><br><span class="line">          <span class="comment"># nerve supports providing examples to the models to help them </span></span><br><span class="line">          <span class="comment"># use the tools more effectively</span></span><br><span class="line">          <span class="attr">example:</span> <span class="string">Rome</span></span><br><span class="line">      <span class="comment"># the command line, arguments can be used via &#123;&#123; name &#125;&#125; syntax (jinja2)</span></span><br><span class="line">      <span class="attr">tool:</span> <span class="string">curl</span> <span class="string">wttr.in/&#123;&#123;</span> <span class="string">place</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>If we run this agent again with <code>nerve run weather.yml --place rome</code>, now the agent will execute and use the output of the new tool:</p>
+<img src="/images/2025/agent/tools.png"/>
+<br>
+
+<h4 id="Via-LLM’s-Common-Sense"><a href="#Via-LLM’s-Common-Sense" class="headerlink" title="Via (LLM’s) Common Sense"></a>Via (LLM’s) Common Sense</h4><p>This, however, is unnecessary. These models are smart enough to figure the right tool to use on their own, so most of the times we can just do this:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">agent:</span> <span class="string">You</span> <span class="string">are</span> <span class="string">an</span> <span class="string">helpful</span> <span class="string">assistant,</span> <span class="string">use</span> <span class="string">the</span> <span class="string">shell</span> <span class="string">to</span> <span class="string">get</span> <span class="string">the</span> <span class="string">weather,</span> <span class="string">report</span> <span class="string">it</span> <span class="string">in</span> <span class="string">a</span> <span class="string">nice</span> <span class="string">format</span> <span class="string">and</span> <span class="string">then</span> <span class="string">set</span> <span class="string">your</span> <span class="string">task</span> <span class="string">as</span> <span class="string">complete.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">task:</span> <span class="string">What&#x27;s</span> <span class="string">the</span> <span class="string">weather</span> <span class="string">in</span> &#123;&#123; <span class="string">place</span> &#125;&#125;<span class="string">?</span></span><br><span class="line"></span><br><span class="line"><span class="attr">using:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">task</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">shell</span></span><br></pre></td></tr></table></figure>
+
+<p>This version of the agent simply relies on the <code>shell</code> standard namespace. The model will use it to execute the CURL command <code>curl -s &#39;http://wttr.in/Rome?format=3&#39;</code>:</p>
+<img src="/images/2025/agent/shell.png"/>
+
+<p><strong>This demonstrates how, when provided with simple tools to complete a task, a model will naturally determine how to use them effectively.</strong> The emergent behavioral complexity these models exhibit when equipped with a robust tooling framework and a state machine to operate within suggests that we are only scratching the surface of what’s possible with <strong>existing models</strong>.</p>
+<h4 id="In-Python"><a href="#In-Python" class="headerlink" title="In Python"></a>In Python</h4><p>Tools that require more complex logic can be implemented in Python. Creating a <code>tools.py</code> file in the same folder of the agent will automatically provide the functions as tools:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> typing <span class="keyword">as</span> t</span><br><span class="line"></span><br><span class="line"><span class="comment"># This annotated function will be available as a tool to the agent.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_webcam_image</span>(<span class="params">foo: t.Annotated[<span class="built_in">str</span>, <span class="string">&quot;Describe arguments to the model like this.&quot;</span>]</span>) -&gt; dict[str, str]:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Reads an image from the webcam.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># a tool can return a simple scalar value, or a dictionary for models with vision.</span></span><br><span class="line">    base64_image = <span class="string">&#x27;...&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;type&quot;</span>: <span class="string">&quot;image_url&quot;</span>,</span><br><span class="line">        <span class="string">&quot;image_url&quot;</span>: &#123;<span class="string">&quot;url&quot;</span>: <span class="string">f&quot;data:image/jpeg;base64,<span class="subst">&#123;base64_image&#125;</span>&quot;</span>&#125;,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>A perfect example of this feature <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/ab-problem">is the ab-problem agent</a> that relies on Python tools to evaluate the model response to a <a target="_blank" rel="noopener" href="https://x.com/VictorTaelin/status/1776096481704804789">logic puzzle</a> that’s dynamically generated, and complete the task when the evaluation is successful.</p>
+<p>However keep in mind that I managed to have an agent use my Android phone <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/examples/android-agent/agent.yml">just with the shell and adb shell</a>. So, when in doubt, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>! :D</p>
+<h4 id="As-an-SDK-ADK"><a href="#As-an-SDK-ADK" class="headerlink" title="As an SDK / ADK"></a>As an SDK / ADK</h4><p>Ultimately, if you <strong>really</strong> want to write code, Nerve can be used as a Python package to fully customize your agent loop, <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/examples/adk/single_step.py">down to the single step</a>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> Annotated</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> httpx</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> nerve.models <span class="keyword">import</span> Configuration</span><br><span class="line"><span class="keyword">from</span> nerve.runtime <span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">from</span> nerve.runtime.agent <span class="keyword">import</span> Agent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Annotate functions and parameters to describe them to the agent.</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">get_current_weather</span>(<span class="params">location: Annotated[<span class="built_in">str</span>, <span class="string">&quot;The city and state, e.g. San Francisco, CA&quot;</span>]</span>) -&gt; str:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Get the current weather in a given location.&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> httpx.AsyncClient() <span class="keyword">as</span> client:</span><br><span class="line">            r = <span class="keyword">await</span> client.get(<span class="string">&quot;https://wttr.in/&quot;</span> + location)</span><br><span class="line">            <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="comment"># let the agent know what happened</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&quot;ERROR: <span class="subst">&#123;e&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># pass level=&#x27;DEBUG&#x27; to get more verbose logging or level=&#x27;SUCCESS&#x27; to get quieter logging</span></span><br><span class="line">    logging.init(level=<span class="string">&quot;INFO&quot;</span>)</span><br><span class="line"></span><br><span class="line">    agent = Agent.create(</span><br><span class="line">        <span class="string">&quot;openai/gpt-4o&quot;</span>,  <span class="comment"># the model to use</span></span><br><span class="line">        Configuration(</span><br><span class="line">            agent=<span class="string">&quot;You are a helpful assistant.&quot;</span>,</span><br><span class="line">            task=<span class="string">&quot;What is the weather in &#123;&#123; place &#125;&#125;?&quot;</span>,</span><br><span class="line">            using=[</span><br><span class="line">                <span class="string">&quot;task&quot;</span>,  <span class="comment"># to allow the agent to set the task as complete autonomously</span></span><br><span class="line">            ],</span><br><span class="line">            tools=[get_current_weather],</span><br><span class="line">        ),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># run until done or max steps reached or max cost reached or timeout</span></span><br><span class="line">    <span class="keyword">await</span> agent.run(start_state=&#123;<span class="string">&quot;place&quot;</span>: <span class="string">&quot;Rome&quot;</span>&#125;, max_steps=<span class="number">100</span>, max_cost=<span class="number">10.0</span>, timeout=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    asyncio.run(main())</span><br></pre></td></tr></table></figure>
+
+<p>Check the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/adk">examples/adk folder</a> for more examples.</p>
+<h3 id="Supported-Models"><a href="#Supported-Models" class="headerlink" title="Supported Models"></a>Supported Models</h3><p>Nerve uses LiteLLM, therefore any inference provider <a target="_blank" rel="noopener" href="https://docs.litellm.ai/docs/providers">in this list is supported</a> and different models can be used either via the <code>-g / --generator</code> command line argument, or by setting the <code>NERVE_GENERATOR</code> environment variable. </p>
+<p>For instance, to run the weather agent via a <a target="_blank" rel="noopener" href="https://ollama.com/search?c=tools">local ollama inference server</a> for free:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run -g <span class="string">&#x27;ollama/qwq&#x27;</span> weather.yml --place rome</span><br></pre></td></tr></table></figure>
+
+<p>To use another server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run -g <span class="string">&#x27;ollama/qwq?api_base=http://your-ollama-server:11434&#x27;</span> weather.yml --place rome</span><br></pre></td></tr></table></figure>
+
+<h3 id="Other-Features"><a href="#Other-Features" class="headerlink" title="Other Features"></a>Other Features</h3><p>Agents can be made of a single YAML file like in the <code>weather.yml</code> example, or of a folder with an <code>agent.yml</code> inside, so that <code>foobar/agent.yml</code> is detected as an agent called <code>foobar</code>.  If you want to access an agent from anywhere in the terminal, you can copy it in the <code>~/.nerve/agents</code> folder:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create the folder if it doesn&#x27;t exist</span></span><br><span class="line">mkdir -p <span class="variable">$HOME</span>/.nerve/agents</span><br><span class="line"></span><br><span class="line">cp weather.yml <span class="variable">$HOME</span>/.nerve/agents</span><br></pre></td></tr></table></figure>
+
+<p>Now you can use it with <code>nerve run weather</code> from anywhere. My favorite agents so far to have in this load path are this <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/changelog">changelog generator</a>, and <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/main/examples/code-audit">code-audit</a> that I run regularly on my code changes.</p>
+<p>Sessions can be recorded with <code>--trace</code>:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nerve run weather.yml --place rome --trace trace.jsonl</span><br></pre></td></tr></table></figure>
+
+<p>And replayed with:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -f for fast forward</span></span><br><span class="line">nerve play trace.json -f</span><br></pre></td></tr></table></figure>
+
+<p>As usual, for more features and information, <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/blob/main/docs/index.md">read the f…antastic manual :D</a></p>
+<h2 id="Getting-to-1-0-0"><a href="#Getting-to-1-0-0" class="headerlink" title="Getting to 1.0.0"></a>Getting to 1.0.0</h2><p>Nerve 1.x.x is a distillation of lessons learned. The first iteration that I wrote during summer 2024 was an explorative, soon-to-be-reimplemented Python PoC. Back then, I thought that reimplementing it in Rust would have been a good idea, so I wrote what now lives on the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/legacy-rust">legacy-rust branch</a>. </p>
+<p>Boy, was I wrong.</p>
+<p>There’s no single Rust crate for talking to any LLM via a unified interface … and the ones that exist for specific providers don’t support most of the functionalities needed for an agent. Python is simply the language of AI, so by leaving it behind I also left behind all those convenient libraries like LiteLLM and LangChain and I had to reimplement <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/legacy-rust/src/agent/generator">a lot</a> of <a target="_blank" rel="noopener" href="https://github.com/evilsocket/nerve/tree/legacy-rust/src/api">stuff</a> (and <code>more stuff = more technical debt</code>). Plus a dozen other relatively minor issues. Most importantly after a few months of writing agents and Rust refactorings, I consolidated a set of cleaner, simpler abstractions that allowed me to reimplement everything (again) in Python in a more elegant solution.</p>
+<p>This new version can talk to any LLM of any provider, offers a very powerful templating engine (jinja2) for the prompts, can be extended with endless libraries and it makes defining, chaining and running complex agents very simple.</p>
+<p>Embrace change.</p>
+<h2 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h2><p>I’ll be allocating most of my time on this project. It’s a lot of fun and I believe it has great potential.</p>
+<p><strong>Interactive Mode</strong>: a debugger-like mode that allows you to pause the agent execution, inspect the state, change things around, ask questions, give feedback, new directives and then continue.</p>
+<p><strong>Workflows 2.0</strong>: a rewrite of the workflows system with an event bus (both for IPC and network)<br>that agents can advertise their presence on, and talk to each other with. Each agent is its own process attached to this shared bus.</p>
+<p><strong>Browser-use</strong>: so hard to get right for real, work in progress …</p>
+<p><strong>Project-MU</strong>: an open source evaluation framework built with Nerve.</p>
+<p><strong>More Tools</strong>: the standard library will probably be growing with more capabilities.</p>
+<p><strong>More Examples</strong>: the more the better! Some of the agents will probably be moved to their own repository as mini projects.</p>
+<p><strong>More Integrations</strong>: bettercap is just the beginning.</p>
+<p>BTW I’m looking for a (remote) job, so if you have any openings for a good software engineer with hands-on experience with AI/ML and cybersecurity, feel free to <a target="_blank" rel="noopener" href="https://github.com/evilsocket">check my resume</a>, <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/simonemargaritelli/">ping me on LinkedIN</a> or drop me a line at <code>evilsocket AT gmail DOT com</code> ♥ 🙏</p>
+
+    </div>
+
+
+    <p>
+      <br /><br /><br />
+      <a href="https://discord.gg/btZpkp45gQ" target="_blank" title="Join our community!">
+        <img src="https://dcbadge.limes.pink/api/server/https://discord.gg/btZpkp45gQ" />
+      </a>
+    </p>
+
+</article>
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-An-Agent"><span class="toc-number">1.</span> <span class="toc-text">What Is An Agent?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Is-A-Tool"><span class="toc-number">2.</span> <span class="toc-text">What Is A Tool?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Nerve"><span class="toc-number">3.</span> <span class="toc-text">Why Nerve?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Can-I-Do-With-It"><span class="toc-number">4.</span> <span class="toc-text">What Can I Do With It?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#code-audit"><span class="toc-number">4.1.</span> <span class="toc-text">code-audit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#changelog"><span class="toc-number">4.2.</span> <span class="toc-text">changelog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webcam"><span class="toc-number">4.3.</span> <span class="toc-text">webcam</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#computer-use"><span class="toc-number">4.4.</span> <span class="toc-text">computer-use</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bettercap-agent"><span class="toc-number">4.5.</span> <span class="toc-text">bettercap-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-agent"><span class="toc-number">4.6.</span> <span class="toc-text">android-agent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ab-problem"><span class="toc-number">4.7.</span> <span class="toc-text">ab-problem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#recipe-workflow"><span class="toc-number">4.8.</span> <span class="toc-text">recipe-workflow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-an-Agent"><span class="toc-number">5.</span> <span class="toc-text">Creating an Agent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-Tools"><span class="toc-number">5.1.</span> <span class="toc-text">Adding Tools</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Via-YAML"><span class="toc-number">5.1.1.</span> <span class="toc-text">Via YAML</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Via-LLM%E2%80%99s-Common-Sense"><span class="toc-number">5.1.2.</span> <span class="toc-text">Via (LLM’s) Common Sense</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#In-Python"><span class="toc-number">5.1.3.</span> <span class="toc-text">In Python</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#As-an-SDK-ADK"><span class="toc-number">5.1.4.</span> <span class="toc-text">As an SDK &#x2F; ADK</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Supported-Models"><span class="toc-number">5.2.</span> <span class="toc-text">Supported Models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Features"><span class="toc-number">5.3.</span> <span class="toc-text">Other Features</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Getting-to-1-0-0"><span class="toc-number">6.</span> <span class="toc-text">Getting to 1.0.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Future"><span class="toc-number">7.</span> <span class="toc-text">Future</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&text=How to Write an Agent"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&is_video=false&description=How to Write an Agent"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How to Write an Agent&body=Check out this article: https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&title=How to Write an Agent"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/&name=How to Write an Agent&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2025 Simone Margaritelli
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">~/</a></li>
+         
+          <li><a href="/atom.xml">rss</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-22026549-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
