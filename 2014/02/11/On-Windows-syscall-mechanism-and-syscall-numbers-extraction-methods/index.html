@@ -1,165 +1,106 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a system call i.e. how a use">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>On Windows Syscall Mechanism and Syscall Numbers Extraction Methods | evilsocket</title>
+<meta name="description" content="Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the">
+
+
+  <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="On Windows Syscall Mechanism and Syscall Numbers Extraction Methods">
-<meta property="og:url" content="https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/index.html">
+<meta property="og:description" content="Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the">
+<meta property="og:url" content="/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/">
 <meta property="og:site_name" content="evilsocket">
-<meta property="og:description" content="Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a system call i.e. how a use">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.evilsocket.net/images/2014/Feb/hidden_module_wow.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2014/Feb/dump.png">
-<meta property="article:published_time" content="2014-02-11T14:28:00.000Z">
-<meta property="article:modified_time" content="2014-04-21T20:22:54.000Z">
-<meta property="article:author" content="Simone Margaritelli">
-<meta property="article:tag" content="reversing">
-<meta property="article:tag" content="tib">
-<meta property="article:tag" content="syscall">
-<meta property="article:tag" content="interrupt">
-<meta property="article:tag" content="int 2e">
-<meta property="article:tag" content="sysenter">
-<meta property="article:tag" content="intel">
-<meta property="article:tag" content="microsoft">
-<meta property="article:tag" content="ntdll">
-<meta property="article:tag" content="wow64">
-<meta property="article:tag" content="peb">
-<meta property="article:tag" content="windows internals">
-<meta property="article:tag" content="windows">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.evilsocket.net/images/2014/Feb/hidden_module_wow.png">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
-          
-        
-    
-    <!-- title -->
-    <title>On Windows Syscall Mechanism and Syscall Numbers Extraction Methods</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2014/02/21/libpe-A-fast-PE32-PE32-parsing-library/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2014/02/05/Termination-and-injection-self-defense-on-Windows-Vista-SP1/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&text=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&is_video=false&description=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods&body=Check out this article: https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&name=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods&description=&lt;p&gt;Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a &lt;strong&gt;system call&lt;/strong&gt; i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#XP-SYSENTER-and-KiFastSystemCall"><span class="toc-number">1.</span> <span class="toc-text">XP, SYSENTER and KiFastSystemCall</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#64bit-Systems"><span class="toc-number">2.</span> <span class="toc-text">64bit Systems</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Just-WOW64"><span class="toc-number">3.</span> <span class="toc-text">Just WOW64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Extracting-Syscall-Numbers"><span class="toc-number">4.</span> <span class="toc-text">Extracting Syscall Numbers</span></a></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index my4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
-        On Windows Syscall Mechanism and Syscall Numbers Extraction Methods
-    </h1>
-    <br/>
-
-
-
-      <div class="meta">
-        
-    <div class="postdate">
-        <time datetime="2014-02-11T14:28:00.000Z" itemprop="datePublished">2014-02-11</time>
-    </div>
-
-
-          
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/int-2e/" rel="tag">int 2e</a>, <a class="tag-link-link" href="/tags/intel/" rel="tag">intel</a>, <a class="tag-link-link" href="/tags/interrupt/" rel="tag">interrupt</a>, <a class="tag-link-link" href="/tags/microsoft/" rel="tag">microsoft</a>, <a class="tag-link-link" href="/tags/ntdll/" rel="tag">ntdll</a>, <a class="tag-link-link" href="/tags/peb/" rel="tag">peb</a>, <a class="tag-link-link" href="/tags/reversing/" rel="tag">reversing</a>, <a class="tag-link-link" href="/tags/syscall/" rel="tag">syscall</a>, <a class="tag-link-link" href="/tags/sysenter/" rel="tag">sysenter</a>, <a class="tag-link-link" href="/tags/tib/" rel="tag">tib</a>, <a class="tag-link-link" href="/tags/windows/" rel="tag">windows</a>, <a class="tag-link-link" href="/tags/windows-internals/" rel="tag">windows internals</a>, <a class="tag-link-link" href="/tags/wow64/" rel="tag">wow64</a>
-    </div>
-
-
-      </div>
-  </header>
-
-  <br />
+  
+  
+    <meta property="og:image" content="/images/2014/Feb/hidden_module_wow.png">
   
 
-    <div class="content" itemprop="articleBody">
-      <p>Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a <strong>system call</strong> i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.</p>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="On Windows Syscall Mechanism and Syscall Numbers Extraction Methods">
+<meta name="twitter:description" content="Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-22026549-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-22026549-1');
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="post-page">
+  <header class="site-header">
+  <div class="header-inner">
+    <div class="site-branding">
+      <a href="/" class="site-logo">
+        
+          <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
+        
+        <span class="site-title">evilsocket</span>
+      </a>
+    </div>
+    
+    <nav class="site-nav">
+      
+        <a href="/" class="nav-link">
+          HOME
+        </a>
+      
+        <a href="/atom.xml" class="nav-link">
+          RSS
+        </a>
+      
+    </nav>
+  </div>
+</header>
+
+  
+  <main class="main-content">
+    <article class="post-full">
+  <header class="post-header">
+    <h1 class="post-title">On Windows Syscall Mechanism and Syscall Numbers Extraction Methods</h1>
+    <div class="post-meta">
+      BY <span class="post-author">Simone Margaritelli</span>
+      — <time datetime="2014-02-11T14:28:00.000Z">11 Feb 2014</time>
+      
+        — <a href="/tags/reversing/" class="post-category">reversing</a>, <a href="/tags/tib/" class="post-category">tib</a>, <a href="/tags/syscall/" class="post-category">syscall</a>, <a href="/tags/interrupt/" class="post-category">interrupt</a>, <a href="/tags/int-2e/" class="post-category">int 2e</a>, <a href="/tags/sysenter/" class="post-category">sysenter</a>, <a href="/tags/intel/" class="post-category">intel</a>, <a href="/tags/microsoft/" class="post-category">microsoft</a>, <a href="/tags/ntdll/" class="post-category">ntdll</a>, <a href="/tags/wow64/" class="post-category">wow64</a>, <a href="/tags/peb/" class="post-category">peb</a>, <a href="/tags/windows-internals/" class="post-category">windows internals</a>, <a href="/tags/windows/" class="post-category">windows</a>
+      
+    </div>
+  </header>
+
+  
+  
+    <div class="post-cover">
+      <img src="/images/2014/Feb/hidden_module_wow.png" alt="On Windows Syscall Mechanism and Syscall Numbers Extraction Methods">
+    </div>
+  
+
+  <div class="post-content">
+    <p>Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a <strong>system call</strong> i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.</p>
 <span id="more"></span>
 
 <p>Those system calls are usually described as putting some value ( the syscall number ) in a CPU register and then call an OS dependant interrupt, for instance ( the syscall number here was totally invented, just showing you an example )</p>
@@ -871,117 +812,220 @@ KiFastSystemCall : 77B101D0</code></pre>
 00000037  7DE8FE14  ZwWriteVirtualMemory</code></pre>
 <p>Enjoy :)</p>
 
+  </div>
+
+  
+    <div class="post-tags">
+      
+        <a href="/tags/reversing/" class="tag">#reversing</a>
+      
+        <a href="/tags/tib/" class="tag">#tib</a>
+      
+        <a href="/tags/syscall/" class="tag">#syscall</a>
+      
+        <a href="/tags/interrupt/" class="tag">#interrupt</a>
+      
+        <a href="/tags/int-2e/" class="tag">#int 2e</a>
+      
+        <a href="/tags/sysenter/" class="tag">#sysenter</a>
+      
+        <a href="/tags/intel/" class="tag">#intel</a>
+      
+        <a href="/tags/microsoft/" class="tag">#microsoft</a>
+      
+        <a href="/tags/ntdll/" class="tag">#ntdll</a>
+      
+        <a href="/tags/wow64/" class="tag">#wow64</a>
+      
+        <a href="/tags/peb/" class="tag">#peb</a>
+      
+        <a href="/tags/windows-internals/" class="tag">#windows internals</a>
+      
+        <a href="/tags/windows/" class="tag">#windows</a>
+      
     </div>
+  
 
-
-    <p>
-      <br /><br /><br />
-      <a href="https://discord.gg/btZpkp45gQ" target="_blank" title="Join our community!">
-        <img src="https://dcbadge.limes.pink/api/server/https://discord.gg/btZpkp45gQ" />
+  <nav class="post-navigation">
+    
+      <a href="/2014/02/21/libpe-A-fast-PE32-PE32-parsing-library/" class="nav-prev">
+        <span class="nav-label">PREVIOUS</span>
+        <span class="nav-title">Libpe - a Fast PE32/PE32+ Parsing Library.</span>
       </a>
-    </p>
-
+    
+    
+      <a href="/2014/02/05/Termination-and-injection-self-defense-on-Windows-Vista-SP1/" class="nav-next">
+        <span class="nav-label">NEXT</span>
+        <span class="nav-title">Termination and Injection Self Defense on Windows &gt;= Vista SP1</span>
+      </a>
+    
+  </nav>
 </article>
 
 
-    </div>
+  
+
+
+<section class="related-posts">
+  <h3 class="related-title">YOU MIGHT ALSO LIKE...</h3>
+  <div class="cards-grid cards-grid-related">
     
-      <div id="footer-post-container">
-  <div id="footer-post">
+      
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
+<article class="card card-light">
+  <a href="/2017/04/27/Android-Applications-Reversing-101/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2017/04/head.jpeg')">
         
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#XP-SYSENTER-and-KiFastSystemCall"><span class="toc-number">1.</span> <span class="toc-text">XP, SYSENTER and KiFastSystemCall</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#64bit-Systems"><span class="toc-number">2.</span> <span class="toc-text">64bit Systems</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Just-WOW64"><span class="toc-number">3.</span> <span class="toc-text">Just WOW64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Extracting-Syscall-Numbers"><span class="toc-number">4.</span> <span class="toc-text">Extracting Syscall Numbers</span></a></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&text=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&is_video=false&description=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods&body=Check out this article: https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&title=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2014/02/11/On-Windows-syscall-mechanism-and-syscall-numbers-extraction-methods/&name=On Windows Syscall Mechanism and Syscall Numbers Extraction Methods&description=&lt;p&gt;Everyone who’s familiar with operating systems theoretical structure, whether he attented a college course or he has just read a book on this subject, knows the concept of a &lt;strong&gt;system call&lt;/strong&gt; i.e. how a user space application talks with the kernel asking it to perform various jobs such as opening a file, creating a memory mapped region, etc.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">android</span>
+        
+        <h2 class="card-title">Android Applications Reversing 101</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
 
     
-    <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2025 Simone Margaritelli
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
+      
+
+<article class="card card-overlay">
+  <a href="/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2016/10/terminal.png')">
         
-      </ul>
-    </nav>
+          <div class="card-overlay-content">
+            
+              <span class="card-category">reversing</span>
+            
+            <h2 class="card-title">Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2016/04/apktool.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">android</span>
+            
+            <h2 class="card-title">How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2015/01/29/Nike-FuelBand-SE-BLE-Protocol-Reversed/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2015/Jan/nikeband.jpg')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">reversing</span>
+        
+        <h2 class="card-title">Nike+ FuelBand SE BLE Protocol Reversed</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+  </div>
+</section>
+
+
+
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-social">
+      
+        
+          
+            <a href="https://github.com/evilsocket" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          
+        
+          
+            <a href="https://twitter.com/evilsocket" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          
+        
+          
+            <a href="http://it.linkedin.com/in/simonemargaritelli/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          
+        
+          
+        
+          
+            <a href="mailto:evilsocket@gmail.com" class="social-link" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          
+        
+      
+    </div>
+    <p class="footer-copyright">
+      &copy; 2025 evilsocket. 
+      Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>.
+    </p>
   </div>
 </footer>
 
+  <!-- Minimal JS - no external dependencies needed -->
+<script>
+  // Lazy load images
+  document.addEventListener('DOMContentLoaded', function() {
+    var images = document.querySelectorAll('.card-image[data-bg]');
+    images.forEach(function(img) {
+      img.style.backgroundImage = 'url(' + img.dataset.bg + ')';
+    });
+  });
+</script>
+
 </body>
 </html>
-<!-- styles -->
-
-<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-<!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-22026549-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-
-<!-- Baidu Analytics -->
-
-<!-- Disqus Comments -->
-
-

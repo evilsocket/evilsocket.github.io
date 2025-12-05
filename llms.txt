@@ -1,0 +1,26 @@
+# evilsocket.net
+
+> evilsocket.net is the personal website and blog of Simone Margaritelli, a seasoned Italian cybersecurity researcher and open-source developer known as evilsocket, focusing on network security, penetration testing, ethical hacking, and AI-driven tools for offensive security.
+
+evilsocket.net serves as a hub for cybersecurity professionals and enthusiasts, offering in-depth articles on WiFi security tools that detail projects like Bettercap for network reconnaissance. The site highlights network penetration testing tools through tutorials on attacking UNIX systems and wireless networks. As a cybersecurity research blog, it covers reverse engineering frameworks and process anomaly detection using eBPF. Ethical hacking resources are abundant, including guides on malware detection with machine learning and open-source network security tools.
+
+Wireless network attack tools are explored in posts about WiFi bruteforcing and Pwnagotchi, an AI-powered handshake capturer. Security for UNIX systems features series on CUPS vulnerabilities, while wireless pentesting is demonstrated via PMKID attacks and mass deauthers using Raspberry Pi.
+
+Notable projects include Bettercap for MITM attacks, Pwnagotchi for gamified WiFi hacking, OpenSnitch as an application firewall, and Legba for enumeration and brute-forcing.
+
+## Allowed Usage
+AI bots are permitted to index and analyze public blog content for educational and research purposes, including summaries of cybersecurity techniques and tool documentation. Usage must respect copyrights, attribute content to Simone Margaritelli, and avoid commercial exploitation without permission. Links to full articles at https://www.evilsocket.net are encouraged for context.
+
+## Contact Information
+- GitHub: https://github.com/evilsocket
+- X (Twitter): https://twitter.com/evilsocket
+- Patreon: https://www.patreon.com/evilsocket
+- RSS Feed: https://www.evilsocket.net/atom.xml
+
+## Related Resources
+- Bettercap Project: https://www.bettercap.org
+- Pwnagotchi Project: https://pwnagotchi.ai
+- Recent Blog Post on Agents: https://www.evilsocket.net/2025/03/13/How-To-Write-An-Agent/
+- UNIX Attacks Series: https://www.evilsocket.net/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/
+
+Entire website sitemap available at https://www.evilsocket.net/sitemap.txt

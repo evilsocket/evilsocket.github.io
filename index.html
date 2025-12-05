@@ -1,525 +1,562 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Preoccupied with a single leaf, you won&#39;t see the tree. Preoccupied with a single tree...you&#39;ll miss the entire forest.">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>evilsocket</title>
+<meta name="description" content="Hi! This is the website of Simone Margaritelli, an Italian cybersecurity researcher and open-source developer. I build tools like &lt;a href=&#39;https://www.bettercap.org&#39;&gt;bettercap&lt;/a&gt;, &lt;a href=&#39;https://pwnagotchi.ai&#39;&gt;pwnagotchi&lt;/a&gt;, &lt;a href=&#39;https://github.com/evilsocket/opensnitch&#39;&gt;opensnitch&lt;/a&gt;, &lt;a href=&#39;https://github.com/evilsocket/bleah&#39;&gt;bleah&lt;/a&gt;, and &lt;a href=&#39;https://github.com/evilsocket/legba&#39;&gt;legba&lt;/a&gt;. This is where I write about network security, reverse engineering, and whatever rabbit hole I&#39;ve fallen into lately.">
+
+
+  <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="evilsocket">
-<meta property="og:url" content="https://www.evilsocket.net/index.html">
+<meta property="og:description" content="Hi! This is the website of Simone Margaritelli, an Italian cybersecurity researcher and open-source developer. I build tools like &lt;a href=&#39;https://www.bettercap.org&#39;&gt;bettercap&lt;/a&gt;, &lt;a href=&#39;https://pwnagotchi.ai&#39;&gt;pwnagotchi&lt;/a&gt;, &lt;a href=&#39;https://github.com/evilsocket/opensnitch&#39;&gt;opensnitch&lt;/a&gt;, &lt;a href=&#39;https://github.com/evilsocket/bleah&#39;&gt;bleah&lt;/a&gt;, and &lt;a href=&#39;https://github.com/evilsocket/legba&#39;&gt;legba&lt;/a&gt;. This is where I write about network security, reverse engineering, and whatever rabbit hole I&#39;ve fallen into lately.">
+<meta property="og:url" content="/index.html">
 <meta property="og:site_name" content="evilsocket">
-<meta property="og:description" content="Preoccupied with a single leaf, you won&#39;t see the tree. Preoccupied with a single tree...you&#39;ll miss the entire forest.">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Simone Margaritelli">
-<meta name="twitter:card" content="summary">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
-          
-        
-    
-    <!-- title -->
-    <title>evilsocket</title>
-    <!-- styles -->
-    
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="evilsocket">
+<meta name="twitter:description" content="Hi! This is the website of Simone Margaritelli, an Italian cybersecurity researcher and open-source developer. I build tools like &lt;a href=&#39;https://www.bettercap.org&#39;&gt;bettercap&lt;/a&gt;, &lt;a href=&#39;https://pwnagotchi.ai&#39;&gt;pwnagotchi&lt;/a&gt;, &lt;a href=&#39;https://github.com/evilsocket/opensnitch&#39;&gt;opensnitch&lt;/a&gt;, &lt;a href=&#39;https://github.com/evilsocket/bleah&#39;&gt;bleah&lt;/a&gt;, and &lt;a href=&#39;https://github.com/evilsocket/legba&#39;&gt;legba&lt;/a&gt;. This is where I write about network security, reverse engineering, and whatever rabbit hole I&#39;ve fallen into lately.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles -->
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
-    
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
-    
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-22026549-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-22026549-1');
+</script>
+
+
 <meta name="generator" content="Hexo 5.4.2"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index my4">
+<body class="index-page">
+  <header class="site-header">
+  <div class="header-inner">
+    <div class="site-branding">
+      <a href="/" class="site-logo">
         
-          <header id="header">
-  <a href="/">
-  
-    
-      <div id="logo" style="background-image: url(/images/glider.png);"></div>
-    
-  
-    <div id="title">
-      <h1>evilsocket</h1>
+          <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
+        
+        <span class="site-title">evilsocket</span>
+      </a>
     </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-       
-        <li><a href="/">~/</a></li>
-       
-        <li><a href="/atom.xml">rss</a></li>
+    
+    <nav class="site-nav">
       
-    </ul>
+        <a href="/" class="nav-link active">
+          HOME
+        </a>
+      
+        <a href="/atom.xml" class="nav-link">
+          RSS
+        </a>
+      
+    </nav>
   </div>
 </header>
 
-        
-        <section id="about">
   
-    <p>Preoccupied with a single leaf, you won’t see the tree. Preoccupied with a single tree…you’ll miss the entire forest.<br/><br/></p>
-
-  
-  
-    <p>
-      Find me on
-      
-      
-      
-        
-          <a class="icon" target="_blank" href="https://github.com/evilsocket">
-            <i class="fab fa-github"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-          <a class="icon" target="_blank" href="https://twitter.com/evilsocket">
-            <i class="fab fa-twitter"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-          <a class="icon" target="_blank" href="http://it.linkedin.com/in/simonemargaritelli/">
-            <i class="fab fa-linkedin"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-          <a class="icon" target="_blank" href="https://www.goodreads.com/evilsocket">
-            <i class="fab fa-goodreads"></i><!--
-      ---></a><!--
-    ---><!--
-    ---> and 
-        
-      
-        
-          <a class="icon" target="_blank" href="mailto:evilsocket@gmail.com">
-            <i class="fas fa-envelope"></i><!--
-      ---></a><!--
-      ---><!--
-    --->.
-        
-      
-    </p>
-  
-</section>
-
-<br />
-
-<section id="writing">
-  
-      <ul class="post-list">
-        
-          
-            
-                  
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2025-03-13T01:36:08.000Z" itemprop="datePublished">2025-03-13</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2025/03/13/How-To-Write-An-Agent/">How to Write an Agent</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2024-09-26T14:51:30.000Z" itemprop="datePublished">2024-09-26</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/">Attacking UNIX Systems via CUPS, Part I</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2024-09-13T10:46:25.000Z" itemprop="datePublished">2024-09-13</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2024/09/13/Introducing-bettercap-2-4-0-CAN-bus-hacking-WiFi-bruteforcing-and-builtin-web-UI/">Introducing Bettercap 2.4.0: CAN-Bus Hacking, WiFi Bruteforcing and Builtin Web UI</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2023-11-02T16:46:32.000Z" itemprop="datePublished">2023-11-02</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/">Enumerate/Bruteforce/Attack All the Things! Presenting Legba</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2022-10-20T11:05:13.000Z" itemprop="datePublished">2022-10-20</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2022/10/20/Reverse-Engineering-the-Apple-MultiPeer-Connectivity-Framework/">Reverse Engineering the Apple MultiPeer Connectivity Framework</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2022-08-15T14:06:05.000Z" itemprop="datePublished">2022-08-15</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/">Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2021-02-13T14:34:28.000Z" itemprop="datePublished">2021-02-13</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/">Hide Your Servers in Plain Sight, Presenting ShieldWall</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2020-05-26T18:39:44.000Z" itemprop="datePublished">2020-05-26</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2020/05/26/Just-taking-a-break/">Just Taking a Break :D</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2019-10-19T08:45:28.000Z" itemprop="datePublished">2019-10-19</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/">Weaponizing and Gamifying AI for WiFi Hacking: Presenting Pwnagotchi 1.0.0</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2019-05-22T21:59:13.000Z" itemprop="datePublished">2019-05-22</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2019/05/22/How-to-create-a-Malware-detection-system-with-Machine-Learning/">How to Create a Malware Detection System With Machine Learning</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2019-02-13T15:53:31.000Z" itemprop="datePublished">2019-02-13</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/">Pwning WPA/WPA2 Networks With Bettercap and the PMKID Client-Less Attack</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2018-11-22T17:15:50.000Z" itemprop="datePublished">2018-11-22</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/">Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2018-07-28T17:01:56.000Z" itemprop="datePublished">2018-07-28</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/">Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2018-03-14T22:39:09.000Z" itemprop="datePublished">2018-03-14</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/">Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It</a>
-    
-
-
-</span>
-                    </li>
-                    
-                    <li class="post-item">
-                      
-    <div class="meta">
-        <time datetime="2018-02-27T19:37:20.000Z" itemprop="datePublished">2018-02-27</time>
-    </div>
-
-
-                        <span>
-    
-        <a class="" href="/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/">All Hail Bettercap 2.0, One Tool to Rule Them All.</a>
-    
-
-
-</span>
-                    </li>
-                    
-      </ul>
-      
-        
-    <div class="pagination">
-        
-        <span class="page-number">Page 1 of 5</span>
-        
-            <a href="/page/2/"><i class="fas fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-
-          
-</section>
-
-<!--
-
-<section id="projects">
-  <span class="h1"><a target="_blank" rel="noopener" href="https://github.com/evilsocket">Projects</a></span>
-  <ul class="project-list">
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://www.bettercap.org/">bettercap</a>
-        
-            : <p>The Swiss Army knife for 802.11, BLE and Ethernet networks reconnaissance and attacks.</p>
-
-        
-      </li>
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bleah">bleah</a>
-        
-            : <p>A BLE scanner for “smart” devices hacking.</p>
-
-        
-      </li>
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://www.opensnitch.io/">opensnitch</a>
-        
-            : <p>A GNU/Linux port of the Little Snitch application firewall.</p>
-
-        
-      </li>
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc">arc</a>
-        
-            : <p>A manager for your secrets.</p>
-
-        
-      </li>
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://github.com/evilsocket/sg1">sg1</a>
-        
-            : <p>A wanna be swiss army knife for data encryption, exfiltration and covert communication.</p>
-
-        
-      </li>
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://github.com/evilsocket/sum">sum</a>
-        
-            : <p>Making linear algebra great (and persistent) again.</p>
-
-        
-      </li>
-    
-      <li class="project-item">
-        <a target="_blank" rel="noopener" href="https://github.com/evilsocket">more ...</a>
-        
-      </li>
-    
-  </ul>
-</section>
-
--->
-
+  <main class="main-content">
+    <div class="cards-container">
+  <!-- Hero Section with Description -->
+  <div class="hero-section">
+    <div class="hero-description">
+      Hi! This is the website of Simone Margaritelli, an Italian cybersecurity researcher and open-source developer. I build tools like <a target="_blank" rel="noopener" href='https://www.bettercap.org'>bettercap</a>, <a target="_blank" rel="noopener" href='https://pwnagotchi.ai'>pwnagotchi</a>, <a target="_blank" rel="noopener" href='https://github.com/evilsocket/opensnitch'>opensnitch</a>, <a target="_blank" rel="noopener" href='https://github.com/evilsocket/bleah'>bleah</a>, and <a target="_blank" rel="noopener" href='https://github.com/evilsocket/legba'>legba</a>. This is where I write about network security, reverse engineering, and whatever rabbit hole I've fallen into lately.
     </div>
     
-    <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2025 Simone Margaritelli
+    
+    <div class="hero-social">
+      <span class="social-label">FIND ME ON</span>
+      <div class="social-icons">
+        
+          <a href="https://github.com/evilsocket" target="_blank" rel="noopener" title="GitHub">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        
+        
+          <a href="https://twitter.com/evilsocket" target="_blank" rel="noopener" title="Twitter">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        
+        
+          <a href="http://it.linkedin.com/in/simonemargaritelli/" target="_blank" rel="noopener" title="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        
+        
+          <a href="mailto:evilsocket@gmail.com" title="Email">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        
+        
+          <a href="https://www.goodreads.com/evilsocket" target="_blank" rel="noopener" title="Goodreads">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.525 15.977V.49h-2.059v2.906h-.064c-.211-.455-.481-.891-.842-1.307-.36-.412-.767-.777-1.236-1.082-.465-.306-.975-.553-1.533-.736-.559-.186-1.147-.278-1.764-.278-1.211 0-2.287.241-3.229.723a6.8 6.8 0 0 0-2.372 1.984c-.63.839-1.107 1.818-1.436 2.939-.328 1.117-.491 2.308-.491 3.577 0 1.199.149 2.328.451 3.389.3 1.062.756 1.994 1.367 2.798.609.805 1.369 1.439 2.279 1.902.91.463 1.971.694 3.182.694.635 0 1.242-.088 1.824-.262.581-.174 1.109-.432 1.58-.773a6.14 6.14 0 0 0 1.236-1.213c.336-.479.595-.998.779-1.557h.064v2.902c0 1.599-.395 2.834-1.188 3.701-.793.871-1.951 1.307-3.475 1.307-.625 0-1.196-.074-1.715-.221-.52-.146-.975-.361-1.357-.645-.385-.283-.705-.633-.959-1.053-.256-.418-.426-.904-.512-1.455H4.283c.063.854.256 1.607.576 2.26.323.654.752 1.203 1.289 1.648a5.468 5.468 0 0 0 1.853 1.004 8.028 8.028 0 0 0 2.282.316c1.256 0 2.328-.187 3.219-.56.89-.371 1.617-.883 2.18-1.534.565-.654.978-1.42 1.238-2.299.261-.878.39-1.828.39-2.846h.065l-.05.019zm-6.691-1.707c-.76 0-1.428-.148-2.002-.445-.576-.296-1.058-.703-1.441-1.219-.385-.516-.674-1.122-.871-1.821-.194-.697-.29-1.444-.29-2.244 0-.812.101-1.57.305-2.277.201-.705.5-1.32.893-1.84.396-.52.884-.928 1.471-1.22.585-.293 1.263-.44 2.033-.44.709 0 1.357.135 1.939.405.583.27 1.084.658 1.508 1.16.421.503.746 1.104.975 1.809.227.701.342 1.479.342 2.327 0 .82-.103 1.575-.305 2.266-.204.69-.499 1.289-.891 1.794-.391.506-.871.903-1.443 1.19-.573.29-1.226.435-1.963.435h-.26z"/></svg>
+          </a>
+        
+      </div>
+    </div>
+    
   </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
+
+  <div class="cards-grid">
+    
+    
+      
+
+<article class="card card-light">
+  <a href="/2025/03/13/How-To-Write-An-Agent/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2025/agent/loop.png')">
         
-      </ul>
-    </nav>
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">agent</span>
+        
+        <h2 class="card-title">How to Write an Agent</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2024/cups1/smart.jpg')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">hacking</span>
+            
+            <h2 class="card-title">Attacking UNIX Systems via CUPS, Part I</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2024/09/13/Introducing-bettercap-2-4-0-CAN-bus-hacking-WiFi-bruteforcing-and-builtin-web-UI/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2024/ecus.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">bettercap</span>
+            
+            <h2 class="card-title">Introducing Bettercap 2.4.0: CAN-Bus Hacking, WiFi Bruteforcing and Builtin Web UI</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2023/11/02/Enumerate-Bruteforce-Attack-All-The-Things-Presenting-Legba/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/VeveLegba.svg/800px-VeveLegba.svg.png')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">rust</span>
+        
+        <h2 class="card-title">Enumerate/Bruteforce/Attack All the Things! Presenting Legba</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2022/10/20/Reverse-Engineering-the-Apple-MultiPeer-Connectivity-Framework/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2022/cleartext.png')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">network</span>
+        
+        <h2 class="card-title">Reverse Engineering the Apple MultiPeer Connectivity Framework</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2022/08/15/Process-behaviour-anomaly-detection-using-eBPF-and-unsupervised-learning-Autoencoders/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.imgur.com/QEmpeDl.jpg')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">linux</span>
+            
+            <h2 class="card-title">Process Behaviour Anomaly Detection Using eBPF and Unsupervised-Learning Autoencoders</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2021/shieldwall_gophers_vikings.jpg')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">golang</span>
+            
+            <h2 class="card-title">Hide Your Servers in Plain Sight, Presenting ShieldWall</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2020/05/26/Just-taking-a-break/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.pinimg.com/originals/0e/85/af/0e85af756c464e165b5ba9c3d4996eea.png')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">personal life</span>
+        
+        <h2 class="card-title">Just Taking a Break :D</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.imgur.com/X68GXrn.png')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">bettercap</span>
+        
+        <h2 class="card-title">Weaponizing and Gamifying AI for WiFi Hacking: Presenting Pwnagotchi 1.0.0</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2019/05/22/How-to-create-a-Malware-detection-system-with-Machine-Learning/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.imgur.com/cBCBdlH.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">ai</span>
+            
+            <h2 class="card-title">How to Create a Malware Detection System With Machine Learning</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://raw.githubusercontent.com/bettercap/media/master/logo.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">bettercap</span>
+            
+            <h2 class="card-title">Pwning WPA/WPA2 Networks With Bettercap and the PMKID Client-Less Attack</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.imgur.com/EO9PdNp.jpg')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">ergo</span>
+        
+        <h2 class="card-title">Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2018/07/deauth.png')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">bettercap</span>
+        
+        <h2 class="card-title">Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://abs.twimg.com/emoji/v2/72x72/1f984.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">go</span>
+            
+            <h2 class="card-title">Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://www.bettercap.org/img/logo.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">bettercap</span>
+            
+            <h2 class="card-title">All Hail Bettercap 2.0, One Tool to Rule Them All.</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+  </div>
+  
+  
+<nav class="pagination">
+  
+  
+  <span class="pagination-info">
+    Page 1 of 5
+  </span>
+  
+  
+    <a href="/page/2/" class="pagination-next">
+      Older Posts →
+    </a>
+  
+</nav>
+
+
+</div>
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-social">
+      
+        
+          
+            <a href="https://github.com/evilsocket" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          
+        
+          
+            <a href="https://twitter.com/evilsocket" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          
+        
+          
+            <a href="http://it.linkedin.com/in/simonemargaritelli/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          
+        
+          
+        
+          
+            <a href="mailto:evilsocket@gmail.com" class="social-link" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          
+        
+      
+    </div>
+    <p class="footer-copyright">
+      &copy; 2025 evilsocket. 
+      Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>.
+    </p>
   </div>
 </footer>
 
+  <!-- Minimal JS - no external dependencies needed -->
+<script>
+  // Lazy load images
+  document.addEventListener('DOMContentLoaded', function() {
+    var images = document.querySelectorAll('.card-image[data-bg]');
+    images.forEach(function(img) {
+      img.style.backgroundImage = 'url(' + img.dataset.bg + ')';
+    });
+  });
+</script>
+
 </body>
 </html>
-<!-- styles -->
-
-<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-<!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-22026549-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-
-<!-- Baidu Analytics -->
-
-<!-- Disqus Comments -->
-
-

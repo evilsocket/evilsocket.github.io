@@ -1,170 +1,106 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all t">
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W | evilsocket</title>
+<meta name="description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my">
+
+
+  <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
+
+
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W">
-<meta property="og:url" content="https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/index.html">
+<meta property="og:description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my">
+<meta property="og:url" content="/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/">
 <meta property="og:site_name" content="evilsocket">
-<meta property="og:description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all t">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/deauth.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/bt.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/net1.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/net2.png">
-<meta property="og:image" content="https://www.evilsocket.net/images/2018/07/victim.png">
-<meta property="og:image" content="https://abs.twimg.com/emoji/v2/72x72/1f984.png">
-<meta property="article:published_time" content="2018-07-28T17:01:56.000Z">
-<meta property="article:modified_time" content="2021-03-01T16:07:13.000Z">
-<meta property="article:author" content="Simone Margaritelli">
-<meta property="article:tag" content="bettercap">
-<meta property="article:tag" content="wifi">
-<meta property="article:tag" content="ble">
-<meta property="article:tag" content="bluetooth">
-<meta property="article:tag" content="raspberry">
-<meta property="article:tag" content="rpi">
-<meta property="article:tag" content="rpi zero w">
-<meta property="article:tag" content="rpi0w">
-<meta property="article:tag" content="kali">
-<meta property="article:tag" content="deauth">
-<meta property="article:tag" content="btnap">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.evilsocket.net/images/2018/07/deauth.png">
-    
-    
-        
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
-        
-        
-          
-            <link rel="icon" type="image/png" href="/images/favicon.ico" sizes="192x192">
-          
-        
-        
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
-          
-        
-    
-    <!-- title -->
-    <title>Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&text=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&is_video=false&description=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W&body=Check out this article: https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&name=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W&description=&lt;p&gt;A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was &lt;em&gt;purely for the lulz&lt;/em&gt;) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.&lt;/p&gt;
-&lt;p&gt;Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given &lt;a href=&#34;https://twitter.com/evilsocket/status/1021367629901115392&#34;&gt;the interest the tweet had&lt;/a&gt; I thought to share this writeup :)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/images/2018/07/deauth.png&#34; alt=&#34;deauth&#34;&gt;&lt;/p&gt;
-&lt;center&gt;&lt;small&gt;&lt;i&gt;This awesome case has been designed by &lt;a href=&#34;https://twitter.com/elkentaro&#34; target=&#34;_blank&#34;&gt;@elkentaro&lt;/a&gt; and can be found on [his Thingverse page](https://www.thingiverse.com/thing:3018480).&lt;/i&gt;&lt;/small&gt;&lt;/center&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-FAQ"><span class="toc-number">1.</span> <span class="toc-text">[0x00] FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Kali-image-and-initial-headless-configuration"><span class="toc-number">2.</span> <span class="toc-text">[0x01] Kali image and initial headless configuration.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Having-fun-with-wlan0-and-bettercap"><span class="toc-number">3.</span> <span class="toc-text">[0x03] Having fun with wlan0 and bettercap</span></a></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index my4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline" style="text-transform: uppercase;">
-        Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W
-    </h1>
-    <br/>
-
-
-
-      <div class="meta">
-        
-    <div class="postdate">
-        <time datetime="2018-07-28T17:01:56.000Z" itemprop="datePublished">2018-07-28</time>
-    </div>
-
-
-          
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/bettercap/" rel="tag">bettercap</a>, <a class="tag-link-link" href="/tags/ble/" rel="tag">ble</a>, <a class="tag-link-link" href="/tags/bluetooth/" rel="tag">bluetooth</a>, <a class="tag-link-link" href="/tags/btnap/" rel="tag">btnap</a>, <a class="tag-link-link" href="/tags/deauth/" rel="tag">deauth</a>, <a class="tag-link-link" href="/tags/kali/" rel="tag">kali</a>, <a class="tag-link-link" href="/tags/raspberry/" rel="tag">raspberry</a>, <a class="tag-link-link" href="/tags/rpi/" rel="tag">rpi</a>, <a class="tag-link-link" href="/tags/rpi-zero-w/" rel="tag">rpi zero w</a>, <a class="tag-link-link" href="/tags/rpi0w/" rel="tag">rpi0w</a>, <a class="tag-link-link" href="/tags/wifi/" rel="tag">wifi</a>
-    </div>
-
-
-      </div>
-  </header>
-
-  <br />
+  
+  
+    <meta property="og:image" content="/images/2018/07/deauth.png">
   
 
-    <div class="content" itemprop="articleBody">
-      <p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W">
+<meta name="twitter:description" content="A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-22026549-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-22026549-1');
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="post-page">
+  <header class="site-header">
+  <div class="header-inner">
+    <div class="site-branding">
+      <a href="/" class="site-logo">
+        
+          <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
+        
+        <span class="site-title">evilsocket</span>
+      </a>
+    </div>
+    
+    <nav class="site-nav">
+      
+        <a href="/" class="nav-link">
+          HOME
+        </a>
+      
+        <a href="/atom.xml" class="nav-link">
+          RSS
+        </a>
+      
+    </nav>
+  </div>
+</header>
+
+  
+  <main class="main-content">
+    <article class="post-full">
+  <header class="post-header">
+    <h1 class="post-title">Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W</h1>
+    <div class="post-meta">
+      BY <span class="post-author">Simone Margaritelli</span>
+      — <time datetime="2018-07-28T17:01:56.000Z">28 Jul 2018</time>
+      
+        — <a href="/tags/bettercap/" class="post-category">bettercap</a>, <a href="/tags/wifi/" class="post-category">wifi</a>, <a href="/tags/ble/" class="post-category">ble</a>, <a href="/tags/bluetooth/" class="post-category">bluetooth</a>, <a href="/tags/raspberry/" class="post-category">raspberry</a>, <a href="/tags/rpi/" class="post-category">rpi</a>, <a href="/tags/rpi-zero-w/" class="post-category">rpi zero w</a>, <a href="/tags/rpi0w/" class="post-category">rpi0w</a>, <a href="/tags/kali/" class="post-category">kali</a>, <a href="/tags/deauth/" class="post-category">deauth</a>, <a href="/tags/btnap/" class="post-category">btnap</a>
+      
+    </div>
+  </header>
+
+  
+  
+    <div class="post-cover">
+      <img src="/images/2018/07/deauth.png" alt="Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W">
+    </div>
+  
+
+  <div class="post-content">
+    <p>A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was <em>purely for the lulz</em>) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.</p>
 <p>Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given <a target="_blank" rel="noopener" href="https://twitter.com/evilsocket/status/1021367629901115392">the interest the tweet had</a> I thought to share this writeup :)</p>
 <p><img src="/images/2018/07/deauth.png" alt="deauth"></p>
 <center><small><i>This awesome case has been designed by <a href="https://twitter.com/elkentaro" target="_blank">@elkentaro</a> and can be found on [his Thingverse page](https://www.thingiverse.com/thing:3018480).</i></small></center>
@@ -241,120 +177,216 @@
 <img src="https://abs.twimg.com/emoji/v2/72x72/1f984.png"/>
 </center>
 
+  </div>
+
+  
+    <div class="post-tags">
+      
+        <a href="/tags/bettercap/" class="tag">#bettercap</a>
+      
+        <a href="/tags/wifi/" class="tag">#wifi</a>
+      
+        <a href="/tags/ble/" class="tag">#ble</a>
+      
+        <a href="/tags/bluetooth/" class="tag">#bluetooth</a>
+      
+        <a href="/tags/raspberry/" class="tag">#raspberry</a>
+      
+        <a href="/tags/rpi/" class="tag">#rpi</a>
+      
+        <a href="/tags/rpi-zero-w/" class="tag">#rpi zero w</a>
+      
+        <a href="/tags/rpi0w/" class="tag">#rpi0w</a>
+      
+        <a href="/tags/kali/" class="tag">#kali</a>
+      
+        <a href="/tags/deauth/" class="tag">#deauth</a>
+      
+        <a href="/tags/btnap/" class="tag">#btnap</a>
+      
     </div>
+  
 
-
-    <p>
-      <br /><br /><br />
-      <a href="https://discord.gg/btZpkp45gQ" target="_blank" title="Join our community!">
-        <img src="https://dcbadge.limes.pink/api/server/https://discord.gg/btZpkp45gQ" />
+  <nav class="post-navigation">
+    
+      <a href="/2018/11/22/Presenting-project-Ergo-how-to-build-an-airplane-detector-for-satellite-imagery-with-Deep-Learning/" class="nav-prev">
+        <span class="nav-label">PREVIOUS</span>
+        <span class="nav-title">Presenting Project Ergo: How to Build an Airplane Detector for Satellite Imagery With Deep Learning</span>
       </a>
-    </p>
-
+    
+    
+      <a href="/2018/03/14/Go-is-amazing-so-here-s-what-i-don-t-like-about-it/" class="nav-next">
+        <span class="nav-label">NEXT</span>
+        <span class="nav-title">Go Is Amazing, So Here&#39;s What I Don&#39;t Like About It</span>
+      </a>
+    
+  </nav>
 </article>
 
 
-    </div>
+  
+
+
+<section class="related-posts">
+  <h3 class="related-title">YOU MIGHT ALSO LIKE...</h3>
+  <div class="cards-grid cards-grid-related">
     
-      <div id="footer-post-container">
-  <div id="footer-post">
+      
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
+<article class="card card-light">
+  <a href="/2024/09/13/Introducing-bettercap-2-4-0-CAN-bus-hacking-WiFi-bruteforcing-and-builtin-web-UI/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2024/ecus.png')">
         
-      </ul>
-    </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-FAQ"><span class="toc-number">1.</span> <span class="toc-text">[0x00] FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Kali-image-and-initial-headless-configuration"><span class="toc-number">2.</span> <span class="toc-text">[0x01] Kali image and initial headless configuration.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Having-fun-with-wlan0-and-bettercap"><span class="toc-number">3.</span> <span class="toc-text">[0x03] Having fun with wlan0 and bettercap</span></a></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&text=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&is_video=false&description=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W&body=Check out this article: https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&title=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://www.evilsocket.net/2018/07/28/Project-PITA-Writeup-build-a-mini-mass-deauther-using-bettercap-and-a-Raspberry-Pi-Zero-W/&name=Project PITA: Build a Mini Mass Deauther Using Bettercap and a Raspberry Pi Zero W&description=&lt;p&gt;A few days ago I started playing with some idea I had from a few weeks already, using a Raspberry Pi Zero W to make a mini WiFi deauthenticator: something in my pocket that periodically jumps on all the channels in the WiFi spectrum, collects information about the nearby access points and their connected clients and then sends a deauthentication packet to each one of them, resulting in some sort of WiFi jammer on the 802.11 level. As an interesting “side effect” of this jammer (the initial intent was &lt;em&gt;purely for the lulz&lt;/em&gt;) is that the more it deauths, the higher the changes to also sniff WPA2 handshakes.&lt;/p&gt;
-&lt;p&gt;Thanks to the awesome work of the Kali and Nexmon communities in packaging the nexmon drivers and utilities and to the recent changes we released in bettercap, this was very easy to setup and to script and given &lt;a href=&#34;https://twitter.com/evilsocket/status/1021367629901115392&#34;&gt;the interest the tweet had&lt;/a&gt; I thought to share this writeup :)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;/images/2018/07/deauth.png&#34; alt=&#34;deauth&#34;&gt;&lt;/p&gt;
-&lt;center&gt;&lt;small&gt;&lt;i&gt;This awesome case has been designed by &lt;a href=&#34;https://twitter.com/elkentaro&#34; target=&#34;_blank&#34;&gt;@elkentaro&lt;/a&gt; and can be found on [his Thingverse page](https://www.thingiverse.com/thing:3018480).&lt;/i&gt;&lt;/small&gt;&lt;/center&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">bettercap</span>
+        
+        <h2 class="card-title">Introducing Bettercap 2.4.0: CAN-Bus Hacking, WiFi Bruteforcing and Builtin Web UI</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
 
     
-    <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy; 2025 Simone Margaritelli
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">~/</a></li>
-         
-          <li><a href="/atom.xml">rss</a></li>
+      
+
+<article class="card card-overlay">
+  <a href="/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.imgur.com/X68GXrn.png')">
         
-      </ul>
-    </nav>
+          <div class="card-overlay-content">
+            
+              <span class="card-category">bettercap</span>
+            
+            <h2 class="card-title">Weaponizing and Gamifying AI for WiFi Hacking: Presenting Pwnagotchi 1.0.0</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://raw.githubusercontent.com/bettercap/media/master/logo.png')">
+        
+          <div class="card-overlay-content">
+            
+              <span class="card-category">bettercap</span>
+            
+            <h2 class="card-title">Pwning WPA/WPA2 Networks With Bettercap and the PMKID Client-Less Attack</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-light">
+  <a href="/2018/02/27/All-hail-bettercap-2-0-one-tool-to-rule-them-all/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://www.bettercap.org/img/logo.png')">
+        
+      </div>
+    
+    
+    
+      <div class="card-content">
+        
+          <span class="card-category">bettercap</span>
+        
+        <h2 class="card-title">All Hail Bettercap 2.0, One Tool to Rule Them All.</h2>
+        
+        <div class="card-footer">
+          <span class="card-read-more">READ MORE</span>
+        </div>
+      </div>
+    
+  </a>
+</article>
+
+    
+  </div>
+</section>
+
+
+
+
+  </main>
+  
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-social">
+      
+        
+          
+            <a href="https://github.com/evilsocket" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          
+        
+          
+            <a href="https://twitter.com/evilsocket" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          
+        
+          
+            <a href="http://it.linkedin.com/in/simonemargaritelli/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          
+        
+          
+        
+          
+            <a href="mailto:evilsocket@gmail.com" class="social-link" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          
+        
+      
+    </div>
+    <p class="footer-copyright">
+      &copy; 2025 evilsocket. 
+      Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>.
+    </p>
   </div>
 </footer>
 
+  <!-- Minimal JS - no external dependencies needed -->
+<script>
+  // Lazy load images
+  document.addEventListener('DOMContentLoaded', function() {
+    var images = document.querySelectorAll('.card-image[data-bg]');
+    images.forEach(function(img) {
+      img.style.backgroundImage = 'url(' + img.dataset.bg + ')';
+    });
+  });
+</script>
+
 </body>
 </html>
-<!-- styles -->
-
-<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-<!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-
-<script src="/js/main.js"></script>
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-22026549-1', 'auto');
-        ga('send', 'pageview');
-    </script>
-
-<!-- Baidu Analytics -->
-
-<!-- Disqus Comments -->
-
-
