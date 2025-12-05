@@ -74,6 +74,8 @@
     
     
     
+    <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
+    
     <category term="cups" scheme="https://www.evilsocket.net/tags/cups/"/>
     
     <category term="cups-browsed" scheme="https://www.evilsocket.net/tags/cups-browsed/"/>
@@ -83,8 +85,6 @@
     <category term="printing" scheme="https://www.evilsocket.net/tags/printing/"/>
     
     <category term="unix" scheme="https://www.evilsocket.net/tags/unix/"/>
-    
-    <category term="hacking" scheme="https://www.evilsocket.net/tags/hacking/"/>
     
     <category term="rce" scheme="https://www.evilsocket.net/tags/rce/"/>
     
