@@ -733,104 +733,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/hooking/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/api-hooking/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/library/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/injection/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/elf-relocation/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/arm/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/elf/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/open/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/dalvik/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/plt/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/relocation/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/relocation-table/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/symtab/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/strtab/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/reversing/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -839,6 +741,13 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/apk/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/dalvik/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -916,6 +825,97 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/Framework/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/hooking/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/api-hooking/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/library/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/injection/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/elf-relocation/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/arm/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/elf/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/open/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/plt/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/relocation/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/relocation-table/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/symtab/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/strtab/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2196,6 +2196,48 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/guide/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/metasploit/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/osx/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/mavericks/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/yosemite/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/installation/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/ergo/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -2302,48 +2344,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/portable-executable/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/guide/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/metasploit/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/osx/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/mavericks/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/yosemite/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/installation/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2868,6 +2868,20 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/changelog/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/progress/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/tib/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -2946,20 +2960,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/windows/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/changelog/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/progress/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3309,41 +3309,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/ubertooth/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/rubertooth/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/ruby/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/gem/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/porting/</loc>
-    <lastmod>2025-12-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/apple/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -3457,6 +3422,41 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/ice/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/ubertooth/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/rubertooth/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/ruby/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/gem/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/porting/</loc>
     <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
