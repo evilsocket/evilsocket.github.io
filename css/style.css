@@ -84,6 +84,27 @@ img {
   height: 40px;
 }
 
+.site-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-logo .site-motto {
+  font-size: 0.7rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text-light);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .site-logo .site-motto {
+    display: none;
+  }
+}
+
 .site-nav {
   display: flex;
   gap: 32px;
@@ -132,6 +153,14 @@ img {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.site-motto {
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
 }
 
 .hero-description {
@@ -246,10 +275,6 @@ img {
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .card-excerpt {

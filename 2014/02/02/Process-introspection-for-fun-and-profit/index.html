@@ -68,7 +68,10 @@
         
           <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
         
-        <span class="site-title">evilsocket</span>
+        <div class="site-title-group">
+          <span class="site-title">evilsocket</span>
+          <span class="site-motto">Preoccupied with a single leaf, you won't see the tree. Preoccupied with a single tree... you'll miss the entire forest.</span>
+        </div>
       </a>
     </div>
     
@@ -99,13 +102,6 @@
       
     </div>
   </header>
-
-  
-  
-    <div class="post-cover">
-      <img src="/images/default-cover.svg" alt="Process Introspection for Fun and Profit">
-    </div>
-  
 
   <div class="post-content">
     <p>While studying Windows internals for my job, I had to  deepen my knowledge of executable loading process, including their memory layout, address relocations and so on.<br>I came accross the <strong>PEB</strong> ( process environment block ), a data structure ( mostly undocumented ) that NT systems use internally to handle many aspects of a process, including a list of loaded libraries, environment variables, command line arguments, heap informations, TLS slots and so on.<br>The interesting fact about the PEB is that can be inspected to obtain those informations without the use of any standard API, thus resulting in an interesting technique to detect bad written virtual machines, emulators and any sort of sandboxing that could be used by a malware analyst or an anti virus product.<br>Moreover you could check the PEB to detect if a DLL has been injected into your process to perform api hooking.<br>API hooking softwares usually hooks API such as <strong>EnumProcessModules</strong> and patch them to hide the presence of the injected module. Inspecting the PEB you will be able to perform the same task only analyzing your address space, thus avoiding API patching.</p>
@@ -185,9 +181,6 @@
     
     
       <div class="card-content">
-        
-          <span class="card-category">ai</span>
-        
         <h2 class="card-title">How to Create a Malware Detection System With Machine Learning</h2>
         
         <div class="card-footer">
@@ -207,9 +200,6 @@
       <div class="card-image" style="background-image: url('/images/2016/04/apktool.png')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">android</span>
-            
             <h2 class="card-title">How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -230,9 +220,6 @@
       <div class="card-image" style="background-image: url('/images/default-cover.svg')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">android</span>
-            
             <h2 class="card-title">Android Native API Hooking With Library Injection and ELF Introspection.</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -257,9 +244,6 @@
     
     
       <div class="card-content">
-        
-          <span class="card-category">android</span>
-        
         <h2 class="card-title">Dynamically Inject a Shared Library Into a Running Process on Android/ARM</h2>
         
         <div class="card-footer">

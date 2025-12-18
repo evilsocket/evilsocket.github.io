@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"},"headline":"DISCLOSURE - RCE Against Every Open Source BTS Software.","description":"This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm","image":"https://www.evilsocket.nethttps://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png","datePublished":"2016-08-24T18:43:14.000Z","dateModified":"2021-03-01T18:10:40.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"rce, disclosure, exploit, vulnerability, gsm, bts, yatebts, openbts, osmobb, osmobts","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"},"headline":"DISCLOSURE - RCE Against Every Open Source BTS Software.","description":"This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm","image":"https://www.evilsocket.nethttps://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png","datePublished":"2016-08-24T18:43:14.000Z","dateModified":"2021-03-01T18:10:40.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"vulnerability, rce, disclosure, exploit, gsm, bts, yatebts, openbts, osmobb, osmobts","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -68,7 +68,10 @@
         
           <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
         
-        <span class="site-title">evilsocket</span>
+        <div class="site-title-group">
+          <span class="site-title">evilsocket</span>
+          <span class="site-motto">Preoccupied with a single leaf, you won't see the tree. Preoccupied with a single tree... you'll miss the entire forest.</span>
+        </div>
       </a>
     </div>
     
@@ -95,17 +98,10 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2016-08-24T18:43:14.000Z">24 Aug 2016</time>
       
-        — <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/gsm/" class="post-category">gsm</a>, <a href="/tags/bts/" class="post-category">bts</a>, <a href="/tags/yatebts/" class="post-category">yatebts</a>, <a href="/tags/openbts/" class="post-category">openbts</a>, <a href="/tags/osmobb/" class="post-category">osmobb</a>, <a href="/tags/osmobts/" class="post-category">osmobts</a>
+        — <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/gsm/" class="post-category">gsm</a>, <a href="/tags/bts/" class="post-category">bts</a>, <a href="/tags/yatebts/" class="post-category">yatebts</a>, <a href="/tags/openbts/" class="post-category">openbts</a>, <a href="/tags/osmobb/" class="post-category">osmobb</a>, <a href="/tags/osmobts/" class="post-category">osmobts</a>
       
     </div>
   </header>
-
-  
-  
-    <div class="post-cover">
-      <img src="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png" alt="DISCLOSURE - RCE Against Every Open Source BTS Software.">
-    </div>
-  
 
   <div class="post-content">
     <p>This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote command execution, plus other various logic errors n’ stuff:</p>
@@ -127,13 +123,13 @@
   
     <div class="post-tags">
       
+        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
+      
         <a href="/tags/rce/" class="tag">#rce</a>
       
         <a href="/tags/disclosure/" class="tag">#disclosure</a>
       
         <a href="/tags/exploit/" class="tag">#exploit</a>
-      
-        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
       
         <a href="/tags/gsm/" class="tag">#gsm</a>
       
@@ -186,9 +182,6 @@
     
     
       <div class="card-content">
-        
-          <span class="card-category">cups</span>
-        
         <h2 class="card-title">Attacking UNIX Systems via CUPS, Part I</h2>
         
         <div class="card-footer">
@@ -208,9 +201,6 @@
       <div class="card-image" style="background-image: url('/images/2017/05/exploit.png')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">rce</span>
-            
             <h2 class="card-title">TerraMaster NAS TOS &lt;= 3.0.30 Unauthenticated RCE as Root</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -231,9 +221,6 @@
       <div class="card-image" style="background-image: url('/images/2016/03/bts.jpeg')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">hacking</span>
-            
             <h2 class="card-title">How to Build Your Own Rogue GSM BTS for Fun and Profit</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -258,9 +245,6 @@
     
     
       <div class="card-content">
-        
-          <span class="card-category">bettercap</span>
-        
         <h2 class="card-title">OSX Mass Pwning Using BetterCap and the Sparkle Updater Vulnerability.</h2>
         
         <div class="card-footer">

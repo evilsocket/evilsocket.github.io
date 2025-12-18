@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"},"headline":"Android Applications Reversing 101","description":"Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, al","image":"https://www.evilsocket.net/images/2017/04/head.jpeg","datePublished":"2017-04-27T17:09:48.000Z","dateModified":"2024-06-19T18:21:10.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, reversing, apk, dalvik, dex, re, IDA, Hopper, JADX, apktool, JD-GUI, Dex2Jar, Frida, XPosed, Framework","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/04/27/Android-Applications-Reversing-101/"},"headline":"Android Applications Reversing 101","description":"Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, al","image":"https://www.evilsocket.net/images/2017/04/head.jpeg","datePublished":"2017-04-27T17:09:48.000Z","dateModified":"2024-06-19T18:21:10.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, dalvik, reversing, apk, dex, re, IDA, Hopper, JADX, apktool, JD-GUI, Dex2Jar, Frida, XPosed, Framework","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -68,7 +68,10 @@
         
           <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
         
-        <span class="site-title">evilsocket</span>
+        <div class="site-title-group">
+          <span class="site-title">evilsocket</span>
+          <span class="site-motto">Preoccupied with a single leaf, you won't see the tree. Preoccupied with a single tree... you'll miss the entire forest.</span>
+        </div>
       </a>
     </div>
     
@@ -95,17 +98,10 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2017-04-27T17:09:48.000Z">27 Apr 2017</time>
       
-        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/reversing/" class="post-category">reversing</a>, <a href="/tags/apk/" class="post-category">apk</a>, <a href="/tags/dalvik/" class="post-category">dalvik</a>, <a href="/tags/dex/" class="post-category">dex</a>, <a href="/tags/re/" class="post-category">re</a>, <a href="/tags/IDA/" class="post-category">IDA</a>, <a href="/tags/Hopper/" class="post-category">Hopper</a>, <a href="/tags/JADX/" class="post-category">JADX</a>, <a href="/tags/apktool/" class="post-category">apktool</a>, <a href="/tags/JD-GUI/" class="post-category">JD-GUI</a>, <a href="/tags/Dex2Jar/" class="post-category">Dex2Jar</a>, <a href="/tags/Frida/" class="post-category">Frida</a>, <a href="/tags/XPosed/" class="post-category">XPosed</a>, <a href="/tags/Framework/" class="post-category">Framework</a>
+        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/dalvik/" class="post-category">dalvik</a>, <a href="/tags/reversing/" class="post-category">reversing</a>, <a href="/tags/apk/" class="post-category">apk</a>, <a href="/tags/dex/" class="post-category">dex</a>, <a href="/tags/re/" class="post-category">re</a>, <a href="/tags/IDA/" class="post-category">IDA</a>, <a href="/tags/Hopper/" class="post-category">Hopper</a>, <a href="/tags/JADX/" class="post-category">JADX</a>, <a href="/tags/apktool/" class="post-category">apktool</a>, <a href="/tags/JD-GUI/" class="post-category">JD-GUI</a>, <a href="/tags/Dex2Jar/" class="post-category">Dex2Jar</a>, <a href="/tags/Frida/" class="post-category">Frida</a>, <a href="/tags/XPosed/" class="post-category">XPosed</a>, <a href="/tags/Framework/" class="post-category">Framework</a>
       
     </div>
   </header>
-
-  
-  
-    <div class="post-cover">
-      <img src="/images/2017/04/head.jpeg" alt="Android Applications Reversing 101">
-    </div>
-  
 
   <div class="post-content">
     <p>Every day we see a bunch of new Android applications being published on the Google Play Store, from games, to utilities, to IoT devices clients and so forth, almost every single aspect of our life can be somehow controlled with “an app”. We have smart houses, <a href="https://www.evilsocket.net/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">smart fitness devices</a> and <a href="https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/">smart coffee machines</a> … but is this stuff just smart or is it <strong>secure</strong> as well? :)</p>
@@ -306,11 +302,11 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
       
         <a href="/tags/android/" class="tag">#android</a>
       
+        <a href="/tags/dalvik/" class="tag">#dalvik</a>
+      
         <a href="/tags/reversing/" class="tag">#reversing</a>
       
         <a href="/tags/apk/" class="tag">#apk</a>
-      
-        <a href="/tags/dalvik/" class="tag">#dalvik</a>
       
         <a href="/tags/dex/" class="tag">#dex</a>
       
@@ -373,9 +369,6 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
     
       <div class="card-content">
-        
-          <span class="card-category">re</span>
-        
         <h2 class="card-title">Reverse Engineering the Apple MultiPeer Connectivity Framework</h2>
         
         <div class="card-footer">
@@ -395,9 +388,6 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
       <div class="card-image" style="background-image: url('/images/2016/10/terminal.png')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">reversing</span>
-            
             <h2 class="card-title">Reversing the Smarter Coffee IoT Machine Protocol to Make Coffee Using the Terminal.</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -418,9 +408,6 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
       <div class="card-image" style="background-image: url('/images/2016/04/apktool.png')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">android</span>
-            
             <h2 class="card-title">How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -445,9 +432,6 @@ The jar is located at /data/data/de.robv.android.xposed.installer/bin/XposedBrid
     
     
       <div class="card-content">
-        
-          <span class="card-category">android</span>
-        
         <h2 class="card-title">Autopwn Every Android &lt; 4.2 Device on Your Network Using BetterCap and the addJavascriptInterface Vulnerability.</h2>
         
         <div class="card-footer">

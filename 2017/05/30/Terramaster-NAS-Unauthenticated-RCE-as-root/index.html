@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/"},"headline":"TerraMaster NAS TOS &lt;= 3.0.30 Unauthenticated RCE as Root","description":"Recently I bought a TerraMaster F2-420 NAS from Amazon in order to store my private code, backups and this kind of stuff. As soon as it arrived I started to pla","image":"https://www.evilsocket.net/images/2017/05/exploit.png","datePublished":"2017-05-30T11:15:28.000Z","dateModified":"2020-05-26T20:30:56.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"rce, disclosure, exploit, vulnerability, terramaster, nas","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/"},"headline":"TerraMaster NAS TOS &lt;= 3.0.30 Unauthenticated RCE as Root","description":"Recently I bought a TerraMaster F2-420 NAS from Amazon in order to store my private code, backups and this kind of stuff. As soon as it arrived I started to pla","image":"https://www.evilsocket.net/images/2017/05/exploit.png","datePublished":"2017-05-30T11:15:28.000Z","dateModified":"2020-05-26T20:30:56.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"vulnerability, rce, disclosure, exploit, terramaster, nas","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -68,7 +68,10 @@
         
           <img src="/images/glider.png" alt="evilsocket" width="50" height="50">
         
-        <span class="site-title">evilsocket</span>
+        <div class="site-title-group">
+          <span class="site-title">evilsocket</span>
+          <span class="site-motto">Preoccupied with a single leaf, you won't see the tree. Preoccupied with a single tree... you'll miss the entire forest.</span>
+        </div>
       </a>
     </div>
     
@@ -95,17 +98,10 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2017-05-30T11:15:28.000Z">30 May 2017</time>
       
-        — <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/terramaster/" class="post-category">terramaster</a>, <a href="/tags/nas/" class="post-category">nas</a>
+        — <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/terramaster/" class="post-category">terramaster</a>, <a href="/tags/nas/" class="post-category">nas</a>
       
     </div>
   </header>
-
-  
-  
-    <div class="post-cover">
-      <img src="/images/2017/05/exploit.png" alt="TerraMaster NAS TOS &lt;= 3.0.30 Unauthenticated RCE as Root">
-    </div>
-  
 
   <div class="post-content">
     <p>Recently I bought a TerraMaster F2-420 NAS from Amazon in order to store my private code, backups and this kind of stuff. As soon as it arrived I started to play with its web interface and eventually I wanted to see how it was implemented, moreover I was curious to see if I could find any remotely exploitable vulnerability.</p>
@@ -147,13 +143,13 @@
   
     <div class="post-tags">
       
+        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
+      
         <a href="/tags/rce/" class="tag">#rce</a>
       
         <a href="/tags/disclosure/" class="tag">#disclosure</a>
       
         <a href="/tags/exploit/" class="tag">#exploit</a>
-      
-        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
       
         <a href="/tags/terramaster/" class="tag">#terramaster</a>
       
@@ -198,9 +194,6 @@
     
     
       <div class="card-content">
-        
-          <span class="card-category">cups</span>
-        
         <h2 class="card-title">Attacking UNIX Systems via CUPS, Part I</h2>
         
         <div class="card-footer">
@@ -220,9 +213,6 @@
       <div class="card-image" style="background-image: url('https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">rce</span>
-            
             <h2 class="card-title">DISCLOSURE - RCE Against Every Open Source BTS Software.</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -243,9 +233,6 @@
       <div class="card-image" style="background-image: url('/images/2016/01/bettercap.png')">
         
           <div class="card-overlay-content">
-            
-              <span class="card-category">bettercap</span>
-            
             <h2 class="card-title">OSX Mass Pwning Using BetterCap and the Sparkle Updater Vulnerability.</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
@@ -270,9 +257,6 @@
     
     
       <div class="card-content">
-        
-          <span class="card-category">android</span>
-        
         <h2 class="card-title">Autopwn Every Android &lt; 4.2 Device on Your Network Using BetterCap and the addJavascriptInterface Vulnerability.</h2>
         
         <div class="card-footer">
