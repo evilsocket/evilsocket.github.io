@@ -110,7 +110,7 @@
 <p><img src="/images/2016/03/bts.jpeg" alt="my bts"></p>
 <span id="more"></span>
 
-<h3 id="Hardware-Requirements"><a href="#Hardware-Requirements" class="headerlink" title="Hardware Requirements"></a>Hardware Requirements</h3><p>In order to build your BTS you’ll need the following hardware:</p>
+<h2 id="Hardware-Requirements"><a href="#Hardware-Requirements" class="headerlink" title="Hardware Requirements"></a>Hardware Requirements</h2><p>In order to build your BTS you’ll need the following hardware:</p>
 <ul>
 <li>A <a target="_blank" rel="noopener" href="https://www.nuand.com/blog/product/bladerf-x40/">bladeRF x40</a></li>
 <li>Two <a target="_blank" rel="noopener" href="https://www.sparkfun.com/products/675">Quad-band Cellular Duck Antennas SMA</a>.</li>
@@ -119,7 +119,7 @@
 <li>A microsd for the RPI &gt;= 8GB.</li>
 <li>Some patience and time … :)</li>
 </ul>
-<h3 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h3><p>Let’s start by installing the <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/raspbian/">latest Raspbian</a> image to the micrsd card ( use the “lite” one, no need for UI ;) ), boot the RPI, configure either the WiFi or ethernet and so forth, at the end of this process you should be able to SSH into the RPI.</p>
+<h2 id="Software"><a href="#Software" class="headerlink" title="Software"></a>Software</h2><p>Let’s start by installing the <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/raspbian/">latest Raspbian</a> image to the micrsd card ( use the “lite” one, no need for UI ;) ), boot the RPI, configure either the WiFi or ethernet and so forth, at the end of this process you should be able to SSH into the RPI.</p>
 <p>Next, install a few dependecies we’re gonna need soon:</p>
 <pre><code>sudo apt-get install git apache2 php5 bladerf libbladerf-dev libbladerf0 automake</code></pre>
 <p>At this point, you should already be able to interact with the BladeRF, plug it into one of the USB ports of the RPI, <strong>dmesg</strong> should be telling you something like:</p>
@@ -168,7 +168,7 @@ sudo ln -s /usr/local/share/yate/nib_web nib</code></pre>
 <p>You can now access your BTS web ui from your browser:</p>
 <pre><code>http://ip-of-your-rpi/nib</code></pre>
 <p>Time for some configuration now!</p>
-<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p>Open the <strong>/usr/local/etc/yate/ybts.conf</strong> file either with nano or vi and update the following values:</p>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><p>Open the <strong>/usr/local/etc/yate/ybts.conf</strong> file either with nano or vi and update the following values:</p>
 <pre><code>Radio.Band=900
 Radio.C0=1000
 Identity.MCC=YOUR_COUNTRY_MCC
@@ -183,9 +183,9 @@ regexp=.*</code></pre>
 <p><strong>WARNING</strong> Using the <strong>.*</strong> regular expression will make <strong>EVERY</strong> GSM phone in your area connect to your BTS.</p>
 <p>In your NIB web ui you’ll see something like this:</p>
 <p><img src="/images/2016/03/nibui-1.png" alt="NIB"></p>
-<h3 id="Enable-GSM-Tapping"><a href="#Enable-GSM-Tapping" class="headerlink" title="Enable GSM-Tapping"></a>Enable GSM-Tapping</h3><p>In the “Tapping” panel, you can enable it for both GSM and GPRS, this will basically “bounce” every GSM packet to the loopback interface, since we haven’t configure <strong>any encryption</strong>, you’ll be able to see all the GSM traffic by simply tcpdump-ing your loopback interface :D</p>
+<h2 id="Enable-GSM-Tapping"><a href="#Enable-GSM-Tapping" class="headerlink" title="Enable GSM-Tapping"></a>Enable GSM-Tapping</h2><p>In the “Tapping” panel, you can enable it for both GSM and GPRS, this will basically “bounce” every GSM packet to the loopback interface, since we haven’t configure <strong>any encryption</strong>, you’ll be able to see all the GSM traffic by simply tcpdump-ing your loopback interface :D</p>
 <p><img src="/images/2016/03/nibui-2.png" alt="tapping"></p>
-<h3 id="Start-It"><a href="#Start-It" class="headerlink" title="Start It!"></a>Start It!</h3><p>Finally, you can start your new BTS by executing the command ( with the BladeRF plugged in! ) :</p>
+<h2 id="Start-It"><a href="#Start-It" class="headerlink" title="Start It!"></a>Start It!</h2><p>Finally, you can start your new BTS by executing the command ( with the BladeRF plugged in! ) :</p>
 <pre><code>sudo yate -s</code></pre>
 <p>If everything was configured correctly, you’ll see a bunch of messages and the line:</p>
 <pre><code>Starting MBTS...
@@ -193,7 +193,7 @@ Yate engine is initialized and starting up on raspberrypi
 RTNETLINK answers: File exists
 MBTS ready</code></pre>
 <p>At this point, the middle LED for your bladeRF should start blinking.</p>
-<h3 id="Test-It"><a href="#Test-It" class="headerlink" title="Test It!"></a>Test It!</h3><p>Now, phones will start to automatically connect, this will happen because of the GSM implementation itself:</p>
+<h2 id="Test-It"><a href="#Test-It" class="headerlink" title="Test It!"></a>Test It!</h2><p>Now, phones will start to automatically connect, this will happen because of the GSM implementation itself:</p>
 <ul>
 <li>You can set whatever MCC, MNC and LAC you like, effectly <strong>spoofing any legit GSM BTS</strong>.</li>
 <li>Each phone will search for BTS of its operator and select the one with the strongest signal … guess which one will be the strongest? Yep … ours :D</li>
@@ -202,7 +202,7 @@ MBTS ready</code></pre>
 <p><img src="/images/2016/03/gsm-1.jpeg" alt="MyEvilBTS"></p>
 <p>From now on, you can configure the BTS to do whatever you want … either act as a “proxy” to a legit SMC ( with a GSM/3g USB dongle ) and <strong>sniff the unencrypted GSM traffic</strong> of each phone, or to create a private GSM network where users can communicate for free using SIP, refer to the <a target="_blank" rel="noopener" href="http://wiki.yatebts.com/index.php/Main_Page">YateBTS Wiki</a> for specific configurations.</p>
 <p>Oh and of course, if you plug the USB battery, the whole system becomes completely portable :)</p>
-<h3 id="References-and-Further-Readings"><a href="#References-and-Further-Readings" class="headerlink" title="References and Further Readings"></a>References and Further Readings</h3><ul>
+<h2 id="References-and-Further-Readings"><a href="#References-and-Further-Readings" class="headerlink" title="References and Further Readings"></a>References and Further Readings</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/Nuand/bladeRF/wiki/Setting-up-Yate-and-YateBTS-with-the-bladeRF">https://github.com/Nuand/bladeRF/wiki/Setting-up-Yate-and-YateBTS-with-the-bladeRF</a></li>
 <li><a target="_blank" rel="noopener" href="https://z4ziggy.wordpress.com/2015/05/17/sniffing-gsm-traffic-with-hackrf/">https://z4ziggy.wordpress.com/2015/05/17/sniffing-gsm-traffic-with-hackrf/</a></li>
 <li><a target="_blank" rel="noopener" href="https://z4ziggy.wordpress.com/2015/05/10/ziggys-embedded-bts/">https://z4ziggy.wordpress.com/2015/05/10/ziggys-embedded-bts/</a></li>

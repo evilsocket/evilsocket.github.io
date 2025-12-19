@@ -108,24 +108,24 @@
 <span id="more"></span>
 
 <h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><p>First thing first, you will need to install some requirements, if you are a developer/hacker you will probably have them already, but you never know.</p>
-<h5 id="XCode-Command-Line-Tools"><a href="#XCode-Command-Line-Tools" class="headerlink" title="XCode Command Line Tools"></a>XCode Command Line Tools</h5><p>Issue the following command on your terminal:</p>
+<h3 id="XCode-Command-Line-Tools"><a href="#XCode-Command-Line-Tools" class="headerlink" title="XCode Command Line Tools"></a>XCode Command Line Tools</h3><p>Issue the following command on your terminal:</p>
 <pre><code>xcode-select --install</code></pre>
 <p>And choose the <strong>Install</strong> option to install XCode command line tools needed for compilation, etc.</p>
-<h5 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h5><p>Make sure you have the latest <strong>Java SE JDK</strong> from Oracle, you can verify it issuing the command:</p>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p>Make sure you have the latest <strong>Java SE JDK</strong> from Oracle, you can verify it issuing the command:</p>
 <pre><code>java -version</code></pre>
 <p>Otherwise download it from <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a> and install it.</p>
-<h5 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h5><p>Homebrew is a package manager for OS X, well not really a package manager since it just manages “formulas”, which are basically build scripts for open source projects ( very much like Arch / Slackware Linux build scripts ), you will need it to install other libraries and binaries.</p>
+<h3 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h3><p>Homebrew is a package manager for OS X, well not really a package manager since it just manages “formulas”, which are basically build scripts for open source projects ( very much like Arch / Slackware Linux build scripts ), you will need it to install other libraries and binaries.</p>
 <pre><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></pre>
 <p>Then update your <strong>PATH</strong> environment variable with the homebrew binary folder:</p>
 <pre><code>echo PATH=/usr/local/bin:/usr/local/sbin:$PATH &gt;&gt; ~/.bash_profile
 source ~/.bash_profile
 brew tap homebrew/versions</code></pre>
-<h5 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h5><p>Once you have homebrew installed, you can start using it ( <strong>NOTE:</strong> Don’t use it with <strong>sudo</strong>, it’s not required ):</p>
+<h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><p>Once you have homebrew installed, you can start using it ( <strong>NOTE:</strong> Don’t use it with <strong>sudo</strong>, it’s not required ):</p>
 <pre><code>brew install nmap</code></pre>
-<h5 id="LibXML2"><a href="#LibXML2" class="headerlink" title="LibXML2"></a>LibXML2</h5><p>This is needed by the nokogiri gem:</p>
+<h3 id="LibXML2"><a href="#LibXML2" class="headerlink" title="LibXML2"></a>LibXML2</h3><p>This is needed by the nokogiri gem:</p>
 <pre><code>brew install libxml2</code></pre>
-<h5 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h5><pre><code>brew install postgresql --without-ossp-uuid</code></pre>
-<h5 id="PostgreSQL-Configuration"><a href="#PostgreSQL-Configuration" class="headerlink" title="PostgreSQL Configuration"></a>PostgreSQL Configuration</h5><p>Initialize the database ( you might already have this file, it’s not a problem ):</p>
+<h3 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h3><pre><code>brew install postgresql --without-ossp-uuid</code></pre>
+<h3 id="PostgreSQL-Configuration"><a href="#PostgreSQL-Configuration" class="headerlink" title="PostgreSQL Configuration"></a>PostgreSQL Configuration</h3><p>Initialize the database ( you might already have this file, it’s not a problem ):</p>
 <pre><code>initdb /usr/local/var/postgres</code></pre>
 <p>Make sure it’s started after user login:</p>
 <pre><code>mkdir -p ~/Library/LaunchAgents
@@ -136,22 +136,22 @@ launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</code></
 <pre><code>createuser msf -P -h localhost
 createdb -O msf msf -h localhost</code></pre>
 <p>( Take note of the password you used, you will need it later )</p>
-<h5 id="Clone-the-Metasploit-Repo"><a href="#Clone-the-Metasploit-Repo" class="headerlink" title="Clone the Metasploit Repo"></a>Clone the Metasploit Repo</h5><p>Time for metasploit itself:</p>
+<h3 id="Clone-the-Metasploit-Repo"><a href="#Clone-the-Metasploit-Repo" class="headerlink" title="Clone the Metasploit Repo"></a>Clone the Metasploit Repo</h3><p>Time for metasploit itself:</p>
 <pre><code>cd /usr/local/share/
 git clone https://github.com/rapid7/metasploit-framework.git
 cd metasploit-framework
 for MSF in $(ls msf*); do ln -s /usr/local/share/metasploit-framework/$MSF /usr/local/bin/$MSF;done
 sudo chmod go+w /etc/profile
 sudo echo export MSF_DATABASE_CONFIG=/usr/local/share/metasploit-framework/config/database.yml &gt;&gt; /etc/profile</code></pre>
-<h5 id="HACK-Nokogiri-Gem"><a href="#HACK-Nokogiri-Gem" class="headerlink" title="HACK: Nokogiri Gem"></a>HACK: Nokogiri Gem</h5><p>This one is hackish, but that’s the way I’ve found to make it work:</p>
+<h3 id="HACK-Nokogiri-Gem"><a href="#HACK-Nokogiri-Gem" class="headerlink" title="HACK: Nokogiri Gem"></a>HACK: Nokogiri Gem</h3><p>This one is hackish, but that’s the way I’ve found to make it work:</p>
 <pre><code>bundle config build.nokogiri &quot;--use-system-libraries --with-xml2-include=/usr/local/opt/libxml2/include/libxml2&quot;</code></pre>
-<h5 id="HACK-PG-Gem"><a href="#HACK-PG-Gem" class="headerlink" title="HACK: PG Gem"></a>HACK: PG Gem</h5><p>Another hackish one:</p>
+<h3 id="HACK-PG-Gem"><a href="#HACK-PG-Gem" class="headerlink" title="HACK: PG Gem"></a>HACK: PG Gem</h3><p>Another hackish one:</p>
 <pre><code>sudo env ARCHFLAGS=&quot;-arch x86_64&quot; gem install pg</code></pre>
-<h5 id="Other-Gems"><a href="#Other-Gems" class="headerlink" title="Other Gems"></a>Other Gems</h5><p>Finally, within the metasploit folder, use bundle to install the remaining gems:</p>
+<h3 id="Other-Gems"><a href="#Other-Gems" class="headerlink" title="Other Gems"></a>Other Gems</h3><p>Finally, within the metasploit folder, use bundle to install the remaining gems:</p>
 <pre><code>bundle install</code></pre>
-<h5 id="HACK-Fix-the-‘robots’-Gem-Permissions"><a href="#HACK-Fix-the-‘robots’-Gem-Permissions" class="headerlink" title="HACK: Fix the ‘robots’ Gem Permissions"></a>HACK: Fix the ‘robots’ Gem Permissions</h5><p>If you will run msf as a normal user, you will have trouble with the robots gem, unless you fix its permissions:</p>
+<h3 id="HACK-Fix-the-‘robots’-Gem-Permissions"><a href="#HACK-Fix-the-‘robots’-Gem-Permissions" class="headerlink" title="HACK: Fix the ‘robots’ Gem Permissions"></a>HACK: Fix the ‘robots’ Gem Permissions</h3><p>If you will run msf as a normal user, you will have trouble with the robots gem, unless you fix its permissions:</p>
 <pre><code>sudo chmod o+r /Library/Ruby/Gems/2.0.0/gems/robots-0.10.1/lib/robots.rb</code></pre>
-<h5 id="Create-the-Database-Configuration"><a href="#Create-the-Database-Configuration" class="headerlink" title="Create the Database Configuration"></a>Create the Database Configuration</h5><pre><code>vim /usr/local/share/metasploit-framework/config/database.yml</code></pre>
+<h3 id="Create-the-Database-Configuration"><a href="#Create-the-Database-Configuration" class="headerlink" title="Create the Database Configuration"></a>Create the Database Configuration</h3><pre><code>vim /usr/local/share/metasploit-framework/config/database.yml</code></pre>
 <p>Paste the following text:</p>
 <pre><code>production:
  adapter: postgresql
