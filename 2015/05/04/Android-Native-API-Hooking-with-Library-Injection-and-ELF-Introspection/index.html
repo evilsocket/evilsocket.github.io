@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/05/04/Android-Native-API-Hooking-with-Library-Injection-and-ELF-Introspection/"},"headline":"Android Native API Hooking With Library Injection and ELF Introspection.","description":"This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android/ARM“ and a proof of concept o","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2015-05-04T17:15:24.000Z","dateModified":"2015-05-04T17:35:13.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, hooking, api hooking, library, injection, elf relocation, arm, elf, open, dalvik, plt, relocation, relocation table, symtab, strtab","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/05/04/Android-Native-API-Hooking-with-Library-Injection-and-ELF-Introspection/"},"headline":"Android Native API Hooking With Library Injection and ELF Introspection.","description":"This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android/ARM“ and a proof of concept o","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2015-05-04T17:15:24.000Z","dateModified":"2015-05-04T17:35:13.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, dalvik, hooking, api hooking, library, injection, elf relocation, arm, elf, open, plt, relocation, relocation table, symtab, strtab, code injection, binary analysis, runtime manipulation","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2015-05-04T17:15:24.000Z">4 May 2015</time>
       
-        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/hooking/" class="post-category">hooking</a>, <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/library/" class="post-category">library</a>, <a href="/tags/injection/" class="post-category">injection</a>, <a href="/tags/elf-relocation/" class="post-category">elf relocation</a>, <a href="/tags/arm/" class="post-category">arm</a>, <a href="/tags/elf/" class="post-category">elf</a>, <a href="/tags/open/" class="post-category">open</a>, <a href="/tags/dalvik/" class="post-category">dalvik</a>, <a href="/tags/plt/" class="post-category">plt</a>, <a href="/tags/relocation/" class="post-category">relocation</a>, <a href="/tags/relocation-table/" class="post-category">relocation table</a>, <a href="/tags/symtab/" class="post-category">symtab</a>, <a href="/tags/strtab/" class="post-category">strtab</a>
+        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/dalvik/" class="post-category">dalvik</a>, <a href="/tags/hooking/" class="post-category">hooking</a>, <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/library/" class="post-category">library</a>, <a href="/tags/injection/" class="post-category">injection</a>, <a href="/tags/elf-relocation/" class="post-category">elf relocation</a>, <a href="/tags/arm/" class="post-category">arm</a>, <a href="/tags/elf/" class="post-category">elf</a>, <a href="/tags/open/" class="post-category">open</a>, <a href="/tags/plt/" class="post-category">plt</a>, <a href="/tags/relocation/" class="post-category">relocation</a>, <a href="/tags/relocation-table/" class="post-category">relocation table</a>, <a href="/tags/symtab/" class="post-category">symtab</a>, <a href="/tags/strtab/" class="post-category">strtab</a>, <a href="/tags/code-injection/" class="post-category">code injection</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/runtime-manipulation/" class="post-category">runtime manipulation</a>
       
     </div>
   </header>
@@ -154,6 +154,10 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
       
         <a href="/tags/android/" class="tag">#android</a>
       
+        <a href="/tags/mobile-security/" class="tag">#mobile security</a>
+      
+        <a href="/tags/dalvik/" class="tag">#dalvik</a>
+      
         <a href="/tags/hooking/" class="tag">#hooking</a>
       
         <a href="/tags/api-hooking/" class="tag">#api hooking</a>
@@ -170,8 +174,6 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
       
         <a href="/tags/open/" class="tag">#open</a>
       
-        <a href="/tags/dalvik/" class="tag">#dalvik</a>
-      
         <a href="/tags/plt/" class="tag">#plt</a>
       
         <a href="/tags/relocation/" class="tag">#relocation</a>
@@ -181,6 +183,12 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
         <a href="/tags/symtab/" class="tag">#symtab</a>
       
         <a href="/tags/strtab/" class="tag">#strtab</a>
+      
+        <a href="/tags/code-injection/" class="tag">#code injection</a>
+      
+        <a href="/tags/binary-analysis/" class="tag">#binary analysis</a>
+      
+        <a href="/tags/runtime-manipulation/" class="tag">#runtime manipulation</a>
       
     </div>
   
@@ -235,6 +243,26 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
       
 
 <article class="card card-overlay">
+  <a href="/2019/05/22/How-to-create-a-Malware-detection-system-with-Machine-Learning/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('https://i.imgur.com/cBCBdlH.png')">
+        
+          <div class="card-overlay-content">
+            <h2 class="card-title">How to Create a Malware Detection System With Machine Learning</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
   <a href="/2017/04/27/Android-Applications-Reversing-101/" class="card-link">
     
       <div class="card-image" style="background-image: url('/images/2017/04/head.jpeg')">
@@ -254,37 +282,17 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
     
       
 
-<article class="card card-overlay">
-  <a href="/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/" class="card-link">
-    
-      <div class="card-image" style="background-image: url('/images/2016/04/apktool.png')">
-        
-          <div class="card-overlay-content">
-            <h2 class="card-title">How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</h2>
-            <span class="card-read-more">READ MORE</span>
-          </div>
-        
-      </div>
-    
-    
-    
-  </a>
-</article>
-
-    
-      
-
 <article class="card card-light">
-  <a href="/2016/01/18/Autopwn-every-Android-4-2-device-on-your-network-using-BetterCap-and-the-addJavascriptInterface-vulnerability/" class="card-link">
+  <a href="/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/" class="card-link">
     
-      <div class="card-image" style="background-image: url('/images/2016/01/hacked.jpg')">
+      <div class="card-image" style="background-image: url('https://whispersystems.org/blog/images/whatsapp-keychange.png')">
         
       </div>
     
     
     
       <div class="card-content">
-        <h2 class="card-title">Autopwn Every Android &lt; 4.2 Device on Your Network Using BetterCap and the addJavascriptInterface Vulnerability.</h2>
+        <h2 class="card-title">Thoughts on WhatsApp E2E Encryption AKA Security Is Real Only if It&#39;s the Default.</h2>
         
         <div class="card-footer">
           <span class="card-read-more">READ MORE</span>

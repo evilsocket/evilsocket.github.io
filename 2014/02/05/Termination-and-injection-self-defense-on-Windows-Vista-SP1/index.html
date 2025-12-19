@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/02/05/Termination-and-injection-self-defense-on-Windows-Vista-SP1/"},"headline":"Termination and Injection Self Defense on Windows &gt;= Vista SP1","description":"On a previous post I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.Today I’m go","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2014-02-05T21:08:04.000Z","dateModified":"2014-05-19T20:56:10.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"api hooking, kernel, obcallbacks, security, ObRegisterCallbacks, driver, process protection, self protection, memory injection, Windows","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/02/05/Termination-and-injection-self-defense-on-Windows-Vista-SP1/"},"headline":"Termination and Injection Self Defense on Windows &gt;= Vista SP1","description":"On a previous post I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.Today I’m go","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2014-02-05T21:08:04.000Z","dateModified":"2014-05-19T20:56:10.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"api hooking, anti-tampering, kernel, obcallbacks, windows internals, kernel security, driver development, security, ObRegisterCallbacks, driver, process protection, self protection, memory injection, Windows","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2014-02-05T21:08:04.000Z">5 Feb 2014</time>
       
-        — <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/kernel/" class="post-category">kernel</a>, <a href="/tags/obcallbacks/" class="post-category">obcallbacks</a>, <a href="/tags/security/" class="post-category">security</a>, <a href="/tags/ObRegisterCallbacks/" class="post-category">ObRegisterCallbacks</a>, <a href="/tags/driver/" class="post-category">driver</a>, <a href="/tags/process-protection/" class="post-category">process protection</a>, <a href="/tags/self-protection/" class="post-category">self protection</a>, <a href="/tags/memory-injection/" class="post-category">memory injection</a>, <a href="/tags/Windows/" class="post-category">Windows</a>
+        — <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/anti-tampering/" class="post-category">anti-tampering</a>, <a href="/tags/kernel/" class="post-category">kernel</a>, <a href="/tags/obcallbacks/" class="post-category">obcallbacks</a>, <a href="/tags/windows-internals/" class="post-category">windows internals</a>, <a href="/tags/kernel-security/" class="post-category">kernel security</a>, <a href="/tags/driver-development/" class="post-category">driver development</a>, <a href="/tags/security/" class="post-category">security</a>, <a href="/tags/ObRegisterCallbacks/" class="post-category">ObRegisterCallbacks</a>, <a href="/tags/driver/" class="post-category">driver</a>, <a href="/tags/process-protection/" class="post-category">process protection</a>, <a href="/tags/self-protection/" class="post-category">self protection</a>, <a href="/tags/memory-injection/" class="post-category">memory injection</a>, <a href="/tags/Windows/" class="post-category">Windows</a>
       
     </div>
   </header>
@@ -136,9 +136,17 @@
       
         <a href="/tags/api-hooking/" class="tag">#api hooking</a>
       
+        <a href="/tags/anti-tampering/" class="tag">#anti-tampering</a>
+      
         <a href="/tags/kernel/" class="tag">#kernel</a>
       
         <a href="/tags/obcallbacks/" class="tag">#obcallbacks</a>
+      
+        <a href="/tags/windows-internals/" class="tag">#windows internals</a>
+      
+        <a href="/tags/kernel-security/" class="tag">#kernel security</a>
+      
+        <a href="/tags/driver-development/" class="tag">#driver development</a>
       
         <a href="/tags/security/" class="tag">#security</a>
       
@@ -207,6 +215,26 @@
       
 
 <article class="card card-overlay">
+  <a href="/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2016/04/apktool.png')">
+        
+          <div class="card-overlay-content">
+            <h2 class="card-title">How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
   <a href="/2016/01/28/Why-you-shouldn-t-trust-CloudFlare-s-Flexible-SSL-and-how-to-bypass-it-with-BetterCap/" class="card-link">
     
       <div class="card-image" style="background-image: url('/images/2016/01/Schermata-2016-01-28-alle-18-08-27.png')">
@@ -226,37 +254,17 @@
     
       
 
-<article class="card card-overlay">
+<article class="card card-light">
   <a href="/2015/05/04/Android-Native-API-Hooking-with-Library-Injection-and-ELF-Introspection/" class="card-link">
     
       <div class="card-image" style="background-image: url('/images/default-cover.svg')">
-        
-          <div class="card-overlay-content">
-            <h2 class="card-title">Android Native API Hooking With Library Injection and ELF Introspection.</h2>
-            <span class="card-read-more">READ MORE</span>
-          </div>
-        
-      </div>
-    
-    
-    
-  </a>
-</article>
-
-    
-      
-
-<article class="card card-light">
-  <a href="/2015/05/01/Dynamically-inject-a-shared-library-into-a-running-process-on-Android-ARM/" class="card-link">
-    
-      <div class="card-image" style="background-image: url('/images/2015/05/116572.jpg')">
         
       </div>
     
     
     
       <div class="card-content">
-        <h2 class="card-title">Dynamically Inject a Shared Library Into a Running Process on Android/ARM</h2>
+        <h2 class="card-title">Android Native API Hooking With Library Injection and ELF Introspection.</h2>
         
         <div class="card-footer">
           <span class="card-read-more">READ MORE</span>

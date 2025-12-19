@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"},"headline":"DISCLOSURE - RCE Against Every Open Source BTS Software.","description":"This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm","image":"https://www.evilsocket.nethttps://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png","datePublished":"2016-08-24T18:43:14.000Z","dateModified":"2021-03-01T18:10:40.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"rce, disclosure, exploit, vulnerability, gsm, bts, yatebts, openbts, osmobb, osmobts","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"},"headline":"DISCLOSURE - RCE Against Every Open Source BTS Software.","description":"This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm","image":"https://www.evilsocket.nethttps://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png","datePublished":"2016-08-24T18:43:14.000Z","dateModified":"2025-12-19T17:40:34.712Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"vulnerability, rce, disclosure, exploit, vulnerability research, gsm, bts, yatebts, wireless security, telecom security, openbts, osmobb, osmobts, buffer overflow","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2016-08-24T18:43:14.000Z">24 Aug 2016</time>
       
-        — <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/gsm/" class="post-category">gsm</a>, <a href="/tags/bts/" class="post-category">bts</a>, <a href="/tags/yatebts/" class="post-category">yatebts</a>, <a href="/tags/openbts/" class="post-category">openbts</a>, <a href="/tags/osmobb/" class="post-category">osmobb</a>, <a href="/tags/osmobts/" class="post-category">osmobts</a>
+        — <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/gsm/" class="post-category">gsm</a>, <a href="/tags/bts/" class="post-category">bts</a>, <a href="/tags/yatebts/" class="post-category">yatebts</a>, <a href="/tags/wireless-security/" class="post-category">wireless security</a>, <a href="/tags/telecom-security/" class="post-category">telecom security</a>, <a href="/tags/openbts/" class="post-category">openbts</a>, <a href="/tags/osmobb/" class="post-category">osmobb</a>, <a href="/tags/osmobts/" class="post-category">osmobts</a>, <a href="/tags/buffer-overflow/" class="post-category">buffer overflow</a>
       
     </div>
   </header>
@@ -123,13 +123,15 @@
   
     <div class="post-tags">
       
+        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
+      
         <a href="/tags/rce/" class="tag">#rce</a>
       
         <a href="/tags/disclosure/" class="tag">#disclosure</a>
       
         <a href="/tags/exploit/" class="tag">#exploit</a>
       
-        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
+        <a href="/tags/vulnerability-research/" class="tag">#vulnerability research</a>
       
         <a href="/tags/gsm/" class="tag">#gsm</a>
       
@@ -137,11 +139,17 @@
       
         <a href="/tags/yatebts/" class="tag">#yatebts</a>
       
+        <a href="/tags/wireless-security/" class="tag">#wireless security</a>
+      
+        <a href="/tags/telecom-security/" class="tag">#telecom security</a>
+      
         <a href="/tags/openbts/" class="tag">#openbts</a>
       
         <a href="/tags/osmobb/" class="tag">#osmobb</a>
       
         <a href="/tags/osmobts/" class="tag">#osmobts</a>
+      
+        <a href="/tags/buffer-overflow/" class="tag">#buffer overflow</a>
       
     </div>
   
@@ -216,12 +224,12 @@
       
 
 <article class="card card-overlay">
-  <a href="/2017/05/30/Terramaster-NAS-Unauthenticated-RCE-as-root/" class="card-link">
+  <a href="/2024/09/13/Introducing-bettercap-2-4-0-CAN-bus-hacking-WiFi-bruteforcing-and-builtin-web-UI/" class="card-link">
     
-      <div class="card-image" style="background-image: url('/images/2017/05/exploit.png')">
+      <div class="card-image" style="background-image: url('/images/2024/ecus.png')">
         
           <div class="card-overlay-content">
-            <h2 class="card-title">TerraMaster NAS TOS &lt;= 3.0.30 Unauthenticated RCE as Root</h2>
+            <h2 class="card-title">Introducing Bettercap 2.4.0: CAN-Bus Hacking, WiFi Bruteforcing and Builtin Web UI</h2>
             <span class="card-read-more">READ MORE</span>
           </div>
         
@@ -236,16 +244,16 @@
       
 
 <article class="card card-light">
-  <a href="/2016/03/31/How-To-Build-Your-Own-Rogue-GSM-BTS-For-Fun-And-Profit/" class="card-link">
+  <a href="/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/" class="card-link">
     
-      <div class="card-image" style="background-image: url('/images/2016/03/bts.jpeg')">
+      <div class="card-image" style="background-image: url('https://i.imgur.com/X68GXrn.png')">
         
       </div>
     
     
     
       <div class="card-content">
-        <h2 class="card-title">How to Build Your Own Rogue GSM BTS for Fun and Profit</h2>
+        <h2 class="card-title">Weaponizing and Gamifying AI for WiFi Hacking: Presenting Pwnagotchi 1.0.0</h2>
         
         <div class="card-footer">
           <span class="card-read-more">READ MORE</span>
