@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/"},"headline":"Attacking UNIX Systems via CUPS, Part I","description":"","image":"https://www.evilsocket.net/images/2024/cups1/smart.jpg","datePublished":"2024-09-26T14:51:30.000Z","dateModified":"2025-12-19T17:40:34.717Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"hacking, cups, cups-browsed, printer, printing, unix, rce, disclosure, exploit, ipp, zeroconf, udp, responsible disclosure, vulnerability research, linux security, print services, unauthenticated access","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/"},"headline":"Attacking UNIX Systems via CUPS, Part I","description":"","image":"https://www.evilsocket.net/images/2024/cups1/smart.jpg","datePublished":"2024-09-26T14:51:30.000Z","dateModified":"2025-12-20T15:29:51.580Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"cups, cups-browsed, printer, printing, unix, hacking, rce, disclosure, exploit, ipp, zeroconf, udp, responsible disclosure, vulnerability research, linux security, print services, unauthenticated access, CVE-2024-47176, CVE-2024-47076, CVE-2024-47175, CVE-2024-47177","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2024-09-26T14:51:30.000Z">26 Sep 2024</time>
       
-        — <a href="/tags/hacking/" class="post-category">hacking</a>, <a href="/tags/cups/" class="post-category">cups</a>, <a href="/tags/cups-browsed/" class="post-category">cups-browsed</a>, <a href="/tags/printer/" class="post-category">printer</a>, <a href="/tags/printing/" class="post-category">printing</a>, <a href="/tags/unix/" class="post-category">unix</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/ipp/" class="post-category">ipp</a>, <a href="/tags/zeroconf/" class="post-category">zeroconf</a>, <a href="/tags/udp/" class="post-category">udp</a>, <a href="/tags/responsible-disclosure/" class="post-category">responsible disclosure</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/linux-security/" class="post-category">linux security</a>, <a href="/tags/print-services/" class="post-category">print services</a>, <a href="/tags/unauthenticated-access/" class="post-category">unauthenticated access</a>
+        — <a href="/tags/cups/" class="post-category">cups</a>, <a href="/tags/cups-browsed/" class="post-category">cups-browsed</a>, <a href="/tags/printer/" class="post-category">printer</a>, <a href="/tags/printing/" class="post-category">printing</a>, <a href="/tags/unix/" class="post-category">unix</a>, <a href="/tags/hacking/" class="post-category">hacking</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/ipp/" class="post-category">ipp</a>, <a href="/tags/zeroconf/" class="post-category">zeroconf</a>, <a href="/tags/udp/" class="post-category">udp</a>, <a href="/tags/responsible-disclosure/" class="post-category">responsible disclosure</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/linux-security/" class="post-category">linux security</a>, <a href="/tags/print-services/" class="post-category">print services</a>, <a href="/tags/unauthenticated-access/" class="post-category">unauthenticated access</a>, <a href="/tags/CVE-2024-47176/" class="post-category">CVE-2024-47176</a>, <a href="/tags/CVE-2024-47076/" class="post-category">CVE-2024-47076</a>, <a href="/tags/CVE-2024-47175/" class="post-category">CVE-2024-47175</a>, <a href="/tags/CVE-2024-47177/" class="post-category">CVE-2024-47177</a>
       
     </div>
   </header>
@@ -268,8 +268,6 @@
   
     <div class="post-tags">
       
-        <a href="/tags/hacking/" class="tag">#hacking</a>
-      
         <a href="/tags/cups/" class="tag">#cups</a>
       
         <a href="/tags/cups-browsed/" class="tag">#cups-browsed</a>
@@ -279,6 +277,8 @@
         <a href="/tags/printing/" class="tag">#printing</a>
       
         <a href="/tags/unix/" class="tag">#unix</a>
+      
+        <a href="/tags/hacking/" class="tag">#hacking</a>
       
         <a href="/tags/rce/" class="tag">#rce</a>
       
@@ -301,6 +301,14 @@
         <a href="/tags/print-services/" class="tag">#print services</a>
       
         <a href="/tags/unauthenticated-access/" class="tag">#unauthenticated access</a>
+      
+        <a href="/tags/CVE-2024-47176/" class="tag">#CVE-2024-47176</a>
+      
+        <a href="/tags/CVE-2024-47076/" class="tag">#CVE-2024-47076</a>
+      
+        <a href="/tags/CVE-2024-47175/" class="tag">#CVE-2024-47175</a>
+      
+        <a href="/tags/CVE-2024-47177/" class="tag">#CVE-2024-47177</a>
       
     </div>
   
