@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>Samsung Galaxy Apps MITM Vulnerabilities | evilsocket</title>
-<meta name="description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart wa">
+<meta name="description" content="">
 
 
   <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
@@ -17,7 +17,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Samsung Galaxy Apps MITM Vulnerabilities">
-<meta property="og:description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart wa">
+<meta property="og:description" content="">
 <meta property="og:url" content="/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/">
 <meta property="og:site_name" content="evilsocket">
 
@@ -30,13 +30,13 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Samsung Galaxy Apps MITM Vulnerabilities">
-<meta name="twitter:description" content="The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart wa">
+<meta name="twitter:description" content="">
 
 <!-- Schema.org JSON-LD -->
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/"},"headline":"Samsung Galaxy Apps MITM Vulnerabilities","description":"The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart wa","image":"https://www.evilsocket.net/images/2016/08/galaxyapps.png","datePublished":"2016-08-17T10:01:42.000Z","dateModified":"2025-12-19T18:35:53.165Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, mitm, traffic interception, vulnerability research, man in the middle, session hijacking, permission bypass, samsung, samsung galaxy apps, galaxy","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/17/Samsung-Galaxy-Apps-MITM-Vulnerabilities/"},"headline":"Samsung Galaxy Apps MITM Vulnerabilities","description":"","image":"https://www.evilsocket.net/images/2016/08/galaxyapps.png","datePublished":"2016-08-17T10:01:42.000Z","dateModified":"2025-12-21T11:59:50.693Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, mitm, traffic interception, vulnerability research, cve, man in the middle, session hijacking, permission bypass, samsung, samsung galaxy apps, galaxy","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2016-08-17T10:01:42.000Z">17 Aug 2016</time>
       
-        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/mitm/" class="post-category">mitm</a>, <a href="/tags/traffic-interception/" class="post-category">traffic interception</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/man-in-the-middle/" class="post-category">man in the middle</a>, <a href="/tags/session-hijacking/" class="post-category">session hijacking</a>, <a href="/tags/permission-bypass/" class="post-category">permission bypass</a>, <a href="/tags/samsung/" class="post-category">samsung</a>, <a href="/tags/samsung-galaxy-apps/" class="post-category">samsung galaxy apps</a>, <a href="/tags/galaxy/" class="post-category">galaxy</a>
+        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/mitm/" class="post-category">mitm</a>, <a href="/tags/traffic-interception/" class="post-category">traffic interception</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/cve/" class="post-category">cve</a>, <a href="/tags/man-in-the-middle/" class="post-category">man in the middle</a>, <a href="/tags/session-hijacking/" class="post-category">session hijacking</a>, <a href="/tags/permission-bypass/" class="post-category">permission bypass</a>, <a href="/tags/samsung/" class="post-category">samsung</a>, <a href="/tags/samsung-galaxy-apps/" class="post-category">samsung galaxy apps</a>, <a href="/tags/galaxy/" class="post-category">galaxy</a>
       
     </div>
   </header>
@@ -107,9 +107,8 @@
     <p>The Samsung “Galaxy Apps” application installed on every recent Samsung device, a parallel store application with both apps for Samsung smartphones and smart watches, is vulnerable to MITM attacks which could cause user information leaks, permissions dialog bypass and session hijacking.</p>
 <h2 id="Affected-Products"><a href="#Affected-Products" class="headerlink" title="Affected Products"></a>Affected Products</h2><p>Samsung Galaxy Apps &lt;= 4.1.01-14</p>
 <p><img src="/images/2016/08/galaxyapps.png" alt="galaxy apps"></p>
-<span id="more"></span>
+<h2>MITM, Information Leaks and Session Hijacking</h2>
 
-<p>## MITM, Information Leaks and Session Hijacking</p>
 <h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Most of the application API requests are made through a unsafe HTTP connection which would allow a malicious third party to perform a network MITM attack and eventually exfiltrate user sensitive data such as his session identifier and subsequently use this data to impersonate the user session.</p>
 <h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><p>The application relies on a XML based API used through HTTP, as soon as the user will open the app and start browsing a network attacker will be able to see requests sent to the API server and the user session data, for instance the first request being executed when the user clicks on an application detail page, identified by the name <strong>productDetailOverview</strong> is composed as shown in the following picture.</p>
 <p><img src="/images/2016/08/productDetailOverview.png" alt="galaxy apps"></p>
@@ -165,6 +164,8 @@
         <a href="/tags/traffic-interception/" class="tag">#traffic interception</a>
       
         <a href="/tags/vulnerability-research/" class="tag">#vulnerability research</a>
+      
+        <a href="/tags/cve/" class="tag">#cve</a>
       
         <a href="/tags/man-in-the-middle/" class="tag">#man in the middle</a>
       
