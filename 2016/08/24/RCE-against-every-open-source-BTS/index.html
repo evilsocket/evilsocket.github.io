@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>DISCLOSURE - RCE Against Every Open Source BTS Software. | evilsocket</title>
-<meta name="description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm">
+<meta name="description" content="">
 
 
   <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
@@ -17,26 +17,26 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="DISCLOSURE - RCE Against Every Open Source BTS Software.">
-<meta property="og:description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm">
+<meta property="og:description" content="">
 <meta property="og:url" content="/2016/08/24/RCE-against-every-open-source-BTS/">
 <meta property="og:site_name" content="evilsocket">
 
   
   
-    <meta property="og:image" content="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png">
+    <meta property="og:image" content="/images/2016/08/bts.webp">
   
 
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DISCLOSURE - RCE Against Every Open Source BTS Software.">
-<meta name="twitter:description" content="This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm">
+<meta name="twitter:description" content="">
 
 <!-- Schema.org JSON-LD -->
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"},"headline":"DISCLOSURE - RCE Against Every Open Source BTS Software.","description":"This is a repost of an analysis of mine that has been posted on Zimperium’s blog, basically I’ve found that the following products are vulnerable to remote comm","image":"https://www.evilsocket.nethttps://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png","datePublished":"2016-08-24T18:43:14.000Z","dateModified":"2025-12-21T11:58:36.747Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"rce, disclosure, exploit, vulnerability research, cve, vulnerability, gsm, bts, yatebts, wireless security, telecom security, openbts, osmobb, osmobts, buffer overflow","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/08/24/RCE-against-every-open-source-BTS/"},"headline":"DISCLOSURE - RCE Against Every Open Source BTS Software.","description":"","image":"https://www.evilsocket.net/images/2016/08/bts.webp","datePublished":"2016-08-24T18:43:14.000Z","dateModified":"2025-12-21T12:57:02.272Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"vulnerability, cve, rce, disclosure, exploit, vulnerability research, gsm, bts, yatebts, wireless security, telecom security, openbts, osmobb, osmobts, buffer overflow","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2016-08-24T18:43:14.000Z">24 Aug 2016</time>
       
-        — <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/cve/" class="post-category">cve</a>, <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/gsm/" class="post-category">gsm</a>, <a href="/tags/bts/" class="post-category">bts</a>, <a href="/tags/yatebts/" class="post-category">yatebts</a>, <a href="/tags/wireless-security/" class="post-category">wireless security</a>, <a href="/tags/telecom-security/" class="post-category">telecom security</a>, <a href="/tags/openbts/" class="post-category">openbts</a>, <a href="/tags/osmobb/" class="post-category">osmobb</a>, <a href="/tags/osmobts/" class="post-category">osmobts</a>, <a href="/tags/buffer-overflow/" class="post-category">buffer overflow</a>
+        — <a href="/tags/vulnerability/" class="post-category">vulnerability</a>, <a href="/tags/cve/" class="post-category">cve</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/disclosure/" class="post-category">disclosure</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/gsm/" class="post-category">gsm</a>, <a href="/tags/bts/" class="post-category">bts</a>, <a href="/tags/yatebts/" class="post-category">yatebts</a>, <a href="/tags/wireless-security/" class="post-category">wireless security</a>, <a href="/tags/telecom-security/" class="post-category">telecom security</a>, <a href="/tags/openbts/" class="post-category">openbts</a>, <a href="/tags/osmobb/" class="post-category">osmobb</a>, <a href="/tags/osmobts/" class="post-category">osmobts</a>, <a href="/tags/buffer-overflow/" class="post-category">buffer overflow</a>
       
     </div>
   </header>
@@ -112,16 +112,115 @@
 <li>Osmo-TRX/Osmo-BTS &lt;= 0.1.10</li>
 <li>Other products that share the same transceiver code base.</li>
 </ul>
-<p><img src="https://blog.zimperium.com/wp-content/uploads/2016/08/chart-1.png" alt="bts"></p>
-<span id="more"></span>
-
 <p>Long story short, they bind the transceiver server process to <code>INADDR_ANY</code> instead of <code>INADDR_LOOPBACK</code>, this makes it reachable by anyone on the same network (no authentication mechanism was implemented), moreover there’s an exploitable stack buffer overflow on the control socket, if you rely on both of this issues … well, you’ve got the idea :)</p>
-<p>All details and the analysis itself <a target="_blank" rel="noopener" href="https://zimperium.com/blog/analysis-of-multiple-vulnerabilities-in-different-open-source-bts-products">can be found here</a>.</p>
+<p>The analysis <a target="_blank" rel="noopener" href="https://zimperium.com/blog/analysis-of-multiple-vulnerabilities-in-different-open-source-bts-products">can also be found here</a>.</p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>During the last weeks we’ve been investigating multiple aspects of GSM security such as protocol vulnerabilities as well as source auditing the world’s most common open source software products that run GSM networks. In this post we’ll share the details about multiple vulnerabilities in such software which allow an attacker to compromise a BTS station, crash it, or takeover its transceiver module remotely.</p>
+<p>A BTS (base transceiver station) is composed of software and radio equipment that allows mobile stations (cellular phones) to connect to the GSM, UMTS, and LTE networks. They are the equivalent of wireless access points for Wi-Fi networks and handle the “Um”[<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Um_interface">1</a>] layer/interface as shown in Figure 1.</p>
+<p><img src="/images/2016/08/bts.webp" alt="fig-1"></p>
+<p>Figure 1: A mobile station connecting to a BTS ( <a target="_blank" rel="noopener" href="https://gnuradio.org/redmine/projects/gnuradio/wiki/OpenBTSNetwork_Architecture/2">GNURadio OpenBTS documentation</a> ).</p>
+<p>The lower level software behind any BTS is the <strong>transceiver,</strong> which is the direct interface to the radio hardware. It is responsible for frequency tuning and handling GMSK (Gaussian Minimum Shift Keying) data modulation/demodulation. In short, it digitizes the radio waves. All the communication and synchronization with the rest of the logical units of the BTS is handled through three UDP sockets as shown in Figure 2.</p>
+<p><img src="/images/2016/08/fig-2.webp" alt="fig-2"></p>
+<p>Figure 2: The transceiver module and the three UDP sockets used to communicate with the rest of the BTS.</p>
+<p>The <em>clock</em> socket is used for timing synchronization. The <em>command</em> socket is used by the BTS to send commands to the transceiver module. Finally, the <em>data</em> socket is used to transmit GSM “bursts” (data packets) from the BTS to the radio and receive responses back.</p>
+<p>The <code>UDPSocket</code> class is used by the transceiver to handle all the three channels in Figure 2.</p>
+<p>Our research shows that all of the most commonly available BTS software shares the same (or a very similar) transceiver code base. Thus, all of them are affected by the same vulnerabilities. The following reports are valid for all products listed below.</p>
+<p>Such vulnerabilities would allow a malicious party to remotely control the transceiver module, thus compromising the BTS functionalities, impersonating a parallel BTS communicating with it.</p>
+<p><img src="/images/2016/08/chart-1.webp" alt="chart-1"></p>
+<p>Moreover, it is possible for the attacker to send GSM data bursts to the transceiver itself and perform a wide range of attacks such as IMSI detaching, encryption downgrading, denial of service, etc against mobile subscribers.</p>
+<p>In order to be accepted by the transceiver module, UDP packets sent to the data channel socket must respect the following format:</p>
+<p><img src="/images/2016/08/chart-2.webp" alt="Format for UDP packets sent to the data channel socket in order to be accepted by the transceiver module"></p>
+<p>Once the transceiver receives these packets it will decode and modulate them using GMSK (Gaussian Minimum Shift Keying). Eventually, the bursts will be transmitted to the connected mobile stations accordingly to their contents.</p>
+<p>Even if the following products are GSM and UMTS only, the transceiver (which is a standalone component) itself is universal. Chances are that other (proprietary) BTS software uses the very same code base in order to serve LTE connectivity as well.</p>
+<h3 id="Affected-Products"><a href="#Affected-Products" class="headerlink" title="Affected Products"></a>Affected Products</h3><ul>
+<li>  YateBTS &lt;= 5.0.0</li>
+<li>  OpenBTS &lt;= 4.0.0</li>
+<li>  OpenBTS-UMTS &lt;= 1.0.0</li>
+<li>  Osmo-TRX/Osmo-BTS &lt;= 0.1.10</li>
+<li>  Other products that share the same transceiver code base.</li>
+</ul>
+<h3 id="Vendors"><a href="#Vendors" class="headerlink" title="Vendors"></a>Vendors</h3><ul>
+<li>  <a target="_blank" rel="noopener" href="http://www.leg.ba/">Legba Incorporated</a> (YateBTS)</li>
+<li>  <a target="_blank" rel="noopener" href="https://rangenetworks.com/">Range Networks</a> (OpenBTS and OpenBTS-UMTS)</li>
+<li>  <a target="_blank" rel="noopener" href="http://openbsc.osmocom.org/trac/wiki/OsmocomOverview">OsmoCOM</a> (Osmo-TRX and Osmo-BTS)</li>
+</ul>
+<h2 id="Issue-1-Overly-Exposed-Service-Binding"><a href="#Issue-1-Overly-Exposed-Service-Binding" class="headerlink" title="Issue 1: Overly Exposed Service Binding"></a>Issue 1: Overly Exposed Service Binding</h2><h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>There’s a bug in the network library of the aforementioned products which makes the transceiver UDP sockets bind to <code>INADDR_ANY</code> instead of the user configured value (<code>127.0.0.1</code> by default). This allows any attacker with IP connectivity to the BTS system to receive and send packets from/to the transceiver. Moreover, access to the services exposed on these UDP network sockets is not protected by any authentication mechanism whatsoever.</p>
+<p><img src="/images/2016/08/fig-3.webp" alt="The three transceiver sockets bound to 0.0.0.0"></p>
+<p>Figure 3: The three transceiver sockets bound to 0.0.0.0</p>
+<h3 id="Impact"><a href="#Impact" class="headerlink" title="Impact"></a>Impact</h3><p>An attacker with IP connectivity could send UDP traffic to exercise any functionality provided. This could allow remote control takeover, GSM traffic hijacking, various information disclosure, DoS, or worse.</p>
+<h3 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h3><p>The root cause of this vulnerability (and the reason why the following vulnerabilities can be reached remotely) can be found in the <code>UDPSocket</code> constructor and the <code>UDPSocket::open</code> method in the source file <code>CommonLibs/Sockets.cpp</code>. This source file is present in all affected products. The following excerpt shows the vulnerable code.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">256</span> UDPSocket::UDPSocket(<span class="keyword">unsigned</span> <span class="keyword">short</span> wSrcPort,</span><br><span class="line"><span class="number">257</span> <span class="keyword">const</span> <span class="keyword">char</span> \* wDestIP, <span class="keyword">unsigned</span> <span class="keyword">short</span> wDestPort )</span><br><span class="line"><span class="number">258</span> :DatagramSocket()</span><br><span class="line"><span class="number">259</span> &#123;</span><br><span class="line"><span class="number">260</span> open(wSrcPort);</span><br><span class="line"><span class="number">261</span> destination(wDestPort, wDestIP);</span><br><span class="line"><span class="number">262</span> &#125;</span><br><span class="line">...</span><br><span class="line"><span class="number">266</span> <span class="function"><span class="keyword">void</span> <span class="title">UDPSocket::destination</span><span class="params">( <span class="keyword">unsigned</span> <span class="keyword">short</span> wDestPort, <span class="keyword">const</span> <span class="keyword">char</span> \* wDestIP )</span></span></span><br><span class="line"><span class="function">267 </span>&#123;</span><br><span class="line"><span class="number">268</span> resolveAddress((sockaddr\_in\*)**mDestination**, wDestIP, wDestPort );</span><br><span class="line"><span class="number">269</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>In the above snippet we can see that the desired bind address is saved into the <code>mDestination</code> class member variable, but here’s how the <code>UDPSocket::open</code> method is implemented:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">271</span> address.<span class="built_in">sin</span>\_family = AF\_INET;</span><br><span class="line"><span class="number">272</span> address.<span class="built_in">sin</span>\_addr.s\_addr = INADDR\_ANY;</span><br><span class="line"><span class="number">273</span> address.<span class="built_in">sin</span>\_port = htons(localPort);</span><br><span class="line"><span class="number">274</span> <span class="keyword">if</span> (bind(mSocketFD,(struct sockaddr\*)&amp;address,length)&lt;<span class="number">0</span>) &#123;</span><br></pre></td></tr></table></figure>
+
+<p>Despite the fact that the <code>UDPSocket</code> class provides a constructor argument to specify the address to which to bind the server, this information is ignored. As show on line <code>272</code>, the socket is bound to <code>INADDR_ANY</code> instead of using the <code>mDestination</code> address variable.</p>
+<h2 id="Issue-2-Remote-Stack-Based-Buffer-Overflow"><a href="#Issue-2-Remote-Stack-Based-Buffer-Overflow" class="headerlink" title="Issue 2: Remote Stack-Based Buffer Overflow"></a>Issue 2: Remote Stack-Based Buffer Overflow</h2><h3 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h3><p>An attacker can overflow a stack buffer by sending an oversized UDP packet to the control channel.</p>
+<h3 id="Impact-1"><a href="#Impact-1" class="headerlink" title="Impact"></a>Impact</h3><p>An attacker may be able to achieve remote code execution (RCE) or cause a denial of service (DoS) condition.</p>
+<h3 id="Details-1"><a href="#Details-1" class="headerlink" title="Details"></a>Details</h3><p>The control channel is handled by the <code>Transceiver::driveControl</code> method in the <code>Transceiver.cpp</code> source file. The first lines follow.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">694</span> <span class="function"><span class="keyword">void</span> <span class="title">Transceiver::driveControl</span><span class="params">(size\<span class="keyword">_t</span> chan)</span></span></span><br><span class="line"><span class="function">695 </span>&#123;</span><br><span class="line">**<span class="number">696</span>   <span class="keyword">int</span> MAX\_PACKET\_LENGTH = <span class="number">100</span>;**</span><br><span class="line"><span class="number">697</span>   </span><br><span class="line"><span class="number">698</span>   <span class="comment">// check control socket</span></span><br><span class="line">**<span class="number">699</span>   <span class="keyword">char</span> buffer\[MAX\_PACKET\_LENGTH\];**</span><br><span class="line"><span class="number">700</span>   <span class="keyword">int</span> msgLen = <span class="number">-1</span>;</span><br><span class="line">701   buffer\[0\] = &#x27;&#x27;;</span><br><span class="line"><span class="number">702</span>    </span><br><span class="line"><span class="number">703</span>   msgLen = mCtrlSockets\[chan\]-&gt;**read**(buffer);</span><br></pre></td></tr></table></figure>
+
+<p>Note that the packet buffer, which resides on the method’s stack, is defined to be 100 bytes (from <code>MAX_PACKET_LENGTH</code>).</p>
+<p>If we analyze the <code>DatagramSocket::read</code> method (the <code>DatagramSocket</code> class is the parent class of <code>UDPSocket</code>) declared in the <code>Sockets.cpp</code> source file, we see the following.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">194</span> <span class="function"><span class="keyword">int</span> <span class="title">DatagramSocket::read</span><span class="params">(<span class="keyword">char</span>\* buffer)</span></span></span><br><span class="line"><span class="function">195 </span>&#123;</span><br><span class="line"><span class="number">196</span>   socklen\<span class="keyword">_t</span> temp\_len = <span class="keyword">sizeof</span>(mSource);</span><br><span class="line"><span class="number">197</span>   <span class="keyword">int</span> length = recvfrom(mSocketFD, (<span class="keyword">void</span>\*)buffer, **MAX\_UDP\_LENGTH**, <span class="number">0</span>,</span><br></pre></td></tr></table></figure>
+
+<p>Here we see that <code>MAX_UDP_LENGTH</code> bytes are read instead of <code>MAX_PACKET_LENGTH</code>. This value is defined in the <code>Sockets.h</code> file as follows.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX\_UDP\_LENGTH 1500 /\* (or 8000 for OpenBTS-UMTS) \*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Therefore, it’s possible to cause a stack overflow in the transceiver process simply by sending a UDP packet larger than 100 bytes. Figure 4 shows the result of a debugging session when this occurs.</p>
+<p><img src="/images/2016/08/bts-fig-4.webp" alt="bts-fig-4"></p>
+<p>Figure 4: Segmentation fault caused by a large UDP packet.</p>
+<h3 id="Mitigation"><a href="#Mitigation" class="headerlink" title="Mitigation"></a>Mitigation</h3><ol>
+<li> RCE can be mitigated when the appropriate flags are applied in compile time. History shows that these mitigations can be bypassed given the right vulnerability or chain of vulnerabilities (e.g. with an infoleak). Furthermore, since this software is compiled by various parties, it is likely that some of these builds do not contain sufficient mitigations (ASLR, Stack canaries, etc).</li>
+<li> If there is no impact or usage of the transceiver interface, we advise blocking this port from external connections on the firewall.</li>
+</ol>
+<h2 id="Issue-3-Remote-Unauthenticated-Control"><a href="#Issue-3-Remote-Unauthenticated-Control" class="headerlink" title="Issue 3: Remote Unauthenticated Control"></a>Issue 3: Remote Unauthenticated Control</h2><h3 id="Summary-2"><a href="#Summary-2" class="headerlink" title="Summary"></a>Summary</h3><p>The control channel does not implement any type of authentication. Since it is exposed to the outer network due to Issue 1, this fact can be used by any malicious party to control the transceiver module remotely.</p>
+<h3 id="Impact-2"><a href="#Impact-2" class="headerlink" title="Impact"></a>Impact</h3><p>An attacker could…</p>
+<ul>
+<li>  …deny service by turning the module off.</li>
+<li>  …jam frequencies by tuning the TX radio to the wrong frequency.</li>
+<li>  …hijack BTS identity remotely using the <code>SETBSIC</code> command to change the BTS identity to another one.</li>
+</ul>
+<h3 id="Details-2"><a href="#Details-2" class="headerlink" title="Details"></a>Details</h3><p>The control channel implements a simple text over UDP protocol handled by the <code>Transceiver::driveControl</code> method in the <code>Transceiver.cpp</code> source file. Some of the features this protocol exposes include (remember, there is no authentication):</p>
+<ul>
+<li>  Turning the TRX module on or off: <code>CMD POWERON / CMD POWEROFF</code></li>
+<li>  Tuning the TRX to other frequencies: <code>CMD RXTUNE _frequency_ / CMD TXTUNE _frequency_</code></li>
+<li>  Setting the GSM cell identity: <code>CMD SETBSIC _value_</code></li>
+</ul>
+<p>An attacker can execute such commands (and others) by simply sending UDP packets to port <code>5701</code> of the server. The full protocol specification can be found inside the <code>TRXManager/README.TRXManager</code> file.</p>
+<h2 id="Conclusions-Additional-Mitigations-amp-Recommendations"><a href="#Conclusions-Additional-Mitigations-amp-Recommendations" class="headerlink" title="Conclusions, Additional Mitigations &amp; Recommendations:"></a>Conclusions, Additional Mitigations &amp; Recommendations:</h2><p>We’ve demonstrated how the complete lack of any form of authentication and code bugs make the aforementioned BTS products vulnerable to a wide range of attack.</p>
+<p>We highly recommend vendors to apply the following mitigations in order to make their products safer:</p>
+<ol>
+<li> Update your BTS software when a patch is available.</li>
+<li> Bind the sockets used for control and data exchange only to the local interface (127.0.0.1).</li>
+<li> Firewall: Block traffic coming from external networks to ports 5701 ( control port ) and 5702 ( data port), or other ports as used by your BTS software.</li>
+<li> Be sure to apply compile time mitigations (ASLR + DEP)</li>
+<li> Implement an authentication system for such channels to deny an unprivileged attacker logged on the same machine, or on the same network, from communicating with BTS control ports.</li>
+<li> Fix buffer handling by using correct sizes.</li>
+<li> Perform additional code audits.</li>
+</ol>
+<h2 id="Disclosure-Timeline"><a href="#Disclosure-Timeline" class="headerlink" title="Disclosure Timeline"></a>Disclosure Timeline</h2><ul>
+<li>  26 April 2016: Initial disclosure email sent to vendors.</li>
+<li>  29 April 2016: Contact from OsmoBB</li>
+<li>  30 April 2016 : OsmoBB: follow up</li>
+<li>  06 May 2016: OpenBTS: bugs fixed [<a target="_blank" rel="noopener" href="https://github.com/RangeNetworks/CommonLibs/commit/cbb5d790e535aacd295e7df2325ea6edf971525d">1</a>] [<a target="_blank" rel="noopener" href="https://github.com/RangeNetworks/CommonLibs/commit/29ef2c82db59da11f93c3a2127af62aa0c7b9bf3">2</a>]</li>
+<li>  07 June 2016: Follow up with vendors</li>
+<li>  07 June 2016: OsmoBB: bug fixed</li>
+<li>  06 July 2016: Release to ZHA partners</li>
+<li>  06 July 2016: OpenBTS: <strong>Reverted overflow fix (!!)</strong> [<a target="_blank" rel="noopener" href="https://github.com/RangeNetworks/CommonLibs/commit/8f57dd84b3d5a362ce456d7aa3ccbbe271dd1f5a">3</a>]</li>
+<li>  13 July 2016: OpenBTS: <strong>Reverted bind fix (!!)</strong> [<a target="_blank" rel="noopener" href="https://github.com/RangeNetworks/CommonLibs/commit/76b71d509bb5e6f146d7305d01b4c1cfec21302a">4</a>]</li>
+<li>  10 August 2016 : Commented on both “Why are you deliberately reintroducing severe security issues in your software?” (OpenBTS)</li>
+<li>  15 August 2016: OpenBTS – Follow up, no response</li>
+<li>  23 August 2016: Public Disclosure</li>
+</ul>
 
   </div>
 
   
     <div class="post-tags">
+      
+        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
+      
+        <a href="/tags/cve/" class="tag">#cve</a>
       
         <a href="/tags/rce/" class="tag">#rce</a>
       
@@ -130,10 +229,6 @@
         <a href="/tags/exploit/" class="tag">#exploit</a>
       
         <a href="/tags/vulnerability-research/" class="tag">#vulnerability research</a>
-      
-        <a href="/tags/cve/" class="tag">#cve</a>
-      
-        <a href="/tags/vulnerability/" class="tag">#vulnerability</a>
       
         <a href="/tags/gsm/" class="tag">#gsm</a>
       
