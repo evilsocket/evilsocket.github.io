@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/05/04/Android-Native-API-Hooking-with-Library-Injection-and-ELF-Introspection/"},"headline":"Android Native API Hooking With Library Injection and ELF Introspection.","description":"This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android/ARM“ and a proof of concept o","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2015-05-04T17:15:24.000Z","dateModified":"2015-05-04T17:35:13.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, dalvik, hooking, api hooking, library, injection, elf relocation, arm, elf, open, plt, relocation, relocation table, symtab, strtab, code injection, binary analysis, runtime manipulation","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/05/04/Android-Native-API-Hooking-with-Library-Injection-and-ELF-Introspection/"},"headline":"Android Native API Hooking With Library Injection and ELF Introspection.","description":"This post can be considered both the part 2 of the previous “Dynamically inject a shared library into a running process on Android/ARM“ and a proof of concept o","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2015-05-04T17:15:24.000Z","dateModified":"2015-05-04T17:35:13.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, hooking, api hooking, library, injection, elf relocation, arm, elf, open, dalvik, plt, relocation, relocation table, symtab, strtab, code injection, binary analysis, runtime manipulation","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2015-05-04T17:15:24.000Z">4 May 2015</time>
       
-        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/dalvik/" class="post-category">dalvik</a>, <a href="/tags/hooking/" class="post-category">hooking</a>, <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/library/" class="post-category">library</a>, <a href="/tags/injection/" class="post-category">injection</a>, <a href="/tags/elf-relocation/" class="post-category">elf relocation</a>, <a href="/tags/arm/" class="post-category">arm</a>, <a href="/tags/elf/" class="post-category">elf</a>, <a href="/tags/open/" class="post-category">open</a>, <a href="/tags/plt/" class="post-category">plt</a>, <a href="/tags/relocation/" class="post-category">relocation</a>, <a href="/tags/relocation-table/" class="post-category">relocation table</a>, <a href="/tags/symtab/" class="post-category">symtab</a>, <a href="/tags/strtab/" class="post-category">strtab</a>, <a href="/tags/code-injection/" class="post-category">code injection</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/runtime-manipulation/" class="post-category">runtime manipulation</a>
+        — <a href="/tags/android/" class="post-category">android</a>, <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/hooking/" class="post-category">hooking</a>, <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/library/" class="post-category">library</a>, <a href="/tags/injection/" class="post-category">injection</a>, <a href="/tags/elf-relocation/" class="post-category">elf relocation</a>, <a href="/tags/arm/" class="post-category">arm</a>, <a href="/tags/elf/" class="post-category">elf</a>, <a href="/tags/open/" class="post-category">open</a>, <a href="/tags/dalvik/" class="post-category">dalvik</a>, <a href="/tags/plt/" class="post-category">plt</a>, <a href="/tags/relocation/" class="post-category">relocation</a>, <a href="/tags/relocation-table/" class="post-category">relocation table</a>, <a href="/tags/symtab/" class="post-category">symtab</a>, <a href="/tags/strtab/" class="post-category">strtab</a>, <a href="/tags/code-injection/" class="post-category">code injection</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/runtime-manipulation/" class="post-category">runtime manipulation</a>
       
     </div>
     <br/>
@@ -158,8 +158,6 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
       
         <a href="/tags/mobile-security/" class="tag">#mobile security</a>
       
-        <a href="/tags/dalvik/" class="tag">#dalvik</a>
-      
         <a href="/tags/hooking/" class="tag">#hooking</a>
       
         <a href="/tags/api-hooking/" class="tag">#api hooking</a>
@@ -175,6 +173,8 @@ I/LIBHOOK ( 8511): [8511] open(&#39;/dev/ashmem&#39;, 2)
         <a href="/tags/elf/" class="tag">#elf</a>
       
         <a href="/tags/open/" class="tag">#open</a>
+      
+        <a href="/tags/dalvik/" class="tag">#dalvik</a>
       
         <a href="/tags/plt/" class="tag">#plt</a>
       
