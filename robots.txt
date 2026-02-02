@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Allow: /
 
 Sitemap: http://www.evilsocket.net/sitemap.xml
