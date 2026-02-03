@@ -114,7 +114,7 @@
 <p>What started as a lazy weekend project turned into finding a few security vulnerabilities that affect about <a target="_blank" rel="noopener" href="https://www.zoomeye.ai/searchResult?q=IlRQUkktREVWSUNFIg==">25,000 of these devices directly exposed on the internet</a>.</p>
 <p><img src="/images/2025/tapo/map.png" alt="tapo c200 devices map"></p>
 <h2 id="Getting-the-Firmware"><a href="#Getting-the-Firmware" class="headerlink" title="Getting the Firmware"></a>Getting the Firmware</h2><small>
-<h3 style="margin: 0px; font-weight: 500; font-size: 1rem">Tools</h3>
+<h3 id="tools" class="heading-anchor" style="margin: 0px; font-weight: 500; font-size: 1rem"><a href="#tools" class="anchor-link" aria-hidden="true">#</a>Tools</h3>
 <ul style="margin: 0px; padding-left: 1.5em; font-size: 0.9rem">
     <li>
         Old friend <a href="https://java-decompiler.github.io/" target="_blank">JD-GUI</a> to reverse the Android app and get a sense of things
@@ -139,7 +139,7 @@
 <p>And here is where I started using AI. I used Grok to <a target="_blank" rel="noopener" href="https://x.com/i/grok/share/t9RzvgCRwIluVGnXMu39VVxDx">do some deep research</a> on how to decrypt the firmware for these cameras. Since I knew other hackers worked on this before, I delegated searching into hundreds of relevant web pages to the AI:</p>
 <p><img src="/images/2025/tapo/grok-fw.png" alt="grok"></p>
 <h3 id="Decrypting-the-Firmware"><a href="#Decrypting-the-Firmware" class="headerlink" title="Decrypting the Firmware"></a>Decrypting the Firmware</h3><small>
-<h3 style="margin: 0px; font-weight: 500; font-size: 1rem">Tools</h3>
+<h3 id="tools-1" class="heading-anchor" style="margin: 0px; font-weight: 500; font-size: 1rem"><a href="#tools-1" class="anchor-link" aria-hidden="true">#</a>Tools</h3>
 <ul style="margin: 0px; padding-left: 1.5em; font-size: 0.9rem">
     <li>
         The <a href="https://github.com/robbins/tp-link-decrypt" target="_blank">tp-link-decrypt</a> tool to decrypt the firmware image.
@@ -159,7 +159,7 @@
 
 <p><img src="/images/2025/tapo/binwalk.jpg" alt="binwalk"></p>
 <h2 id="Hunting-for-Bugs"><a href="#Hunting-for-Bugs" class="headerlink" title="Hunting for Bugs"></a>Hunting for Bugs</h2><small>
-<h3 style="margin: 0px; font-weight: 500; font-size: 1rem">Tools</h3>
+<h3 id="tools-2" class="heading-anchor" style="margin: 0px; font-weight: 500; font-size: 1rem"><a href="#tools-2" class="anchor-link" aria-hidden="true">#</a>Tools</h3>
 <ul style="margin: 0px; padding-left: 1.5em; font-size: 0.9rem">
     <li>
         <a href="https://github.com/NationalSecurityAgency/ghidra" target="_blank">Ghidra</a> to decompile and understand the MIPS binaries
@@ -263,7 +263,7 @@
 <p>Remote attackers can not only see what WiFi networks exist around a camera - they can determine exactly where that camera (and by extension, the home or business it’s monitoring) is located on a map.</p>
 <h2 id="Disclosure"><a href="#Disclosure" class="headerlink" title="Disclosure"></a>Disclosure</h2><p>I’ve decided to follow the <a target="_blank" rel="noopener" href="https://projectzero.google/vulnerability-disclosure-policy.html">industry standard</a> <strong>90+30 days</strong> responsible disclosure process; here’s the timeline:</p>
 <ul>
-<li><strong>July 22, 2025</strong>: Sent initial report to TP-Link’s security team (<a href="mailto:&#115;&#x65;&#99;&#117;&#114;&#105;&#116;&#121;&#64;&#x74;&#112;&#45;&#x6c;&#x69;&#x6e;&#x6b;&#46;&#x63;&#x6f;&#109;">&#115;&#x65;&#99;&#117;&#114;&#105;&#116;&#121;&#64;&#x74;&#112;&#45;&#x6c;&#x69;&#x6e;&#x6b;&#46;&#x63;&#x6f;&#109;</a>) with full technical details, PoC exploits and videos. All compiled according to <a target="_blank" rel="noopener" href="https://www.tp-link.com/en/press/security-advisory/">their guidelines</a>.</li>
+<li><strong>July 22, 2025</strong>: Sent initial report to TP-Link’s security team (<a href="mailto:&#x73;&#x65;&#99;&#117;&#114;&#x69;&#x74;&#x79;&#64;&#x74;&#112;&#x2d;&#108;&#105;&#110;&#x6b;&#x2e;&#99;&#x6f;&#x6d;">&#x73;&#x65;&#99;&#117;&#114;&#x69;&#x74;&#x79;&#64;&#x74;&#112;&#x2d;&#108;&#105;&#110;&#x6b;&#x2e;&#99;&#x6f;&#x6d;</a>) with full technical details, PoC exploits and videos. All compiled according to <a target="_blank" rel="noopener" href="https://www.tp-link.com/en/press/security-advisory/">their guidelines</a>.</li>
 <li><strong>July 22, 2025</strong>: Acknowledgment received.</li>
 <li><strong>August 22, 2025</strong>: TP-Link confirms they’re still reviewing the report</li>
 <li><strong>September 27, 2025</strong>: TP-Link responds and sets the timeline for the remediation patch to the end of November 2025.</li>
