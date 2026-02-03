@@ -39,7 +39,7 @@ He was tryin">
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/"},"headline":"How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.","description":"During this Saturday afternoon I was chatting with a friend of mine ( Matteo ) and he asked for some help to fix a Python script he was working on. He was tryin","image":"https://www.evilsocket.net/images/2016/04/apktool.png","datePublished":"2016-04-18T03:31:02.000Z","dateModified":"2016-04-18T05:56:48.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"]},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, reversing, apk, dalvik, static analysis, encryption, emulator, mobile, obfuscation, python, emulation, smali, anti-tampering, deobfuscation","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2016/04/18/How-I-defeated-an-obfuscated-and-anti-tamper-APK-with-some-Python-and-a-home-made-Smali-emulator/"},"headline":"How I Defeated an Obfuscated and Anti-Tamper APK With Some Python and a Home-Made Smali Emulator.","description":"During this Saturday afternoon I was chatting with a friend of mine ( Matteo ) and he asked for some help to fix a Python script he was working on. He was tryin","image":"https://www.evilsocket.net/images/2016/04/apktool.png","datePublished":"2016-04-18T03:31:02.000Z","dateModified":"2016-04-18T05:56:48.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"android, mobile security, reversing, apk, dalvik, static analysis, encryption, emulator, mobile, obfuscation, python, emulation, smali, anti-tampering, deobfuscation","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -115,7 +115,7 @@ He was tryin">
 <p>I’m going to intentionally skip a few details here and there because I do not want to cause any harm to the people who wrote that application, all the involved protection mechanisms are there to avoid piracy.</p>
 <span id="more"></span>
 
-<h2 id="Weird-Characters-Are-Weird"><a href="#Weird-Characters-Are-Weird" class="headerlink" title="Weird Characters Are Weird"></a>Weird Characters Are Weird</h2><p>Like every other reverser who experienced APK decompilation I’m used to Proguard messing with class and method names ( or Dexguard messing with strings, and so forth ), this is not usually a big deal to me, but what I saw when I executed <strong>apktool</strong> was definitely surprising:</p>
+<h2 class="heading-anchor" id="Weird-Characters-Are-Weird"><a href="#Weird-Characters-Are-Weird" class="anchor-link" aria-hidden="true">#</a><a href="#Weird-Characters-Are-Weird" class="headerlink" title="Weird Characters Are Weird"></a>Weird Characters Are Weird</h2><p>Like every other reverser who experienced APK decompilation I’m used to Proguard messing with class and method names ( or Dexguard messing with strings, and so forth ), this is not usually a big deal to me, but what I saw when I executed <strong>apktool</strong> was definitely surprising:</p>
 <p><img src="/images/2016/04/apktool.png" alt="apktool"></p>
 <p><img src="/images/2016/04/wtf.jpeg" alt="wtf"></p>
 <p>Most of the classes and methods names were weird binary strings, this almost freezed every single tool or editor I used to inspect those files, so the very first step was to fix ( to be honest, reimplement from scratch XD ) the python script that Matteo was trying to use to rename each obfuscated entry, the script itself was quite simple:</p>
@@ -129,14 +129,14 @@ He was tryin">
 <p>At the end of the process, I finally had a browsable folder and readable smali files :)</p>
 <p><img src="/images/2016/04/phase1.png" alt="after basic deobfuscation"></p>
 <p>But I was definitely far from having done …</p>
-<h2 id="Anti-Tampering"><a href="#Anti-Tampering" class="headerlink" title="Anti Tampering"></a>Anti Tampering</h2><p>Before I continue, there’re two things I need to point out in order to make the reasons behind my approach clearer:</p>
+<h2 class="heading-anchor" id="Anti-Tampering"><a href="#Anti-Tampering" class="anchor-link" aria-hidden="true">#</a><a href="#Anti-Tampering" class="headerlink" title="Anti Tampering"></a>Anti Tampering</h2><p>Before I continue, there’re two things I need to point out in order to make the reasons behind my approach clearer:</p>
 <ol>
 <li>Matteo told me that the application had some misterious anti tampering ( and most likely anti debugging ) protection, therefore rebuilding the smali to a new APK with some injected code was not possible, neither was debugging.</li>
 <li>Such protections not only prevented code injection/modification, but also uninstalled the application if such tampering was detected.</li>
 </ol>
 <p>So no code injection ( nope, XPosed neither ), no debugging, absolutely no chance to use my standard approach for reversing it :(</p>
 <p><img src="/images/2016/04/Okay-Meme-Gif-05.jpg" alt="sad"></p>
-<h2 id="Encrypted-Strings"><a href="#Encrypted-Strings" class="headerlink" title="Encrypted Strings"></a>Encrypted Strings</h2><p>As the lazy (or smart, you decide) reverser I am, instead of trying to understand the logic, at first I tried to search for meaningful strings that could give me some hints about what was going on in the app, but again I had a nasty surprise instead.</p>
+<h2 class="heading-anchor" id="Encrypted-Strings"><a href="#Encrypted-Strings" class="anchor-link" aria-hidden="true">#</a><a href="#Encrypted-Strings" class="headerlink" title="Encrypted Strings"></a>Encrypted Strings</h2><p>As the lazy (or smart, you decide) reverser I am, instead of trying to understand the logic, at first I tried to search for meaningful strings that could give me some hints about what was going on in the app, but again I had a nasty surprise instead.</p>
 <p>Every single string was encrypted with a custom algorithm, basically every reference to a string was replaced by something like:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String decrypted = Class623::method5( <span class="keyword">new</span> <span class="keyword">int</span>[]&#123; -<span class="number">12</span>, <span class="number">44</span>, -<span class="number">35</span>, ... &#125;, <span class="number">52</span> );</span><br></pre></td></tr></table></figure>
 
@@ -149,7 +149,7 @@ He was tryin">
 </ol>
 <p>Guess what? Every single tool failed to correctly transform the smali code of <strong>Class623::method5</strong> into java … the output was just nonsense, not working, nada … and for the record I’m not that good in reading smali code (the routine itself was quite complicated, at least for my smali skills) … but I couldn’t just give up … no way!</p>
 <p><img src="/images/2016/04/challengeaccepted.jpg" alt="challenge accepted"></p>
-<h2 id="All-hail-the-Smali-Emulator"><a href="#All-hail-the-Smali-Emulator" class="headerlink" title="All hail the Smali Emulator"></a>All hail the Smali Emulator</h2><p>Of course I could take the smali code of <strong>Class623::method5</strong>, create a new Android app, decompile it with apktool, inject the smali code of that routine into the output, insert a smali call to that code into the app, rebuild it and launch it … but:</p>
+<h2 class="heading-anchor" id="All-hail-the-Smali-Emulator"><a href="#All-hail-the-Smali-Emulator" class="anchor-link" aria-hidden="true">#</a><a href="#All-hail-the-Smali-Emulator" class="headerlink" title="All hail the Smali Emulator"></a>All hail the Smali Emulator</h2><p>Of course I could take the smali code of <strong>Class623::method5</strong>, create a new Android app, decompile it with apktool, inject the smali code of that routine into the output, insert a smali call to that code into the app, rebuild it and launch it … but:</p>
 <ol>
 <li>Again, I’m <strong>lazy</strong>.</li>
 <li>This solution wouldn’t be <strong>elegant</strong>.</li>
@@ -166,7 +166,7 @@ routine, eventually it will output all the cleartexts I need!</code></pre>
 <p><strong>BINGO!!!</strong></p>
 <p>I executed the script against every encrypted string and it worked like a charm, the emulator was able to correctly parse and execute the smali code of the decryption routine and decrypt every single entry I’ve extracted from the decompiled application … from that point on it was just a matter of replacing encrypted entries with their cleartexts and the reversing process became as easy as pie :)</p>
 <p><img src="/images/2016/04/victory.jpg" alt="victory"></p>
-<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>I’ve released the code on <a target="_blank" rel="noopener" href="https://github.com/evilsocket/smali_emulator">github</a> as usual, it still lacks the support for a lot of Dalvik opcodes, I’ve just implemented the ones I needed in order to emulate that routine ( which you can find in the repo as well ), but it’s quite easy to improve it and probably I’ll complete it in the next few days :)</p>
+<h2 class="heading-anchor" id="Conclusions"><a href="#Conclusions" class="anchor-link" aria-hidden="true">#</a><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>I’ve released the code on <a target="_blank" rel="noopener" href="https://github.com/evilsocket/smali_emulator">github</a> as usual, it still lacks the support for a lot of Dalvik opcodes, I’ve just implemented the ones I needed in order to emulate that routine ( which you can find in the repo as well ), but it’s quite easy to improve it and probably I’ll complete it in the next few days :)</p>
 
   </div>
 
@@ -227,7 +227,7 @@ routine, eventually it will output all the cleartexts I need!</code></pre>
 
 
 <section class="related-posts">
-  <h3 class="related-title">YOU MIGHT ALSO LIKE...</h3>
+  <h2 class="related-title">YOU MIGHT ALSO LIKE...</h2>
   <div class="cards-grid cards-grid-related">
     
       

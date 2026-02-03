@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/"},"headline":"Pwning WPA/WPA2 Networks With Bettercap and the PMKID Client-Less Attack","description":"In this post, I’ll talk about the new WiFi related features that have been recently implemented into bettercap, starting from how the EAPOL 4-way handshake capt","image":"https://www.evilsocket.nethttps://raw.githubusercontent.com/bettercap/media/master/logo.png","datePublished":"2019-02-13T15:53:31.000Z","dateModified":"2025-12-19T18:35:53.165Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"]},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"bettercap, wpa, wireless security, deauth, pmkid, rsn pmkid, rsn, hashcat, handshake, wpa2, password cracking, monitor mode, wifi hacking","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/"},"headline":"Pwning WPA/WPA2 Networks With Bettercap and the PMKID Client-Less Attack","description":"In this post, I’ll talk about the new WiFi related features that have been recently implemented into bettercap, starting from how the EAPOL 4-way handshake capt","image":"https://www.evilsocket.nethttps://raw.githubusercontent.com/bettercap/media/master/logo.png","datePublished":"2019-02-13T15:53:31.000Z","dateModified":"2025-12-19T18:35:53.165Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"bettercap, wpa, wireless security, deauth, monitor mode, pmkid, rsn pmkid, rsn, hashcat, handshake, wpa2, password cracking, wifi hacking","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2019-02-13T15:53:31.000Z">13 Feb 2019</time>
       
-        — <a href="/tags/bettercap/" class="post-category">bettercap</a>, <a href="/tags/wpa/" class="post-category">wpa</a>, <a href="/tags/wireless-security/" class="post-category">wireless security</a>, <a href="/tags/deauth/" class="post-category">deauth</a>, <a href="/tags/pmkid/" class="post-category">pmkid</a>, <a href="/tags/rsn-pmkid/" class="post-category">rsn pmkid</a>, <a href="/tags/rsn/" class="post-category">rsn</a>, <a href="/tags/hashcat/" class="post-category">hashcat</a>, <a href="/tags/handshake/" class="post-category">handshake</a>, <a href="/tags/wpa2/" class="post-category">wpa2</a>, <a href="/tags/password-cracking/" class="post-category">password cracking</a>, <a href="/tags/monitor-mode/" class="post-category">monitor mode</a>, <a href="/tags/wifi-hacking/" class="post-category">wifi hacking</a>
+        — <a href="/tags/bettercap/" class="post-category">bettercap</a>, <a href="/tags/wpa/" class="post-category">wpa</a>, <a href="/tags/wireless-security/" class="post-category">wireless security</a>, <a href="/tags/deauth/" class="post-category">deauth</a>, <a href="/tags/monitor-mode/" class="post-category">monitor mode</a>, <a href="/tags/pmkid/" class="post-category">pmkid</a>, <a href="/tags/rsn-pmkid/" class="post-category">rsn pmkid</a>, <a href="/tags/rsn/" class="post-category">rsn</a>, <a href="/tags/hashcat/" class="post-category">hashcat</a>, <a href="/tags/handshake/" class="post-category">handshake</a>, <a href="/tags/wpa2/" class="post-category">wpa2</a>, <a href="/tags/password-cracking/" class="post-category">password cracking</a>, <a href="/tags/wifi-hacking/" class="post-category">wifi hacking</a>
       
     </div>
     <br/>
@@ -113,7 +113,7 @@
 
 <span id="more"></span>
 
-<h2 id="Deauth-and-4-way-Handshake-Capture"><a href="#Deauth-and-4-way-Handshake-Capture" class="headerlink" title="Deauth and 4-way Handshake Capture"></a>Deauth and 4-way Handshake Capture</h2><p>First thing first, let’s try a classical deauthentication attack: we’ll start bettercap, enable the <code>wifi.recon</code> module with channel hopping and configure the <code>ticker</code> module to refresh our screen every second with an updated view of the nearby WiFi networks (replace <code>wlan0</code> with the interface you want to use):</p>
+<h2 class="heading-anchor" id="Deauth-and-4-way-Handshake-Capture"><a href="#Deauth-and-4-way-Handshake-Capture" class="anchor-link" aria-hidden="true">#</a><a href="#Deauth-and-4-way-Handshake-Capture" class="headerlink" title="Deauth and 4-way Handshake Capture"></a>Deauth and 4-way Handshake Capture</h2><p>First thing first, let’s try a classical deauthentication attack: we’ll start bettercap, enable the <code>wifi.recon</code> module with channel hopping and configure the <code>ticker</code> module to refresh our screen every second with an updated view of the nearby WiFi networks (replace <code>wlan0</code> with the interface you want to use):</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo bettercap -iface wlan0</span><br><span class="line"></span><br><span class="line"><span class="comment"># this will set the interface in monitor mode and start channel hopping on all supported frequencies</span></span><br><span class="line">&gt; wifi.recon on </span><br><span class="line"><span class="comment"># we want our APs sorted by number of clients for this attack, the default sorting would be `rssi asc`</span></span><br><span class="line">&gt; <span class="built_in">set</span> wifi.show.sort clients desc</span><br><span class="line"><span class="comment"># every second, clear our view and present an updated list of nearby WiFi networks</span></span><br><span class="line">&gt; <span class="built_in">set</span> ticker.commands <span class="string">&#x27;clear; wifi.show&#x27;</span></span><br><span class="line">&gt; ticker on</span><br></pre></td></tr></table></figure>
 
 <p>You should now see something like this:</p>
@@ -130,14 +130,14 @@
 </div>
 
 <p>The downsides of this attack are obvious: no clients = no party, moreover, given we need to wait for at least one of them to reconnect, it can potentially take some time.</p>
-<h2 id="4-way-Handshake-Cracking"><a href="#4-way-Handshake-Cracking" class="headerlink" title="4-way Handshake Cracking"></a>4-way Handshake Cracking</h2><p>Once we have succesfully captured the EAPOL frames required by hashcat in order to crack the PSK, we’ll need to convert the <code>pcap</code> output file to the <code>hccapx</code> format that hashcat can read. In order to do so, we can either use <a target="_blank" rel="noopener" href="https://hashcat.net/cap2hccapx/">this online service</a>, or install the <a target="_blank" rel="noopener" href="https://github.com/hashcat/hashcat-utils">hashcat-utils</a> ourselves and convert the file locally:</p>
+<h2 class="heading-anchor" id="4-way-Handshake-Cracking"><a href="#4-way-Handshake-Cracking" class="anchor-link" aria-hidden="true">#</a><a href="#4-way-Handshake-Cracking" class="headerlink" title="4-way Handshake Cracking"></a>4-way Handshake Cracking</h2><p>Once we have succesfully captured the EAPOL frames required by hashcat in order to crack the PSK, we’ll need to convert the <code>pcap</code> output file to the <code>hccapx</code> format that hashcat can read. In order to do so, we can either use <a target="_blank" rel="noopener" href="https://hashcat.net/cap2hccapx/">this online service</a>, or install the <a target="_blank" rel="noopener" href="https://github.com/hashcat/hashcat-utils">hashcat-utils</a> ourselves and convert the file locally:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/cap2hccapx /root/bettercap-wifi-handshakes.pcap bettercap-wifi-handshakes.hccapx</span><br></pre></td></tr></table></figure>
 
 <p>You can now proceed to crack the handshake(s) either by dictionary attack or brute-force. For instance, to try all 8-digits combinations:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/hashcat -m2500 -a3 -w3 bettercap-wifi-handshakes.hccapx <span class="string">&#x27;?d?d?d?d?d?d?d?d&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>And this is it, the evergreen deauthentication attack in all its simplicity, performed with just one tool … let’s get to the fun part now :)</p>
-<h2 id="Client-less-PMKID-Attack"><a href="#Client-less-PMKID-Attack" class="headerlink" title="Client-less PMKID Attack"></a>Client-less PMKID Attack</h2><p>In 2018 hashcat authors <a target="_blank" rel="noopener" href="https://hashcat.net/forum/thread-7717.html">disclosed</a> a new type of attack which not only relies <strong>on one single packet</strong>, but it doesn’t require any clients to be connected to our target AP or, if clients are connected, it doesn’t require us to send deauth frames to them, there’s no interaction between the attacker and client stations, but just between the attacker and the AP, interaction which, if the router is vulnerable, is almost immediate!</p>
+<h2 class="heading-anchor" id="Client-less-PMKID-Attack"><a href="#Client-less-PMKID-Attack" class="anchor-link" aria-hidden="true">#</a><a href="#Client-less-PMKID-Attack" class="headerlink" title="Client-less PMKID Attack"></a>Client-less PMKID Attack</h2><p>In 2018 hashcat authors <a target="_blank" rel="noopener" href="https://hashcat.net/forum/thread-7717.html">disclosed</a> a new type of attack which not only relies <strong>on one single packet</strong>, but it doesn’t require any clients to be connected to our target AP or, if clients are connected, it doesn’t require us to send deauth frames to them, there’s no interaction between the attacker and client stations, but just between the attacker and the AP, interaction which, if the router is vulnerable, is almost immediate!</p>
 <p>It turns out that <strong>a lot</strong> of modern routers append an optional field at the end of the first EAPOL frame sent by the AP itself when someone is associating, the so called <code>Robust Security Network</code>, which includes something called <code>PMKID</code>:</p>
 <p><img src="/images/2019/02/pmkid.png" alt="pmkid"></p>
 <p>As explained in the original post, the PMKID is derived by using data which is known to us:</p>
@@ -149,13 +149,13 @@
 
 <p>All nearby vulnerable routers (and let me reiterate: <strong>a lot</strong> of them are vulnerable), will start sending you the PMKID, which bettercap will dump to the usual pcap file:</p>
 <p><img src="/images/2019/02/wifi_assoc.jpg" alt="assoc"></p>
-<h2 id="PMKID-Cracking"><a href="#PMKID-Cracking" class="headerlink" title="PMKID Cracking"></a>PMKID Cracking</h2><p>We’ll now need to convert the PMKID data in the pcap file we just captured to a hash format that hashcat can understand, for this we’ll use <a target="_blank" rel="noopener" href="https://github.com/ZerBea/hcxtools">hcxpcaptool</a>:</p>
+<h2 class="heading-anchor" id="PMKID-Cracking"><a href="#PMKID-Cracking" class="anchor-link" aria-hidden="true">#</a><a href="#PMKID-Cracking" class="headerlink" title="PMKID Cracking"></a>PMKID Cracking</h2><p>We’ll now need to convert the PMKID data in the pcap file we just captured to a hash format that hashcat can understand, for this we’ll use <a target="_blank" rel="noopener" href="https://github.com/ZerBea/hcxtools">hcxpcaptool</a>:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/hcxpcaptool -z bettercap-wifi-handshakes.pmkid /root/bettercap-wifi-handshakes.pcap</span><br></pre></td></tr></table></figure>
 
 <p>We can now proceed cracking the <code>bettercap-wifi.handshake.pmkid</code> file so generated by using algorithm number <code>16800</code>:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/path/to/hashcat -m16800 -a3 -w3 bettercap-wifi-handshakes.pmkid <span class="string">&#x27;?d?d?d?d?d?d?d?d&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h2><ul>
+<h2 class="heading-anchor" id="Recap"><a href="#Recap" class="anchor-link" aria-hidden="true">#</a><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h2><ul>
 <li>Goodbye airmon, airodump, aireplay and whatnots: one tool to rule them all!</li>
 <li>Goodbye Kali VMs on macOS: these modules work natively out of the box, with the default Apple hardware &lt;3</li>
 <li>Full 4-way handshakes are for n00bs: just one association request and most routers will send us enough key material.</li>
@@ -176,6 +176,8 @@
       
         <a href="/tags/deauth/" class="tag">#deauth</a>
       
+        <a href="/tags/monitor-mode/" class="tag">#monitor mode</a>
+      
         <a href="/tags/pmkid/" class="tag">#pmkid</a>
       
         <a href="/tags/rsn-pmkid/" class="tag">#rsn pmkid</a>
@@ -189,8 +191,6 @@
         <a href="/tags/wpa2/" class="tag">#wpa2</a>
       
         <a href="/tags/password-cracking/" class="tag">#password cracking</a>
-      
-        <a href="/tags/monitor-mode/" class="tag">#monitor mode</a>
       
         <a href="/tags/wifi-hacking/" class="tag">#wifi hacking</a>
       
@@ -218,7 +218,7 @@
 
 
 <section class="related-posts">
-  <h3 class="related-title">YOU MIGHT ALSO LIKE...</h3>
+  <h2 class="related-title">YOU MIGHT ALSO LIKE...</h2>
   <div class="cards-grid cards-grid-related">
     
       

@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/"},"headline":"Past, Present and Future of Bettercap","description":"Four months passed since my first blog post about bettercap, a lot of fixes have been released and a lot of new features have been implemented.In this post I’d ","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2015-12-01T16:30:23.000Z","dateModified":"2015-12-01T17:04:02.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"]},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"open source, hacking, bettercap, mitm, network attacks, offensive tools, project release, project, oss, changelog, progress","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/12/01/Past-present-and-future-of-Bettercap/"},"headline":"Past, Present and Future of Bettercap","description":"Four months passed since my first blog post about bettercap, a lot of fixes have been released and a lot of new features have been implemented.In this post I’d ","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2015-12-01T16:30:23.000Z","dateModified":"2015-12-01T17:04:02.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"open source, bettercap, mitm, network attacks, offensive tools, project release, hacking, project, oss, changelog, progress","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2015-12-01T16:30:23.000Z">1 Dec 2015</time>
       
-        — <a href="/tags/open-source/" class="post-category">open source</a>, <a href="/tags/hacking/" class="post-category">hacking</a>, <a href="/tags/bettercap/" class="post-category">bettercap</a>, <a href="/tags/mitm/" class="post-category">mitm</a>, <a href="/tags/network-attacks/" class="post-category">network attacks</a>, <a href="/tags/offensive-tools/" class="post-category">offensive tools</a>, <a href="/tags/project-release/" class="post-category">project release</a>, <a href="/tags/project/" class="post-category">project</a>, <a href="/tags/oss/" class="post-category">oss</a>, <a href="/tags/changelog/" class="post-category">changelog</a>, <a href="/tags/progress/" class="post-category">progress</a>
+        — <a href="/tags/open-source/" class="post-category">open source</a>, <a href="/tags/bettercap/" class="post-category">bettercap</a>, <a href="/tags/mitm/" class="post-category">mitm</a>, <a href="/tags/network-attacks/" class="post-category">network attacks</a>, <a href="/tags/offensive-tools/" class="post-category">offensive tools</a>, <a href="/tags/project-release/" class="post-category">project release</a>, <a href="/tags/hacking/" class="post-category">hacking</a>, <a href="/tags/project/" class="post-category">project</a>, <a href="/tags/oss/" class="post-category">oss</a>, <a href="/tags/changelog/" class="post-category">changelog</a>, <a href="/tags/progress/" class="post-category">progress</a>
       
     </div>
     <br/>
@@ -109,7 +109,7 @@
     <p>Four months passed since <a href="http://www.evilsocket.net/2015/07/25/bettercap-a-complete-modular-portable-and-easily-extensible-mitm-framework/">my first blog post</a> about <a target="_blank" rel="noopener" href="http://www.bettercap.org/">bettercap</a>, a lot of fixes have been released and a lot of new features have been implemented.<br>In this post I’d like to talk about some of these new features and describe them a little bit, this is basically a big changelog since the very first version, for a complete list of code changes you can read the <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bettercap/releases">releases</a> github page.</p>
 <span id="more"></span>
 
-<h2 id="Major-Changes"><a href="#Major-Changes" class="headerlink" title="Major Changes"></a>Major Changes</h2><p><strong>Added <code>--no-discovery</code> argument to skip active host discovery.</strong> ( since v.1.1.0 )</p>
+<h2 class="heading-anchor" id="Major-Changes"><a href="#Major-Changes" class="anchor-link" aria-hidden="true">#</a><a href="#Major-Changes" class="headerlink" title="Major Changes"></a>Major Changes</h2><p><strong>Added <code>--no-discovery</code> argument to skip active host discovery.</strong> ( since v.1.1.0 )</p>
 <p>Sometimes you already have the hosts you want to target in the arp cache of your computer, maybe because you already used bettercap against them or just because you already established some communication with them, you can now use the <code>--no-discovery</code> argument to use the static ARP cache instead of spawning the discovery agents and make the whole process faster.</p>
 <p><strong>Dynamic discovery, new hosts are added to the targets list while running.</strong> ( since v1.1.0 )</p>
 <p>Once bettercap is started, it will keep searching for new hosts and add them to the targets list even if an attack is already running. You can basically just launch bettercap once and it will take care of new computers connecting to your internal network.</p>
@@ -143,7 +143,7 @@
 <p>This made the “mac-address to vendor” lookup more accurate.</p>
 <p><strong>Implemented custom upstream proxy options ( <code>--custom-proxy</code>, <code>--custom-https-proxy</code> ) both for HTTP and HTTPS.</strong> ( since v1.1.6 )</p>
 <p>A new set of arguments is available in order to specify a custom HTTP/HTTPS upstream proxy address.</p>
-<h2 id="The-Future"><a href="#The-Future" class="headerlink" title="The Future"></a>The Future</h2><p>If you’re interested in upcoming features, there’s a “TODO” list available <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bettercap/blob/master/TODO.md">here</a>, some of these items are done and the code has already been pushed to the dev branch, others are still to be done and I’m still not sure about some, these are the major upcoming features.</p>
+<h2 class="heading-anchor" id="The-Future"><a href="#The-Future" class="anchor-link" aria-hidden="true">#</a><a href="#The-Future" class="headerlink" title="The Future"></a>The Future</h2><p>If you’re interested in upcoming features, there’s a “TODO” list available <a target="_blank" rel="noopener" href="https://github.com/evilsocket/bettercap/blob/master/TODO.md">here</a>, some of these items are done and the code has already been pushed to the dev branch, others are still to be done and I’m still not sure about some, these are the major upcoming features.</p>
 <p><strong>Implement <code>--ignore ADDR,ADDR,ADDR</code> option to filter out specific addresses from the targets list.</strong> ( READY in the developer branch )</p>
 <p>If there’re one or multiple ip addresses that are causing a lot of traffic and that you’re not interested to, you can use this argument to completely ignore them.</p>
 <p><strong>Rewrite proxy class using em-proxy library.</strong></p>
@@ -162,8 +162,6 @@
       
         <a href="/tags/open-source/" class="tag">#open source</a>
       
-        <a href="/tags/hacking/" class="tag">#hacking</a>
-      
         <a href="/tags/bettercap/" class="tag">#bettercap</a>
       
         <a href="/tags/mitm/" class="tag">#mitm</a>
@@ -173,6 +171,8 @@
         <a href="/tags/offensive-tools/" class="tag">#offensive tools</a>
       
         <a href="/tags/project-release/" class="tag">#project release</a>
+      
+        <a href="/tags/hacking/" class="tag">#hacking</a>
       
         <a href="/tags/project/" class="tag">#project</a>
       
@@ -206,7 +206,7 @@
 
 
 <section class="related-posts">
-  <h3 class="related-title">YOU MIGHT ALSO LIKE...</h3>
+  <h2 class="related-title">YOU MIGHT ALSO LIKE...</h2>
   <div class="cards-grid cards-grid-related">
     
       

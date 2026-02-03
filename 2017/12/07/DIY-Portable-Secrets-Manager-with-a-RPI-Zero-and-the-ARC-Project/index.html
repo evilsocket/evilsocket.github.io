@@ -42,7 +42,7 @@ I need to store safely (encrypted) my passwords">
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"},"headline":"DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC","description":"For the last few days I’ve been working on a new project which I developed for very specific needs and reasons: I need to store safely (encrypted) my passwords,","image":"https://www.evilsocket.nethttps://i.imgur.com/NvLlafA.png","datePublished":"2017-12-07T16:42:48.000Z","dateModified":"2025-12-19T18:35:53.163Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"]},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"go, golang, project release, oss, arc, arcd, passwords, secrets, notes, password manager, encryption, aes, raspberry pi, portable hacking, self-hosted","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/12/07/DIY-Portable-Secrets-Manager-with-a-RPI-Zero-and-the-ARC-Project/"},"headline":"DIY Portable Secrets Manager With a Raspberry Pi Zero and ARC","description":"For the last few days I’ve been working on a new project which I developed for very specific needs and reasons: I need to store safely (encrypted) my passwords,","image":"https://www.evilsocket.nethttps://i.imgur.com/NvLlafA.png","datePublished":"2017-12-07T16:42:48.000Z","dateModified":"2025-12-19T18:35:53.163Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"go, golang, project release, oss, arc, arcd, passwords, secrets, notes, password manager, encryption, aes, raspberry pi, portable hacking, self-hosted","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -160,7 +160,7 @@ I need to store safely (encrypted) my passwords">
 <div style="clear:both;"></div>
 
 <p>The idea is to use <em>the Arc</em>&trade; as a single manager for your passwords, encrypted notes, files and <code>-all the secret things here-</code> while hosting <code>arcd</code> yourself on some spare hardware like a Raspberry Pi and accessing <code>arc</code> from every device with a modern browser, so let’s see how to configure it on a Raspberry Pi Zero in order to have a secure and portable setup for your secrets! :D</p>
-<h2 id="Hardware-Setup"><a href="#Hardware-Setup" class="headerlink" title="Hardware Setup"></a>Hardware Setup</h2><pre><code>The following instructions are Raspberry Pi Zero specific, but the same procedure should work on any similar hardware ( like another RPi or the USB Armory for instance ), the RPiZ is just what I found to be more convenient and cheap.</code></pre>
+<h2 class="heading-anchor" id="Hardware-Setup"><a href="#Hardware-Setup" class="anchor-link" aria-hidden="true">#</a><a href="#Hardware-Setup" class="headerlink" title="Hardware Setup"></a>Hardware Setup</h2><pre><code>The following instructions are Raspberry Pi Zero specific, but the same procedure should work on any similar hardware ( like another RPi or the USB Armory for instance ), the RPiZ is just what I found to be more convenient and cheap.</code></pre>
 <p>First of all, format a micro sd card and install Raspbian on it as usual (download iso, verify, dd, mount), next we need to apply a few tweaks in order to enable ethernet connectivity over its USB port.</p>
 <p>With the RPi <code>boot</code> partition mounted, edit the <code>/path/to/pi/boot/config.txt</code> and append:</p>
 <pre><code>dtoverlay=dwc2</code></pre>
@@ -175,7 +175,7 @@ I need to store safely (encrypted) my passwords">
 <p>Let’s finish the setup of the board, connect to it via SSH:</p>
 <pre><code>ssh pi@raspberrypi.local</code></pre>
 <p>Expand the filesystem as usual, <strong>change the default SSH password</strong>, enable <strong>private key only SSH authentication</strong>, copy your certificate, etc … as for the hardware part, we’re ready :)</p>
-<h2 id="Software-Setup"><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h2><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage">follow the instructions on the repository</a> to compile the server.</p>
+<h2 class="heading-anchor" id="Software-Setup"><a href="#Software-Setup" class="anchor-link" aria-hidden="true">#</a><a href="#Software-Setup" class="headerlink" title="Software Setup"></a>Software Setup</h2><p>The easiest way for now is to build the <code>arcd</code> server directly on a Raspberry Pi in order to produce an <code>ARMv6</code> binary, once you installed Go on the RPi (not necessarily the one you’re going to use as the secrets store) just <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc#usages://github.com/evilsocket/arc#usage">follow the instructions on the repository</a> to compile the server.</p>
 <p>Once you compiled it, edit the configuration file:</p>
 <pre><code>cd /path/to/arc/repo/arcd
 cp sample_config.json config.json
@@ -191,7 +191,7 @@ mv arcd_arm arcd
 ./arcd -config config.json -app arc</code></pre>
 <p>Open the browser and go to <code>http://raspberrypi.local:8080/</code>, you should now be able to login and use ARC whenever you plug your RPi Zero to the USB port :)</p>
 <p>( Make sure to start <code>arcd</code> at boot by editing <code>/etc/rc.local</code> or whatever )</p>
-<h2 id="Security-considerations"><a href="#Security-considerations" class="headerlink" title="Security considerations"></a>Security considerations</h2><ul>
+<h2 class="heading-anchor" id="Security-considerations"><a href="#Security-considerations" class="anchor-link" aria-hidden="true">#</a><a href="#Security-considerations" class="headerlink" title="Security considerations"></a>Security considerations</h2><ul>
 <li><p>It should be obvious, but physically isolated data on dedicated hardware is safer.</p>
 </li>
 <li><p>All the data is encrypted client side, which means everything that is stored physically on the RPiZ is encrypted with <code>AES</code>, make sure to use a strong encryption key, the stronger the key, the safer the data will be in case you lose the hardware.</p>
@@ -207,13 +207,13 @@ mv arcd_arm arcd
 <li><p>Elements can be configured with an expiration date, using it is a good way to remember how old a given password is and have some sort of reminder when it’s time to change it (or just encrypted reminders ^_^).</p>
 </li>
 </ul>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The project is <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc">available on my github</a> as usual, there’s still <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc/milestone/1">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
+<h2 class="heading-anchor" id="Conclusion"><a href="#Conclusion" class="anchor-link" aria-hidden="true">#</a><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>The project is <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc">available on my github</a> as usual, there’s still <a target="_blank" rel="noopener" href="https://github.com/evilsocket/arc/milestone/1">some work left to do</a> before it reaches the first stable release, but I’m close :)</p>
 <p>Stay safe, have fun and …</p>
 <p align="center">
     <img src="https://i.imgur.com/h5cpCeN.png" alt="Encrypt all the things!"/>
 </p>
 
-<h2 id="One-last-thing-…"><a href="#One-last-thing-…" class="headerlink" title="One last thing …"></a>One last thing …</h2><p>Yes, it works with smartphones and tablets in OTG mode :)</p>
+<h2 class="heading-anchor" id="One-last-thing-…"><a href="#One-last-thing-…" class="anchor-link" aria-hidden="true">#</a><a href="#One-last-thing-…" class="headerlink" title="One last thing …"></a>One last thing …</h2><p>Yes, it works with smartphones and tablets in OTG mode :)</p>
 
   </div>
 
@@ -274,7 +274,7 @@ mv arcd_arm arcd
 
 
 <section class="related-posts">
-  <h3 class="related-title">YOU MIGHT ALSO LIKE...</h3>
+  <h2 class="related-title">YOU MIGHT ALSO LIKE...</h2>
   <div class="cards-grid cards-grid-related">
     
       
