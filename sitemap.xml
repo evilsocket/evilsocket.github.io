@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
+    <loc>https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/</loc>
     
     <lastmod>2025-12-19</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2017/09/23/This-is-not-a-post-about-BLE-introducing-BLEAH/</loc>
+    <loc>https://www.evilsocket.net/2017/01/14/Thoughts-on-WhatsApp-E2E-Encryption-AKA-Security-is-real-only-if-it-s-the-default/</loc>
     
     <lastmod>2025-12-19</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/</loc>
+    <loc>https://www.evilsocket.net/2020/05/26/Just-taking-a-break/</loc>
     
     <lastmod>2025-12-19</lastmod>
     
@@ -209,7 +209,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2020/05/26/Just-taking-a-break/</loc>
+    <loc>https://www.evilsocket.net/2016/10/09/IoCOFFEE-Reversing-the-Smarter-Coffee-IoT-machine-protocol-to-make-coffee-using-terminal/</loc>
     
     <lastmod>2025-12-19</lastmod>
     
@@ -290,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/</loc>
+    <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
     
     <lastmod>2025-12-19</lastmod>
     
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/2016/05/08/Hacking-Yourself-out-of-the-Banking-System-and-Live-only-on-BitCoins/</loc>
+    <loc>https://www.evilsocket.net/2021/02/13/Hide-your-servers-in-plain-sight-presenting-ShieldWall/</loc>
     
     <lastmod>2025-12-19</lastmod>
     
@@ -791,6 +791,237 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/hooking/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/api-hooking/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/library/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/injection/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/elf-relocation/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/arm/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/elf/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/open/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/dalvik/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/plt/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/relocation/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/relocation-table/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/symtab/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/strtab/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/code-injection/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/binary-analysis/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/runtime-manipulation/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/reversing/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/apk/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/dex/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/re/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/IDA/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/Hopper/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/JADX/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/apktool/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/JD-GUI/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/Dex2Jar/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/Frida/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/XPosed/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/Framework/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/static-analysis/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/tutorial/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/decompilation/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/cups/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -945,125 +1176,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/reversing/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/apk/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/dalvik/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/dex/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/re/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/IDA/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/Hopper/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/JADX/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/apktool/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/JD-GUI/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/Dex2Jar/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/Frida/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/XPosed/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/Framework/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/static-analysis/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/tutorial/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/decompilation/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/hack/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -1107,118 +1219,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/CVE-2012-6636/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/hooking/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/api-hooking/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/library/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/injection/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/elf-relocation/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/arm/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/elf/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/open/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/plt/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/relocation/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/relocation-table/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/symtab/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/strtab/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/code-injection/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/binary-analysis/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/runtime-manipulation/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1568,6 +1568,34 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/ptrace/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/remote-injection/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/library-injection/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/registers/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/rust/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -1841,34 +1869,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/ptrace/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/remote-injection/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/library-injection/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/registers/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/afl/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -1960,6 +1960,55 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/programming/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/developing/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/design-patterns/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/oop/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/language-critique/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/software-development/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/opinion/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/bitcoin/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -2045,55 +2094,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/osint/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/programming/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/developing/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/design-patterns/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/oop/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/language-critique/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/software-development/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/opinion/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2212,62 +2212,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/emulator/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/mobile/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/obfuscation/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/python/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/emulation/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/smali/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/anti-tampering/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/deobfuscation/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/telcos/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -2367,6 +2311,62 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/default-credentials/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/emulator/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/mobile/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/obfuscation/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/python/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/emulation/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/smali/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/anti-tampering/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/deobfuscation/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2542,76 +2542,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/telecom-security/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/ssdt/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/kernel/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/win32/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/obcallbacks/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/ntoskrnl/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/cr0/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/windows-internals/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/kernel-security/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/driver-development/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/rootkit-techniques/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2968,6 +2898,76 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/ssdt/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/kernel/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/win32/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/obcallbacks/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/ntoskrnl/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/cr0/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/windows-internals/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/kernel-security/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/driver-development/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/rootkit-techniques/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/sms/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -3227,55 +3227,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/coffee/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/nerd/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/smarter-coffee/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/binary-protocol/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/reversed/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/protocol-reversing/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/tcp-protocol/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/personal-life/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -3333,6 +3284,55 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/hacker-culture/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/coffee/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/nerd/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/smarter-coffee/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/binary-protocol/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/reversed/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/protocol-reversing/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/tcp-protocol/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3535,62 +3535,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/convolutional-neural-networks/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/cnn/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/cudnn/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/planes-detector/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/planes/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/planesnet/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/image-classification/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/computer-vision/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/tib/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -3676,6 +3620,62 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/kernel-mode/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/convolutional-neural-networks/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/cnn/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/cudnn/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/planes-detector/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/planes/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/planesnet/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/image-classification/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/computer-vision/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4347,27 +4347,6 @@
   </url>
   
   <url>
-    <loc>https://www.evilsocket.net/tags/terramaster/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/nas/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/php-security/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.evilsocket.net/tags/security/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -4536,6 +4515,34 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/terramaster/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/nas/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/php-security/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/bleah/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/whatsapp/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -4579,13 +4586,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/signal-protocol/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/bleah/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -4683,6 +4683,20 @@
   </url>
   
   <url>
+    <loc>https://www.evilsocket.net/tags/learning/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.evilsocket.net/tags/computer-science/</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.evilsocket.net/tags/pwnagotchi/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -4705,20 +4719,6 @@
   
   <url>
     <loc>https://www.evilsocket.net/tags/handshakes/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/learning/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.evilsocket.net/tags/computer-science/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

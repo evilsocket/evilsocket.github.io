@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/02/01/How-to-hook-Win32-API-with-kernel-patching/"},"headline":"How to Hook Win32 API With Kernel Patching","description":"This post is about SSDT patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.SSD","image":"https://www.evilsocket.net/images/2014/Feb/KeServiceDescriptorTable_export.png","datePublished":"2014-02-01T18:59:55.000Z","dateModified":"2014-02-03T13:25:15.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"hack, hooking, ssdt, kernel, win32, obcallbacks, ntoskrnl, cr0, windows internals, kernel security, driver development, rootkit techniques","articleSection":"Technology","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/02/01/How-to-hook-Win32-API-with-kernel-patching/"},"headline":"How to Hook Win32 API With Kernel Patching","description":"This post is about SSDT patching to perform API hooking within the kernel instead of the classic user mode hooking using remote threads and things like that.SSD","image":"https://www.evilsocket.net/images/2014/Feb/KeServiceDescriptorTable_export.png","datePublished":"2014-02-01T18:59:55.000Z","dateModified":"2014-02-03T13:25:15.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher and open-source developer","url":"https://www.evilsocket.net","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/"],"jobTitle":"Security Researcher","worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"hooking, hack, ssdt, kernel, win32, obcallbacks, ntoskrnl, cr0, windows internals, kernel security, driver development, rootkit techniques","articleSection":"Technology","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2014-02-01T18:59:55.000Z">1 Feb 2014</time>
       
-        — <a href="/tags/hack/" class="post-category">hack</a>, <a href="/tags/hooking/" class="post-category">hooking</a>, <a href="/tags/ssdt/" class="post-category">ssdt</a>, <a href="/tags/kernel/" class="post-category">kernel</a>, <a href="/tags/win32/" class="post-category">win32</a>, <a href="/tags/obcallbacks/" class="post-category">obcallbacks</a>, <a href="/tags/ntoskrnl/" class="post-category">ntoskrnl</a>, <a href="/tags/cr0/" class="post-category">cr0</a>, <a href="/tags/windows-internals/" class="post-category">windows internals</a>, <a href="/tags/kernel-security/" class="post-category">kernel security</a>, <a href="/tags/driver-development/" class="post-category">driver development</a>, <a href="/tags/rootkit-techniques/" class="post-category">rootkit techniques</a>
+        — <a href="/tags/hooking/" class="post-category">hooking</a>, <a href="/tags/hack/" class="post-category">hack</a>, <a href="/tags/ssdt/" class="post-category">ssdt</a>, <a href="/tags/kernel/" class="post-category">kernel</a>, <a href="/tags/win32/" class="post-category">win32</a>, <a href="/tags/obcallbacks/" class="post-category">obcallbacks</a>, <a href="/tags/ntoskrnl/" class="post-category">ntoskrnl</a>, <a href="/tags/cr0/" class="post-category">cr0</a>, <a href="/tags/windows-internals/" class="post-category">windows internals</a>, <a href="/tags/kernel-security/" class="post-category">kernel security</a>, <a href="/tags/driver-development/" class="post-category">driver development</a>, <a href="/tags/rootkit-techniques/" class="post-category">rootkit techniques</a>
       
     </div>
     <br/>
@@ -135,9 +135,9 @@
   
     <div class="post-tags">
       
-        <a href="/tags/hack/" class="tag">#hack</a>
-      
         <a href="/tags/hooking/" class="tag">#hooking</a>
+      
+        <a href="/tags/hack/" class="tag">#hack</a>
       
         <a href="/tags/ssdt/" class="tag">#ssdt</a>
       
