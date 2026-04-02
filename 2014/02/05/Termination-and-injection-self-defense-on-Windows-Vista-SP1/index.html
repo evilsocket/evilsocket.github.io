@@ -36,7 +36,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/02/05/Termination-and-injection-self-defense-on-Windows-Vista-SP1/"},"headline":"Termination and Injection Self Defense on Windows &gt;= Vista SP1","description":"On a previous post I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.Today I’m go","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2014-02-05T21:08:04.000Z","dateModified":"2014-05-19T20:56:10.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"api hooking, anti-tampering, kernel, obcallbacks, windows internals, kernel security, driver development, ObRegisterCallbacks, driver, process protection, self protection, memory injection, Windows, security","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/02/05/Termination-and-injection-self-defense-on-Windows-Vista-SP1/"},"headline":"Termination and Injection Self Defense on Windows &gt;= Vista SP1","description":"On a previous post I’ve talked about how to perform API hooking at kernel level on 32bit Windows systems to prevent a process from being terminated.Today I’m go","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2014-02-05T21:08:04.000Z","dateModified":"2014-05-19T20:56:10.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"api hooking, anti-tampering, kernel, obcallbacks, windows internals, kernel security, driver development, security, ObRegisterCallbacks, driver, process protection, self protection, memory injection, Windows","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +98,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2014-02-05T21:08:04.000Z">5 Feb 2014</time>
       
-        — <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/anti-tampering/" class="post-category">anti-tampering</a>, <a href="/tags/kernel/" class="post-category">kernel</a>, <a href="/tags/obcallbacks/" class="post-category">obcallbacks</a>, <a href="/tags/windows-internals/" class="post-category">windows internals</a>, <a href="/tags/kernel-security/" class="post-category">kernel security</a>, <a href="/tags/driver-development/" class="post-category">driver development</a>, <a href="/tags/ObRegisterCallbacks/" class="post-category">ObRegisterCallbacks</a>, <a href="/tags/driver/" class="post-category">driver</a>, <a href="/tags/process-protection/" class="post-category">process protection</a>, <a href="/tags/self-protection/" class="post-category">self protection</a>, <a href="/tags/memory-injection/" class="post-category">memory injection</a>, <a href="/tags/Windows/" class="post-category">Windows</a>, <a href="/tags/security/" class="post-category">security</a>
+        — <a href="/tags/api-hooking/" class="post-category">api hooking</a>, <a href="/tags/anti-tampering/" class="post-category">anti-tampering</a>, <a href="/tags/kernel/" class="post-category">kernel</a>, <a href="/tags/obcallbacks/" class="post-category">obcallbacks</a>, <a href="/tags/windows-internals/" class="post-category">windows internals</a>, <a href="/tags/kernel-security/" class="post-category">kernel security</a>, <a href="/tags/driver-development/" class="post-category">driver development</a>, <a href="/tags/security/" class="post-category">security</a>, <a href="/tags/ObRegisterCallbacks/" class="post-category">ObRegisterCallbacks</a>, <a href="/tags/driver/" class="post-category">driver</a>, <a href="/tags/process-protection/" class="post-category">process protection</a>, <a href="/tags/self-protection/" class="post-category">self protection</a>, <a href="/tags/memory-injection/" class="post-category">memory injection</a>, <a href="/tags/Windows/" class="post-category">Windows</a>
       
     </div>
     <br/>
@@ -150,6 +150,8 @@
       
         <a href="/tags/driver-development/" class="tag">#driver development</a>
       
+        <a href="/tags/security/" class="tag">#security</a>
+      
         <a href="/tags/ObRegisterCallbacks/" class="tag">#ObRegisterCallbacks</a>
       
         <a href="/tags/driver/" class="tag">#driver</a>
@@ -161,8 +163,6 @@
         <a href="/tags/memory-injection/" class="tag">#memory injection</a>
       
         <a href="/tags/Windows/" class="tag">#Windows</a>
-      
-        <a href="/tags/security/" class="tag">#security</a>
       
     </div>
   
@@ -194,21 +194,41 @@
       
 
 <article class="card card-light">
-  <a href="/2025/12/18/TP-Link-Tapo-C200-Hardcoded-Keys-Buffer-Overflows-and-Privacy-in-the-Era-of-AI-Assisted-Reverse-Engineering/" class="card-link">
+  <a href="/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/" class="card-link">
     
-      <div class="card-image" style="background-image: url('/images/2025/tapo/header.jpg')">
+      <div class="card-image" style="background-image: url('/images/2026/mongoose/cesanta_logo.png')">
         
       </div>
     
     
     
       <div class="card-content">
-        <h2 class="card-title">TP-Link Tapo C200: Hardcoded Keys, Buffer Overflows and Privacy in the Era of AI Assisted Reverse Engineering</h2>
+        <h2 class="card-title">Mongoose Preauth RCE and mTLS Bypass on Millions of Devices</h2>
         
         <div class="card-footer">
           <span class="card-read-more">READ MORE</span>
         </div>
       </div>
+    
+  </a>
+</article>
+
+    
+      
+
+<article class="card card-overlay">
+  <a href="/2025/12/18/TP-Link-Tapo-C200-Hardcoded-Keys-Buffer-Overflows-and-Privacy-in-the-Era-of-AI-Assisted-Reverse-Engineering/" class="card-link">
+    
+      <div class="card-image" style="background-image: url('/images/2025/tapo/header.jpg')">
+        
+          <div class="card-overlay-content">
+            <h2 class="card-title">TP-Link Tapo C200: Hardcoded Keys, Buffer Overflows and Privacy in the Era of AI Assisted Reverse Engineering</h2>
+            <span class="card-read-more">READ MORE</span>
+          </div>
+        
+      </div>
+    
+    
     
   </a>
 </article>
@@ -236,37 +256,17 @@
     
       
 
-<article class="card card-overlay">
+<article class="card card-light">
   <a href="/2016/01/28/Why-you-shouldn-t-trust-CloudFlare-s-Flexible-SSL-and-how-to-bypass-it-with-BetterCap/" class="card-link">
     
       <div class="card-image" style="background-image: url('/images/2016/01/Schermata-2016-01-28-alle-18-08-27.png')">
-        
-          <div class="card-overlay-content">
-            <h2 class="card-title">Why You Shouldn&#39;t Trust CloudFlare&#39;s &#39;Flexible SSL&#39; and How to Bypass It With BetterCap</h2>
-            <span class="card-read-more">READ MORE</span>
-          </div>
-        
-      </div>
-    
-    
-    
-  </a>
-</article>
-
-    
-      
-
-<article class="card card-light">
-  <a href="/2015/05/04/Android-Native-API-Hooking-with-Library-Injection-and-ELF-Introspection/" class="card-link">
-    
-      <div class="card-image" style="background-image: url('/images/default-cover.svg')">
         
       </div>
     
     
     
       <div class="card-content">
-        <h2 class="card-title">Android Native API Hooking With Library Injection and ELF Introspection.</h2>
+        <h2 class="card-title">Why You Shouldn&#39;t Trust CloudFlare&#39;s &#39;Flexible SSL&#39; and How to Bypass It With BetterCap</h2>
         
         <div class="card-footer">
           <span class="card-read-more">READ MORE</span>

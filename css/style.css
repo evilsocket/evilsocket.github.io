@@ -581,6 +581,31 @@ img {
   background: transparent;
 }
 
+/* Syntax highlighting token colors (One Dark inspired) */
+.post-content figure.highlight .keyword { color: #c678dd; }
+.post-content figure.highlight .built_in { color: #e6c07b; }
+.post-content figure.highlight .type { color: #e6c07b; }
+.post-content figure.highlight .literal { color: #d19a66; }
+.post-content figure.highlight .number { color: #d19a66; }
+.post-content figure.highlight .string { color: #98c379; }
+.post-content figure.highlight .comment { color: #5c6370; font-style: italic; }
+.post-content figure.highlight .function { color: #61afef; }
+.post-content figure.highlight .title { color: #61afef; }
+.post-content figure.highlight .params { color: #abb2bf; }
+.post-content figure.highlight .meta { color: #56b6c2; }
+.post-content figure.highlight .attr { color: #d19a66; }
+.post-content figure.highlight .attribute { color: #d19a66; }
+.post-content figure.highlight .tag { color: #e06c75; }
+.post-content figure.highlight .name { color: #e06c75; }
+.post-content figure.highlight .variable { color: #e06c75; }
+.post-content figure.highlight .symbol { color: #56b6c2; }
+.post-content figure.highlight .selector-class { color: #e6c07b; }
+.post-content figure.highlight .selector-id { color: #61afef; }
+.post-content figure.highlight .regexp { color: #98c379; }
+.post-content figure.highlight .addition { color: #98c379; }
+.post-content figure.highlight .deletion { color: #e06c75; }
+.post-content figure.highlight .subst { color: #e06c75; }
+
 /* Single line code blocks without line numbers */
 .post-content .highlight:not(figure) {
   background: #1a1a2e;
