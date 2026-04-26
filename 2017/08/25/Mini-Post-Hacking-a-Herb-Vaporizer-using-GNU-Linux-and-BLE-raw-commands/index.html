@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
+
 <title>Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely | evilsocket</title>
-<meta name="description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Cr">
+<meta name="description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy C…">
+<link rel="canonical" href="https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/">
 
 
   <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
@@ -16,9 +19,9 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely">
-<meta property="og:description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Cr">
-<meta property="og:url" content="/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/">
+<meta property="og:title" content="Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely | evilsocket">
+<meta property="og:description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy C…">
+<meta property="og:url" content="https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/">
 <meta property="og:site_name" content="evilsocket">
 
   
@@ -29,14 +32,14 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely">
-<meta name="twitter:description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Cr">
+<meta name="twitter:title" content="Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely | evilsocket">
+<meta name="twitter:description" content="Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy C…">
 
 <!-- Schema.org JSON-LD -->
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/"},"headline":"Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely","description":"Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Cr","image":"https://www.evilsocket.net/images/2017/08/ble_1.png","datePublished":"2017-08-25T01:10:53.000Z","dateModified":"2025-12-19T18:35:53.164Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"ble, hacking, linux, embedded devices, iot security, protocol reversing, btle, bluetooth, bluetooth low energy, low energy, terminal, crafty vaporizer, crafty, vaporizer, no authentication","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2017/08/25/Mini-Post-Hacking-a-Herb-Vaporizer-using-GNU-Linux-and-BLE-raw-commands/"},"headline":"Hacking a Herb Vaporizer to Set Its Temperature Limit From 190C to 6553.5C Remotely","description":"Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a new short adventure in the Bluetooth Low Energy world. I’m a happy Cr","image":"https://www.evilsocket.net/images/2017/08/ble_1.png","datePublished":"2017-08-25T01:10:53.000Z","dateModified":"2026-04-26T16:57:21.817Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"ble, hacking, linux, embedded devices, iot security, protocol reversing, btle, bluetooth, bluetooth low energy, low energy, terminal, crafty vaporizer, crafty, vaporizer, no authentication","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -106,7 +109,7 @@
   </header>
 
   <div class="post-content">
-    <p>Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a <a href="/2015/01/29/nike-fuelband-se-ble-protocol-reversed/">new</a> short adventure in the <strong>Bluetooth Low Energy</strong> world. I’m a happy <a target="_blank" rel="noopener" href="https://www.storz-bickel.com/eu/en/crafty.html">Crafty</a> vaporizer owner and as I discovered by chance, I can access it using my laptop.</p>
+    <p>Tonight my brain decided, instead of sleeping (why even bother trying, right?), to start a <a href="/2015/01/29/Nike-FuelBand-SE-BLE-Protocol-Reversed/">new</a> short adventure in the <strong>Bluetooth Low Energy</strong> world. I’m a happy <a target="_blank" rel="noopener" href="https://www.storz-bickel.com/eu/en/crafty.html">Crafty</a> vaporizer owner and as I discovered by chance, I can access it using my laptop.</p>
 <p><img src="/images/2017/08/ble_1.png" alt="ble_1"></p>
 <span id="more"></span>
 

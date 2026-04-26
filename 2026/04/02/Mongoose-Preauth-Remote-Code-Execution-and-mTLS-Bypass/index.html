@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
+
 <title>Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices | evilsocket</title>
-<meta name="description" content="">
+<meta name="description" content="So, Mongoose. If you’ve never heard of it, you’ve almost certainly used a device that runs it. It’s a single-file, cross-platform embedded network library writ…">
+<link rel="canonical" href="https://www.evilsocket.net/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/">
 
 
   <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
@@ -16,9 +19,9 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices">
-<meta property="og:description" content="">
-<meta property="og:url" content="/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/">
+<meta property="og:title" content="Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices | evilsocket">
+<meta property="og:description" content="So, Mongoose. If you’ve never heard of it, you’ve almost certainly used a device that runs it. It’s a single-file, cross-platform embedded network library writ…">
+<meta property="og:url" content="https://www.evilsocket.net/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/">
 <meta property="og:site_name" content="evilsocket">
 
   
@@ -29,14 +32,14 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices | evilsocket">
+<meta name="twitter:description" content="So, Mongoose. If you’ve never heard of it, you’ve almost certainly used a device that runs it. It’s a single-file, cross-platform embedded network library writ…">
 
 <!-- Schema.org JSON-LD -->
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/"},"headline":"Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices","description":"","image":"https://www.evilsocket.net/images/2026/mongoose/cesanta_logo.png","datePublished":"2026-04-01T22:00:00.000Z","dateModified":"2026-04-02T12:43:46.150Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"rce, exploit, responsible disclosure, vulnerability research, cve, tls, embedded devices, iot security, security, iot, mongoose, cesanta, embedded, mips, mtls, mdns, buffer overflow, heap overflow, stack overflow, authentication bypass, industrial control, CVE-2026-5244, CVE-2026-5245, CVE-2026-5246","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2026/04/02/Mongoose-Preauth-Remote-Code-Execution-and-mTLS-Bypass/"},"headline":"Mongoose: Preauth RCE and mTLS Bypass on Millions of Devices","description":"","image":"https://www.evilsocket.net/images/2026/mongoose/cesanta_logo.png","datePublished":"2026-04-01T22:00:00.000Z","dateModified":"2026-04-02T12:43:46.150Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"cve, rce, exploit, responsible disclosure, vulnerability research, tls, embedded devices, iot security, security, iot, mongoose, cesanta, embedded, mips, mtls, mdns, buffer overflow, heap overflow, stack overflow, authentication bypass, industrial control, CVE-2026-5244, CVE-2026-5245, CVE-2026-5246","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +101,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2026-04-01T22:00:00.000Z">2 Apr 2026</time>
       
-        — <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/responsible-disclosure/" class="post-category">responsible disclosure</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/cve/" class="post-category">cve</a>, <a href="/tags/tls/" class="post-category">tls</a>, <a href="/tags/embedded-devices/" class="post-category">embedded devices</a>, <a href="/tags/iot-security/" class="post-category">iot security</a>, <a href="/tags/security/" class="post-category">security</a>, <a href="/tags/iot/" class="post-category">iot</a>, <a href="/tags/mongoose/" class="post-category">mongoose</a>, <a href="/tags/cesanta/" class="post-category">cesanta</a>, <a href="/tags/embedded/" class="post-category">embedded</a>, <a href="/tags/mips/" class="post-category">mips</a>, <a href="/tags/mtls/" class="post-category">mtls</a>, <a href="/tags/mdns/" class="post-category">mdns</a>, <a href="/tags/buffer-overflow/" class="post-category">buffer overflow</a>, <a href="/tags/heap-overflow/" class="post-category">heap overflow</a>, <a href="/tags/stack-overflow/" class="post-category">stack overflow</a>, <a href="/tags/authentication-bypass/" class="post-category">authentication bypass</a>, <a href="/tags/industrial-control/" class="post-category">industrial control</a>, <a href="/tags/CVE-2026-5244/" class="post-category">CVE-2026-5244</a>, <a href="/tags/CVE-2026-5245/" class="post-category">CVE-2026-5245</a>, <a href="/tags/CVE-2026-5246/" class="post-category">CVE-2026-5246</a>
+        — <a href="/tags/cve/" class="post-category">cve</a>, <a href="/tags/rce/" class="post-category">rce</a>, <a href="/tags/exploit/" class="post-category">exploit</a>, <a href="/tags/responsible-disclosure/" class="post-category">responsible disclosure</a>, <a href="/tags/vulnerability-research/" class="post-category">vulnerability research</a>, <a href="/tags/tls/" class="post-category">tls</a>, <a href="/tags/embedded-devices/" class="post-category">embedded devices</a>, <a href="/tags/iot-security/" class="post-category">iot security</a>, <a href="/tags/security/" class="post-category">security</a>, <a href="/tags/iot/" class="post-category">iot</a>, <a href="/tags/mongoose/" class="post-category">mongoose</a>, <a href="/tags/cesanta/" class="post-category">cesanta</a>, <a href="/tags/embedded/" class="post-category">embedded</a>, <a href="/tags/mips/" class="post-category">mips</a>, <a href="/tags/mtls/" class="post-category">mtls</a>, <a href="/tags/mdns/" class="post-category">mdns</a>, <a href="/tags/buffer-overflow/" class="post-category">buffer overflow</a>, <a href="/tags/heap-overflow/" class="post-category">heap overflow</a>, <a href="/tags/stack-overflow/" class="post-category">stack overflow</a>, <a href="/tags/authentication-bypass/" class="post-category">authentication bypass</a>, <a href="/tags/industrial-control/" class="post-category">industrial control</a>, <a href="/tags/CVE-2026-5244/" class="post-category">CVE-2026-5244</a>, <a href="/tags/CVE-2026-5245/" class="post-category">CVE-2026-5245</a>, <a href="/tags/CVE-2026-5246/" class="post-category">CVE-2026-5246</a>
       
     </div>
     <br/>
@@ -193,6 +196,8 @@
   
     <div class="post-tags">
       
+        <a href="/tags/cve/" class="tag">#cve</a>
+      
         <a href="/tags/rce/" class="tag">#rce</a>
       
         <a href="/tags/exploit/" class="tag">#exploit</a>
@@ -200,8 +205,6 @@
         <a href="/tags/responsible-disclosure/" class="tag">#responsible disclosure</a>
       
         <a href="/tags/vulnerability-research/" class="tag">#vulnerability research</a>
-      
-        <a href="/tags/cve/" class="tag">#cve</a>
       
         <a href="/tags/tls/" class="tag">#tls</a>
       

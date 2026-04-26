@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+
+
 <title>Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does. | evilsocket</title>
-<meta name="description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able ">
+<meta name="description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able…">
+<link rel="canonical" href="https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/">
 
 
   <link rel="alternate" href="/atom.xml" title="evilsocket" type="application/atom+xml">
@@ -16,9 +19,9 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.">
-<meta property="og:description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able ">
-<meta property="og:url" content="/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/">
+<meta property="og:title" content="Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does. | evilsocket">
+<meta property="og:description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able…">
+<meta property="og:url" content="https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/">
 <meta property="og:site_name" content="evilsocket">
 
   
@@ -29,14 +32,14 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.">
-<meta name="twitter:description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able ">
+<meta name="twitter:title" content="Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does. | evilsocket">
+<meta name="twitter:description" content="Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able…">
 
 <!-- Schema.org JSON-LD -->
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/"},"headline":"Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.","description":"Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able ","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2014-03-11T22:50:48.000Z","dateModified":"2014-03-13T00:47:02.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"reversing, static analysis, binary analysis, x86, libpe, ida, distorm, subroutines, routines, functions, disassembly, code analysis","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2014/03/11/Programmatically-identifying-and-isolating-functions-inside-executables-like-IDA-does/"},"headline":"Programmatically Identifying and Isolating Functions Inside Executables Like IDA Does.","description":"Even though it’s one of the tools I use on a daily basis, Hex-Rays IDA always fascinates me for its completeness and the huge amount of informations it is able ","image":"https://www.evilsocket.net/images/default-cover.svg","datePublished":"2014-03-11T22:50:48.000Z","dateModified":"2014-03-13T00:47:02.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"reversing, ida, static analysis, binary analysis, x86, libpe, distorm, subroutines, routines, functions, disassembly, code analysis","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -98,7 +101,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2014-03-11T22:50:48.000Z">11 Mar 2014</time>
       
-        — <a href="/tags/reversing/" class="post-category">reversing</a>, <a href="/tags/static-analysis/" class="post-category">static analysis</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/x86/" class="post-category">x86</a>, <a href="/tags/libpe/" class="post-category">libpe</a>, <a href="/tags/ida/" class="post-category">ida</a>, <a href="/tags/distorm/" class="post-category">distorm</a>, <a href="/tags/subroutines/" class="post-category">subroutines</a>, <a href="/tags/routines/" class="post-category">routines</a>, <a href="/tags/functions/" class="post-category">functions</a>, <a href="/tags/disassembly/" class="post-category">disassembly</a>, <a href="/tags/code-analysis/" class="post-category">code analysis</a>
+        — <a href="/tags/reversing/" class="post-category">reversing</a>, <a href="/tags/ida/" class="post-category">ida</a>, <a href="/tags/static-analysis/" class="post-category">static analysis</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/x86/" class="post-category">x86</a>, <a href="/tags/libpe/" class="post-category">libpe</a>, <a href="/tags/distorm/" class="post-category">distorm</a>, <a href="/tags/subroutines/" class="post-category">subroutines</a>, <a href="/tags/routines/" class="post-category">routines</a>, <a href="/tags/functions/" class="post-category">functions</a>, <a href="/tags/disassembly/" class="post-category">disassembly</a>, <a href="/tags/code-analysis/" class="post-category">code analysis</a>
       
     </div>
     <br/>
@@ -113,7 +116,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for all function offsets</span></span><br><span class="line"><span class="keyword">for</span> fn_ea <span class="keyword">in</span> Functions():</span><br><span class="line">  <span class="keyword">if</span> fn_ea == <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function from offset</span></span><br><span class="line">  f = idaapi.get_func(fn_ea)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># get function bytes</span></span><br><span class="line">  start = f.startEA</span><br><span class="line">  size = f.endEA - start</span><br><span class="line">  <span class="built_in">bytes</span> = GetManyBytes(start, size)</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
 
 <p>Wouldn’t be cool to have such features without the whole Python and IDA SDK distribution ? :)</p>
-<p>Actually this showed to be way much a simpler task than I’ve initially imagined, you only need a <a href="/2014/02/21/libpe-a-fast-pe32pe32-parsing-library/">good portable executable parsing library</a> and a fast disassembler library, for this purpose I’ve used <a target="_blank" rel="noopener" href="https://code.google.com/p/distorm/">Distorm</a> which is fast and easy to integrate.</p>
+<p>Actually this showed to be way much a simpler task than I’ve initially imagined, you only need a <a href="/2014/02/21/libpe-A-fast-PE32-PE32-parsing-library/">good portable executable parsing library</a> and a fast disassembler library, for this purpose I’ve used <a target="_blank" rel="noopener" href="https://code.google.com/p/distorm/">Distorm</a> which is fast and easy to integrate.</p>
 <p><strong>NOTE</strong></p>
 <p>A few smart people <a target="_blank" rel="noopener" href="http://www.reddit.com/r/ReverseEngineering/comments/206gs5/programmatically_identifying_and_isolating/">pointed out</a> that the following system is prone to false positives. <strong>This is totally true</strong>, I never claimed it to be a perfect approach, but just a proof of concept of what can be achieved using a couple of well written libraries and a few lines of C code.</p>
 <p>The main algorithm is very simple.</p>
@@ -142,6 +145,8 @@
       
         <a href="/tags/reversing/" class="tag">#reversing</a>
       
+        <a href="/tags/ida/" class="tag">#ida</a>
+      
         <a href="/tags/static-analysis/" class="tag">#static analysis</a>
       
         <a href="/tags/binary-analysis/" class="tag">#binary analysis</a>
@@ -149,8 +154,6 @@
         <a href="/tags/x86/" class="tag">#x86</a>
       
         <a href="/tags/libpe/" class="tag">#libpe</a>
-      
-        <a href="/tags/ida/" class="tag">#ida</a>
       
         <a href="/tags/distorm/" class="tag">#distorm</a>
       
