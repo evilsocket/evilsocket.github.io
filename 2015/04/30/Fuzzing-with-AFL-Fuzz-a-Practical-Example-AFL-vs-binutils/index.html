@@ -141,7 +141,7 @@ cp /bin/ps afl_in/</code></pre>
 <pre><code>cd ~/binutils-2.25
 afl-fuzz -i afl_in -o afl_out ./binutils/readelf -a @@</code></pre>
 <p>Eventually, we will start to see something like the following:</p>
-<p><img src="/images/2015/04/lop.png" alt="lop"></p>
+<p><img src="/images/2015/04/lop.png" alt="AFL fuzz status screen showing 8 unique crashes triggered against binutils readelf"></p>
 <p>As you can see, the red number <strong>8</strong> on the top right is the total number of <strong>unique</strong> crashes the system was able to trigger so far.<br>In the <strong>afl_out/crashes</strong> folder you will find the files that made readelf crash, for instance if I try to execute readelf against the first crashing sample ( inside GDB ), I get the following:</p>
 <pre><code>*** buffer overflow detected ***: /home/evilsocket/binutils-2.25/binutils/readelf terminated
 ======= Backtrace: =========

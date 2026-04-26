@@ -39,7 +39,7 @@
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/05/02/Using-ARM-Inline-Assembly-and-Naked-Functions-to-fool-Disassemblers/"},"headline":"Using ARM Inline Assembly and Naked Functions to Fool Disassemblers","description":"On this post I want to share a simple trick I learned a while ago, it’s nothing special but if you think about it, it’s quite nice :) Sometimes we want to obfus","image":"https://www.evilsocket.net/images/2015/05/hopper.png","datePublished":"2015-05-02T14:37:19.000Z","dateModified":"2015-05-10T13:34:23.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"mobile security, ida, hopper, arm, binary analysis, hack, obfuscation, assembly, naked functions, inline, inline assembly, disassembler, objdump, trick, anti-disassembly","articleSection":"Cybersecurity","inLanguage":"en"}
+{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.evilsocket.net/2015/05/02/Using-ARM-Inline-Assembly-and-Naked-Functions-to-fool-Disassemblers/"},"headline":"Using ARM Inline Assembly and Naked Functions to Fool Disassemblers","description":"On this post I want to share a simple trick I learned a while ago, it’s nothing special but if you think about it, it’s quite nice :) Sometimes we want to obfus","image":"https://www.evilsocket.net/images/2015/05/hopper.png","datePublished":"2015-05-02T14:37:19.000Z","dateModified":"2015-05-10T13:34:23.000Z","author":{"@type":"Person","name":"Simone Margaritelli","description":"Italian cybersecurity researcher, hacker, and open-source developer with over two decades of experience in network security, AI, and offensive security tools.","url":"https://www.evilsocket.net","image":"https://www.evilsocket.net/images/glider.png","sameAs":["https://github.com/evilsocket","https://twitter.com/evilsocket","http://it.linkedin.com/in/simonemargaritelli/","https://www.goodreads.com/evilsocket","https://www.patreon.com/evilsocket","https://keybase.io/evilsocket"],"jobTitle":"Security Researcher","knowsAbout":["Cybersecurity","Penetration Testing","Network Security","Reverse Engineering","Open Source Development","Wireless Security","Machine Learning","Go Programming","Python","C/C++"],"award":["Creator of bettercap","Creator of pwnagotchi","Creator of OpenSnitch","CVE-2024-47176 discoverer"],"worksFor":{"@type":"Organization","name":"Independent"}},"publisher":{"@type":"Organization","name":"evilsocket","url":"https://www.evilsocket.net","logo":{"@type":"ImageObject","url":"https://www.evilsocket.net/images/glider.png"}},"keywords":"mobile security, arm, binary analysis, hack, ida, hopper, obfuscation, assembly, naked functions, inline, inline assembly, disassembler, objdump, trick, anti-disassembly","articleSection":"Cybersecurity","inLanguage":"en"}
 </script>
 
 
@@ -101,7 +101,7 @@
       BY <span class="post-author">Simone Margaritelli</span>
       — <time datetime="2015-05-02T14:37:19.000Z">2 May 2015</time>
       
-        — <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/ida/" class="post-category">ida</a>, <a href="/tags/hopper/" class="post-category">hopper</a>, <a href="/tags/arm/" class="post-category">arm</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/hack/" class="post-category">hack</a>, <a href="/tags/obfuscation/" class="post-category">obfuscation</a>, <a href="/tags/assembly/" class="post-category">assembly</a>, <a href="/tags/naked-functions/" class="post-category">naked functions</a>, <a href="/tags/inline/" class="post-category">inline</a>, <a href="/tags/inline-assembly/" class="post-category">inline assembly</a>, <a href="/tags/disassembler/" class="post-category">disassembler</a>, <a href="/tags/objdump/" class="post-category">objdump</a>, <a href="/tags/trick/" class="post-category">trick</a>, <a href="/tags/anti-disassembly/" class="post-category">anti-disassembly</a>
+        — <a href="/tags/mobile-security/" class="post-category">mobile security</a>, <a href="/tags/arm/" class="post-category">arm</a>, <a href="/tags/binary-analysis/" class="post-category">binary analysis</a>, <a href="/tags/hack/" class="post-category">hack</a>, <a href="/tags/ida/" class="post-category">ida</a>, <a href="/tags/hopper/" class="post-category">hopper</a>, <a href="/tags/obfuscation/" class="post-category">obfuscation</a>, <a href="/tags/assembly/" class="post-category">assembly</a>, <a href="/tags/naked-functions/" class="post-category">naked functions</a>, <a href="/tags/inline/" class="post-category">inline</a>, <a href="/tags/inline-assembly/" class="post-category">inline assembly</a>, <a href="/tags/disassembler/" class="post-category">disassembler</a>, <a href="/tags/objdump/" class="post-category">objdump</a>, <a href="/tags/trick/" class="post-category">trick</a>, <a href="/tags/anti-disassembly/" class="post-category">anti-disassembly</a>
       
     </div>
     <br/>
@@ -166,7 +166,7 @@ the compiler to construct the requisite function declaration for the assembler.<
 <p>The following is a screenshot of the <strong>Hopper</strong> disassembler:</p>
 <p><img src="/images/2015/05/hopper.png" alt="Hopper"></p>
 <p>In this case we even get a totally different code … what about <strong>IDA</strong>, the state of the art disassembler?</p>
-<p><img src="/images/2015/05/ida.jpg" alt="ida"></p>
+<p><img src="/images/2015/05/ida.jpg" alt="IDA Pro disassembler view of the obfuscated naked function showing incorrect decompilation"></p>
 <p>Again different code :D</p>
 <p>Now try to imagine, instead of a simple “Hello World”, to put some strongly encrypted data or even strongly encrypted code that you can decrypt and execute at runtime.<br>In my experiments, this trick not only is able to fool every decompiler I tried, but in some cases it’s even able to screw all the code that follows the naked function and/or make the decompiler crash!</p>
 <p>Enjoy :)</p>
@@ -178,15 +178,15 @@ the compiler to construct the requisite function declaration for the assembler.<
       
         <a href="/tags/mobile-security/" class="tag">#mobile security</a>
       
-        <a href="/tags/ida/" class="tag">#ida</a>
-      
-        <a href="/tags/hopper/" class="tag">#hopper</a>
-      
         <a href="/tags/arm/" class="tag">#arm</a>
       
         <a href="/tags/binary-analysis/" class="tag">#binary analysis</a>
       
         <a href="/tags/hack/" class="tag">#hack</a>
+      
+        <a href="/tags/ida/" class="tag">#ida</a>
+      
+        <a href="/tags/hopper/" class="tag">#hopper</a>
       
         <a href="/tags/obfuscation/" class="tag">#obfuscation</a>
       
